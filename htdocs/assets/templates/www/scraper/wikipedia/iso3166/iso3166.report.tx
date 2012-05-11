@@ -1,0 +1,20 @@
+<html>
+<head>
+<title>ISO3166 Countries and Subcountries from Wikipedia</title>
+<link rel="stylesheet" type="text/css" href="<: $default_css :>">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<h3 class="global_toc_text">ISO3166 Countries and Subcountries from Wikipedia</h3>
+
+The Wikipedia source for this is <a href='http://en.wikipedia.org/wiki/ISO_3166-2'>here</a>.
+
+<h3 class="global_toc_text">Countries and Subcountries</h3>
+
+: include "basic.table.tx" { row => $country_data };
+
+<hr />
+
+</body>
+</html>
