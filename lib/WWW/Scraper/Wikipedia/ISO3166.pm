@@ -9,6 +9,7 @@ use File::Spec;
 use Hash::FieldHash ':all';
 
 fieldhash my %config_file  => 'config_file';
+fieldhash my %data_file    => 'data_file';
 fieldhash my %share_dir    => 'share_dir';
 fieldhash my %sqlite_file  => 'sqlite_file';
 fieldhash my %verbose      => 'verbose';
@@ -21,13 +22,12 @@ sub _init
 {
 	my($self, $arg)    = @_;
 	$$arg{config_file} ||= '.htwww.scraper.wikipedia.iso3166.conf'; # Caller can set.
+	$$arg{data_file}   = 'data/en.wikipedia.org.wiki.ISO_3166-2';
 	$$arg{sqlite_file} ||= 'www.scraper.wikipedia.iso3166.sqlite';  # Caller can set.
 	$$arg{verbose}     ||= 0; # Caller can set.
 	$self              = from_hash($self, $arg);
 	(my $package       = __PACKAGE__) =~ s/::/-/g;
 	my($dir_name)      = $ENV{AUTHOR_TESTING} ? 'share' : File::ShareDir::dist_dir($package);
-
-	print File::ShareDir::dist_dir($package) .'/'.$self -> sqlite_file, ". \n";
 
 	$self -> config_file(File::Spec -> catfile($dir_name, $self -> config_file) );
 	$self -> sqlite_file(File::Spec -> catfile($dir_name, $self -> sqlite_file) );
@@ -285,19 +285,6 @@ See L</Constructor and initialization>.
 
 =head1 FAQ
 
-=head2 The problem with Estonia
-
-L<Unicode::CaseFold/fc($str)> V 0.02 sometimes outputs something which makes decode()
-(see L<Encode/THE PERL ENCODING API>) V 2.44 die. This problem arises with Perls V 5.14.2 and 5.15.9,
-according to my tests.
-
-So, for Estonia's subcountries EE-(49|65|86), fc() is I<not> called to populate the subcountry field
-I<fc_name>. In these 3 cases, the value of I<fc_name> is the same as the value for the I<name> field,
-which is decode('utf8', $name). $name is the value of the field scraped from Wikipedia.
-
-In all other countries, and within Estonia, all other subcountries, I<fc_name> has the value
-decode('utf8', fc $name);
-
 =head2 Design faults in ISO3166
 
 Where ISO3166 uses Country Name, I would have used Long Name and Short Name.
@@ -337,7 +324,7 @@ I<code3> is not yet populated.
 
 I<subcountries.country_id> points to I<countries.id>.
 
-I<fc_name> is output from calling decode('utf8', fc $name).
+I<fc_name> is output from calling decode('utf8', fc $name), usually. See the next point re Estonia.
 
 For decode(), see L<Encode/THE PERL ENCODING API>.
 
@@ -352,14 +339,27 @@ I<name> is output from calling decode('utf8', $name).
 I<sequence> is a number (1 .. N) indicating the order in which subcountry names appear in the list
 on that subcountry's Wikipedia page.
 
-See L<WWW::Scraper::Wikipedia::ISO3166::Database::Create>, and its source code, for details of the SQL
+See the source code of L<WWW::Scraper::Wikipedia::ISO3166::Database::Create> for details of the SQL
 used to create the tables.
+
+=head2 The problem with Estonia
+
+L<Unicode::CaseFold/fc($str)> V 0.02 sometimes outputs something which makes decode()
+(see L<Encode/THE PERL ENCODING API>) V 2.44 die. This problem arises with Perls V 5.14.2 and 5.15.9,
+according to my tests.
+
+So, for Estonia's subcountries EE-(49|65|86), fc() is I<not> called to populate the subcountry field
+I<fc_name>. In these 3 cases, the value of I<fc_name> is the same as the value for the I<name> field,
+which is decode('utf8', $name). $name is the value of the field scraped from Wikipedia.
+
+In all other countries, and within Estonia, all other subcountries, I<fc_name> has the value
+decode('utf8', fc $name);
 
 =head2 What do I do if I find a mistake in the data?
 
-Which data?
+What data? What mistake? How do you know it's wrong?
 
-Also, you must decide what exactly you were expecting to see.
+Also, you must decide what exactly you were expecting the data to be.
 
 If the problem is the ISO data, report it to them.
 

@@ -15,14 +15,14 @@ our $VERSION = '1.00';
 
 # -----------------------------------------------
 
-sub get_country_page
+sub get_1_page
 {
-	my($self)     = @_;
-	my($response) = HTTP::Tiny -> new -> get($self -> url);
+	my($self, $url, $data_file) = @_;
+	my($response) = HTTP::Tiny -> new -> get($url);
 
 	if (! $$response{success})
 	{
-		$self -> log(error => 'Failed to get ' . $self -> url);
+		$self -> log(error => "Failed to get $url");
 		$self -> log(error => "HTTP status: $$response{status} => $$response{reason}");
 
 		if ($$response{status} == 599)
@@ -35,17 +35,27 @@ sub get_country_page
 		return 1;
 	}
 
-	my($out_file) = 'data/en.wikipedia.org.wiki.ISO_3166-2.html';
-
-	open(OUT, '>', $out_file) || die "Can't open file: $out_file: $!\n";
+	open(OUT, '>', $data_file) || die "Can't open file: $data_file: $!\n";
 	print OUT $$response{content};
 	close OUT;
 
-	$self -> log(info => "Downloaded $out_file");
+	$self -> log(info => "Downloaded '$url' to '$data_file'");
 
 	# Return 0 for success and 1 for failure.
 
 	return 0;
+
+} # End of get_1_page.
+
+# -----------------------------------------------
+
+sub get_country_page
+{
+	my($self) = @_;
+
+	# Return 0 for success and 1 for failure.
+
+	return $self -> get_1_page($self -> url, $self -> data_file . '.html');
 
 } # End of get_country_page.
 
@@ -55,37 +65,11 @@ sub get_subcountry_page
 {
 	my($self)  = @_;
 	my($code2) = $self -> code2;
-
-	$self -> url($self -> url . ":$code2");
-
-	my($response) = HTTP::Tiny -> new -> get($self -> url);
-
-	if (! $$response{success})
-	{
-		$self -> log(error => 'Failed to get ' . $self -> url);
-		$self -> log(error => "HTTP status: $$response{status} => $$response{reason}");
-
-		if ($$response{status} == 599)
-		{
-			$self -> log(error => "Exception message: $$response{content}");
-		}
-
-		# Return 0 for success and 1 for failure.
-
-		return 1;
-	}
-
-	my($out_file) = "data/en.wikipedia.org.wiki.ISO_3166-2.$code2.html";
-
-	open(OUT, '>', $out_file) || die "Can't open file: $out_file: $!\n";
-	print OUT $$response{content};
-	close OUT;
-
-	$self -> log(info => "Downloaded $out_file");
+	my($url)   = $self -> url . ":$code2";
 
 	# Return 0 for success and 1 for failure.
 
-	return 0;
+	return $self -> get_1_page($url, $self -> data_file + ".$code2.html");
 
 } # End of get_subcountry_page.
 
@@ -110,7 +94,6 @@ sub get_subcountry_pages
 		if (! $downloaded{$$countries{$id}{code2}})
 		{
 			$self -> code2($$countries{$id}{code2});
-			$self -> url('http://en.wikipedia.org/wiki/ISO_3166-2');
 			$self -> get_subcountry_page;
 
 			sleep 5;
@@ -129,7 +112,7 @@ sub _init
 {
 	my($self, $arg) = @_;
 	$$arg{code2}    ||= 'AU'; # Caller can set.
-	$$arg{url}      ||= 'http://en.wikipedia.org/wiki/ISO_3166-2'; # Caller can set.
+	$$arg{url}      = 'http://en.wikipedia.org/wiki/ISO_3166-2';
 	$self           = $self -> SUPER::_init($arg);
 
 	return $self;
