@@ -1,7 +1,4 @@
 #!/usr/bin/env perl
-#
-# Name:
-#	report.statistics.pl.
 
 use strict;
 use warnings;

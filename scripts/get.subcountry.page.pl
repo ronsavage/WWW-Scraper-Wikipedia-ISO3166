@@ -1,7 +1,4 @@
 #!/usr/bin/env perl
-#
-# Name:
-#	populate.subcountry.pl.
 
 use strict;
 use warnings;

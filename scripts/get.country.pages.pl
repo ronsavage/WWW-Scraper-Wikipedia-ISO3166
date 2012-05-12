@@ -1,7 +1,4 @@
 #!/usr/bin/env perl
-#
-# Name:
-#	populate.countries.pl.
 
 use strict;
 use warnings;
@@ -27,7 +24,7 @@ if ($option_parser -> getoptions
 {
 	pod2usage(1) if ($option{'help'});
 
-	exit WWW::Scraper::Wikipedia::ISO3166::Database::Download -> new(%option) -> get_country_page;
+	exit WWW::Scraper::Wikipedia::ISO3166::Database::Download -> new(%option) -> get_country_pages;
 }
 else
 {
@@ -40,11 +37,11 @@ __END__
 
 =head1 NAME
 
-get.country.page.pl - Get http://en.wikipedia.org/wiki/ISO_3166-2.html
+get.country.pages.pl - Get http://en.wikipedia.org/wiki/ISO_3166-2.html & the 3-letter code page
 
 =head1 SYNOPSIS
 
-populate.countries.pl [options]
+get.country.pages.pl [options]
 
 	Options:
 	-help
@@ -54,9 +51,13 @@ All switches can be reduced to a single letter.
 
 Exit value: 0.
 
-Default input: http://en.wikipedia.org.wiki.ISO_3166-2.html.
+1: Input: http://en.wikipedia.org.wiki.ISO_3166-1_alpha-3
 
-Default output: data/en.wikipedia.org.wiki.ISO_3166-2.html.
+Output: data/en.wikipedia.org.wiki.ISO_3166-2.3.html.
+
+2: Input: http://en.wikipedia.org.wiki.ISO_3166-2.html.
+
+Output: data/en.wikipedia.org.wiki.ISO_3166-2.html.
 
 =head1 OPTIONS
 

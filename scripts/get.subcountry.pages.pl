@@ -1,7 +1,4 @@
 #!/usr/bin/env perl
-#
-# Name:
-#	get.subcountry.pages.pl.
 
 use strict;
 use warnings;

@@ -49,14 +49,14 @@ sub get_1_page
 
 # -----------------------------------------------
 
-sub get_country_page
+sub get_country_pages
 {
 	my($self) = @_;
 
 	# Firstly, get the page of 3 letter country codes.
 
 	my($url)    = $self -> url;
-	$url        =~ s/-2$/1_alpha-3/;
+	$url        =~ s/2$/1_alpha-3/;
 	my($result) = $self -> get_1_page($url, $self -> data_file . '.3.html');
 
 	# Secondly, get the page of country names.
@@ -65,7 +65,7 @@ sub get_country_page
 
 	return $result || $self -> get_1_page($self -> url, $self -> data_file . '.html');
 
-} # End of get_country_page.
+} # End of get_country_pages.
 
 # -----------------------------------------------
 
@@ -122,7 +122,7 @@ sub _init
 	$$arg{code2}    ||= 'AU'; # Caller can set.
 	$$arg{url}      = 'http://en.wikipedia.org/wiki/ISO_3166-2';
 	$self           = $self -> SUPER::_init($arg);
-http://en.wikipedia.org/wiki/ISO_3166-1_alpha-3
+
 	return $self;
 
 } # End of _init.

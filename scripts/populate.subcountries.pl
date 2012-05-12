@@ -1,7 +1,4 @@
 #!/usr/bin/env perl
-#
-# Name:
-#	populate.subcountries.pl.
 
 use open qw/:std :utf8/;
 use strict;
