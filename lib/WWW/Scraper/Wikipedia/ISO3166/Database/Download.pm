@@ -142,3 +142,131 @@ sub new
 # -----------------------------------------------
 
 1;
+
+=pod
+
+=head1 NAME
+
+WWW::Scraper::Wikipedia::ISO3166::Database::Download - Download various pages from Wikipedia
+
+=head1 Synopsis
+
+See L<WWW::Scraper::Wikipedia::ISO3166/Synopsis>.
+
+=head1 Description
+
+Downloads these pages:
+
+Input: L<http://en.wikipedia.org/wiki/ISO_3166-1_alpha-3>.
+
+Output: data/en.wikipedia.org.wiki.ISO_3166-2.3.html.
+
+Input: L<http://en.wikipedia.org/wiki/ISO_3166-2>.
+
+Output: data/en.wikipedia.org.wiki.ISO_3166-2.html.
+
+Downloads each countries' corresponding subcountries page.
+
+Source: http://en.wikipedia.org/wiki/ISO_3166:$code2.html.
+
+Output: data/en.wikipedia.org.wiki.ISO_3166-2.$code2.html.
+
+See scripts/get.country.pages.pl, scripts/get.subcountry.page.pl and scripts/get.subcountries.pages.pl.
+
+=head1 Constructor and initialization
+
+new(...) returns an object of type C<WWW::Scraper::Wikipedia::ISO3166::Database::Create>.
+
+This is the class's contructor.
+
+Usage: C<< WWW::Scraper::Wikipedia::ISO3166::Database::Create -> new() >>.
+
+This method takes a hash of options.
+
+Call C<new()> as C<< new(option_1 => value_1, option_2 => value_2, ...) >>.
+
+Available options: None.
+
+=head1 Distributions
+
+This module is available as a Unix-style distro (*.tgz).
+
+See http://savage.net.au/Perl-modules.html for details.
+
+See http://savage.net.au/Perl-modules/html/installing-a-module.html for
+help on unpacking and installing.
+
+=head1 Constructor and initialization
+
+new(...) returns an object of type C<WWW::Scraper::Wikipedia::ISO3166::Database::Download>.
+
+This is the class's contructor.
+
+Usage: C<< WWW::Scraper::Wikipedia::ISO3166::Database::Download -> new() >>.
+
+This method takes a hash of options.
+
+Call C<new()> as C<< new(option_1 => value_1, option_2 => value_2, ...) >>.
+
+Available options: None.
+
+=head1 Methods
+
+=head2 get_1_page($url, $data_file)
+
+Download $url and save it in $data_file. $data_file always takes the form 'data/*.html'.
+
+=head2 get_country_pages()
+
+Download the 2 country pages:
+
+L<http://en.wikipedia.org/wiki/ISO_3166-1_alpha-3>.
+
+L<http://en.wikipedia.org/wiki/ISO_3166-2>.
+
+=head2 get_subcountry_page()
+
+Download 1 subcountry page, e.g. http://en.wikipedia.org/wiki/ISO_3166:$code2.html.
+
+Warning. The 2-letter code of the subcountry must be set with $self -> code2('XX') before calling this
+method.
+
+=head2 get_subcountry_pages()
+
+Download all subcountry pages which have not been downloaded.
+
+=head2 new()
+
+See L</Constructor and initialization>.
+
+=head1 FAQ
+
+For the database schema, etc, see L<WWW::Scraper::Wikipedia::ISO3166/FAQ>.
+
+=head1 References
+
+See L<WWW::Scraper::Wikipedia::ISO3166/References>.
+
+=head1 Support
+
+Email the author, or log a bug on RT:
+
+L<https://rt.cpan.org/Public/Dist/Display.html?Name=WWW::Scraper::Wikipedia::ISO3166>.
+
+=head1 Author
+
+C<WWW::Scraper::Wikipedia::ISO3166> was written by Ron Savage I<E<lt>ron@savage.net.auE<gt>> in 2012.
+
+Home page: L<http://savage.net.au/index.html>.
+
+=head1 Copyright
+
+Australian copyright (c) 2012 Ron Savage.
+
+	All Programs of mine are 'OSI Certified Open Source Software';
+	you can redistribute them and/or modify them under the terms of
+	The Artistic License, a copy of which is available at:
+	http://www.opensource.org/licenses/index.html
+
+
+=cut

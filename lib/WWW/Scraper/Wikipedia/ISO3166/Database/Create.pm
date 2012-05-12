@@ -130,3 +130,107 @@ sub report
 # -----------------------------------------------
 
 1;
+
+=pod
+
+=head1 NAME
+
+WWW::Scraper::Wikipedia::ISO3166::Database::Create - Create/drop tables in www.scraper.wikipedia.iso3166.sqlite
+
+=head1 Synopsis
+
+See L<WWW::Scraper::Wikipedia::ISO3166/Synopsis>.
+
+=head1 Description
+
+Documents the methods end-users need to create/drop tables in the SQLite database,
+I<www.scraper.wikipedia.iso3166.sqlite>, which ships with this distro.
+
+See scripts/create.tables.pl and scripts/drop.tables.pl.
+
+=head1 Distributions
+
+This module is available as a Unix-style distro (*.tgz).
+
+See http://savage.net.au/Perl-modules.html for details.
+
+See http://savage.net.au/Perl-modules/html/installing-a-module.html for
+help on unpacking and installing.
+
+=head1 Constructor and initialization
+
+new(...) returns an object of type C<WWW::Scraper::Wikipedia::ISO3166::Database::Create>.
+
+This is the class's contructor.
+
+Usage: C<< WWW::Scraper::Wikipedia::ISO3166::Database::Create -> new() >>.
+
+This method takes a hash of options.
+
+Call C<new()> as C<< new(option_1 => value_1, option_2 => value_2, ...) >>.
+
+Available options: None.
+
+=head1 Methods
+
+=head2 create_all_tables()
+
+Create the countries and subcountries tables.
+
+=head2 create_countries_table()
+
+Create the countries table.
+
+=head2 create_subcountries_table()
+
+Create the subcountries table.
+
+=head2 drop_all_tables()
+
+Drop the countries and subcountries tables.
+
+=head2 drop_table($table_name)
+
+Drop the table called $table_name,
+
+=head2 new()
+
+See L</Constructor and initialization>.
+
+=head2 report($table_name, $message, $result)
+
+For $table_name, if the result of the create or drop is an error, die with $message.
+
+If there was no error, log a create/drop message at level debug.
+
+=head1 FAQ
+
+For the database schema, etc, see L<WWW::Scraper::Wikipedia::ISO3166/FAQ>.
+
+=head1 References
+
+See L<WWW::Scraper::Wikipedia::ISO3166/References>.
+
+=head1 Support
+
+Email the author, or log a bug on RT:
+
+L<https://rt.cpan.org/Public/Dist/Display.html?Name=WWW::Scraper::Wikipedia::ISO3166>.
+
+=head1 Author
+
+C<WWW::Scraper::Wikipedia::ISO3166> was written by Ron Savage I<E<lt>ron@savage.net.auE<gt>> in 2012.
+
+Home page: L<http://savage.net.au/index.html>.
+
+=head1 Copyright
+
+Australian copyright (c) 2012 Ron Savage.
+
+	All Programs of mine are 'OSI Certified Open Source Software';
+	you can redistribute them and/or modify them under the terms of
+	The Artistic License, a copy of which is available at:
+	http://www.opensource.org/licenses/index.html
+
+
+=cut
