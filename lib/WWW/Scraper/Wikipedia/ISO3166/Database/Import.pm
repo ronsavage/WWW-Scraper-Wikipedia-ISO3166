@@ -180,6 +180,24 @@ sub _init
 
 # -----------------------------------------------
 
+sub parse_country_code_page
+{
+	my($self)    = @_;
+	my($in_file) = 'data/en.wikipedia.org.wiki.ISO_3166-2.3.html';
+
+	my($root)   = HTML::TreeBuilder -> new();
+	my($result) = $root -> parse_file($in_file) || die "Can't parse file: $in_file\n";
+	my(@node)   = $root -> look_down(_tag => 'table');
+	my($codes)  = $self -> get_table($node[2], [qw/tt a/]);
+
+	$root -> delete;
+
+	return $codes;
+
+} # End of parse_country_code_page.
+
+# -----------------------------------------------
+
 sub parse_country_page
 {
 	my($self)    = @_;
@@ -1287,10 +1305,22 @@ sub parse_subcountry_page
 sub populate_countries
 {
 	my($self)  = @_;
+	my($codes) = $self -> parse_country_code_page;
 	my($names) = $self -> parse_country_page;
 	$names     = $self -> process_countries($names);
 
-	$self -> save_countries($names);
+	# Reformat @$codes{code => x, name => x} as %codes{$name} = $code.
+
+	my(%codes);
+
+	for my $i (0 .. $#$codes)
+	{
+		$codes{$$codes[$i]{name} } = $$codes[$i]{code};
+
+		$self -> log(debug => "$$codes[$i]{name} => $$codes[$i]{code}");
+	}
+
+	$self -> save_countries(\%codes, $names);
 
 	# TODO: Have to return $specials from parse_country_page().
 	#$self -> process_table($specials);
@@ -1487,7 +1517,7 @@ sub process_subcountry
 
 sub save_countries
 {
-	my($self, $table) = @_;
+	my($self, $code3, $table) = @_;
 
 	$self -> dbh -> do('delete from countries');
 
@@ -1499,7 +1529,7 @@ sub save_countries
 	{
 		$i++;
 
-		$sth -> execute($$element{code}, '', decode('utf8', fc $$element{name}), defined($$element{detail}) ? 'Yes' : 'No', decode('utf8', $$element{name}) );
+		$sth -> execute($$element{code}, $$code3{$$element{name} } || '', decode('utf8', fc $$element{name}), defined($$element{detail}) ? 'Yes' : 'No', decode('utf8', $$element{name}) );
 	}
 
 	$sth -> finish;
