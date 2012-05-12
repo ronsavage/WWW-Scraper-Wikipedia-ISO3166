@@ -69,7 +69,7 @@ sub get_subcountry_page
 
 	# Return 0 for success and 1 for failure.
 
-	return $self -> get_1_page($url, $self -> data_file + ".$code2.html");
+	return $self -> get_1_page($url, $self -> data_file . ".$code2.html");
 
 } # End of get_subcountry_page.
 
