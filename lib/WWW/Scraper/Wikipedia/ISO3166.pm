@@ -329,7 +329,9 @@ A single SQLite file holds 2 tables, I<countries> and I<subcountries>:
 	name                sequence
 	timestamp           timestamp
 
-I<code3> is not yet populated.
+I<code3> has a couple of special cases. 2 countries have no value for code3:
+Libyan Arab Jamahiriya and Sint Maarten.
+3-letter codes which almost match: LBY => Libya and MAF => Saint Martin (French part).
 
 I<subcountries.country_id> points to I<countries.id>.
 

@@ -188,7 +188,12 @@ sub parse_country_code_page
 	my($root)   = HTML::TreeBuilder -> new();
 	my($result) = $root -> parse_file($in_file) || die "Can't parse file: $in_file\n";
 	my(@node)   = $root -> look_down(_tag => 'table');
-	my($codes)  = $self -> get_table($node[2], [qw/tt a/]);
+	my($codes)  =
+	[
+		@{$self -> get_table($node[2], [qw/tt a/])},
+		@{$self -> get_table($node[3], [qw/tt a/])},
+		@{$self -> get_table($node[4], [qw/tt a/])},
+	];
 
 	$root -> delete;
 
@@ -1316,8 +1321,6 @@ sub populate_countries
 	for my $i (0 .. $#$codes)
 	{
 		$codes{$$codes[$i]{name} } = $$codes[$i]{code};
-
-		$self -> log(debug => "$$codes[$i]{name} => $$codes[$i]{code}");
 	}
 
 	$self -> save_countries(\%codes, $names);
