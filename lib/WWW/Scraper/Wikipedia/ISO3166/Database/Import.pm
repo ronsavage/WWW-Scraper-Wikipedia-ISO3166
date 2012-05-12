@@ -1534,21 +1534,18 @@ sub save_subcountry
 	{
 		$i++;
 
+		$self -> log(debug => "$$element{code} => $$element{name}") if ($code2 eq 'EE');
+
 		# Special code for EE => Estonia.
 
-		if ($code2 ne 'EE')
+		if ( ($code2 ne 'EE') || ($$element{code} !~ /EE-(?:49|65|86)/) )
 		{
 			$fc_name = decode('utf8', fc $$element{name});
 		}
-		elsif ($code2 =~ /EE-(?:49|65|86)/)
+		else
 		{
 			$fc_name = decode('utf8', $$element{name});
 		}
-
-		$self -> log(debug => "code:      $$element{code}")                     if ($code2 eq 'EE');
-		$self -> log(debug => "name:      $$element{name}")                     if ($code2 eq 'EE');
-		$self -> log(debug => "decode:    " . decode('utf8', $$element{name}) ) if ($code2 eq 'EE');
-		$self -> log(debug => "decode fc: $fc_name")                            if ($code2 eq 'EE');
 
 		$sth -> execute($country_id, $$element{code}, $fc_name, decode('utf8', $$element{name}), $i);
 	}

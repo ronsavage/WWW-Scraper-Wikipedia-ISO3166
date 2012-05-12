@@ -162,9 +162,15 @@ Its components are:
 
 =item o scripts/get.country.page.pl
 
-Downloads the ISO3166-2 page from Wikipedia.
+1: Downloads the ISO3166-1_alpha-3 page from Wikipedia.
 
-Input: L<http://en.wikipedia.org/wiki/ISO_3166>.
+Input: L<http://en.wikipedia.org/wiki/ISO_3166-1_alpha-3>.
+
+Output: data/en.wikipedia.org.wiki.ISO_3166-2.3.html.
+
+2: Downloads the ISO3166-2 page from Wikipedia.
+
+Input: L<http://en.wikipedia.org/wiki/ISO_3166-2>.
 
 Output: data/en.wikipedia.org.wiki.ISO_3166-2.html.
 
@@ -191,6 +197,9 @@ Imports subcountry data into the database.
 Source: data/en.wikipedia.org.wiki.ISO_3166-2.$code2.html.
 
 Output: share/www.scraper.wikipedia.iso3166.sqlite.
+
+Note: When the distro is installed, this SQLite file is installed too.
+See L</Where is the database?> for details.
 
 =item o scripts/export.as.csv.pl -c c.csv -s s.csv
 
@@ -460,6 +469,11 @@ If you dump data, e.g. country name where code2 = 'AX', using both NFC() and NFD
 I assume the first one is correct, because that's what Wikipedia displays. So, NFC() it is.
 
 See also L<http://www.unicode.org/faq/normalization.html>.
+
+=head2 What is $ENV{AUTHOR_TESTING} used for?
+
+When this env var is 1, scripts output to share/*.sqlite within the distro dir. That's how I populate the
+database tables. After installation, the database is read-only, so the scripts don't write to that copy.
 
 =head1 References
 
