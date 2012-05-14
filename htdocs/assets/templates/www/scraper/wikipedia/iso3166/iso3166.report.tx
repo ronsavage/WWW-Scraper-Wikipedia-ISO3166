@@ -6,9 +6,9 @@
 </head>
 <body>
 
-<h3 class="global_toc_text">ISO3166 Countries and Subcountries from Wikipedia</h3>
+<h3 class="global_toc_text"><a href="https://metacpan.org/module/WWW::Scraper::Wikipedia::ISO3166">WWW::Scraper::Wikipedia::ISO3166</a></h3>
 
-<h3 class="global_toc_text">Perl module: <a href="https://metacpan.org/module/WWW::Scraper::Wikipedia::ISO3166">WWW::Scraper::Wikipedia::ISO3166</a></h3>
+<h3 class="global_toc_text">ISO3166 Countries and Subcountries from Wikipedia</h3>
 
 <p>
 This data displayed here is shipped in that module in share/www.scraper.wikipedia.iso3166.sqlite,
