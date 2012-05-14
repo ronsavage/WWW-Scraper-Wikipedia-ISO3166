@@ -8,7 +8,40 @@
 
 <h3 class="global_toc_text">ISO3166 Countries and Subcountries from Wikipedia</h3>
 
-The Wikipedia source for this is <a href='http://en.wikipedia.org/wiki/ISO_3166-2'>here</a>.
+<h3 class="global_toc_text">Perl module: <a href="https://metacpan.org/module/WWW::Scraper::Wikipedia::ISO3166">WWW::Scraper::Wikipedia::ISO3166</a></h3>
+
+<p>
+This data displayed here is shipped in that module in share/www.scraper.wikipedia.iso3166.sqlite,
+and installed in a shared directory when you install the module. See the FAQ, under 'Where is the database?'
+for details.
+</p>
+
+<p>
+The Wikipedia sources for this are:
+
+<ul>
+<li><a href='http://en.wikipedia.org/wiki/ISO_3166-2'>Countries</a>
+<li><a href='http://en.wikipedia.org/wiki/ISO_3166-1_alpha-3'>3-letter country codes</a>
+</ul>
+</p>
+
+<p>
+Also, the subcountry pages are linked off each country's 2-letter code entry in the first of those 2 links.
+</p>
+
+<p>
+To check your browser's rendering, scroll to the bottom and check entry 249, AX.
+The Å of Åland should have a ring on top of it, just as this line and Wikipedia do.
+</p>
+
+<p>
+Wikipedia sorts countries by their $code2, whereas I have chosen to sort by NFC($name), where the NFC() method
+comes from <a href="https://metacpan.org/release/Unicode-Normalize">Unicode::Normalize</a>.
+</p>
+
+<p>
+Usage of NFC() is discussed in the module's FAQ, under 'Why did you use Unicode::Normalize's NFC() for sorting?'.
+</p>
 
 <h3 class="global_toc_text">Countries and Subcountries</h3>
 

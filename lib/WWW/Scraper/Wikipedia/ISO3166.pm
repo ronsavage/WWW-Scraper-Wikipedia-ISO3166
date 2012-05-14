@@ -217,6 +217,8 @@ Input: share/www.scraper.wikipedia.iso3166.sqlite.
 
 Output: data/iso.3166-2.html.
 
+On-line: L<http://savage.net.au/Perl-modules/html/WWW/Scraper/Wikipedia/iso.3166-2.html>.
+
 =back
 
 =head1 Constructor and initialization
@@ -335,7 +337,7 @@ Libyan Arab Jamahiriya and Sint Maarten.
 
 I<subcountries.country_id> points to I<countries.id>.
 
-I<fc_name> is output from calling decode('utf8', fc $name), usually. See the next point re Estonia.
+I<fc_name> is output from calling fc(decode('utf8', $name) ).
 
 For decode(), see L<Encode/THE PERL ENCODING API>.
 
@@ -352,19 +354,6 @@ on that subcountry's Wikipedia page.
 
 See the source code of L<WWW::Scraper::Wikipedia::ISO3166::Database::Create> for details of the SQL
 used to create the tables.
-
-=head2 The problem with Estonia
-
-L<Unicode::CaseFold/fc($str)> V 0.02 sometimes outputs something which makes decode()
-(see L<Encode/THE PERL ENCODING API>) V 2.44 die. This problem arises with Perls V 5.14.2 and 5.15.9,
-according to my tests.
-
-So, for Estonia's subcountries EE-(49|65|86), fc() is I<not> called to populate the subcountry field
-I<fc_name>. In these 3 cases, the value of I<fc_name> is the same as the value for the I<name> field,
-which is decode('utf8', $name). $name is the value of the field scraped from Wikipedia.
-
-In all other countries, and within Estonia, all other subcountries, I<fc_name> has the value
-decode('utf8', fc $name);
 
 =head2 What do I do if I find a mistake in the data?
 

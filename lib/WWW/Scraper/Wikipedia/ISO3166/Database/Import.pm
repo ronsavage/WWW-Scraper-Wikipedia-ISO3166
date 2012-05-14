@@ -1532,7 +1532,7 @@ sub save_countries
 	{
 		$i++;
 
-		$sth -> execute($$element{code}, $$code3{$$element{name} } || '', decode('utf8', fc $$element{name}), defined($$element{detail}) ? 'Yes' : 'No', decode('utf8', $$element{name}) );
+		$sth -> execute($$element{code}, $$code3{$$element{name} } || '', fc decode('utf8', $$element{name}), defined($$element{detail}) ? 'Yes' : 'No', decode('utf8', $$element{name}) );
 	}
 
 	$sth -> finish;
@@ -1561,26 +1561,15 @@ sub save_subcountry
 	my($sql) = 'insert into subcountries (country_id, code, fc_name, name, sequence) values (?, ?, ?, ?, ?)';
 	my($sth) = $self -> dbh -> prepare($sql) || die "Unable to prepare SQL: $sql\n";
 
-	my($fc_name);
+	my($decode);
 
 	for my $element (@$table)
 	{
 		$i++;
 
-		$self -> log(debug => "$$element{code} => $$element{name}") if ($code2 eq 'EE');
+		$decode = decode('utf8', $$element{name});
 
-		# Special code for EE => Estonia.
-
-		if ( ($code2 ne 'EE') || ($$element{code} !~ /EE-(?:49|65|86)/) )
-		{
-			$fc_name = decode('utf8', fc $$element{name});
-		}
-		else
-		{
-			$fc_name = decode('utf8', $$element{name});
-		}
-
-		$sth -> execute($country_id, $$element{code}, $fc_name, decode('utf8', $$element{name}), $i);
+		$sth -> execute($country_id, $$element{code}, fc $decode, $decode, $i);
 	}
 
 	$sth -> finish;

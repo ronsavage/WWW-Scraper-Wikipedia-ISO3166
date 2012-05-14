@@ -60,11 +60,6 @@ Default input: share/www.scraper.wikipedia.iso3166.sqlite.
 
 Default output: Screen.
 
-Not binmode(OUT, ':utf8').
-See htdocs/assets/templates/www/scraper/wikipedia/iso3166/iso3166.report.tx
-which contains this line:
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
 =head1 OPTIONS
 
 =over 4

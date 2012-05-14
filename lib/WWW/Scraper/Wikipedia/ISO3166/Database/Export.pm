@@ -1,18 +1,17 @@
 package WWW::Scraper::Wikipedia::ISO3166::Database::Export;
 
+use open qw/:std :utf8/;
 use parent 'WWW::Scraper::Wikipedia::ISO3166::Database';
 use strict;
 use warnings;
 
 use Config::Tiny;
 
-use Data::Dumper::Concise;
-
 use Hash::FieldHash ':all';
 
 use Text::Xslate 'mark_raw';
 
-use Unicode::Normalize;
+use Unicode::Normalize; # For NFC().
 
 fieldhash my %config          => 'config';
 fieldhash my %country_file    => 'country_file';
@@ -42,7 +41,7 @@ sub as_csv
 		[
 			$id,
 			$$countries{$id}{code2},
-			'',
+			$$countries{$id}{code3},
 			$$countries{$id}{fc_name},
 			$$countries{$id}{has_subcountries},
 			$$countries{$id}{name},
@@ -102,24 +101,19 @@ sub as_csv
 
 sub as_html
 {
-	my($self)         = @_;
-	my($config)       = $self -> config;
-	my($country_data) = $self -> build_country_data;
+	my($self)   = @_;
+	my($config) = $self -> config;
 
 	die "No web_page_file name specified\n" if (! $self -> web_page_file);
 
 	open(OUT, '>', $self -> web_page_file) || die "Can't open file: " . $self -> web_page_file . "\n";
-
-	# Not binmode(OUT, ':utf8').
-	# See htdocs/assets/templates/www/scraper/wikipedia/iso3166/iso3166.report.tx
-	# which contains this line:
-	# <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	#binmode(OUT, ':utf8');
 
 	print OUT $self -> templater -> render
 		(
 		 'iso3166.report.tx',
 		 {
-			 country_data => $country_data,
+			 country_data => $self -> build_country_data,
 			 default_css  => "$$config{_}{css_url}/default.css",
 		 }
 		);
@@ -146,14 +140,15 @@ sub build_country_data
 
 		push @{$subcountries{$country_id} },
 		[
-			"$$subcountries{$sub_id}{code}: $$subcountries{$sub_id}{name}",
-			$$subcountries{$sub_id}{sequence},
+			$$subcountries{$sub_id}{sequence}, # Sort key, below.
+			$$subcountries{$sub_id}{code},
+			$$subcountries{$sub_id}{name},
 		];
 	}
 
 	my(@tr);
 
-	push @tr, [{td => '#'}, {td => 'Code2'}, {td => 'Code3'}, {td => 'Fc_name'}, {td => 'Name'}, {td => 'Subcountries'}];
+	push @tr, [{td => '#'}, {td => 'Code2'}, {td => 'Code3'}, {td => 'Name'}, {td => 'Subcountries'}];
 
 	my($count) = 1;
 
@@ -164,26 +159,28 @@ sub build_country_data
 			{td => $count++},
 			{td => $$countries{$id}{code2} },
 			{td => $$countries{$id}{code3} },
-			{td => $$countries{$id}{fc_name} },
-			{td => $$countries{$id}{name} },
+			{td => $$countries{$id}{name}},
 			{td => $$countries{$id}{has_subcountries} },
 		];
 
 		next if (! $subcountries{$id});
 
-		for my $sub_id (sort{$$a[1] <=> $$b[1]} @{$subcountries{$id} })
+		# Sort by sequence.
+
+		for my $sub_id (sort{$$a[0] <=> $$b[0]} @{$subcountries{$id} })
 		{
 			push @tr,
 			[
 				{td => ''},
+				{td => $$sub_id[1]},
 				{td => ''},
+				{td => $$sub_id[2]},
 				{td => ''},
-				{td => $$sub_id[0]},
 			];
 		}
 	}
 
-	push @tr, [{td => '#'}, {td => 'Code2'}, {td => 'Code3'}, {td => 'Fc_name'}, {td => 'Name'}, {td => 'Subcountries'}];
+	push @tr, [{td => '#'}, {td => 'Code2'}, {td => 'Code3'}, {td => 'Name'}, {td => 'Subcountries'}];
 
 	return [@tr];
 
