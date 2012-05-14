@@ -1599,7 +1599,7 @@ sub trim
 
 =head1 NAME
 
-WWW::Scraper::Wikipedia::ISO3166::Database - The interface to www.scraper.wikipedia.iso3166.sqlite
+WWW::Scraper::Wikipedia::ISO3166::Database::Import - Part of the interface to www.scraper.wikipedia.iso3166.sqlite
 
 =head1 Synopsis
 
@@ -1607,7 +1607,7 @@ See L<WWW::Scraper::Wikipedia::ISO3166/Synopsis>.
 
 =head1 Description
 
-Documents the methods end-users need to access the SQLite database,
+Documents the methods used to populate the SQLite database,
 I<www.scraper.wikipedia.iso3166.sqlite>, which ships with this distro.
 
 =head1 Distributions
@@ -1682,7 +1682,7 @@ Use $country_code to handle some special cases, specifically:
 
 =back
 
-Returns an arrayref of hashrefs, where the (key => value) of each hashref are:
+Returns an arrayref of hashrefs, where the (key => value) pair of each hashref are:
 
 =over 4
 
@@ -1758,6 +1758,8 @@ L</process_countries($table)>.
 =head2 save_subcountries($count, $table)
 
 Save the I<subcountries> table, for the given subcountry, using the output of L</process_subcountries($table)>.
+
+$count is just used in the log for progress messages.
 
 =head2 trim($s)
 
