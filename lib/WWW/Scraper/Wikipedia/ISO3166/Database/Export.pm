@@ -195,7 +195,6 @@ sub _init
 	$$arg{country_file}    ||= 'countries.csv';    # Caller can set.
 	$$arg{subcountry_file} ||= 'subcountries.csv'; # Caller can set.
 	$$arg{templater}       = '';
-	$$arg{verbose}         ||= 0;  # Caller can set.
 	$$arg{web_page_file }  ||= 'iso.3166-2.html'; # Caller can set.
 	$self                  = $self -> SUPER::_init($arg);
 
@@ -228,3 +227,147 @@ sub new
 # ------------------------------------------------
 
 1;
+
+=pod
+
+=head1 NAME
+
+WWW::Scraper::Wikipedia::ISO3166::Database::Export - Export www.scraper.wikipedia.iso3166.sqlite as CSV and HTML
+
+=head1 Synopsis
+
+See L<WWW::Scraper::Wikipedia::ISO3166/Synopsis>.
+
+=head1 Description
+
+Documents the methods end-users need to export the SQLite database,
+I<www.scraper.wikipedia.iso3166.sqlite>, which ships with this distro, as either CSV or HTML.
+
+See scripts/export.as.csv.pl and scripts/export.as.html.pl.
+
+The input to these scripts is shipped as share/www.scraper.wikipedia.iso3166.sqlite.
+
+The output of these scripts is shipped as:
+
+=over 4
+
+=item o data/countries.csv
+
+=item o data/iso.3166-2.html
+
+=item o data/subcountries.csv
+
+=back
+
+=head1 Distributions
+
+This module is available as a Unix-style distro (*.tgz).
+
+See http://savage.net.au/Perl-modules.html for details.
+
+See http://savage.net.au/Perl-modules/html/installing-a-module.html for
+help on unpacking and installing.
+
+=head1 Constructor and initialization
+
+new(...) returns an object of type C<WWW::Scraper::Wikipedia::ISO3166::Database::Export>.
+
+This is the class's contructor.
+
+Usage: C<< WWW::Scraper::Wikipedia::ISO3166::Database::Export -> new() >>.
+
+This method takes a hash of options.
+
+Call C<new()> as C<< new(option_1 => value_1, option_2 => value_2, ...) >>.
+
+Available options (these are also methods):
+
+=over 4
+
+=item o country_file => $a_csv_file_name
+
+Specify the name of the CSV file to which country data is exported.
+
+Default: 'countries.csv'.
+
+=item o subcountry_file => $a_csv_file_name
+
+Specify the name of the CSV file to which subcountry data is exported.
+
+Default: 'subcountries.csv'.
+
+=item o web_page_file => $a_html_file_name
+
+Specify the name of the HTML file to which country and subcountry data is exported.
+
+See htdocs/assets/templates/www/scraper/wikipedia/iso3166/iso3166.report.tx for the web page template used.
+
+*.tx files are processed with L<Text::Xslate>.
+
+Default: 'iso.3166-2.html'.
+
+=back
+
+=head1 Methods
+
+=head2 as_csv()
+
+Export the SQLite database to 2 CSV files.
+
+=head2 as_html()
+
+Export the SQLite database to 1 HTML file.
+
+=head2 country_file($file_name)
+
+Get or set the name of the CSV file to which country data is exported.
+
+Also, I<country_file> is an option to L</new()>.
+
+=head2 new()
+
+See L</Constructor and initialization>.
+
+=head2 subcountry_file($file_name)
+
+Get or set the name of the CSV file to which subcountry data is exported.
+
+Also, I<subcountry_file> is an option to L</new()>.
+
+=head2 web_page_file($file_name)
+
+Get or set the name of the HTML file to which country and subcountry data is exported.
+
+Also, I<web_page_file> is an option to L</new()>.
+
+=head1 FAQ
+
+For the database schema, etc, see L<WWW::Scraper::Wikipedia::ISO3166/FAQ>.
+
+=head1 References
+
+See L<WWW::Scraper::Wikipedia::ISO3166/References>.
+
+=head1 Support
+
+Email the author, or log a bug on RT:
+
+L<https://rt.cpan.org/Public/Dist/Display.html?Name=WWW::Scraper::Wikipedia::ISO3166>.
+
+=head1 Author
+
+C<WWW::Scraper::Wikipedia::ISO3166> was written by Ron Savage I<E<lt>ron@savage.net.auE<gt>> in 2012.
+
+Home page: L<http://savage.net.au/index.html>.
+
+=head1 Copyright
+
+Australian copyright (c) 2012 Ron Savage.
+
+	All Programs of mine are 'OSI Certified Open Source Software';
+	you can redistribute them and/or modify them under the terms of
+	The Artistic License, a copy of which is available at:
+	http://www.opensource.org/licenses/index.html
+
+
+=cut

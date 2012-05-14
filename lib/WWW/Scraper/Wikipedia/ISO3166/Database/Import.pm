@@ -1631,15 +1631,13 @@ This method takes a hash of options.
 
 Call C<new()> as C<< new(option_1 => value_1, option_2 => value_2, ...) >>.
 
-Available options:
+Available options (these are also methods):
 
 =over 4
 
-=item o attributes => $hash_ref
+=item o code2 => $2_letter_code
 
-This is the hashref of attributes passed to L<DBI>'s I<connect()> method.
-
-Default: {AutoCommit => 1, RaiseError => 1, sqlite_unicode => 1}
+Specifies the code2 of the country whose subcountry page is to be downloaded.
 
 =item o verbose => $integer
 
@@ -1651,81 +1649,125 @@ Default: 0 (print nothing).
 
 =head1 Methods
 
-=head2 attributes($hashref)
+=head2 code2($code)
 
-Get or set the hashref of attributes passes to L<DBI>'s I<connect()> method.
+Get or set the 2-letter country code of the country or subcountry being processed.
 
-Also, I<attributes> is an option to L</new()>.
+Also, I<code2> is an option to L</new()>.
 
-=head2 find_subcountry_downloads()
+=head2 get_content($element)
 
-Returns an arrayref of 2-letter codes of countries whose subcountry page has been downloaded to
-data/*$code2.html.
+Extract, recursively if necessary, the content of the HTML element, as returned from L<HTML::TreeBuilder>'s
+look_down() method.
 
-=head2 get_country_count()
+=head2 get_table($node, $column_type, $country_code)
 
-Return the result of this SQL: 'select count(*) from countries'.
+Get the country or subcountry details from the HTML table ($node), as returned from L<HTML::TreeBuilder>'s
+look_down() method.
 
-=head2 get_statistics()
+Use the arrayref $column_type of HTML attributes ('a', 'tt', '-', i.e. none) to determine exactly how to extract
+the data from the enclosing 'td'.
 
-Returns a hashref of database statistics:
+Use $country_code to handle some special cases, specifically:
 
-	{
-	countries_in_db             => 249,
-	has_subcounties             => 199,
-	subcountries_in_db          => 4593,
-	subcountry_files_downloaded => 249,
-	}
+=over 4
 
-Called by L</report_statistics()>.
+=item o ET => Ethopia
 
-=head2 get_subcountry_count()
+=item o KM => Comoros
 
-Return the result of this SQL: 'select count(*) from subcountries'.
+=item o LB => Lebanon
+
+=item o TD => Chad
+
+=back
+
+Returns an arrayref of hashrefs, where the (key => value) of each hashref are:
+
+=over 4
+
+=item o code => $string
+
+The country or subcountry code.
+
+=item o detail => $arrayref
+
+An indicator as to whether or not the country has subcountries.
+
+=item o name => $string
+
+The name of the country or subcountry.
+
+=back
 
 =head2 new()
 
 See L</Constructor and initialization>.
 
-=head2 read_countries_table()
+=head2 parse_country_code_page()
 
-Returns a hashref of hashrefs for this SQL: 'select * from countries'.
+Parse the HTML page of 3-letter country codes, which has 3 tables side-by-side.
 
-The key of the hashref is the primary key (integer) of the I<countries> table.
+Return an arrayref of 3-letter codes.
 
-This is discussed further in L<WWW::Scraper::Wikipedia::ISO3166/Methods which return hashrefs>.
+Special cases are documented in L<WWW::Scraper::Wikipedia::ISO3166/What is the database schema?>.
 
-=head2 read_subcountries_table()
+=head2 parse_country_page()
 
-Returns a hashref of hashrefs for this SQL: 'select * from subcountries'.
+Parse the HTML page of country names.
 
-The key of the hashref is the primary key (integer) of the I<subcountries> table.
+Returns the result of calling L</get_table($node, $column_type, $country_code)>.
 
-This is discussed further in L<WWW::Scraper::Wikipedia::ISO3166/Methods which return hashrefs>.
+=head2 parse_subcountry_page()
 
-=head2 report_statistics()
+Parse the HTML page of a subcountry.
 
-Logs various database statistics at the info level.
+Warning. The 2-letter code of the subcountry must be set with $self -> code2('XX') before calling this
+method.
 
-Calls L</get_statistics()>.
+Returns the result of calling L</get_table($node, $column_type, $country_code)>.
 
-This is the output from scripts/report.statistics.pl -v 1:
+=head2 populate_countries()
 
-	info: countries_in_db => 249.
-	info: has_subcounties => 199.
-	info: subcountries_in_db => 4593.
-	info: subcountry_files_downloaded => 249.
+Populate the I<countries> table.
+
+=head2 populate_subcountry($count)
+
+Populate the I<subcountries> table, for 1 subcountry.
+
+Warning. The 2-letter code of the subcountry must be set with $self -> code2('XX') before calling this
+method.
+
+=head2 populate_subcountries()
+
+Populate the I<subcountries> table, for all subcountries.
+
+=head2 process_countries($table)
+
+Clean up the I<detail> key of the arrayref of hashrefs for the countries.
+
+=head2 process_subcountries($table)
+
+Delete the I<detail> key of the arrayref of hashrefs for the subcountry.
+
+=head2 save_countries($code3, $table)
+
+Save the I<countries> table, by combining the output of L<parse_country_code_page()> with the output of
+L</process_countries($table)>.
+
+=head2 save_subcountries($count, $table)
+
+Save the I<subcountries> table, for the given subcountry, using the output of L</process_subcountries($table)>.
+
+=head2 trim($s)
+
+Remove leading and trailing spaces from $s, and return it.
 
 =head2 verbose($integer)
 
 Get or set the verbosity level.
 
 Also, I<verbose> is an option to L</new()>.
-
-=head2 who_has_subcountries()
-
-Returns an arrayref of primary keys (integers) in the I<countries> table, of those countries who have
-subcountry entries in the I<subcountries> table.
 
 =head1 FAQ
 

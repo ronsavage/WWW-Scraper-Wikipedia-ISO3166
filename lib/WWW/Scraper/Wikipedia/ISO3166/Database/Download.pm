@@ -4,8 +4,6 @@ use parent 'WWW::Scraper::Wikipedia::ISO3166::Database';
 use strict;
 use warnings;
 
-use File::Slurp; # For read_dir().
-
 use Hash::FieldHash ':all';
 
 use HTTP::Tiny;
@@ -14,23 +12,6 @@ fieldhash my %code2 => 'code2';
 fieldhash my %url   => 'url';
 
 our $VERSION = '1.00';
-
-# -----------------------------------------------
-
-sub find_downloads
-{
-	my($self) = @_;
-
-	my(@code);
-
-	for my $file (grep{/wiki/} read_dir('data') )
-	{
-		push @code, $1 if ($file =~ /ISO_3166-2\.([A-Z]{2,2})\.html/);
-	}
-
-	return [@code];
-
-} # End of find_downloads.
 
 # -----------------------------------------------
 
@@ -110,7 +91,7 @@ sub get_subcountry_pages
 
 	my(%downloaded);
 
-	my($downloaded)           = $self -> find_downloads;
+	my($downloaded)           = $self -> find_subcountry_downloads;
 	@downloaded{@$downloaded} = (1) x @$downloaded;
 	my($countries)            = $self -> read_countries_table;
 
@@ -192,28 +173,7 @@ Output: data/en.wikipedia.org.wiki.ISO_3166-2.$code2.html.
 
 See scripts/get.country.pages.pl, scripts/get.subcountry.page.pl and scripts/get.subcountries.pages.pl.
 
-=head1 Constructor and initialization
-
-new(...) returns an object of type C<WWW::Scraper::Wikipedia::ISO3166::Database::Create>.
-
-This is the class's contructor.
-
-Usage: C<< WWW::Scraper::Wikipedia::ISO3166::Database::Create -> new() >>.
-
-This method takes a hash of options.
-
-Call C<new()> as C<< new(option_1 => value_1, option_2 => value_2, ...) >>.
-
-Available options: None.
-
-=head1 Distributions
-
-This module is available as a Unix-style distro (*.tgz).
-
-See http://savage.net.au/Perl-modules.html for details.
-
-See http://savage.net.au/Perl-modules/html/installing-a-module.html for
-help on unpacking and installing.
+Note: These pages have been downloaded, and are shipped with the distro.
 
 =head1 Constructor and initialization
 
@@ -227,9 +187,40 @@ This method takes a hash of options.
 
 Call C<new()> as C<< new(option_1 => value_1, option_2 => value_2, ...) >>.
 
-Available options: None.
+Available options (these are also methods):
+
+=over 4
+
+=item o code2 => $2_letter_code
+
+Specifies the code2 of the country whose subcountry page is to be downloaded.
+
+=item o verbose => $integer
+
+Print more or less information.
+
+Default: 0 (print nothing).
+
+=back
+
+=head1 Distributions
+
+This module is available as a Unix-style distro (*.tgz).
+
+See http://savage.net.au/Perl-modules.html for details.
+
+See http://savage.net.au/Perl-modules/html/installing-a-module.html for
+help on unpacking and installing.
 
 =head1 Methods
+
+=head2 code2($code)
+
+Get or set the 2-letter country code of the country or subcountry being processed.
+
+See L</get_subcountry_page()>.
+
+Also, I<code2> is an option to L</new()>.
 
 =head2 get_1_page($url, $data_file)
 
@@ -257,6 +248,12 @@ Download all subcountry pages which have not been downloaded.
 =head2 new()
 
 See L</Constructor and initialization>.
+
+=head2 verbose($integer)
+
+Get or set the verbosity level.
+
+Also, I<verbose> is an option to L</new()>.
 
 =head1 FAQ
 
