@@ -7,6 +7,8 @@ use warnings;
 
 use Config::Tiny;
 
+use Encode; # For encode().
+
 use Hash::FieldHash ':all';
 
 use Text::Xslate 'mark_raw';
@@ -107,7 +109,7 @@ sub as_html
 	die "No web_page_file name specified\n" if (! $self -> web_page_file);
 
 	open(OUT, '>', $self -> web_page_file) || die "Can't open file: " . $self -> web_page_file . "\n";
-	#binmode(OUT, ':utf8');
+	binmode(OUT, ':utf8');
 
 	print OUT $self -> templater -> render
 		(
@@ -148,7 +150,7 @@ sub build_country_data
 
 	my(@tr);
 
-	push @tr, [{td => '#'}, {td => 'Code2'}, {td => 'Code3'}, {td => 'Name'}, {td => 'Subcountries'}];
+	push @tr, [{td => '#'}, {td => 'Db key'}, {td => 'Code2'}, {td => 'Code3'}, {td => 'Name'}, {td => 'Subcountries'}];
 
 	my($count) = 1;
 
@@ -157,9 +159,10 @@ sub build_country_data
 		push @tr,
 		[
 			{td => $count++},
-			{td => $$countries{$id}{code2} },
-			{td => $$countries{$id}{code3} },
-			{td => $$countries{$id}{name} },
+			{td => $id},
+			{td => mark_raw($$countries{$id}{code2})},
+			{td => mark_raw($$countries{$id}{code3})},
+			{td => mark_raw($$countries{$id}{name})},
 			{td => $$countries{$id}{has_subcountries} },
 		];
 
@@ -172,15 +175,16 @@ sub build_country_data
 			push @tr,
 			[
 				{td => ''},
-				{td => $$sub_id[1]},
 				{td => ''},
-				{td => $$sub_id[2]},
+				{td => ''},
+				{td => mark_raw($$sub_id[1])},
+				{td => mark_raw($$sub_id[2])},
 				{td => ''},
 			];
 		}
 	}
 
-	push @tr, [{td => '#'}, {td => 'Code2'}, {td => 'Code3'}, {td => 'Name'}, {td => 'Subcountries'}];
+	push @tr, [{td => '#'}, {td => 'Key'}, {td => 'Code2'}, {td => 'Code3'}, {td => 'Name'}, {td => 'Subcountries'}];
 
 	return [@tr];
 

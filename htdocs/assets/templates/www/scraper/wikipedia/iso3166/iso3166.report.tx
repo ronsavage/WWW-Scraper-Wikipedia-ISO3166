@@ -11,7 +11,7 @@
 <h3 class="global_toc_text">ISO3166 Countries and Subcountries from Wikipedia</h3>
 
 <p>
-This data displayed here is shipped in that module in share/www.scraper.wikipedia.iso3166.sqlite,
+This data displayed here is shipped in the above module in share/www.scraper.wikipedia.iso3166.sqlite,
 and installed in a shared directory when you install the module. See the FAQ, under 'Where is the database?'
 for details.
 </p>
@@ -41,6 +41,10 @@ comes from <a href="https://metacpan.org/release/Unicode-Normalize">Unicode::Nor
 
 <p>
 Usage of NFC() is discussed in the module's FAQ, under 'Why did you use Unicode::Normalize's NFC() for sorting?'.
+</p>
+
+<p>
+# is a sequential number. 'Db key' is the primary key in the <i>countries</i> table.
 </p>
 
 <h3 class="global_toc_text">Countries and Subcountries</h3>
