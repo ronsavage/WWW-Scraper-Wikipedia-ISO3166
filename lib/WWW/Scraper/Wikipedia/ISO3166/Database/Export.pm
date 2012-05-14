@@ -159,7 +159,7 @@ sub build_country_data
 			{td => $count++},
 			{td => $$countries{$id}{code2} },
 			{td => $$countries{$id}{code3} },
-			{td => $$countries{$id}{name}},
+			{td => $$countries{$id}{name} },
 			{td => $$countries{$id}{has_subcountries} },
 		];
 
