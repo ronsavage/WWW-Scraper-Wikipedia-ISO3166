@@ -4,6 +4,8 @@ use parent 'WWW::Scraper::Wikipedia::ISO3166::Database';
 use strict;
 use warnings;
 
+use File::Slurp; # For read_dir().
+
 use Hash::FieldHash ':all';
 
 use HTTP::Tiny;
@@ -12,6 +14,23 @@ fieldhash my %code2 => 'code2';
 fieldhash my %url   => 'url';
 
 our $VERSION = '1.00';
+
+# -----------------------------------------------
+
+sub find_downloads
+{
+	my($self) = @_;
+
+	my(@code);
+
+	for my $file (grep{/wiki/} read_dir('data') )
+	{
+		push @code, $1 if ($file =~ /ISO_3166-2\.([A-Z]{2,2})\.html/);
+	}
+
+	return [@code];
+
+} # End of find_downloads.
 
 # -----------------------------------------------
 
@@ -99,7 +118,7 @@ sub get_subcountry_pages
 
 	for my $id (keys %$countries)
 	{
-		if (! $downloaded{$$countries{$id}{code2}})
+		if (! $downloaded{$$countries{$id}{code2} })
 		{
 			$self -> code2($$countries{$id}{code2});
 			$self -> get_subcountry_page;
