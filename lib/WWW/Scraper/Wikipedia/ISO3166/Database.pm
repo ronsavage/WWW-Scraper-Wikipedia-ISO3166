@@ -78,7 +78,7 @@ sub get_subcountry_count
 sub _init
 {
 	my($self, $arg)    = @_;
-	$$arg{attributes}  ||= {AutoCommit => 1, RaiseError => 1, sqlite_unicode => 1};
+	$$arg{attributes}  ||= {AutoCommit => 1, RaiseError => 1, sqlite_unicode => 1}; # Caller can set.
 	$$arg{creator}     = '';
 	$$arg{dbh}         = '';
 	$$arg{dsn}         = '';

@@ -195,12 +195,6 @@ Available options (these are also methods):
 
 Specifies the code2 of the country whose subcountry page is to be downloaded.
 
-=item o verbose => $integer
-
-Print more or less information.
-
-Default: 0 (print nothing).
-
 =back
 
 =head1 Distributions
@@ -214,6 +208,8 @@ help on unpacking and installing.
 
 =head1 Methods
 
+This module is a sub-class of L<WWW::Scraper::Wikipedia::ISO3166::Database> and consequently inherits its methods.
+
 =head2 code2($code)
 
 Get or set the 2-letter country code of the country or subcountry being processed.
@@ -224,7 +220,7 @@ Also, I<code2> is an option to L</new()>.
 
 =head2 get_1_page($url, $data_file)
 
-Download $url and save it in $data_file. $data_file always takes the form 'data/*.html'.
+Download $url and save it in $data_file. $data_file normally takes the form 'data/*.html'.
 
 =head2 get_country_pages()
 
@@ -234,6 +230,8 @@ L<http://en.wikipedia.org/wiki/ISO_3166-1_alpha-3>.
 
 L<http://en.wikipedia.org/wiki/ISO_3166-2>.
 
+See L<WWW::Scraper::Wikipedia::ISO3166/Description>.
+
 =head2 get_subcountry_page()
 
 Download 1 subcountry page, e.g. http://en.wikipedia.org/wiki/ISO_3166:$code2.html.
@@ -241,19 +239,17 @@ Download 1 subcountry page, e.g. http://en.wikipedia.org/wiki/ISO_3166:$code2.ht
 Warning. The 2-letter code of the subcountry must be set with $self -> code2('XX') before calling this
 method.
 
+See L<WWW::Scraper::Wikipedia::ISO3166/Description>.
+
 =head2 get_subcountry_pages()
 
 Download all subcountry pages which have not been downloaded.
 
+See L<WWW::Scraper::Wikipedia::ISO3166/Description>.
+
 =head2 new()
 
 See L</Constructor and initialization>.
-
-=head2 verbose($integer)
-
-Get or set the verbosity level.
-
-Also, I<verbose> is an option to L</new()>.
 
 =head1 FAQ
 

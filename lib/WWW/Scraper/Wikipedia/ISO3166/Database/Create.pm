@@ -173,6 +173,8 @@ Available options: None.
 
 =head1 Methods
 
+This module is a sub-class of L<WWW::Scraper::Wikipedia::ISO3166::Database> and consequently inherits its methods.
+
 =head2 create_all_tables()
 
 Create the I<countries> and I<subcountries> tables.
