@@ -45,4 +45,4 @@ requires:
   warnings: 1.12
 resources:
   license: http://opensource.org/licenses/artistic-license.php
-version: 1.00
+version: 1.01
