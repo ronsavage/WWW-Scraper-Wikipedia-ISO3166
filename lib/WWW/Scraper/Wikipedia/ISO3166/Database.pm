@@ -23,7 +23,7 @@ fieldhash my %password    => 'password';
 fieldhash my %time_option => 'time_option';
 fieldhash my %username    => 'username';
 
-our $VERSION = '1.00';
+our $VERSION = '1.01';
 
 # -----------------------------------------------
 

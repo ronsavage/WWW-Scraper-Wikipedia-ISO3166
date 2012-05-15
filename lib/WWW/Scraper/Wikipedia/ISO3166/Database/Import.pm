@@ -16,7 +16,7 @@ use Unicode::CaseFold; # For fc().
 
 fieldhash my %code2 => 'code2';
 
-our $VERSION = '1.00';
+our $VERSION = '1.01';
 
 # ----------------------------------------------
 

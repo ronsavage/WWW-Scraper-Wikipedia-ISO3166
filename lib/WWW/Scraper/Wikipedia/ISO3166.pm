@@ -15,7 +15,7 @@ fieldhash my %share_dir    => 'share_dir';
 fieldhash my %sqlite_file  => 'sqlite_file';
 fieldhash my %verbose      => 'verbose';
 
-our $VERSION = '1.00';
+our $VERSION = '1.01';
 
 # -----------------------------------------------
 
@@ -496,6 +496,14 @@ database tables. After installation, the database is elsewhere, and read-only, s
 writing to that copy anyway.
 
 At run-time, L<File::ShareDir> is used to find the installed version of *.sqlite.
+
+=head1 Wikipedia's Terms of Use
+
+See L<http://wikimediafoundation.org/wiki/Terms_of_use>.
+
+Also, since I'm distributing copies of Wikipedia-sourced material, reformatted but not changed by editing,
+I hereby give notice that their material is released under CC-BY-SA.
+See L<http://creativecommons.org/licenses/by-sa/3.0/> for that licence.
 
 =head1 References
 
