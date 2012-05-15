@@ -26,7 +26,6 @@ requires:
   DBI: 1.620
   DBIx::Admin::CreateTable: 2.07
   Encode: 2.44
-  File::Copy: 2.21
   File::ShareDir: 1.03
   File::Slurp: 9999.19
   File::Spec: 3.33
@@ -35,7 +34,6 @@ requires:
   HTTP::Tiny: 0.018
   Hash::FieldHash: 0.12
   List::AllUtils: 0.03
-  Path::Class: 0.24
   Pod::Usage: 1.51
   Text::Xslate: 1.5008
   Unicode::CaseFold: 0.02
