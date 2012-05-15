@@ -81,7 +81,7 @@ sub _init
 	$$arg{attributes}  ||= {AutoCommit => 1, RaiseError => 1, sqlite_unicode => 1};
 	$$arg{creator}     = '';
 	$$arg{dbh}         = '';
-	$$arg{dsn}         = 'dbi:SQLite:dbname=countries.sqlite';
+	$$arg{dsn}         = '';
 	$$arg{engine}      = '';
 	$$arg{password}    = '';
 	$$arg{time_option} = '';
@@ -192,12 +192,16 @@ WWW::Scraper::Wikipedia::ISO3166::Database - The interface to www.scraper.wikipe
 
 =head1 Synopsis
 
-See L<WWW::Scraper::Wikipedia::ISO3166/Synopsis>.
+See L<WWW::Scraper::Wikipedia::ISO3166/Synopsis> for a long synopsis.
 
 =head1 Description
 
 Documents the methods end-users need to access the SQLite database,
 I<www.scraper.wikipedia.iso3166.sqlite>, which ships with this distro.
+
+See L<WWW::Scraper::Wikipedia::ISO3166/Description> for a long description.
+
+See scripts/export.as.csv.pl, scripts/export.as.html.pl and scripts/report.statistics.pl.
 
 =head1 Distributions
 
@@ -234,6 +238,8 @@ Default: {AutoCommit => 1, RaiseError => 1, sqlite_unicode => 1}
 
 =head1 Methods
 
+This module is a sub-class of L<WWW::Scraper::Wikipedia::ISO3166> and consequently inherits its methods.
+
 =head2 attributes($hashref)
 
 Get or set the hashref of attributes passes to L<DBI>'s I<connect()> method.
@@ -247,7 +253,7 @@ data/*$code2.html.
 
 =head2 get_country_count()
 
-Return the result of this SQL: 'select count(*) from countries'.
+Returns the result of: 'select count(*) from countries'.
 
 =head2 get_statistics()
 
@@ -264,7 +270,7 @@ Called by L</report_statistics()>.
 
 =head2 get_subcountry_count()
 
-Return the result of this SQL: 'select count(*) from subcountries'.
+Returns the result of: 'select count(*) from subcountries'.
 
 =head2 new()
 
@@ -288,7 +294,7 @@ This is discussed further in L<WWW::Scraper::Wikipedia::ISO3166/Methods which re
 
 =head2 report_statistics()
 
-Logs various database statistics at the info level.
+Logs various database statistics at the I<info> level.
 
 Calls L</get_statistics()>.
 

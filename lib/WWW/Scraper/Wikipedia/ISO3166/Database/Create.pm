@@ -175,19 +175,19 @@ Available options: None.
 
 =head2 create_all_tables()
 
-Create the countries and subcountries tables.
+Create the I<countries> and I<subcountries> tables.
 
 =head2 create_countries_table()
 
-Create the countries table.
+Create the I<countries> table.
 
 =head2 create_subcountries_table()
 
-Create the subcountries table.
+Create the I<subcountries> table.
 
 =head2 drop_all_tables()
 
-Drop the countries and subcountries tables.
+Drop the I<countries> and I<subcountries> tables.
 
 =head2 drop_table($table_name)
 
@@ -201,7 +201,7 @@ See L</Constructor and initialization>.
 
 For $table_name, if the result of the create or drop is an error, die with $message.
 
-If there was no error, log a create/drop message at level debug.
+If there was no error, log a create/drop message at level I<debug>.
 
 =head1 FAQ
 
