@@ -3,11 +3,11 @@ abstract: 'Gently scrape Wikipedia for ISO3166-2 data'
 author:
   - 'C<WWW::Scraper::Wikipedia::ISO3166> was written by Ron Savage I<<ron@savage.net.au>> in 2012.'
 build_requires:
-  ExtUtils::MakeMaker: 6.36
+  ExtUtils::MakeMaker: 6.59
   Test::More: 0.98
   Test::Pod: 1.45
 configure_requires:
-  ExtUtils::MakeMaker: 6.36
+  ExtUtils::MakeMaker: 6.59
 dynamic_config: 0
 generated_by: 'Module::Install version 1.06, CPAN::Meta::Converter version 2.120630'
 license: artistic
@@ -40,6 +40,7 @@ requires:
   Unicode::Normalize: 1.14
   open: 1.08
   parent: 0.225
+  perl: 5.008
   strict: 1.04
   warnings: 1.12
 resources:

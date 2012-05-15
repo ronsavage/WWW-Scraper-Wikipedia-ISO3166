@@ -23,14 +23,14 @@
    "prereqs" : {
       "build" : {
          "requires" : {
-            "ExtUtils::MakeMaker" : "6.36",
+            "ExtUtils::MakeMaker" : "6.59",
             "Test::More" : "0.98",
             "Test::Pod" : "1.45"
          }
       },
       "configure" : {
          "requires" : {
-            "ExtUtils::MakeMaker" : "6.36"
+            "ExtUtils::MakeMaker" : "6.59"
          }
       },
       "runtime" : {
@@ -54,6 +54,7 @@
             "Unicode::Normalize" : "1.14",
             "open" : "1.08",
             "parent" : "0.225",
+            "perl" : "5.008",
             "strict" : "1.04",
             "warnings" : "1.12"
          }
