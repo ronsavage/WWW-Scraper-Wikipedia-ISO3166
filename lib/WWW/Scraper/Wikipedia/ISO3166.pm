@@ -84,21 +84,9 @@ WWW::Scraper::Wikipedia::ISO3166 - Gently scrape Wikipedia for ISO3166-2 data
 
 =head1 Synopsis
 
-=head2 Scripts which output to a file
+Wikipedia I<has been scraped>. You do not need to run the scripts which download pages from there.
 
-	shell>perl scripts/export.as.csv.pl -c countries.csv -s subcountries.csv
-	shell>perl scripts/export.as.html.pl -w iso.3166-2.html
-
-On-line: L<http://savage.net.au/Perl-modules/html/WWW/Scraper/Wikipedia/iso.3166-2.html>.
-
-	shell>perl scripts/report.statistics.pl
-	...
-
-	Output statistics:
-	countries_in_db => 249.
-	has_subcounties => 199.
-	subcountries_in_db => 4593.
-	subcountry_files_downloaded => 249.
+Just use the SQLite database shipped with this module, as discussed next.
 
 =head2 Methods which return hashrefs
 
@@ -146,6 +134,25 @@ See L</What is the database schema?> for details.
 
 L<See 'Taichung' etc in Taiwan for example|http://en.wikipedia.org/wiki/ISO_3166-2:TW>.
 
+=head2 Scripts which output to a file
+
+All scripts respond to the -h option.
+
+Some examples:
+
+	shell>perl scripts/export.as.csv.pl -c countries.csv -s subcountries.csv
+	shell>perl scripts/export.as.html.pl -w iso.3166-2.html
+
+This file is on-line at: L<http://savage.net.au/Perl-modules/html/WWW/Scraper/Wikipedia/iso.3166-2.html>.
+
+	shell>perl scripts/report.statistics.pl
+
+	Output statistics:
+	countries_in_db => 249.
+	has_subcounties => 199.
+	subcountries_in_db => 4593.
+	subcountry_files_downloaded => 249.
+
 =head1 Description
 
 C<WWW::Scraper::Wikipedia::ISO3166> is a pure Perl module.
@@ -157,7 +164,7 @@ The pages have already been downloaded, so that phase only needs to be run when 
 
 Likewise, the data has been imported.
 
-This means you would normally use the database in read-only mode.
+This means you would normally only ever use the database in read-only mode.
 
 Its components are:
 
@@ -181,7 +188,7 @@ Output: data/en.wikipedia.org.wiki.ISO_3166-2.html.
 
 Imports country data into an SQLite database.
 
-input: data/en.wikipedia.org.wiki.ISO_3166-2.html.
+inputs: data/en.wikipedia.org.wiki.ISO_3166-2.html, data/en.wikipedia.org.wiki.ISO_3166-2.3.html.
 
 Output: share/www.scraper.wikipedia.iso3166.sqlite.
 
@@ -236,11 +243,11 @@ This method takes a hash of options.
 
 Call C<new()> as C<< new(option_1 => value_1, option_2 => value_2, ...) >>.
 
-Available options:
+Available options (these are also methods):
 
 =over 4
 
-=item o config_file => $string
+=item o config_file => $file_name
 
 The name of the file containing config info, such as I<css_url> and I<template_path>.
 These are used by L<WWW::Scraper::Wikipedia::ISO3166::Database::Export/as_html()>.
@@ -249,13 +256,19 @@ The code prefixes this name with the directory returned by L<File::ShareDir/dist
 
 Default: .htwww.scraper.wikipedia.iso3166.conf.
 
-=item o sqlite_file => $string
+=item o sqlite_file => $file_name
 
 The name of the SQLite database of country and subcountry data.
 
 The code prefixes this name with the directory returned by L<File::ShareDir/dist_dir()>.
 
 Default: www.scraper.wikipedia.iso3166.sqlite.
+
+=item o verbose => $integer
+
+Print more or less information.
+
+Default: 0 (print nothing).
 
 =back
 
@@ -287,6 +300,14 @@ help on unpacking and installing.
 
 =head1 Methods
 
+=head2 config_file($file_name)
+
+Get or set the name of the config file.
+
+The code prefixes this name with the directory returned by L<File::ShareDir/dist_dir()>.
+
+Also, I<config_file> is an option to L</new()>.
+
 =head2 log($level => $s)
 
 Print $s at log level $level, if ($self -> verbose);
@@ -296,6 +317,20 @@ Since $self -> verbose defaults to 0, nothing is printed by default.
 =head2 new()
 
 See L</Constructor and initialization>.
+
+=head2 sqlite_file($file_name)
+
+Get or set the name of the database file.
+
+The code prefixes this name with the directory returned by L<File::ShareDir/dist_dir()>.
+
+Also, I<sqlite_file> is an option to L</new()>.
+
+=head2 verbose($integer)
+
+Get or set the verbosity level.
+
+Also, I<verbose> is an option to L</new()>.
 
 =head1 FAQ
 
@@ -308,7 +343,7 @@ Then we'd have:
 	Long Name:  Bolivia, Plurinational State of
 	Short Name: Bolivia
 
-This modules uses the value directly from Wikipedia, which is what I have called 'Long Name', for
+This distro uses the value directly from Wikipedia, which is what I have called 'Long Name', for
 all country and subcountry names.
 
 =head2 Where is the database?
@@ -383,8 +418,6 @@ scripts/export.as.csv.pl uses: use open ':utf8';
 
 Is that not working?
 
-For me, subcountries in, e.g. Chad (TD) and Ethiopia (ET), do not all display correctly. I have no fix for this.
-
 =item o DBD::SQLite
 
 Did you set the sqlite_unicode attribute? Use something like:
@@ -409,8 +442,6 @@ this distro contains this line:
 
 Is that not working?
 
-For me, subcountries in, e.g. Chad (TD) and Ethiopia (ET), do not all display correctly. I have no fix for this.
-
 =item o Locale
 
 Here's my setup:
@@ -434,19 +465,12 @@ Here's my setup:
 
 =item o OS
 
-Unicode is a moving target. Perhaps your OS's installed version of unicode needs updating.
+Unicode is a moving target. Perhaps your OS's installed version of unicode fies needs updating.
 
 =item o SQLite
 
 Both Oracle and SQLite.org ship a program called sqlite3. They are not compatible.
 Which one are you using? I use the one from the SQLite.org.
-
-What is displayed on the screen by sqlite3 is not the same as displayed in Chrome (my browser of choice)
-using the HTML file output by scripts/export.as.html.pl. This is unfortunate, but as yet I have no solution
-for you.
-
-Also, what sqlite3 displays on the screen does not match what data/countries.csv and data/subcountries.csv
-look like in an editor.
 
 AFAICT, sqlite3 does not have command line options, or options while running, to set unicode or pragmas.
 
@@ -467,8 +491,8 @@ See also L<http://www.unicode.org/faq/normalization.html>.
 =head2 What is $ENV{AUTHOR_TESTING} used for?
 
 When this env var is 1, scripts output to share/*.sqlite within the distro's dir. That's how I populate the
-database tables. After installation, the database is read-only, so you don't want the scripts writing to that copy
-anyway.
+database tables. After installation, the database is elsewhere, and read-only, so you don't want the scripts
+writing to that copy anyway.
 
 At run-time, L<File::ShareDir> is used to find the installed version of *.sqlite.
 

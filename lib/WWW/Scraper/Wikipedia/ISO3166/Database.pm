@@ -230,12 +230,6 @@ This is the hashref of attributes passed to L<DBI>'s I<connect()> method.
 
 Default: {AutoCommit => 1, RaiseError => 1, sqlite_unicode => 1}
 
-=item o verbose => $integer
-
-Print more or less information.
-
-Default: 0 (print nothing).
-
 =back
 
 =head1 Methods
