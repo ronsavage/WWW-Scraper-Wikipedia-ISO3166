@@ -88,6 +88,9 @@ WWW::Scraper::Wikipedia::ISO3166 - Gently scrape Wikipedia for ISO3166-2 data
 
 	shell>perl scripts/export.as.csv.pl -c countries.csv -s subcountries.csv
 	shell>perl scripts/export.as.html.pl -w iso.3166-2.html
+
+On-line: L<http://savage.net.au/Perl-modules/html/WWW/Scraper/Wikipedia/iso.3166-2.html>.
+
 	shell>perl scripts/report.statistics.pl
 	...
 
@@ -463,33 +466,45 @@ See also L<http://www.unicode.org/faq/normalization.html>.
 
 =head2 What is $ENV{AUTHOR_TESTING} used for?
 
-When this env var is 1, scripts output to share/*.sqlite within the distro dir. That's how I populate the
-database tables. After installation, the database is read-only, so the scripts don't write to that copy.
+When this env var is 1, scripts output to share/*.sqlite within the distro's dir. That's how I populate the
+database tables. After installation, the database is read-only, so you don't want the scripts writing to that copy
+anyway.
+
+At run-time, L<File::ShareDir> is used to find the installed version of *.sqlite.
 
 =head1 References
 
 In no particular order:
 
-1: L<http://www.statoids.com/>.
+1: L<http://en.wikipedia.org/wiki/ISO_3166-2>.
 
-2: L<http://unicode.org/Public/cldr/latest/core.zip>.
+2: L<http://en.wikipedia.org/wiki/ISO_3166-1_alpha-3>.
 
-3: For Debian etc users: /usr/share/xml/iso-codes/iso_3166_2.xml, as installed from the iso-codes package, with:
+3: L<http://savage.net.au/Perl-modules/html/WWW/Scraper/Wikipedia/iso.3166-2.html>.
+
+4: L<http://www.statoids.com/>.
+
+5: L<http://unicode.org/Public/cldr/latest/core.zip>.
+
+This is complex set of XML files concerning currency, postal, etc, formats and other details for various countries
+and/or languages.
+
+6: For Debian etc users: /usr/share/xml/iso-codes/iso_3166_2.xml, as installed from the iso-codes package, with:
 
 	sudo apt-get install iso-codes
 
-4: L<http://geonames.org>.
+7: L<http://geonames.org>.
 
-5: L<http://www.geonames.de/index.html>.
+8: L<http://www.geonames.de/index.html>.
 
-6: L<http://www.perl.com/pub/2012/04>.
+9: L<http://www.perl.com/pub/2012/04>.
 
-Check the Monthly Archives at Perl.com, starting in April 2012, for a series of articles by
+Check the Monthly Archives at Perl.com, starting in April 2012, for a series of Unicode-specific articles by
 Tom Christiansen.
 
-7: L<http://www.unicode.org/reports/tr15/>.
+10: L<http://www.unicode.org/reports/tr15/>.
 
-8: L<http://www.unicode.org/faq/normalization.html>.
+11: L<http://www.unicode.org/faq/normalization.html>.
 
 =head1 Support
 

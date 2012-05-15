@@ -17,6 +17,11 @@ for details.
 </p>
 
 <p>
+The database structure is documented in the FAQ under 'What is the database schema?'
+This includes a discussion of countries not having a Code3 (3-letter country code).
+</p>
+
+<p>
 The Wikipedia sources for this are:
 
 <ul>
@@ -35,16 +40,13 @@ The Å of Åland should have a ring on top of it, just as this line and Wikipedia 
 </p>
 
 <p>
-Wikipedia sorts countries by their $code2, whereas I have chosen to sort by NFC($name), where the NFC() method
+Wikipedia sorts countries by their Code2, whereas I have chosen to sort by NFC($name), where the NFC() method
 comes from <a href="https://metacpan.org/release/Unicode-Normalize">Unicode::Normalize</a>.
-</p>
-
-<p>
 Usage of NFC() is discussed in the module's FAQ, under 'Why did you use Unicode::Normalize's NFC() for sorting?'.
 </p>
 
 <p>
-# is a sequential number. 'Db key' is the primary key in the <i>countries</i> table.
+Lastly: # is just a sequential number, while 'Db key' is the primary key in the <i>countries</i> table.
 </p>
 
 <h3 class="global_toc_text">Countries and Subcountries</h3>
