@@ -259,6 +259,8 @@ The output of these scripts is shipped as:
 
 =item o data/iso.3166-2.html
 
+This file is on-line at: L<http://savage.net.au/Perl-modules/html/WWW/Scraper/Wikipedia/ISO3166/iso.3166-2.html>.
+
 =item o data/subcountries.csv
 
 =back
@@ -314,6 +316,8 @@ Default: 'iso.3166-2.html'.
 
 =head1 Methods
 
+This module is a sub-class of L<WWW::Scraper::Wikipedia::ISO3166::Database> and consequently inherits its methods.
+
 =head2 as_csv()
 
 Export the SQLite database to 2 CSV files.
@@ -321,6 +325,10 @@ Export the SQLite database to 2 CSV files.
 =head2 as_html()
 
 Export the SQLite database to 1 HTML file.
+
+=head2 build_country_data()
+
+Builds part of a HTML table, and returns an arrayref of arrayrefs of hashrefs suitable for L<Text::Xslate>.
 
 =head2 country_file($file_name)
 

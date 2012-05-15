@@ -755,7 +755,9 @@ sub parse_subcountry_page
 		},
 		LB =>
 		{
-			column_type  => [qw/tt - -/],
+			column_type  => [qwThis module is a sub-class of L<WWW::Scraper::Wikipedia::ISO3166::Database> and consequently inherits its methods.
+
+/tt - -/],
 			table_number => 2,
 		},
 		LC =>
@@ -1610,6 +1612,8 @@ See L<WWW::Scraper::Wikipedia::ISO3166/Synopsis>.
 Documents the methods used to populate the SQLite database,
 I<www.scraper.wikipedia.iso3166.sqlite>, which ships with this distro.
 
+See L<WWW::Scraper::Wikipedia::ISO3166/Description> for a long description.
+
 =head1 Distributions
 
 This module is available as a Unix-style distro (*.tgz).
@@ -1621,11 +1625,11 @@ help on unpacking and installing.
 
 =head1 Constructor and initialization
 
-new(...) returns an object of type C<WWW::Scraper::Wikipedia::ISO3166::Database>.
+new(...) returns an object of type C<WWW::Scraper::Wikipedia::ISO3166::Database::Import>.
 
 This is the class's contructor.
 
-Usage: C<< WWW::Scraper::Wikipedia::ISO3166::Database -> new() >>.
+Usage: C<< WWW::Scraper::Wikipedia::ISO3166::Database::Import -> new() >>.
 
 This method takes a hash of options.
 
@@ -1639,15 +1643,11 @@ Available options (these are also methods):
 
 Specifies the code2 of the country whose subcountry page is to be downloaded.
 
-=item o verbose => $integer
-
-Print more or less information.
-
-Default: 0 (print nothing).
-
 =back
 
 =head1 Methods
+
+This module is a sub-class of L<WWW::Scraper::Wikipedia::ISO3166::Database> and consequently inherits its methods.
 
 =head2 code2($code)
 
@@ -1764,12 +1764,6 @@ $count is just used in the log for progress messages.
 =head2 trim($s)
 
 Remove leading and trailing spaces from $s, and return it.
-
-=head2 verbose($integer)
-
-Get or set the verbosity level.
-
-Also, I<verbose> is an option to L</new()>.
 
 =head1 FAQ
 

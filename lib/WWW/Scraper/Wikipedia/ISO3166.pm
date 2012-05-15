@@ -143,7 +143,7 @@ Some examples:
 	shell>perl scripts/export.as.csv.pl -c countries.csv -s subcountries.csv
 	shell>perl scripts/export.as.html.pl -w iso.3166-2.html
 
-This file is on-line at: L<http://savage.net.au/Perl-modules/html/WWW/Scraper/Wikipedia/iso.3166-2.html>.
+This file is on-line at: L<http://savage.net.au/Perl-modules/html/WWW/Scraper/Wikipedia/ISO3166/iso.3166-2.html>.
 
 	shell>perl scripts/report.statistics.pl
 
@@ -227,7 +227,7 @@ Input: share/www.scraper.wikipedia.iso3166.sqlite.
 
 Output: data/iso.3166-2.html.
 
-On-line: L<http://savage.net.au/Perl-modules/html/WWW/Scraper/Wikipedia/iso.3166-2.html>.
+On-line: L<http://savage.net.au/Perl-modules/html/WWW/Scraper/Wikipedia/ISO3166/iso.3166-2.html>.
 
 =back
 
@@ -504,7 +504,7 @@ In no particular order:
 
 2: L<http://en.wikipedia.org/wiki/ISO_3166-1_alpha-3>.
 
-3: L<http://savage.net.au/Perl-modules/html/WWW/Scraper/Wikipedia/iso.3166-2.html>.
+3: L<http://savage.net.au/Perl-modules/html/WWW/Scraper/Wikipedia/ISO3166/iso.3166-2.html>.
 
 4: L<http://www.statoids.com/>.
 
