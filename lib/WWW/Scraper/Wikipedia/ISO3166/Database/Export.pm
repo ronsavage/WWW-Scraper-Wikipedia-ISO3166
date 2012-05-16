@@ -113,11 +113,12 @@ sub as_html
 
 	print OUT $self -> templater -> render
 		(
-		 'iso3166.report.tx',
-		 {
-			 country_data => $self -> build_country_data,
-			 default_css  => "$$config{_}{css_url}/default.css",
-		 }
+			'iso3166.report.tx',
+			{
+				country_data => $self -> build_country_data,
+				default_css  => "$$config{_}{css_url}/default.css",
+				version      => $VERSION,
+			}
 		);
 
 	close OUT;

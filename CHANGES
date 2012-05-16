@@ -1,7 +1,9 @@
 Revision history for Perl extension WWW::Scraper::Wikipedia::ISO3166.
 
 1.01  Wed May 16  9:50:00 2012
-	- No code and no data changes.
+	- Neither code nor data changes made.
+	- Update the web page template to include the version #, and links to MetaCPAN.
+		This affects data/iso.3166-2.html.
 	- Add a new section to the docs: Wikipedia's Terms of Use.
 
 1.00  Tue May 15 15:37:00 2012

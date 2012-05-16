@@ -6,18 +6,20 @@
 </head>
 <body>
 
-<h3 class="global_toc_text"><a href="https://metacpan.org/module/WWW::Scraper::Wikipedia::ISO3166">WWW::Scraper::Wikipedia::ISO3166</a></h3>
+<h3 class="global_toc_text"><a href="https://metacpan.org/module/WWW::Scraper::Wikipedia::ISO3166">WWW::Scraper::Wikipedia::ISO3166 V <: $version :></a></h3>
 
 <h3 class="global_toc_text">ISO3166 Countries and Subcountries from Wikipedia</h3>
 
 <p>
 This data displayed here is shipped in the above module in share/www.scraper.wikipedia.iso3166.sqlite,
-and installed in a shared directory when you install the module. See the FAQ, under 'Where is the database?'
+and installed in a shared directory when you install the module. See the FAQ entry
+<a href="https://metacpan.org/module/WWW::Scraper::Wikipedia::ISO3166#Where-is-the-database-">Where is the database?</a>
 for details.
 </p>
 
 <p>
-The database structure is documented in the FAQ under 'What is the database schema?'
+The database structure is documented in the FAQ entry
+<a href="https://metacpan.org/module/WWW::Scraper::Wikipedia::ISO3166#What-is-the-database-schema-">What is the database schema?</a>.
 This includes a discussion of countries not having a Code3 (3-letter country code).
 </p>
 
@@ -42,7 +44,8 @@ The Å of Åland should have a ring on top of it, just as this line and Wikipedia 
 <p>
 Wikipedia sorts countries by their Code2, whereas I have chosen to sort by NFC($name), where the NFC() method
 comes from <a href="https://metacpan.org/release/Unicode-Normalize">Unicode::Normalize</a>.
-Usage of NFC() is discussed in the module's FAQ, under 'Why did you use Unicode::Normalize's NFC() for sorting?'.
+Usage of NFC() is discussed in the module's FAQ entry
+<a href="https://metacpan.org/module/WWW::Scraper::Wikipedia::ISO3166#Why-did-you-use-Unicode::Normalizes-NFC-for-sorting-">Why did you use Unicode::Normalize's NFC() for sorting?</a>.
 </p>
 
 <p>
