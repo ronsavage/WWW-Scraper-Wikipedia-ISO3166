@@ -384,7 +384,7 @@ For fc(), see L<Unicode::CaseFold/fc($str)>.
 
 $name is from a Wikipedia page.
 
-I<has_subcountries> is 'Yes' or 'No.
+I<has_subcountries> is 'Yes' or 'No'.
 
 I<name> is output from calling decode('utf8', $name).
 
