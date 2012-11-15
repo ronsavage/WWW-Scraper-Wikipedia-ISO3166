@@ -83,6 +83,8 @@ sub run
 
 WWW::Scraper::Wikipedia::ISO3166 - Gently scrape Wikipedia for ISO3166-2 data
 
+=encoding utf-8
+
 =head1 Synopsis
 
 Wikipedia I<has been scraped>. You do not need to run the scripts which download pages from there.
