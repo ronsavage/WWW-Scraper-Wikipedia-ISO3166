@@ -2,7 +2,7 @@ use inc::Module::Install;
 
 name 'WWW-Scraper-Wikipedia-ISO3166';
 
-license 'perl_5';
+license 'artistic_2';
 
 all_from 'lib/WWW/Scraper/Wikipedia/ISO3166.pm';
 
