@@ -1,4 +1,5 @@
 use inc::Module::Install;
+	LICENSE   => 'perl_5',
 
 name 'WWW-Scraper-Wikipedia-ISO3166';
 
