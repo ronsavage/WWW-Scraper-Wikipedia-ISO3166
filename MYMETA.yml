@@ -10,7 +10,7 @@ configure_requires:
   ExtUtils::MakeMaker: 6.59
 dynamic_config: 0
 generated_by: 'Module::Install version 1.06, CPAN::Meta::Converter version 2.120921'
-license: artistic
+license: artistic_2
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
@@ -44,5 +44,5 @@ requires:
   strict: 1.04
   warnings: 1.12
 resources:
-  license: http://opensource.org/licenses/artistic-license.php
+  license: http://opensource.org/licenses/artistic-license-2.0.php
 version: 1.01
