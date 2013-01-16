@@ -4,7 +4,7 @@
       "C<WWW::Scraper::Wikipedia::ISO3166> was written by Ron Savage I<<ron@savage.net.au>> in 2012."
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Module::Install version 1.06, CPAN::Meta::Converter version 2.120630",
+   "generated_by" : "Module::Install version 1.06, CPAN::Meta::Converter version 2.120921",
    "license" : [
       "artistic_1"
    ],

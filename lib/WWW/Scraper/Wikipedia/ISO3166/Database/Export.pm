@@ -7,8 +7,6 @@ use warnings;
 
 use Config::Tiny;
 
-use Encode; # For encode().
-
 use Hash::FieldHash ':all';
 
 use Text::Xslate 'mark_raw';
