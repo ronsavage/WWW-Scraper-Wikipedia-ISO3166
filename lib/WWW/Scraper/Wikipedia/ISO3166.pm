@@ -485,7 +485,7 @@ See section 1.2 Normalization Forms in L<http://www.unicode.org/reports/tr15/>.
 
 If you dump data, e.g. country name where code2 = 'AX', using both NFC() and NFD(), you get (respectively):
 
-Åland Islands and Ãland Islands
+Aland Islands and Ã…land Islands
 
 I assume the first one is correct, because that's what Wikipedia displays. So, NFC() it is.
 
