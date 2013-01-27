@@ -232,6 +232,10 @@ Output: data/iso.3166-2.html.
 
 On-line: L<http://savage.net.au/Perl-modules/html/WWW/Scraper/Wikipedia/ISO3166/iso.3166-2.html>.
 
+=item o scripts/test.nfc.pl
+
+See L</Why did you use L<Unicode::Normalize>'s NFC() for sorting?> for a discussion of this script.
+
 =back
 
 =head1 Constructor and initialization
@@ -481,13 +485,23 @@ AFAICT, sqlite3 does not have command line options, or options while running, to
 
 =head2 Why did you use L<Unicode::Normalize>'s NFC() for sorting?
 
-See section 1.2 Normalization Forms in L<http://www.unicode.org/reports/tr15/>.
+This question implies why not use NFD() instead.
 
-If you dump data, e.g. country name where code2 = 'AX', using both NFC() and NFD(), you get (respectively):
+Run scripts/test.nfc.pl, and the output is:
 
-Aland Islands and Åland Islands
+	code2 => AX
+	code3 => ALA
+	fc_name => åland islands
+	has_subcountries => No
+	id => 15
+	name => Åland Islands
+	timestamp => 2012-05-13 23:37:20
 
-I assume the first one is correct, because that's what Wikipedia displays. So, NFC() it is.
+And this (Åland Islands) is what Wikipedia displays. So, NFC() it is.
+
+See L<http://www.perl.com/pub/2012/04>, and specifically prescription # 1.
+
+See also section 1.2 Normalization Forms in L<http://www.unicode.org/reports/tr15/>.
 
 See also L<http://www.unicode.org/faq/normalization.html>.
 
