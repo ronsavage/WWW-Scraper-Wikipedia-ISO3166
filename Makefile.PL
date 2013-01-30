@@ -30,7 +30,7 @@ requires 'Unicode::CaseFold'        => '0.02';
 requires 'Unicode::Normalize'       => '1.14';
 requires 'warnings'                 => '1.12';
 
-test_requires 'Test::Simple'	=> '0.98';
+test_requires 'Test::More'	=> '0.98';
 test_requires 'Test::Pod'	=> '1.45';
 
 WriteAll;
