@@ -31,6 +31,6 @@ requires 'Unicode::Normalize'       => '1.14';
 requires 'warnings'                 => '1.12';
 
 test_requires 'Test::More'	=> '0.98';
-test_requires 'Test::Pod'	=> '1.45';
+#test_requires 'Test::Pod'	=> '1.45'; # Make it optional. See t/pod.t
 
 WriteAll;
