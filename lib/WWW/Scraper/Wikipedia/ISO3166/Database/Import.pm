@@ -16,6 +16,7 @@ use Hash::FieldHash ':all';
 use HTML::TreeBuilder;
 
 use List::AllUtils 'first';
+use List::Compare;
 
 use Unicode::CaseFold; # For fc().
 
@@ -260,7 +261,7 @@ sub parse_fips_page
 			$text = $li -> as_text;
 			$text =~ s/(.+),\s+$country/$1/;
 
-			push @name, $text;
+			push @name, decode('utf8', $text);
 		}
 
 		# Ignore remaining uls.
@@ -1392,10 +1393,42 @@ sub populate_countries
 
 sub populate_fips_codes
 {
-	my($self) = @_;
-	my($name) = $self -> process_fips_codes;
+	my($self)   = @_;
+	my($record) = $self -> process_fips_codes;
+	my($count)  = 0;
 
-	say $_ for @$name;
+	my(@fips_name);
+
+	open(OUT, '>', 'data/wikipedia.fips.codes.txt');
+	binmode OUT;
+
+	for my $name (@$record)
+	{
+		if ($name !~ /^[A-Z]{2,2}/)
+		{
+			$count++;
+
+			push @fips_name, $name;
+		}
+
+		say OUT $_ for $name;
+	}
+
+	close OUT;
+
+	my($db_name) = $self -> read_countries_table;
+	my(@db_name) = map{$$db_name{$_}{name} } keys %$db_name;
+
+	my($compare) = List::Compare -> new(\@db_name, \@fips_name);
+
+	open(OUT, '>:utf8', 'data/wikipedia.fips.mismatch.log');
+#	binmode OUT;
+	say OUT 'Countries in the db but not in the fips list:';
+	say OUT $_ for $compare -> get_unique;
+	say OUT '-' x 50;
+	say OUT 'Countries in the fips list but not in the db:';
+	say OUT decode('utf8', $_) for $compare -> get_complement;
+	close OUT;
 
 } # End of populate_fips_codes.
 

@@ -1,0 +1,4135 @@
+Antigua and Barbuda
+AC01: Barbuda Dependency
+AC03: Saint George Parish
+AC04: Saint John Parish
+AC05: Saint Mary Parish
+AC06: Saint Paul Parish
+AC07: Saint Peter Parish
+AC08: Saint Philip Parish
+AC09: Redonda Dependency
+United Arab Emirates
+AE01: Abū Z̧aby Emirate
+AE02: `Ajmān Emirate
+AE03: Dubayy Emirate
+AE04: Al Fujayrah Emirate
+AE05: Ra's al Khaymah Emirate
+AE06: Ash Shāriqah Emirate
+AE07: Umm al Qaywayn Emirate
+Afghanistan
+AF01: Badakhshan Province
+AF02: Badghis Province
+AF03: Baghlan Province
+AF05: Bamyan Province
+AF06: Farah Province
+AF07: Faryab Province
+AF08: Ghazni Province
+AF09: Ghor Province
+AF10: Helmand Province
+AF11: Herat Province
+AF13: Kabul Province
+AF14: Kapisa Province
+AF17: Lowgar Province
+AF18: Nangarhar Province
+AF19: Nimruz Province
+AF23: Kandahar Province
+AF24: Kondoz Province
+AF26: Takhar Province
+AF27: Vardak Province
+AF28: Zabol Province
+AF29: Paktika Province
+AF30: Balkh Province
+AF31: Jowzjan Province
+AF32: Samangan Province
+AF33: Sar-e Pol Province
+AF34: Konar Province
+AF35: Laghman Province
+AF36: Paktia Province
+AF37: Khost Province
+AF38: Nurestan Province
+AF39: Orūzgān Province
+AF40: Parvān Province
+AF41: Daykundi Province
+AF42: Panjshīr Province
+Algeria
+AG01: Alger Province
+AG03: Batna Province
+AG04: Constantine Province
+AG06: Médéa Province
+AG07: Mostaganem Province
+AG09: Oran Province
+AG10: Saïda Province
+AG12: Sétif Province
+AG13: Tiaret Province
+AG14: Tizi Ouzou Province
+AG15: Tlemcen Province
+AG18: Bejaïa Province
+AG19: Biskra Province
+AG20: Blida Province
+AG21: Bouira Province
+AG22: Djelfa Province
+AG23: Guelma Province
+AG24: Jijel Province
+AG25: Laghouat Province
+AG26: Muaskar Province
+AG27: M'Sila Province
+AG29: Oum el Bouaghi Province
+AG30: Sidi Bel Abbès Province
+AG31: Skikda Province
+AG33: Tébessa Province
+AG34: Adrar Province
+AG35: Aïn Defla Province
+AG36: Aïn Temouchent Province
+AG37: Annaba Province
+AG38: Béchar Province
+AG39: Bordj Bou Arréridj Province
+AG40: Boumerdes Province
+AG41: Chlef Province
+AG42: El Bayadh Province
+AG43: El Oued Province
+AG44: El Tarf Province
+AG45: Ghardaïa Province
+AG46: Illizi Province
+AG47: Khenchela Province
+AG48: Mila Province
+AG49: Naama Province
+AG50: Ouargla Province
+AG51: Relizane Province
+AG52: Souk Ahras Province
+AG53: Tamanghasset Province
+AG54: Tindouf Province
+AG55: Tipaza Province
+AG56: Tissemsilt Province
+Azerbaijan
+AJ01: Abşeron Rayon
+AJ02: Ağcabǝdi Rayon
+AJ03: Ağdam Rayon
+AJ04: Ağdaş Rayon
+AJ05: Ağstafa Rayon
+AJ06: Ağsu Rayon
+AJ07: Əli Bayramlı City
+AJ08: Astara Rayon
+AJ09: Bakı City
+AJ10: Balakǝn Rayon
+AJ11: Bǝrdǝ Rayon
+AJ12: Beylǝqan Rayon
+AJ13: Biläsuvar Rayon
+AJ14: Cǝbrayıl Rayon
+AJ15: Cǝlilabad Rayon
+AJ16: Daşkǝsǝn Rayon
+AJ17: Dǝvǝçi Rayon
+AJ18: Füzuli Rayon
+AJ19: Gǝdǝbǝy Rayon
+AJ20: Gǝncǝ City
+AJ21: Goranboy Rayon
+AJ22: Göyçay Rayon
+AJ23: Hacıqabul Rayon
+AJ24: İmişli Rayon
+AJ25: İsmayıllı Rayon
+AJ26: Kǝlbǝcǝr Rayon
+AJ27: Kürdämir Rayon
+AJ28: Laçın Rayon
+AJ29: Lǝnkǝran Rayon
+AJ30: Lǝnkǝran City
+AJ31: Lerik Rayon
+AJ32: Masallı Rayon
+AJ33: Mingǝcevir City
+AJ34: Naftalan City
+AJ35: Nakhichevan Autonomous Republic
+AJ36: Neftçala Rayon
+AJ37: Oğuz Rayon
+AJ38: Qǝbǝlǝ Rayon
+AJ39: Qax Rayon
+AJ40: Qazax Rayon
+AJ41: Qobustan Rayon
+AJ42: Quba Rayon
+AJ43: Qubadlı Rayon
+AJ44: Qusar Rayon
+AJ45: Saatlı Rayon
+AJ46: Sabirabad Rayon
+AJ47: Şǝki Rayon
+AJ48: Şǝki City
+AJ49: Salyan Rayon
+AJ50: Şamaxı Rayon
+AJ51: Şǝmkir Rayon
+AJ52: Samux Rayon
+AJ53: Siyǝzǝn Rayon
+AJ54: Sumqayıt Rayon
+AJ55: Şuşa Rayon
+AJ56: Şuşa City
+AJ57: Tǝrtǝr Rayon
+AJ58: Tovuz Rayon
+AJ59: Ucar Rayon
+AJ60: Xaçmaz Rayon
+AJ61: Xankǝndi City
+AJ62: Goygol Rayon, formerly Xanlar Rayon
+AJ63: Xızı Rayon
+AJ64: Xocalı Rayon
+AJ65: Xocavǝnd Rayon
+AJ66: Yardımlı Rayon
+AJ67: Yevlax Rayon
+AJ68: Yevlax City
+AJ69: Zǝngilan Rayon
+AJ70: Zaqatala Rayon
+AJ71: Zǝrdab Rayon
+Albania
+AL40: Berat County
+AL41: Dibër County
+AL42: Durrës County
+AL43: Elbasan County
+AL44: Fier County
+AL45: Gjirokastër County
+AL46: Korçë County
+AL47: Kukës County
+AL48: Lezhë County
+AL49: Shkodër County
+AL50: Tirana County
+AL51: Vlorë County
+Armenia
+AM01: Aragatsotn Province
+AM02: Ararat Province
+AM03: Armavir Province
+AM04: Geghark'unik' Province
+AM05: Kotayk' Province
+AM06: Lorri Province
+AM07: Shirak Province
+AM08: Syunik' Province
+AM09: Tavush Province
+AM10: Vayots' Dzor Province
+AM11: Yerevan City
+Andorra
+AN02: Canillo Parish
+AN03: Encamp Parish
+AN04: La Massana Parish
+AN05: Ordino Parish
+AN06: Sant Julià de Lòria Parish
+AN07: Andorra la Vella Parish
+AN08: Escaldes-Engordany Parish
+Angola
+AO01: Benguela Province
+AO02: Bié Province
+AO03: Cabinda Province
+AO04: Cuando Cubango Province
+AO05: Cuanza Norte Province
+AO06: Cuanza Sul Province
+AO07: Cunene Province
+AO08: Huambo Province
+AO09: Huíla Province
+AO12: Malanje Province
+AO13: Namibe Province
+AO14: Moxico Province
+AO15: Uíge Province
+AO16: Zaire Province
+AO17: Lunda Norte Province
+AO18: Lunda Sul Province
+AO19: Bengo Province
+AO20: Luanda Province
+Argentina
+AR01: Buenos Aires Province
+AR02: Catamarca Province
+AR03: Chaco Province
+AR04: Chubut Province
+AR05: Córdoba Province
+AR06: Corrientes Province
+AR07: Distrito Federal
+AR08: Entre Ríos Province
+AR09: Formosa Province
+AR10: Jujuy Province
+AR11: La Pampa Province
+AR12: La Rioja Province
+AR13: Mendoza Province
+AR14: Misiones Province
+AR15: Neuquén Province
+AR16: Río Negro Province
+AR17: Salta Province
+AR18: San Juan Province
+AR19: San Luis Province
+AR20: Santa Cruz Province
+AR21: Santa Fe Province
+AR22: Santiago del Estero Province
+AR23: Tierra del Fuego, Antártida e Islas del Atlántico Sur Province
+AR24: Tucumán Province
+Australia
+AS01: Australian Capital Territory
+AS02: New South Wales State
+AS03: Northern Territory
+AS04: Queensland State
+AS05: South Australia State
+AS06: Tasmania State
+AS07: Victoria State
+AS08: Western Australia State
+Austria
+AU01: Burgenland State
+AU02: Kärnten State
+AU03: Niederösterreich State
+AU04: Oberösterreich State
+AU05: Salzburg State
+AU06: Steiermark State
+AU07: Tirol State
+AU08: Vorarlberg State
+AU09: Wien State
+Bahrain
+BA01: Al Ḩadd Municipality
+BA02: Al Manāmah Municipality
+BA05: Jidd Ḩafş Municipality
+BA06: Sitrah Municipality
+BA08: Al Minţaqah al Gharbīyah Municipality
+BA09: Minţaqat Juzur Ḩawār
+BA10: Al Minţaqah ash Shamālīyah Municipality
+BA11: Al Minţaqah al Wusţá Municipality
+BA12: Madīnat `Īsá Municipality
+BA13: Ar Rifā` wa al Minţaqah al Janūbīyah Municipality
+BA14: Madīnat Ḩamad Municipality
+BA15: Al Muḩarraq Municipality
+BA16: Al ٰĀşimah Municipality
+BA17: Al Janūbīyah Municipality
+BA18: Ash Shamālīyah Municipality
+BA19: Al Wusţá Municipality
+Barbados
+BB01: Parish of Christ Church
+BB02: Parish of Saint Andrew
+BB03: Parish of Saint George
+BB04: Parish of Saint James
+BB05: Parish of Saint John
+BB06: Parish of Saint Joseph
+BB07: Parish of Saint Lucy
+BB08: Parish of Saint Michael
+BB09: Parish of Saint Peter
+BB10: Parish of Saint Philip
+BB11: Parish of Saint Thomas
+Botswana
+BC01: Central District
+BC03: Ghanzi District
+BC04: Kgalagadi District
+BC05: Kgatleng District
+BC06: Kweneng District
+BC08: North East District
+BC09: South East District
+BC10: Southern District
+BC11: North West District
+Bermuda
+BD01: Devonshire Parish
+BD02: Hamilton Parish
+BD03: Hamilton Municipality
+BD04: Paget Parish
+BD05: Pembroke Parish
+BD06: Saint George Municipality
+BD07: Saint George's Parish
+BD08: Sandys Parish
+BD09: Smith's Parish
+BD10: Southampton Parish
+BD11: Warwick Parish
+Belgium
+BE01: Antwerpen Province
+BE03: Hainaut Province
+BE04: Liège Province
+BE05: Limburg Province
+BE06: Luxembourg Province
+BE07: Namur Province
+BE08: Oost-Vlaanderen Province
+BE09: West-Vlaanderen Province
+BE10: Walloon Brabant Province
+BE11: Brussels-Capital Region
+BE12: Flemish Brabant Province
+The Bahamas
+BF05: Bimini District
+BF06: Cat Island District
+BF10: Exuma District
+BF13: Inagua District
+BF15: Long Island District
+BF16: Mayaguana District
+BF18: Ragged Island District
+BF22: Harbour Island District
+BF23: New Providence District
+BF24: Acklins and Crooked Islands District
+BF25: Freeport District
+BF26: Fresh Creek District
+BF27: Governor's Harbour District
+BF28: Green Turtle Cay District
+BF29: High Rock District
+BF30: Kemps Bay District
+BF31: Marsh Harbour District
+BF32: Nichollstown and Berry Islands District
+BF33: Rock Sound District
+BF34: Sandy Point District
+BF35: San Salvador and Rum Cay District
+Bangladesh
+BG81: Dhaka Division
+BG82: Khulna Division
+BG83: Rājshāhi Division
+BG84: Chittagong Division
+BG85: Barisāl Division
+BG86: Sylhet Division
+Belize
+BH01: Belize District
+BH02: Cayo District
+BH03: Corozal District
+BH04: Orange Walk District
+BH05: Stann Creek District
+BH06: Toledo District
+Bosnia and Herzegovina
+BK01: Federacija Bosne i Hercegovine
+BK02: Republika Srpska
+Bolivia
+BL01: Chuquisaca Department
+BL02: Cochabamba Department
+BL03: Beni Department
+BL04: La Paz Department
+BL05: Oruro Department
+BL06: Pando Department
+BL07: Potosí Department
+BL08: Santa Cruz Department
+BL09: Tarija Department
+Burma
+BM01: Rakhine State
+BM02: Chin State
+BM03: Ayeyarwady Division
+BM04: Kachin State
+BM05: Kayin State
+BM06: Kayah State
+BM08: Mandalay Division
+BM10: Sagaing Division
+BM11: Shan State
+BM12: Tanintharyi Division
+BM13: Mon State
+BM15: Magway Division
+BM16: Bago Division
+BM17: Yangon Division
+Benin
+BN07: Alibori Department
+BN08: Atakora Department
+BN09: Atlantique Department
+BN10: Borgou Department
+BN11: Collines Department
+BN12: Kouffo Department
+BN13: Donga Department
+BN14: Littoral Department
+BN15: Mono Department
+BN16: Ouémé Department
+BN17: Plateau Department
+BN18: Zou Department
+Belarus
+BO01: Brest Province
+BO02: Homyel Province
+BO03: Hrodna Province
+BO04: Minsk City
+BO05: Minsk Province
+BO06: Mahilyow Province
+BO07: Vitsebsk Province
+Solomon Islands
+BP03: Malaita Province
+BP06: Guadalcanal Province
+BP07: Isabel Province
+BP08: Makira Province
+BP09: Temotu Province
+BP10: Central Province
+BP11: Western Province
+BP12: Choiseul Province
+BP13: Rennell and Bellona Province
+Brazil
+BR01: Acre State
+BR02: Alagoas State
+BR03: Amapá State
+BR04: Amazonas State
+BR05: Bahia State
+BR06: Ceará State
+BR07: Distrito Federal Federal District
+BR08: Espírito Santo State
+BR11: Mato Grosso do Sul State
+BR13: Maranhão State
+BR14: Mato Grosso State
+BR15: Minas Gerais State
+BR16: Pará State
+BR17: Paraíba State
+BR18: Paraná State
+BR20: Piauí State
+BR21: Rio de Janeiro State
+BR22: Rio Grande do Norte State
+BR23: Rio Grande do Sul State
+BR24: Rondônia State
+BR25: Roraima State
+BR26: Santa Catarina State
+BR27: São Paulo State
+BR28: Sergipe State
+BR29: Goiás State
+BR30: Pernambuco State
+BR31: Tocantins State
+Bhutan
+BT05: Bumthang District
+BT06: Chhukha District
+BT07: Tsirang (Chirang) District
+BT08: Dagana District
+BT09: Sarpang (Geylegphug) District
+BT10: Haa (Ha) District
+BT11: Lhuntse (Lhuntshi) District
+BT12: Mongar District
+BT13: Paro District
+BT14: Pemagatshel (Pemagatsel) District
+BT15: Punakha District
+BT16: Samtse (Samchi) District
+BT17: Samdrup Jongkhar District
+BT18: Zhemgang (Shemgang) District
+BT19: Trashigang (Tashigang) District
+BT20: Thimphu District
+BT21: Trongsa (Tongsa) District
+BT22: Wangdue Phodrang (Wangdi Phodrang) District
+Bulgaria
+BU38: Blagoevgrad Province
+BU39: Burgas Province
+BU40: Dobrich Province
+BU41: Gabrovo Province
+BU42: Sofiya-Grad Province
+BU43: Haskovo Province
+BU44: Kardzhali Province
+BU45: Kyustendil Province
+BU46: Lovech Province
+BU47: Montana Province
+BU48: Pazardzhik Province
+BU49: Pernik Province
+BU50: Pleven Province
+BU51: Plovdiv Province
+BU52: Razgrad Province
+BU53: Ruse Province
+BU54: Shumen Province
+BU55: Silistra Province
+BU56: Sliven Province
+BU57: Smolyan Province
+BU58: Sofia Province
+BU59: Stara Zagora Province
+BU60: Targovishte Province
+BU61: Varna Province
+BU62: Veliko Tarnovo Province
+BU63: Vidin Province
+BU64: Vratsa Province
+BU65: Yambol Province
+Brunei
+BX01: Belait District
+BX02: Brunei-Muara District
+BX03: Temburong District
+BX04: Tutong District
+Burundi
+BY02: Bujumbura Province
+BY09: Bubanza Province
+BY10: Bururi Province
+BY11: Cankuzo Province
+BY12: Cibitoke Province
+BY13: Gitega Province
+BY14: Karuzi Province
+BY15: Kayanza Province
+BY16: Kirundo Province
+BY17: Makamba Province
+BY18: Muyinga Province
+BY19: Ngozi Province
+BY20: Rutana Province
+BY21: Ruyigi Province
+BY22: Muramvya Province
+BY23: Mwaro Province
+Canada
+CA01: Alberta Province
+CA02: British Columbia Province
+CA03: Manitoba Province
+CA04: New Brunswick Province
+CA05: Newfoundland and Labrador Province
+CA07: Nova Scotia Province
+CA08: Ontario Province
+CA09: Prince Edward Island Province
+CA10: Québec Province
+CA11: Saskatchewan Province
+CA12: Yukon Territory
+CA13: Northwest Territories
+CA14: Nunavut Territory
+Cambodia
+CB02: Kâmpóng Cham Province
+CB03: Kâmpóng Chhnăng Province
+CB04: Kâmpóng Spœ Province
+CB05: Kâmpóng Thum Province
+CB07: Kândal Province
+CB08: Kaôh Kŏng Province
+CB09: Krâchéh Province
+CB10: Môndôl Kiri Province
+CB12: Poŭthĭsăt Province
+CB13: Preăh Vĭhéar Province
+CB14: Prey Vêng Province
+CB17: Stœ̆ng Trêng Province
+CB18: Svay Riĕng Province
+CB19: Takêv Province
+CB21: Kâmpôt Province
+CB22: Phnum Pénh Municipality
+CB23: Rôtânăh Kiri Province
+CB24: Siĕm Réab Province
+CB25: Bântéay Méan Cheăy Province
+CB26: Kêb Municipality
+CB27: Ŏtdâr Méanchey Province
+CB28: Preăh Sihanouk Municipality
+CB29: Bătdâmbâng Province
+CB30: Pailĭn Province
+Chad
+CD01: Batha Region
+CD02: Wadi Fira Region
+CD03: Borkou-Ennedi-Tibesti Region
+CD05: Guéra Region
+CD06: Kanem Region
+CD07: Lac Region
+CD08: Logone Occidental Region
+CD09: Logone Oriental Region
+CD12: Ouaddaï Region
+CD13: Salamat Region
+CD14: Tandjilé Region
+CD15: Chari-Baguirmi Region
+CD16: Mayo-Kebbi Est Region
+CD17: Moyen-Chari Region
+CD18: Hadjer-Lamis Region
+CD19: Mandoul Region
+CD20: Mayo-Kebbi Ouest Region
+CD21: Ville de N'Djamena
+Sri Lanka
+CE01: Amparai District
+CE02: Anuradhapura District
+CE03: Badulla District
+CE04: Batticaloa District
+CE06: Galle District
+CE07: Hambantota District
+CE09: Kalutara District
+CE10: Kandy District
+CE11: Kegalla District
+CE12: Kurunegala District
+CE14: Matale District
+CE15: Matara District
+CE16: Moneragala District
+CE17: Nuwara Eliya District
+CE18: Polonnaruwa District
+CE19: Puttalam District
+CE20: Ratnapura District
+CE21: Trincomalee District
+CE23: Colombo District
+CE24: Gampaha District
+CE25: Jaffna District
+CE26: Mannar District
+CE27: Mullaittivu District
+CE28: Vavuniya District
+Congo
+CF01: Bouenza Region
+CF04: Kouilou Region
+CF05: Lékoumou Region
+CF06: Likouala Region
+CF07: Niari Region
+CF08: Plateaux Region
+CF10: Sangha Region
+CF11: Pool Region
+CF12: Brazzaville Commune
+CF13: Cuvette Region
+CF14: Cuvette-Ouest Region
+Democratic Republic of the Congo
+CG01: Bandundu Province
+CG02: Équateur Province
+CG03: Kasaï-Occidental Province
+CG04: Kasaï-Oriental Province
+CG05: Katanga Province
+CG06: Kinshasa City
+CG08: Bas-Congo Province
+CG09: Orientale Province
+CG10: Maniema Province
+CG11: North Kivu Province
+CG12: South Kivu Province
+China
+CH01: Anhui Province
+CH02: Zhejiang Province
+CH03: Jiangxi Province
+CH04: Jiangsu Province
+CH05: Jilin Province
+CH06: Qinghai Province
+CH07: Fujian Province
+CH08: Heilongjiang Province
+CH09: Henan Province
+CH10: Hebei Province
+CH11: Hunan Province
+CH12: Hubei Province
+CH13: Xinjiang Autonomous Region
+CH14: Xizang Autonomous Region
+CH15: Gansu Province
+CH16: Guangxi Autonomous Region
+CH18: Guizhou Province
+CH19: Liaoning Province
+CH20: Nei Mongol Autonomous Region
+CH21: Ningxia Autonomous Region
+CH22: Beijing Municipality
+CH23: Shanghai Municipality
+CH24: Shanxi Province
+CH25: Shandong Province
+CH26: Shaanxi Province
+CH28: Tianjin Municipality
+CH29: Yunnan Province
+CH30: Guangdong Province
+CH31: Hainan Province
+CH32: Sichuan Province
+CH33: Chongqing Municipality
+Chile
+CI01: Valparaíso Region
+CI02: Aisén del General Carlos Ibáñez del Campo Region
+CI03: Antofagasta Region
+CI04: Araucanía Region
+CI05: Atacama Region
+CI06: Biobío Region
+CI07: Coquimbo Region
+CI08: Libertador General Bernardo O'Higgins Region
+CI10: Magallanes y Antártica Chilena Region
+CI11: Maule Region
+CI12: Santiago Metropolitan Region
+CI14: Los Lagos Region
+CI15: Tarapacá Region
+CI16: Arica y Parinacota Region
+CI17: Los Ríos Region
+Cayman Islands
+CJ01: Creek District
+CJ02: Eastern District
+CJ03: Midland District
+CJ04: South Town District
+CJ05: Spot Bay District
+CJ06: Stake Bay District
+CJ07: West End District
+CJ08: Western District
+Cameroon
+CM04: East Province
+CM05: Littoral Province
+CM07: Northwest Province
+CM08: West Province
+CM09: Southwest Province
+CM10: Adamawa Province
+CM11: Centre Province
+CM12: Far North Province
+CM13: North Province
+CM14: South Province
+Comoros
+CN01: Anjouan Island
+CN02: Grande Comore Island
+CN03: Mohéli Island
+Colombia
+CO01: Amazonas Department
+CO02: Antioquia Department
+CO03: Arauca Department
+CO04: Atlántico Department
+CO08: Caquetá Department
+CO09: Cauca Department
+CO10: Cesar Department
+CO11: Chocó Department
+CO12: Córdoba Department
+CO14: Guaviare Department
+CO15: Guainía Department
+CO16: Huila Department
+CO17: Guajira Department
+CO19: Meta Department
+CO20: Nariño Department
+CO21: Norte de Santander Department
+CO22: Putumayo Department
+CO23: Quindío Department
+CO24: Risaralda Department
+CO25: San Andrés and Providencia Department
+CO26: Santander Department
+CO27: Sucre Department
+CO28: Tolima Department
+CO29: Valle del Cauca Department
+CO30: Vaupés Department
+CO31: Vichada Department
+CO32: Casanare Department
+CO33: Cundinamarca Department
+CO34: Bogotá Capital District
+CO35: Bolívar Department
+CO36: Boyacá Department
+CO37: Caldas Department
+CO38: Magdalena Department
+Costa Rica
+CS01: Alajuela Province
+CS02: Cartago Province
+CS03: Guanacaste Province
+CS04: Heredia Province
+CS06: Limón Province
+CS07: Puntarenas Province
+CS08: San José Province
+Central African Republic
+CT01: Bamingui-Bangoran Prefecture
+CT02: Basse-Kotto Prefecture
+CT03: Haute-Kotto Prefecture
+CT04: Mambéré-Kadéï Prefecture
+CT05: Haut-Mbomou Prefecture
+CT06: Kémo Prefecture
+CT07: Lobaye Prefecture
+CT08: Mbomou Prefecture
+CT09: Nana-Mambéré Prefecture
+CT11: Ouaka Prefecture
+CT12: Ouham Prefecture
+CT13: Ouham-Pendé Prefecture
+CT14: Vakaga Prefecture
+CT15: Nana-Grébizi Economic Prefecture
+CT16: Sangha-Mbaéré Economic Prefecture
+CT17: Ombella-Mpoko Prefecture
+CT18: Bangui Commune
+Cuba
+CU01: Pinar del Río Province
+CU02: Ciudad de La Habana Province
+CU03: Matanzas Province
+CU04: Isla de la Juventud Special Municipality
+CU05: Camagüey Province
+CU07: Ciego de Ávila Province
+CU08: Cienfuegos Province
+CU09: Granma Province
+CU10: Guantánamo Province
+CU11: La Habana Province
+CU12: Holguín Province
+CU13: Las Tunas Province
+CU14: Sancti Spíritus Province
+CU15: Santiago de Cuba Province
+CU16: Villa Clara Province
+Cape Verde
+CV01: Boa Vista District
+CV02: Brava District
+CV04: Maio District
+CV05: Paul District
+CV07: Ribeira Grande District
+CV08: Sal District
+CV10: São Nicolau District
+CV11: São Vicente District
+CV13: Mosteiros District
+CV14: Praia District
+CV15: Santa Catarina District
+CV16: Santa Cruz District
+CV17: São Domingos District
+CV18: São Filipe District
+CV19: São Miguel District
+CV20: Tarrafal District
+Cyprus
+CY01: Famagusta District
+CY02: Kyrenia District
+CY03: Larnaca District
+CY04: Nicosia District
+CY05: Limassol District
+CY06: Paphos District
+Denmark
+DA17: Region Hovedstaden
+DA18: Region Midtjylland (Incorrectly added as "Midtjyllen" in latest change notice)
+DA19: Region Nordjylland
+DA20: Region Sjælland
+DA21: Region of Southern Denmark
+Djibouti
+DJ01: Ali Sabieh District
+DJ04: Obock District
+DJ05: Tadjourah District
+DJ06: Dikhil District
+DJ07: Djibouti District
+DJ08: Arta District
+Dominica
+DO02: Saint Andrew Parish
+DO03: Saint David Parish
+DO04: Saint George Parish
+DO05: Saint John Parish
+DO06: Saint Joseph Parish
+DO07: Saint Luke Parish
+DO08: Saint Mark Parish
+DO09: Saint Patrick Parish
+DO10: Saint Paul Parish
+DO11: Saint Peter Parish
+Dominican Republic
+DR01: Azua Province
+DR02: Baoruco Province
+DR03: Barahona Province
+DR04: Dajabón Province
+DR06: Duarte Province
+DR08: Espaillat Province
+DR09: Independencia Province
+DR10: La Altagracia Province
+DR11: Elías Piña Province
+DR12: La Romana Province
+DR14: María Trinidad Sánchez Province
+DR15: Monte Cristi Province
+DR16: Pedernales Province
+DR18: Puerto Plata Province
+DR19: Salcedo Province
+DR20: Samaná Province
+DR21: Sánchez Ramírez Province
+DR23: San Juan Province
+DR24: San Pedro de Macorís Province
+DR25: Santiago Province
+DR26: Santiago Rodríguez Province
+DR27: Valverde Province
+DR28: El Seíbo Province
+DR29: Hato Mayor Province
+DR30: La Vega Province
+DR31: Monseñor Nouel Province
+DR32: Monte Plata Province
+DR33: San Cristóbal Province
+DR34: Distrito Nacional
+DR35: Peravia Province
+DR36: San José de Ocoa Province
+DR37: Santo Domingo Province
+Ecuador
+EC01: Galápagos Province
+EC02: Azuay Province
+EC03: Bolívar Province
+EC04: Cañar Province
+EC05: Carchi Province
+EC06: Chimborazo Province
+EC07: Cotopaxi Province
+EC08: El Oro Province
+EC09: Esmeraldas Province
+EC10: Guayas Province
+EC11: Imbabura Province
+EC12: Loja Province
+EC13: Los Ríos Province
+EC14: Manabí Province
+EC15: Morona-Santiago Province
+EC17: Pastaza Province
+EC18: Pichincha Province
+EC19: Tungurahua Province
+EC20: Zamora-Chinchipe Province
+EC22: Sucumbíos Province
+EC23: Napo Province
+EC24: Orellana Province
+Egypt
+EG01: Ad Daqahlīyah Governorate
+EG02: Al Baḩr al Aḩmar Governorate
+EG03: Al Buḩayrah Governorate
+EG04: Al Fayyūm Governorate
+EG05: Al Gharbīyah Governorate
+EG06: Al Iskandarīyah Governorate
+EG07: Al Ismā`īlīyah Governorate
+EG08: Al Jīzah Governorate
+EG09: Al Minūfīyah Governorate
+EG10: Al Minyā Governorate
+EG11: Al Qāhirah Governorate
+EG12: Al Qalyūbīyah Governorate
+EG13: Al Wādī al Jadīd Governorate
+EG14: Ash Sharqīyah Governorate
+EG15: As Suways Governorate
+EG16: Aswān Governorate
+EG17: Asyūţ Governorate
+EG18: Banī Suwayf Governorate
+EG19: Būr Sa`īd Governorate
+EG20: Dumyāţ Governorate
+EG21: Kafr ash Shaykh Governorate
+EG22: Maţrūḩ Governorate
+EG23: Qinā Governorate
+EG24: Sūhāj Governorate
+EG26: Janūb Sīnā' Governorate
+EG27: Shamāl Sīnā' Governorate
+Ireland
+EI01: County Carlow
+EI02: County Cavan
+EI03: County Clare
+EI04: County Cork
+EI06: County Donegal
+EI07: County Dublin
+EI10: County Galway
+EI11: County Kerry
+EI12: County Kildare
+EI13: County Kilkenny
+EI14: County Leitrim
+EI15: County Laois
+EI16: County Limerick
+EI18: County Longford
+EI19: County Louth
+EI20: County Mayo
+EI21: County Meath
+EI22: County Monaghan
+EI23: County Offaly
+EI24: County Roscommon
+EI25: County Sligo
+EI26: County Tipperary
+EI27: County Waterford
+EI29: County Westmeath
+EI30: County Wexford
+EI31: County Wicklow
+Equatorial Guinea
+EK03: Annobón Province
+EK04: Bioko Norte Province
+EK05: Bioko Sur Province
+EK06: Centro Sur Province
+EK07: Kié-Ntem Province
+EK08: Litoral Province
+EK09: Wele-Nzas Province
+Estonia
+EN01: Harju County
+EN02: Hiiu County
+EN03: Ida-Viru County
+EN04: Järva County
+EN05: Jõgeva County
+EN07: Lääne County
+EN08: Lääne-Viru County
+EN11: Pärnu County
+EN12: Põlva County
+EN13: Rapla County
+EN14: Saare County
+EN18: Tartu County
+EN19: Valga County
+EN20: Viljandi County
+EN21: Võru County
+Eritrea
+ER01: Ānseba Region
+ER02: Debub Region
+ER03: Debubawī K’eyih Bahrī Region
+ER04: Gash Barka Region
+ER05: Ma'ākel Region
+ER06: Semēnawī K’eyih Bahrī Region
+El Salvador
+ES01: Ahuachapán Department
+ES02: Cabañas Department
+ES03: Chalatenango Department
+ES04: Cuscatlán Department
+ES05: La Libertad Department
+ES06: La Paz Department
+ES07: La Unión Department
+ES08: Morazán Department
+ES09: San Miguel Department
+ES10: San Salvador Department
+ES11: Santa Ana Department
+ES12: San Vicente Department
+ES13: Sonsonate Department
+ES14: Usulután Department
+Ethiopia
+ET44: Ādīs Ābeba Administration
+ET45: Āfar State
+ET46: Āmara State
+ET47: Bīnshangul Gumuz State
+ET48: Dirē Dawa Administration
+ET49: Gambēla Hizboch State
+ET50: Hārerī Hizb State
+ET51: Oromīya State
+ET52: Sumalē State
+ET53: Tigray State
+ET54: YeDebub Bihēroch Bihēreseboch na Hizboch State
+Czech Republic
+EZ52: Praha (capital city)
+EZ78: Jihomoravský Region
+EZ79: Jihočeský Region
+EZ80: Vysočina Region
+EZ81: Karlovarský Region
+EZ82: Královéhradecký Region
+EZ83: Liberecký Region
+EZ84: Olomoucký Region
+EZ85: Moravskoslezský Region
+EZ86: Pardubický Region
+EZ87: Plzeňský Region
+EZ88: Středočeský Region
+EZ89: Ústecký Region
+EZ90: Zlínský Region
+Finland
+FI01: Åland Province
+FI06: Lapland Province
+FI08: Oulu Province
+FI13: Southern Finland Province
+FI14: Eastern Finland Province
+FI15: Western Finland Province
+Fidji
+FJ01: Central Division
+FJ02: Eastern Division
+FJ03: Northern Division
+FJ04: Rotuma Dependency
+FJ05: Western Division
+Federated States of Micronesia
+FM01: Kosrae State
+FM02: Pohnpei State
+FM03: Chuuk State
+FM04: Yap State
+France
+FR97: Aquitaine Region
+FR98: Auvergne Region
+FR99: Lower Normandy Region
+FRA1: Burgundy Region
+FRA2: Brittany Region
+FRA3: Centre Region
+FRA4: Champagne-Ardenne Region
+FRA5: Corsica Region
+FRA6: Franche-Comté Region
+FRA7: Upper Normandy Region
+FRA8: Île-de-France Region
+FRA9: Languedoc-Roussillon Region
+FRB1: Limousin Region
+FRB2: Lorraine Region
+FRB3: Midi-Pyrénées Region
+FRB4: Nord-Pas-de-Calais Region
+FRB5: Pays de la Loire Region
+FRB6: Picardy Region
+FRB7: Poitou-Charentes Region
+FRB8: Provence-Alpes-Côte d'Azur Region
+FRB9: Rhône-Alpes Region
+FRC1: Alsace Region
+The Gambia
+GA01: Banjul City
+GA02: Lower River Division
+GA03: Central River Division
+GA04: Upper River Division
+GA05: Western Division
+GA07: North Bank Division
+Gabon
+GB01: Estuaire Province
+GB02: Haut-Ogooué Province
+GB03: Moyen-Ogooué Province
+GB04: Ngounié Province
+GB05: Nyanga Province
+GB06: Ogooué-Ivindo Province
+GB07: Ogooué-Lolo Province
+GB08: Ogooué-Maritime Province
+GB09: Woleu-Ntem Province
+Georgia
+GG01: Abashis Raioni
+GG02: Abkhazia
+GG03: Adigenis Raioni
+GG04: Ajaria
+GG05: Akhalgoris Raioni
+GG06: Akhalk'alak'is Raioni
+GG07: Akhalts'ikhis Raioni
+GG08: Akhmetis Raioni
+GG09: Ambrolauris Raioni
+GG10: Aspindzis Raioni
+GG11: Baghdat'is Raioni
+GG12: Bolnisis Raioni
+GG13: Borjomis Raioni
+GG14: Chiat'ura
+GG15: Ch'khorotsqus Raioni
+GG16: Ch'okhatauris Raioni
+GG17: Dedop'listsqaros Raioni
+GG18: Dmanisis Raioni
+GG19: Dushet'is Raioni
+GG20: Gardabanis Raioni
+GG21: Gori
+GG22: Goris Raioni
+GG23: Gurjaanis Raioni
+GG24: Javis Raioni
+GG25: K'arelis Raioni
+GG26: Kaspis Raioni
+GG27: Kharagaulis Raioni
+GG28: Khashuris Raioni
+GG29: Khobis Raioni
+GG30: Khonis Raioni
+GG31: K'ut'aisi
+GG32: Lagodekhis Raioni
+GG33: Lanch'khut'is Raioni
+GG34: Lentekhis Raioni
+GG35: Marneulis Raioni
+GG36: Martvilis Raioni
+GG37: Mestiis Raioni
+GG38: Mts'khet'is Raioni
+GG39: Ninotsmindis Raioni
+GG40: Onis Raioni
+GG41: Ozurget'is Raioni
+GG42: P'ot'i
+GG43: Qazbegis Raioni
+GG44: Qvarlis Raioni
+GG45: Rust'avi
+GG46: Sach'kheris Raioni
+GG47: Sagarejos Raioni
+GG48: Samtrediis Raioni
+GG49: Senakis Raioni
+GG50: Sighnaghis Raioni
+GG51: T'bilisi
+GG52: T'elavis Raioni
+GG53: T'erjolis Raioni
+GG54: T'et'ritsqaros Raioni
+GG55: T'ianet'is Raioni
+GG56: Tqibuli
+GG57: Ts'ageris Raioni
+GG58: Tsalenjikhis Raioni
+GG59: Tsalkis Raioni
+GG60: Tsqaltubo
+GG61: Vanis Raioni
+GG62: Zestap'onis Raioni
+GG63: Zugdidi
+GG64: Zugdidis Raioni
+Ghana
+GH01: Greater Accra Region
+GH02: Ashanti Region
+GH03: Brong-Ahafo Region
+GH04: Central Region
+GH05: Eastern Region
+GH06: Northern Region
+GH08: Volta Region
+GH09: Western Region
+GH10: Upper East Region
+GH11: Upper West Region
+Grenada
+GJ01: Saint Andrew Parish
+GJ02: Saint David Parish
+GJ03: Saint George Parish
+GJ04: Saint John Parish
+GJ05: Saint Mark Parish
+GJ06: Saint Patrick Parish
+Greenland
+GL01: Nordgronland
+GL02: Ostgronland
+GL03: Vestgronland
+Germany
+GM01: Baden-Württemberg State
+GM02: Free State of Bavaria
+GM03: Free Hanseatic City of Bremen
+GM04: Free Hanseatic City of Hamburg
+GM05: Hesse State
+GM06: Lower Saxony State
+GM07: North Rhine-Westphalia State
+GM08: Rhineland-Palatinate State
+GM09: Saarland State
+GM10: Schleswig-Holstein State
+GM11: Brandenburg State
+GM12: Mecklenburg-Western Pomerania State
+GM13: Free State of Saxony
+GM14: Sachsen-Anhalt State
+GM15: Free State of Thüringia
+GM16: Berlin State
+Greece
+GR01: Évros Prefecture
+GR02: Rodópi Prefecture
+GR03: Xánthi Prefecture
+GR04: Dráma Prefecture
+GR05: Sérrai Prefecture
+GR06: Kilkís Prefecture
+GR07: Pélla Prefecture
+GR08: Flórina Prefecture
+GR09: Kastoriá Prefecture
+GR10: Grevená Prefecture
+GR11: Kozáni Prefecture
+GR12: Imathía Prefecture
+GR13: Thessaloníki Prefecture
+GR14: Kavála Prefecture
+GR15: Chalkidikí Prefecture
+GR16: Piería Prefecture
+GR17: Ioánnina Prefecture
+GR18: Thesprotía Prefecture
+GR19: Préveza Prefecture
+GR20: Árta Prefecture
+GR21: Lárisa Prefecture
+GR22: Tríkala Prefecture
+GR23: Kardítsa Prefecture
+GR24: Magnisía Prefecture
+GR25: Kérkyra Prefecture
+GR26: Lefkás Prefecture
+GR27: Kefallinía Prefecture
+GR28: Zákynthos Prefecture
+GR29: Fthiótis Prefecture
+GR30: Evrytanía Prefecture
+GR31: Aitolía kai Akarnanía Prefecture
+GR32: Fokídos Prefecture
+GR33: Voiotía Prefecture
+GR34: Évvoia Prefecture
+GR35: Attikí Prefecture
+GR36: Argolís Prefecture
+GR37: Korinthía Prefecture
+GR38: Achaḯa Prefecture
+GR39: Ileía Prefecture
+GR40: Messinía Prefecture
+GR41: Arkadía Prefecture
+GR42: Lakonía Prefecture
+GR43: Chaníon Prefecture
+GR44: Rethýmnis Prefecture
+GR45: Irákleion Prefecture
+GR46: Lasíthi Prefecture
+GR47: Dodekánisos Prefecture
+GR48: Sámos Prefecture
+GR49: Kykládes Prefecture
+GR50: Chíos Prefecture
+GR51: Lésvos Prefecture
+Guatemala
+GT01: Alta Verapaz Department
+GT02: Baja Verapaz Department
+GT03: Chimaltenango Department
+GT04: Chiquimula Department
+GT05: El Progreso Department
+GT06: Escuintla Department
+GT07: Guatemala Department
+GT08: Huehuetenango Department
+GT09: Izabal Department
+GT10: Jalapa Department
+GT11: Jutiapa Department
+GT12: Petén Department
+GT13: Quetzaltenango Department
+GT14: Quiché Department
+GT15: Retalhuleu Department
+GT16: Sacatepéquez Department
+GT17: San Marcos Department
+GT18: Santa Rosa Department
+GT19: Solola Department
+GT20: Suchitepéquez Department
+GT21: Totonicapán Department
+GT22: Zacapa Department
+Guinea
+GV01: Beyla Prefecture
+GV02: Boffa Prefecture
+GV03: Boké Prefecture
+GV04: Conakry Special Zone
+GV05: Dabola Prefecture
+GV06: Dalaba Prefecture
+GV07: Dinguiraye Prefecture
+GV09: Faranah Prefecture
+GV10: Forécariah Prefecture
+GV11: Fria Prefecture
+GV12: Gaoual Prefecture
+GV13: Guékédou Prefecture
+GV15: Kérouané Prefecture
+GV16: Kindia Prefecture
+GV17: Kissidougou Prefecture
+GV18: Koundara Prefecture
+GV19: Kouroussa Prefecture
+GV21: Macenta Prefecture
+GV22: Mali Prefecture
+GV23: Mamou Prefecture
+GV25: Pita Prefecture
+GV27: Télimélé Prefecture
+GV28: Tougué Prefecture
+GV29: Yomou Prefecture
+GV30: Coyah Prefecture
+GV31: Dubréka Prefecture
+GV32: Kankan Prefecture
+GV33: Koubia Prefecture
+GV34: Labé Prefecture
+GV35: Lélouma Prefecture
+GV36: Lola Prefecture
+GV37: Mandiana Prefecture
+GV38: Nzérékoré Prefecture
+GV39: Siguiri Prefecture
+Guyana
+GY10: Barima-Waini Region
+GY11: Cuyuni-Mazaruni Region
+GY12: Demerara-Mahaica Region
+GY13: East Berbice-Corentyne Region
+GY14: Essequibo Islands-West Demerara Region
+GY15: Mahaica-Berbice Region
+GY16: Pomeroon-Supenaam Region
+GY17: Potaro-Siparuni Region
+GY18: Upper Demerara-Berbice Region
+GY19: Upper Takutu-Upper Essequibo Region
+Haiti
+HA03: Nord-Ouest Department
+HA06: Artibonite Department
+HA07: Centre Department
+HA09: Nord Department
+HA10: Nord-Est Department
+HA11: Ouest Department
+HA12: Sud Department
+HA13: Sud-Est Department
+HA14: Grand'Anse Department
+HA15: Nippes Department
+Honduras
+HO01: Atlántida Department
+HO02: Choluteca Department
+HO03: Colón Department
+HO04: Comayagua Department
+HO05: Copán Department
+HO06: Cortés Department
+HO07: El Paraíso Department
+HO08: Francisco Morazán Department
+HO09: Gracias a Dios Department
+HO10: Intibucá Department
+HO11: Islas de la Bahía Department
+HO12: La Paz Department
+HO13: Lempira Department
+HO14: Ocotepeque Department
+HO15: Olancho Department
+HO16: Santa Bárbara Department
+HO17: Valle Department
+HO18: Yoro Department
+Croatia
+HR01: Bjelovar-Bilogora County
+HR02: Brod-Posavina County
+HR03: Dubrovnik-Neretva County
+HR04: Istria County
+HR05: Karlovac County
+HR06: Koprivnica-Križevci County
+HR07: Krapina-Zagorje County
+HR08: Lika-Senj County
+HR09: Međimurje County
+HR10: Osijek-Baranja County
+HR11: Požega-Slavonia County
+HR12: Primorje-Gorski Kotar County
+HR13: Šibenik-Knin County
+HR14: Sisak-Moslavina County
+HR15: Split-Dalmatia County
+HR16: Varaždin County
+HR17: Virovitica-Podravina County
+HR18: Vukovar-Srijem County
+HR19: Zadar County
+HR20: Zagreb County
+HR21: Zagreb City
+Hungary
+HU01: Bács-Kiskun County
+HU02: Baranya County
+HU03: Békés County
+HU04: Borsod-Abaúj-Zemplén County
+HU05: Budapest Capital City
+HU06: Csongrád County
+HU07: Debrecen Urban County
+HU08: Fejér County
+HU09: Győr-Moson-Sopron County
+HU10: Hajdú-Bihar County
+HU11: Heves County
+HU12: Komárom-Esztergom County
+HU13: Miskolc Urban County
+HU14: Nógrád County
+HU15: Pécs Urban County
+HU16: Pest County
+HU17: Somogy County
+HU18: Szabolcs-Szatmár-Bereg County
+HU19: Szeged Urban County
+HU20: Jász-Nagykun-Szolnok County
+HU21: Tolna County
+HU22: Vas County
+HU23: Veszprém County
+HU24: Zala County
+HU25: Győr Urban County
+HU26: Bekescsaba Urban County
+HU27: Dunaujvaros Urban County
+HU28: Eger Urban County
+HU29: Hodmezovasarhely Urban County
+HU30: Kaposvar Urban County
+HU31: Kecskemét Urban County
+HU32: Nagykanizsa Urban County
+HU33: Nyiregyhaza Urban County
+HU34: Sopron Urban County
+HU35: Szekesfehervar Urban County
+HU36: Szolnok Urban County
+HU37: Szombathely Urban County
+HU38: Tatabanya Urban County
+HU39: Veszprem Urban County
+HU40: Zalaegerszeg Urban County
+HU41: Salgótarján County
+HU42: Szekszárd County
+HU43: Érd County
+Iceland
+IC38: Austurland
+IC39: Höfuðborgarsvæði
+IC40: Norðurland Eystra
+IC41: Norðurland Vestra
+IC42: Suðurland
+IC43: Suðurnes
+IC44: Vestfirðir
+IC45: Vesturland
+Indonesia
+ID01: Aceh Special Region
+ID02: Bali Province
+ID03: Bengkulu Province
+ID04: Jakarta Raya Special Capital City District
+ID05: Jambi Province
+ID07: Jawa Tengah Province
+ID08: Jawa Timur Province
+ID10: Yogyakarta Special Region
+ID11: Kalimantan Barat Province
+ID12: Kalimantan Selatan Province
+ID13: Kalimantan Tengah Province
+ID14: Kalimantan Timur Province
+ID15: Lampung Province
+ID17: Nusa Tenggara Barat Province
+ID18: Nusa Tenggara Timur Province
+ID21: Sulawesi Tengah Province
+ID22: Sulawesi Tenggara Province
+ID24: Sumatera Barat Province
+ID26: Sumatera Utara Province
+ID28: Maluku Province
+ID29: Maluku Utara Province
+ID30: Jawa Barat Province
+ID31: Sulawesi Utara Province
+ID32: Sumatera Selatan Province
+ID33: Banten Province
+ID34: Gorontalo Province
+ID35: Kepulauan Bangka Belitung Province
+ID36: Papua Province
+ID37: Riau Province
+ID38: Sulawesi Selatan Province
+ID39: Irian Jaya Barat Province
+ID40: Kepulauan Riau Province
+ID41: Sulawesi Barat Province
+India
+IN01: Andaman and Nicobar Islands Union Territory
+IN02: Andhra Pradesh State
+IN03: Assam State
+IN05: Chandīgarh Union Territory
+IN06: Dādra and Nagar Haveli Union Territory
+IN07: Delhi Union Territory
+IN09: Gujarāt State
+IN10: Haryāna State
+IN11: Himāchal Pradesh State
+IN12: Jammu and Kashmīr (disputed territory), recognized as a state
+IN13: Kerala State
+IN14: Lakshadweep Union Territory
+IN16: Mahārāshtra State
+IN17: Manipur State
+IN18: Meghālaya State
+IN19: Karnātaka State
+IN20: Nāgāland State
+IN21: Orissa State
+IN22: Puducherry Union Territory
+IN23: Punjab State
+IN24: Rājasthān State
+IN25: Tamil Nādu State
+IN26: Tripura State
+IN28: West Bengal State
+IN29: Sikkim State
+IN30: Arunāchal Pradesh State
+IN31: Mizoram State
+IN32: Damān and Diu Union Territory
+IN33: Goa State
+IN34: Bihār State
+IN35: Madhya Pradesh State
+IN36: Uttar Pradesh State
+IN37: Chhattīsgarh State
+IN38: Jharkhand State
+IN39: Uttarakhand State
+Iran
+IR01: Ostān-e Āz̄arbāyjān-e Gharbī Province
+IR03: Chahār Maḩāll va Bakhtīār Province
+IR04: Sīstān va Balūchestān Province
+IR05: Ostān-e Kohgīlūyeh va Būyer Aḩmad Province
+IR07: Fārs Province
+IR08: Gīlān Province
+IR09: Hamadān Province
+IR10: Īlām Province
+IR11: Hormozgān Province
+IR13: Kermānshāh Province
+IR15: Khūzestān Province
+IR16: Kordestān Province
+IR22: Būshehr Province
+IR23: Lorestān Province
+IR25: Semnān Province
+IR26: Tehrān Province
+IR28: Eşfahān Province
+IR29: Kermān Province
+IR32: Ardabīl Province
+IR33: Āz̄arbāyjān-e Sharqī Province
+IR34: Markaz Province
+IR35: Māzandarān Province
+IR36: Zanjān Province
+IR37: Golestān Province
+IR38: Qazvīn Province
+IR39: Qom Province
+IR40: Yazd Province
+IR41: Khorāsān-e Janūbī Province
+IR42: Khorāsān-e Razavī Province
+IR43: Khorāsān-e Shemālī Province
+Israel
+IS01: HaDarom District
+IS02: HaMerkaz District
+IS03: HaTzafon District
+IS04: Hefa District
+IS05: Tel Aviv District
+IS06: Yerushalayim District
+Italy
+IT01: Abruzzo Region
+IT02: Basilicata Region
+IT03: Calabria Region
+IT04: Campania Region
+IT05: Emilia-Romagna Region
+IT06: Friuli-Venezia Giulia Autonomous Region
+IT07: Lazio Region
+IT08: Liguria Region
+IT09: Lombardia Region
+IT10: Marche Region
+IT11: Molise Region
+IT12: Piemonte Region
+IT13: Puglia Region
+IT14: Sardegna Autonomous Region
+IT15: Sicilia Autonomous Region
+IT16: Toscana Region
+IT17: Trentino-Alto Adige/Südtirol Autonomous Region
+IT18: Umbria Region
+IT19: Valle d'Aosta Autonomous Region
+IT20: Veneto Region
+CÃ´te d'Ivoire
+IV74: Agnéby
+IV75: Bafing
+IV76: Bas-Sassandra
+IV77: Denguélé
+IV78: Dix-Huit Montagnes
+IV79: Fromager
+IV80: Haut-Sassandra
+IV81: Lacs
+IV82: Lagunes
+IV83: Marahoué
+IV84: Moyen-Cavally
+IV85: Moyen-Comoé
+IV86: N'zi-Comoé
+IV87: Savanes
+IV88: Sud-Bandama
+IV89: Sud-Comoé
+IV90: Vallée du Bandama
+IV91: Worodougou
+IV92: Zanzan
+Iraq
+IZ01: Al Anbār Governorate
+IZ02: Al Başrah Governorate
+IZ03: Al Muthanná Governorate
+IZ04: Al Qādisīyah Governorate
+IZ05: As Sulaymānīyah Governorate
+IZ06: Bābil Governorate
+IZ07: Baghdād Governorate
+IZ08: Dahūk Governorate
+IZ09: Dhī Qār Governorate
+IZ10: Diyālá Governorate
+IZ11: Arbīl Governorate
+IZ12: Karbalā' Governorate
+IZ13: At Ta'mīm Governorate
+IZ14: Maysān Governorate
+IZ15: Nīnawá Governorate
+IZ16: Wāsiţ Governorate
+IZ17: An Najaf Governorate
+IZ18: Şalāḩ ad Dīn Governorate
+Japan
+JA01: Aichi Prefecture
+JA02: Akita Prefecture
+JA03: Aomori Prefecture
+JA04: Chiba Prefecture
+JA05: Ehime Prefecture
+JA06: Fukui Prefecture
+JA07: Fukuoka Prefecture
+JA08: Fukushima Prefecture
+JA09: Gifu Prefecture
+JA10: Gunma Prefecture
+JA11: Hiroshima Prefecture
+JA12: Hokkaidō Prefecture
+JA13: Hyōgo Prefecture
+JA14: Ibaraki Prefecture
+JA15: Ishikawa Prefecture
+JA16: Iwate Prefecture
+JA17: Kagawa Prefecture
+JA18: Kagoshima Prefecture
+JA19: Kanagawa Prefecture
+JA20: Kōchi Prefecture
+JA21: Kumamoto Prefecture
+JA22: Kyōto Prefecture
+JA23: Mie Prefecture
+JA24: Miyagi Prefecture
+JA25: Miyazaki Prefecture
+JA26: Nagano Prefecture
+JA27: Nagasaki Prefecture
+JA28: Nara Prefecture
+JA29: Niigata Prefecture
+JA30: Ōita Prefecture
+JA31: Okayama Prefecture
+JA32: Ōsaka Prefecture
+JA33: Saga Prefecture
+JA34: Saitama Prefecture
+JA35: Shiga Prefecture
+JA36: Shimane Prefecture
+JA37: Shizuoka Prefecture
+JA38: Tochigi Prefecture
+JA39: Tokushima Prefecture
+JA40: Tōkyō Prefecture
+JA41: Tottori Prefecture
+JA42: Toyama Prefecture
+JA43: Wakayama Prefecture
+JA44: Yamagata Prefecture
+JA45: Yamaguchi Prefecture
+JA46: Yamanashi Prefecture
+JA47: Okinawa Prefecture
+Jamaica
+JM01: Clarendon Parish
+JM02: Hanover Parish
+JM04: Manchester Parish
+JM07: Portland Parish
+JM08: Saint Andrew Parish
+JM09: Saint Ann Parish
+JM10: Saint Catherine Parish
+JM11: Saint Elizabeth Parish
+JM12: Saint James Parish
+JM13: Saint Mary Parish
+JM14: Saint Thomas Parish
+JM15: Trelawny Parish
+JM16: Westmoreland Parish
+JM17: Kingston Parish
+Jordan
+JO02: Al Balqa' Governorate
+JO09: Al Karak Governorate
+JO12: Aţ Ţafīlah Governorate
+JO15: Al Mafraq Governorate
+JO16: `Ammān Governorate
+JO17: Az Zarqā' Governorate
+JO18: Irbid Governorate
+JO19: Ma`ān Governorate
+JO20: 'Ājlūn Governorate
+JO21: Al 'Aqabah Governorate
+JO22: Jarash Governorate
+JO23: Mādabā Governorate
+Kenya
+KE01: Central Province
+KE02: Coast Province
+KE03: Eastern Province
+KE05: Nairobi Area
+KE06: North Eastern Province
+KE07: Nyanza Province
+KE08: Rift Valley Province
+KE09: Western Province
+Kyrgyzstan
+KG01: Bishkek City
+KG02: Chüy Province
+KG03: Jalal-Abad Province
+KG04: Naryn Province
+KG06: Talas Province
+KG07: Ysyk-Köl Province
+KG08: Osh Province
+KG09: Batken Province
+North Korea
+KN01: Chagang Province
+KN03: Hamgyong-namdo Province
+KN06: Hwanghae-namdo Province
+KN07: Hwanghae-bukto
+KN08: Kaesŏng-si Municipality
+KN09: Kangwŏn-do Province
+KN11: P'yongan-bukto Province
+KN12: P'yŏngyang-si Municipality
+KN13: Yanggang-do Province
+KN14: Namp'o-si Municipality
+KN15: P'yongan-namdo Province
+KN17: Hamgyong-bukto Province
+KN18: Najin Sonbong-si Municipality
+Kiribati
+KR01: Gilbert Islands
+KR02: Line Islands
+KR03: Phoenix Islands
+South Korea
+KS01: Cheju Province
+KS03: Chŏlla-bukto Province
+KS05: Ch'ungch'ŏng buk-do Province
+KS06: Kangwŏn-do Province
+KS10: Pusan Metropolitan City
+KS11: Sŏul Special City
+KS12: Inch'ŏn Metropolitan City
+KS13: Kyŏnggi-do Province
+KS14: Kyŏngsang-bukto
+KS15: Taegu Metropolitan City
+KS16: Chŏlla-namdo
+KS17: Ch'ungch'ŏng-namdo Province
+KS18: Kwangju Metropolitan City
+KS19: Taejŏn Metropolitan City
+KS20: Kyŏngsang-namdo
+KS21: Ulsan Metropolitan City
+Kuwait
+KU02: Al `Āşimah Governorate
+KU04: Al Aḩmadī Governorate
+KU05: Al Jahrā' Governorate
+KU07: Al Farwānīyah Governorate
+KU08: Ḩawallī Governorate
+KU09: Mubārak al Kabīr Governorate
+Kazakhstan
+KZ01: Almaty Province
+KZ02: Almaty City
+KZ03: Akmola Province
+KZ04: Aktobe Province
+KZ05: Astana City
+KZ06: Atyrau Province
+KZ07: Batys Qazaqstan Province
+KZ08: Baykonyr City
+KZ09: Mangystau Province
+KZ10: Ongtüstik Qazaqstan Province
+KZ11: Pavlodar Province
+KZ12: Karagandy Province
+KZ13: Kostanay Province
+KZ14: Kyzylorda Province
+KZ15: Shyghys Qazaqstan Province
+KZ16: Soltustik Qazaqstan Province
+KZ17: Jambyl Province
+Laos
+LA01: Attapu Province
+LA02: Champasak Province
+LA03: Houaphan Province
+LA07: Oudômxai Province
+LA13: Xaignabouli Province
+LA14: Xiangkhoang Province
+LA15: Khammouan Province
+LA16: Louang Namtha Province
+LA17: Louangphrabang Province
+LA18: Phôngsali Province
+LA19: Salavan Province
+LA20: Savannakhét Province
+LA22: Bokèo Province
+LA23: Bolikhamxai Province
+LA24: Viangchan Municipality
+LA25: Xaisômboun Special Zone
+LA26: Xékong Province
+LA27: Vientiane Province
+Lebanon
+LE04: Beirut Governorate
+LE05: Mount Lebanon Governorate
+LE06: South Governorate
+LE07: Nabatieh Governorate
+LE08: Beqaa Governorate
+LE09: North Governorate
+LE10: Aakkâr Governorate
+LE11: Baalbek-Hermel Governorate
+Latvia
+LG01: Aizkraukle District
+LG02: Alūksne District
+LG03: Balvi District
+LG04: Bauskas District
+LG05: Cēsis District
+LG06: Daugavpils Municipality
+LG07: Daugavpils District
+LG08: Dobele District
+LG09: Gulbene District
+LG10: Jēkabpils District
+LG11: Jelgava Municipality
+LG12: Jelgava District
+LG13: Jūrmala Municipality
+LG14: Krāslava District
+LG15: Kuldīga District
+LG16: Liepāja Municipality
+LG17: Liepāja District
+LG18: Limbaži District
+LG19: Ludza District
+LG20: Madona District
+LG21: Ogre District
+LG22: Preiļi District
+LG23: Rēzekne Municipality
+LG24: Rēzekne District
+LG25: Riga Municipality
+LG26: Riga District
+LG27: Saldus District
+LG28: Talsi District
+LG29: Tukums District
+LG30: Valka District
+LG31: Valmiera District
+LG32: Ventspils Municipality
+LG33: Ventspils District
+Lithuania
+LH56: Alytus County
+LH57: Kaunas County
+LH58: Klaipėda County
+LH59: Marijampolė County
+LH60: Panevėžys County
+LH61: Šiauliai County
+LH62: Tauragė County
+LH63: Telšiai County
+LH64: Utena County
+LH65: Vilnius County
+Liberia
+LI01: Bong County
+LI09: Nimba County
+LI10: Sinoe County
+LI11: Grand Bassa County
+LI12: Grand Cape Mount County
+LI13: Maryland County
+LI14: Montserrado County
+LI15: Bomi County
+LI16: Grand Kru County
+LI17: Margibi County
+LI18: Rivercess County
+LI19: Grand Gedeh County
+LI20: Lofa County
+LI21: Gbarpolu County
+LI22: River Gee County
+Slovakia
+LO01: Banská Bystrica Region
+LO02: Bratislava Region
+LO03: Košice Region
+LO04: Nitra Region
+LO05: Prešov Region
+LO06: Trenčín Region
+LO07: Trnava Region
+LO08: Žilina Region
+Liechtenstein
+LS01: Balzers Commune
+LS02: Eschen Commune
+LS03: Gamprin Commune
+LS04: Mauren Commune
+LS05: Planken Commune
+LS06: Ruggell Commune
+LS07: Schaan Commune
+LS08: Schellenberg Commune
+LS09: Triesen Commune
+LS10: Triesenberg Commune
+LS11: Vaduz Commune
+Lesotho
+LT10: Berea District
+LT11: Butha-Buthe District
+LT12: Leribe District
+LT13: Mafeteng District
+LT14: Maseru District
+LT15: Mohale's Hoek District
+LT16: Mokhotlong District
+LT17: Qacha's Nek District
+LT18: Quthing District
+LT19: Thaba-Tseka District
+Luxembourg
+LU01: Diekirch District
+LU02: Grevenmacher District
+LU03: Luxembourg District
+Libya
+LY03: Al `Azīzīyah District
+LY05: Al Jufrah District
+LY08: Al Kufrah District
+LY13: Ash Shāţi' District
+LY30: Murzuq District
+LY34: Sabhā District
+LY41: Tarhūnah District
+LY42: Ţubruq District
+LY45: Zlīţan District
+LY47: Ajdābiyā District
+LY48: Al Fātiḩ District
+LY49: Al Jabal al Akhḑar District
+LY50: Al Khums District
+LY51: An Nuqāţ al Khams
+LY52: Awbār District
+LY53: Az Zāwiyah District
+LY54: Benghazi District
+LY55: Darnah District
+LY56: Ghadāmis District
+LY57: Gharyān District
+LY58: Mişrātah District
+LY59: Sawfajjīn District
+LY60: Sirte District
+LY61: Ţarābulus District
+LY62: Yafran District
+Madagascar
+MA01: Antsiranana Province
+MA02: Fianarantsoa Province
+MA03: Mahajanga Province
+MA04: Toamasina Province
+MA05: Antananarivo Province
+MA06: Toliara Province
+Macau
+MC01: Ilhas
+MC02: Macau
+Moldova
+MD51: Găgăuzia Autonomous Territorial Unit
+MD57: Chişinău
+MD58: Stînga Nistrului
+MD59: Anenii Noi District
+MD60: Bălţi
+MD61: Basarabeasca District
+MD62: Bender Municipality
+MD63: Briceni District
+MD64: Cahul District
+MD65: Cantemir District
+MD66: Călăraşi District
+MD67: Căuşeni District
+MD68: Cimişlia District
+MD69: Criuleni District
+MD70: Donduşeni District
+MD71: Drochia District
+MD72: Dubăsari District
+MD73: Edineţ District
+MD74: Făleşti District
+MD75: Floreşti District
+MD76: Glodeni District
+MD77: Hînceşti District
+MD78: Ialoveni District
+MD79: Leova District
+MD80: Nisporeni District
+MD81: Ocniţa District
+MD82: Orhei District
+MD83: Rezina District
+MD84: Rîşcani District
+MD85: Sîngerei District
+MD86: Şoldăneşti District
+MD87: Soroca District
+MD88: Ştefan Vodă District
+MD89: Străşeni District
+MD90: Taraclia District
+MD91: Teleneşti District
+MD92: Ungheni District
+Mongolia
+MG01: Arkhangai Province
+MG02: Bayankhongor Province
+MG03: Bayan-Ölgii Province
+MG06: Dornod Province
+MG07: Dornogovi Province
+MG08: Dundgovi Province
+MG09: Zavkhan Province
+MG10: Govi-Altai Province
+MG11: Khentii Province
+MG12: Khovd Province
+MG13: Khövsgöl Province
+MG14: Ömnögovi Province
+MG15: Övörkhangai Province
+MG16: Selenge Province
+MG17: Sükhbaatar Province
+MG18: Töv Province
+MG19: Uvs Province
+MG20: Ulan Bator
+MG21: Bulgan Province
+MG23: Darkhan-Uul Province
+MG24: Govisümber Province
+MG25: Orkhon Province
+Montserrat
+MH01: Saint Anthony Parish
+MH02: Saint Georges Parish
+MH03: Saint Peter Parish
+Malawi
+MI02: Chikwawa District
+MI03: Chiradzulu District
+MI04: Chitipa District
+MI05: Thyolo District
+MI06: Dedza District
+MI07: Dowa District
+MI08: Karonga District
+MI09: Kasungu District
+MI11: Lilongwe District
+MI12: Mangochi District
+MI13: Mchinji District
+MI15: Mzimba District
+MI16: Ntcheu District
+MI17: Nkhata Bay District
+MI18: Nkhotakota District
+MI19: Nsanje District
+MI20: Ntchisi District
+MI21: Rumphi District
+MI22: Salima District
+MI23: Zomba District
+MI24: Blantyre District
+MI25: Mwanza District
+MI26: Balaka District
+MI27: Likoma District
+MI28: Machinga District
+MI29: Mulanje District
+MI30: Phalombe District
+Macedonia
+MK01: Aračinovo Opština, Republic of Macedonia
+MK02: Bač Opština, Republic of Macedonia
+MK03: Belčišta Opština, Republic of Macedonia
+MK04: Berovo Opština, Republic of Macedonia
+MK05: Bistrica Opština, Republic of Macedonia
+MK06: Bitola Opština, Republic of Macedonia
+MK07: Blatec Opština, Republic of Macedonia
+MK08: Bogdanci Opština, Republic of Macedonia
+MK09: Bogomila Opština, Republic of Macedonia
+MK10: Bogovinje Opština, Republic of Macedonia
+MK11: Bosilovo Opština, Republic of Macedonia
+MK12: Brvenica Opština, Republic of Macedonia
+MK14: Capari Opština, Republic of Macedonia
+MK15: Čaška Opština, Republic of Macedonia
+MK16: Čegrane Opština, Republic of Macedonia
+MK19: Češinovo Opština, Republic of Macedonia
+MK20: Čučer-Sandevo Opština, Republic of Macedonia
+MK21: Debar Opština, Republic of Macedonia
+MK22: Delčevo Opština, Republic of Macedonia
+MK23: Delogoždi Opština, Republic of Macedonia
+MK24: Demir Hisar Opština, Republic of Macedonia
+MK25: Demir Kapija Opština, Republic of Macedonia
+MK26: Dobruševo Opština, Republic of Macedonia
+MK27: Dolna Banjica Opština, Republic of Macedonia
+MK28: Dolneni Opština, Republic of Macedonia
+MK30: Drugovo Opština, Republic of Macedonia
+MK31: Džepčište Opština, Republic of Macedonia
+MK33: Gevgelija Opština, Republic of Macedonia
+MK34: Gostivar Opština, Republic of Macedonia
+MK35: Gradsko Opština, Republic of Macedonia
+MK36: Ilinden Opština, Republic of Macedonia
+MK37: Izvor Opština, Republic of Macedonia
+MK38: Jegunovce Opština, Republic of Macedonia
+MK39: Kamenjane Opština, Republic of Macedonia
+MK40: Karbinci Opština, Republic of Macedonia
+MK41: Karpoš Opština, Republic of Macedonia
+MK42: Kavadarci Opština, Republic of Macedonia
+MK43: Kičevo Opština, Republic of Macedonia
+MK44: Kisela Voda Opština, Republic of Macedonia
+MK45: Klečevce Opština, Republic of Macedonia
+MK46: Kočani Opština, Republic of Macedonia
+MK47: Konče Opština, Republic of Macedonia
+MK48: Kondovo Opština, Republic of Macedonia
+MK49: Konopište Opština, Republic of Macedonia
+MK50: Kosel Opština, Republic of Macedonia
+MK51: Kratovo Opština, Republic of Macedonia
+MK52: Kriva Palanka Opština, Republic of Macedonia
+MK53: Krivogaštani Opština, Republic of Macedonia
+MK54: Kruševo Opština, Republic of Macedonia
+MK55: Kukliš Opština, Republic of Macedonia
+MK56: Kukurečani Opština, Republic of Macedonia
+MK57: Kumanovo Opština, Republic of Macedonia
+MK58: Labuništa Opština, Republic of Macedonia
+MK59: Lipkovo Opština, Republic of Macedonia
+MK60: Lozovo Opština, Republic of Macedonia
+MK61: Lukovo Opština, Republic of Macedonia
+MK62: Makedonska Kamenica Opština, Republic of Macedonia
+MK63: Makedonski Brod Opština, Republic of Macedonia
+MK64: Mavrovi Anovi Opština, Republic of Macedonia
+MK65: Mešeišta Opština, Republic of Macedonia
+MK66: Miravci Opština, Republic of Macedonia
+MK67: Mogila Opština, Republic of Macedonia
+MK68: Murtino Opština, Republic of Macedonia
+MK69: Negotino Opština, Republic of Macedonia
+MK70: Negotino-Pološko Opština, Republic of Macedonia
+MK71: Novaci Opština, Republic of Macedonia
+MK72: Novo Selo Opština, Republic of Macedonia
+MK73: Obleševo Opština, Republic of Macedonia
+MK74: Ohrid Opština, Republic of Macedonia
+MK75: Orašac Opština, Republic of Macedonia
+MK76: Orizari Opština, Republic of Macedonia
+MK77: Oslomej Opština, Republic of Macedonia
+MK78: Pehčevo Opština, Republic of Macedonia
+MK79: Petrovec Opština, Republic of Macedonia
+MK80: Plasnica Opština, Republic of Macedonia
+MK81: Podareš Opština, Republic of Macedonia
+MK82: Prilep Opština, Republic of Macedonia
+MK83: Probištip Opština, Republic of Macedonia
+MK84: Radoviš Opština, Republic of Macedonia
+MK85: Rankovce Opština, Republic of Macedonia
+MK86: Resen Opština, Republic of Macedonia
+MK87: Rosoman Opština, Republic of Macedonia
+MK88: Rostuša Opština, Republic of Macedonia
+MK89: Samokov Opština, Republic of Macedonia
+MK90: Saraj Opština, Republic of Macedonia
+MK91: Šipkovica Opština, Republic of Macedonia
+MK92: Sopište Opština, Republic of Macedonia
+MK93: Sopotnica Opština, Republic of Macedonia
+MK94: Srbinovo Opština, Republic of Macedonia
+MK95: Staravina Opština, Republic of Macedonia
+MK96: Star Dojran Opština, Republic of Macedonia
+MK97: Staro Nagoričane Opština, Republic of Macedonia
+MK98: Štip Opština, Republic of Macedonia
+MK99: Struga Opština, Republic of Macedonia
+MKA1: Strumica Opština, Republic of Macedonia
+MKA2: Studeničani Opština, Republic of Macedonia
+MKA3: Šuto Orizari Opština, Republic of Macedonia
+MKA4: Sveti Nikole Opština, Republic of Macedonia
+MKA5: Tearce Opština, Republic of Macedonia
+MKA6: Tetovo Opština, Republic of Macedonia
+MKA7: Topolčani Opština, Republic of Macedonia
+MKA8: Valandovo Opština, Republic of Macedonia
+MKA9: Vasilevo Opština, Republic of Macedonia
+MKB1: Veles Opština, Republic of Macedonia
+MKB2: Velešta Opština, Republic of Macedonia
+MKB3: Vevčani Opština, Republic of Macedonia
+MKB4: Vinica Opština, Republic of Macedonia
+MKB5: Vitolište Opština, Republic of Macedonia
+MKB6: Vraneštica Opština, Republic of Macedonia
+MKB7: Vrapčište Opština, Republic of Macedonia
+MKB8: Vratnica Opština, Republic of Macedonia
+MKB9: Vrutok Opština, Republic of Macedonia
+MKC1: Zajas Opština, Republic of Macedonia
+MKC2: Zelenikovo Opština, Republic of Macedonia
+MKC3: Želino Opština, Republic of Macedonia
+MKC4: Žitoše Opština, Republic of Macedonia
+MKC5: Zletovo Opština, Republic of Macedonia
+MKC6: Zrnovci Opština, Republic of Macedonia
+Mali
+ML01: Bamako
+ML03: Kayes Region
+ML04: Mopti Region
+ML05: Ségou Region
+ML06: Sikasso Region
+ML07: Koulikoro Region
+ML08: Tombouctou Region
+ML09: Gao Region
+ML10: Kidal Region
+Morocco
+MO45: Grand Casablanca
+MO46: Fès-Boulemane
+MO47: Marrakesh-Tensift-El Haouz
+MO48: Meknès-Tafilalet
+MO49: Rabat-Salé-Zemmour-Zaer
+MO50: Chaouia-Ouardigha
+MO51: Doukkala-Abda
+MO52: Gharb-Chrarda-Béni Hssen
+MO53: Guelmim-Es Semara
+MO54: Oriental
+MO55: Souss-Massa-Drâa
+MO56: Tadla-Azilal
+MO57: Tangier-Tetouan
+MO58: Taza-Al Hoceima-Taounate
+MO59: Laâyoune-Boujdour-Sakia El Hamra
+Mauritius
+MP12: Black River District
+MP13: Flacq
+MP14: Grand Port
+MP15: Moka District
+MP16: Pamplemousses
+MP17: Plaines Wilhems
+MP18: Port Louis District
+MP19: Rivière du Rempart District
+MP20: Savanne
+MP21: Agaléga Islands
+MP22: Cargados Carajos
+MP23: Rodrigues Dependency
+Mauritania
+MR01: Hodh Ech Chargui Première Region
+MR02: Hodh El Gharbi Deuxième Region
+MR03: Assaba Troisième Region
+MR04: Gorgol Quatrième Region
+MR05: Brakna Cinquième Region
+MR06: Trarza Sixième Region
+MR07: Adrar Septième Region
+MR08: Dakhlet Nouadhibou Huitième Region
+MR09: Tagant Neuvième Region
+MR10: Guidimaka Dixième Region
+MR11: Tiris Zemmour Onzième Region
+MR12: Inchiri Douzième Region
+Oman
+MU01: Ad Dakhiliyah Region
+MU02: Al Batinah Region
+MU03: Al Wusta Region
+MU04: Ash Sharqiyah Region
+MU06: Muscat Governorate
+MU07: Musandam Governorate
+MU08: Dhofar Governorate
+MU09: Ad Dhahirah Region
+MU10: Al Buraimi Governorate
+Maldives
+MV01: Seenu Atoll
+MV05: Laamu Atoll
+MV30: Alifu Atoll
+MV31: Baa Atoll
+MV32: Dhaalu Atoll
+MV33: Faafu Atoll
+MV34: Gaafu Alifu Atoll
+MV35: Gaafu Dhaalu Atoll
+MV36: Haa Alifu Atoll
+MV37: Haa Dhaalu Atoll
+MV38: Kaafu Atoll
+MV39: Lhaviyani Atoll
+MV40: Maale
+MV41: Meemu Atoll
+MV42: Gnaviyani Atoll
+MV43: Noonu Atoll
+MV44: Raa Atoll
+MV45: Shaviyani Atoll
+MV46: Thaa Atoll
+MV47: Vaavu Atoll
+Mexico
+MX01: Aguascalientes
+MX02: Baja California
+MX03: Baja California Sur
+MX04: Campeche
+MX05: Chiapas
+MX06: Chihuahua State
+MX07: Coahuila
+MX08: Colima
+MX09: Distrito Federal Federal District
+MX10: Durango
+MX11: Guanajuato
+MX12: Guerrero
+MX13: Hidalgo State
+MX14: Jalisco
+MX15: México State
+MX16: Michoacán
+MX17: Morelos
+MX18: Nayarit
+MX19: Nuevo León
+MX20: Oaxaca
+MX21: Puebla
+MX22: Querétaro
+MX23: Quintana Roo
+MX24: San Luis Potosí
+MX25: Sinaloa
+MX26: Sonora
+MX27: Tabasco
+MX28: Tamaulipas
+MX29: Tlaxcala
+MX30: Veracruz
+MX31: Yucatán
+MX32: Zacatecas
+Malaysia
+MY01: Johor
+MY02: Kedah
+MY03: Kelantan
+MY04: Melaka State
+MY05: Negeri Sembilan
+MY06: Pahang
+MY07: Perak
+MY08: Perlis
+MY09: Pulau Pinang State
+MY11: Sarawak
+MY12: Selangor
+MY13: Terengganu
+MY14: Kuala Lumpur
+MY15: Labuan Federal Territory
+MY16: Sabah
+MY17: Putrajaya
+Mozambique
+MZ01: Cabo Delgado Province
+MZ02: Gaza Province
+MZ03: Inhambane Province
+MZ04: Maputo Province
+MZ05: Sofala Province
+MZ06: Nampula Province
+MZ07: Niassa Province
+MZ08: Tete Province
+MZ09: Zambézia Province
+MZ10: Manica Province
+MZ11: Capital City of Maputo
+Niger
+NG01: Agadez Department
+NG02: Diffa Department
+NG03: Dosso Department
+NG04: Maradi Department
+NG06: Tahoua Department
+NG07: Zinder Department
+NG08: Niamey
+NG09: Tillabéri Department
+Vanuatu
+NH07: Torba Province
+NH13: Sanma Province
+NH15: Tafea Province
+NH16: Malampa Province
+NH17: Penama Province
+NH18: Shefa Province
+Nigeria
+NI05: Lagos State
+NI11: Federal Capital Territory
+NI16: Ogun State
+NI21: Akwa Ibom State
+NI22: Cross River State
+NI23: Kaduna State
+NI24: Katsina State
+NI25: Anambra State
+NI26: Benue State
+NI27: Borno State
+NI28: Imo State
+NI29: Kano State
+NI30: Kwara State
+NI31: Niger State
+NI32: Oyo State
+NI35: Adamawa State
+NI36: Delta State
+NI37: Edo State
+NI39: Jigawa State
+NI40: Kebbi State
+NI41: Kogi State
+NI42: Osun State
+NI43: Taraba State
+NI44: Yobe State
+NI45: Abia State
+NI46: Bauchi State
+NI47: Enugu State
+NI48: Ondo State
+NI49: Plateau State
+NI50: Rivers State
+NI51: Sokoto State
+NI52: Bayelsa State
+NI53: Ebonyi State
+NI54: Ekiti State
+NI55: Gombe State
+NI56: Nasarawa State
+NI57: Zamfara State
+Netherlands
+NL01: Drenthe
+NL02: Friesland
+NL03: Gelderland
+NL04: Groningen Province
+NL05: Limburg Province
+NL06: Noord-Brabant Province
+NL07: Noord-Holland Province
+NL09: Utrecht Province
+NL10: Zeeland
+NL11: Zuid-Holland Province
+NL15: Overijssel
+NL16: Flevoland
+Norway
+NO01: Akershus
+NO02: Aust-Agder
+NO04: Buskerud
+NO05: Finnmark
+NO06: Hedmark
+NO07: Hordaland
+NO08: Møre og Romsdal
+NO09: Nordland
+NO10: Nord-Trøndelag
+NO11: Oppland
+NO12: Oslo
+NO13: Østfold
+NO14: Rogaland
+NO15: Sogn og Fjordane
+NO16: Sør-Trøndelag
+NO17: Telemark
+NO18: Troms
+NO19: Vest-Agder
+NO20: Vestfold
+Nepal
+NP01: Bagmati Zone
+NP02: Bheri Zone
+NP03: Dhawalagiri Zone
+NP04: Gandaki Zone
+NP05: Janakpur Zone
+NP06: Karnali Zone
+NP07: Kosi Zone
+NP08: Lumbini Zone
+NP09: Mahakali Zone
+NP10: Mechi Zone
+NP11: Narayani Zone
+NP12: Rapti Zone
+NP13: Sagarmatha Zone
+NP14: Seti Zone
+Nauru
+NR01: Aiwo District
+NR02: Anabar District
+NR03: Anetan
+NR04: Anibare District
+NR05: Baiti District
+NR06: Boe District
+NR07: Buada District
+NR08: Denigomodu District
+NR09: Ewa District
+NR10: Ijuw District
+NR11: Meneng District
+NR12: Nibok District
+NR13: Uaboe District
+NR14: Yaren District
+Suriname
+NS10: Brokopondo District
+NS11: Commewijne District
+NS12: Coronie District
+NS13: Marowijne District
+NS14: Nickerie District
+NS15: Para District
+NS16: Paramaribo District
+NS17: Saramacca District
+NS18: Sipaliwini District
+NS19: Wanica District
+Nicaragua
+NU01: Boaco Department
+NU02: Carazo Department
+NU03: Chinandega Department
+NU04: Chontales Department
+NU05: Estelí Department
+NU06: Granada Department
+NU07: Jinotega Department
+NU08: León Department
+NU09: Madriz Department
+NU10: Managua Department
+NU11: Masaya Department
+NU12: Matagalpa Department
+NU13: Nueva Segovia Department
+NU14: Río San Juan Department
+NU15: Rivas Department
+NU17: Región Autónoma del Atlántico Norte
+NU18: Región Autónoma del Atlántico Sur
+New Zealand
+NZ10: Chatham Islands
+NZE7: Auckland Region
+NZE8: Bay of Plenty Region
+NZE9: Canterbury Region
+NZF1: Gisborne Region
+NZF2: Hawke's Bay Region
+NZF3: Manawatu-Wanganui Region
+NZF4: Marlborough Region
+NZF5: Nelson Region
+NZF6: Northland Region
+NZF7: Otago Region
+NZF8: Southland Region
+NZF9: Taranaki Region
+NZG1: Waikato Region
+NZG2: Wellington Region
+NZG3: West Coast Region
+Paraguay
+PA01: Alto Paraná Department
+PA02: Amambay Department
+PA04: Caaguazú Department
+PA05: Caazapá Department
+PA06: Central Department
+PA07: Concepción Department
+PA08: Cordillera Department
+PA10: Guairá Department
+PA11: Itapúa Department
+PA12: Misiones Department
+PA13: Ñeembucú Department
+PA15: Paraguarí Department
+PA16: Presidente Hayes Department
+PA17: San Pedro Department
+PA19: Canindeyú Department
+PA22: Asunción Department
+PA23: Alto Paraguay Department
+PA24: Boquerón Department
+Peru
+PE01: Amazonas Region
+PE02: Ancash Region
+PE03: Apurímac Region
+PE04: Arequipa Region
+PE05: Ayacucho Region
+PE06: Cajamarca Region
+PE07: Callao Region
+PE08: Cusco Region
+PE09: Huancavelica Region
+PE10: Huánuco Region
+PE11: Ica Region
+PE12: Junín Region
+PE13: La Libertad Region
+PE14: Lambayeque Region
+PE15: Lima Region
+PE16: Loreto Region
+PE17: Madre de Dios Region
+PE18: Moquegua Region
+PE19: Pasco Region
+PE20: Piura Region
+PE21: Puno Region
+PE22: San Martín Region
+PE23: Tacna Region
+PE24: Tumbes Region
+PE25: Ucayali Region
+Pakistan
+PK01: Federally Administered Tribal Areas Territory
+PK02: Balochistān Province
+PK03: North-West Frontier Province
+PK04: Punjab Province
+PK05: Sindh Province
+PK06: Azad Jammu and Kashmir (disputed territory)
+PK07: Federally Administered Northern Areas (disputed territory)
+PK08: Islāmābād
+Poland
+PL72: Dolnośląskie Province
+PL73: Kujawsko-Pomorskie Province
+PL74: Łódzkie Province
+PL75: Lubelskie Province
+PL76: Lubuskie Province
+PL77: Małopolskie Province
+PL78: Mazowieckie Province
+PL79: Opolskie Province
+PL80: Podkarpackie Province
+PL81: Podlaskie Province
+PL82: Pomorskie Province
+PL83: Śląskie Province
+PL84: Świętokrzyskie Province
+PL85: Warmińsko-Mazurskie Province
+PL86: Wielkopolskie Province
+PL87: Zachodniopomorskie Province
+Panama
+PM01: Bocas del Toro Province
+PM02: Chiriquí Province
+PM03: Coclé Province
+PM04: Colón Province
+PM05: Darién Province
+PM06: Herrera Province
+PM07: Los Santos Province
+PM08: Panamá Province
+PM09: San Blas Territory
+PM10: Veraguas Province
+Portugal
+PO02: Aveiro District
+PO03: Beja District
+PO04: Braga District
+PO05: Bragança District
+PO06: Castelo Branco District
+PO07: Coimbra District
+PO08: Évora District
+PO09: Faro District
+PO10: Madeira Autonomous Region
+PO11: Guarda District
+PO13: Leiria District
+PO14: Lisboa District
+PO16: Portalegre District
+PO17: Porto District
+PO18: Santarém District
+PO19: Setúbal District
+PO20: Viana do Castelo District
+PO21: Vila Real District
+PO22: Viseu District
+PO23: Açores Autonomous Region
+Papua New Guinea
+PP01: Central Province
+PP02: Gulf Province
+PP03: Milne Bay Province
+PP04: Northern Province
+PP05: Southern Highlands Province
+PP06: Western Province
+PP07: Bougainville Province
+PP08: Chimbu Province
+PP09: Eastern Highlands Province
+PP10: East New Britain Province
+PP11: East Sepik Province
+PP12: Madang Province
+PP13: Manus Province
+PP14: Morobe Province
+PP15: New Ireland Province
+PP16: Western Highlands Province
+PP17: West New Britain Province
+PP18: Sandaun Province
+PP19: Enga Province
+PP20: National Capital Province
+Palau
+PS01: Aimelik
+PS02: Airai
+PS03: Angaur
+PS04: Hatohobei
+PS05: Kayangel
+PS06: Koror
+PS07: Melekeok
+PS08: Ngaraard
+PS09: Ngarchelong
+PS10: Ngardmau
+PS11: Ngatpang
+PS12: Ngchesar
+PS13: Ngeremlengui
+PS14: Ngiwal
+PS15: Peleliu
+PS16: Sonsorol
+Guinea-Bissau
+PU01: Bafatá Region
+PU02: Quinara Region
+PU04: Oio Region
+PU05: Bolama Region
+PU06: Cacheu Region
+PU07: Tombali Region
+PU10: Gabú Region
+PU11: Bissau Region
+PU12: Biombo Region
+Qatar
+QA01: Ad Dawḩah Municipality
+QA02: Al Ghuwariyah Municipality
+QA03: Al Jumaylīyah Municipality
+QA04: Al Khawr Municipality
+QA06: Ar Rayyan Municipality
+QA08: Madīnat ash Shamāl Municipality
+QA09: Umm Şalāl Municipality
+QA10: Al Wakrah Municipality
+QA11: Jariyan al Batnah Municipality
+QA12: Mesaieed Municipality
+Romania
+RO01: Alba County
+RO02: Arad County
+RO03: Argeş County
+RO04: Bacău County
+RO05: Bihor County
+RO06: Bistriţa-Năsăud County
+RO07: Botoşani County
+RO08: Brăila County
+RO09: Braşov County
+RO10: Bucureşti Municipality
+RO11: Buzău County
+RO12: Caraş-Severin County
+RO13: Cluj County
+RO14: Constanţa County
+RO15: Covasna County
+RO16: Dâmboviţa County
+RO17: Dolj County
+RO18: Galaţi County
+RO19: Gorj County
+RO20: Harghita County
+RO21: Hunedoara County
+RO22: Ialomiţa County
+RO23: Iaşi County
+RO25: Maramureş County
+RO26: Mehedinţi County
+RO27: Mureş County
+RO28: Neamţ County
+RO29: Olt County
+RO30: Prahova County
+RO31: Sălaj County
+RO32: Satu Mare County
+RO33: Sibiu County
+RO34: Suceava County
+RO35: Teleorman County
+RO36: Timiş County
+RO37: Tulcea County
+RO38: Vaslui County
+RO39: Vâlcea County
+RO40: Vrancea County
+RO41: Călăraşi County
+RO42: Giurgiu County
+RO43: Ilfov County
+Philippines
+RP01: Abra Province
+RP02: Agusan del Norte Province
+RP03: Agusan del Sur Province
+RP04: Aklan Province
+RP05: Albay Province
+RP06: Antique Province
+RP07: Bataan Province
+RP08: Batanes Province
+RP09: Batangas Province
+RP10: Benguet Province
+RP11: Bohol Province
+RP12: Bukidnon Province
+RP13: Bulacan Province
+RP14: Cagayan Province
+RP15: Camarines Norte Province
+RP16: Camarines Sur Province
+RP17: Camiguin Province
+RP18: Capiz Province
+RP19: Catanduanes Province
+RP20: Cavite Province
+RP21: Cebu Province
+RP22: Basilan Province
+RP23: Eastern Samar Province
+RP24: Davao del Norte Province
+RP25: Davao del Sur Province
+RP26: Davao Oriental Province
+RP27: Ifugao Province
+RP28: Ilocos Norte Province
+RP29: Ilocos Sur Province
+RP30: Iloilo Province
+RP31: Isabela Province
+RP32: Kalinga-Apayao
+RP33: Laguna Province
+RP34: Lanao del Norte Province
+RP35: Lanao del Sur Province
+RP36: La Union Province
+RP37: Leyte Province
+RP38: Marinduque Province
+RP39: Masbate Province
+RP40: Mindoro Occidental Province
+RP41: Mindoro Oriental Province
+RP42: Misamis Occidental Province
+RP43: Misamis Oriental Province
+RP44: Mountain Province
+RP45: Negros Occidental Province
+RP46: Negros Oriental Province
+RP47: Nueva Ecija Province
+RP48: Nueva Vizcaya Province
+RP49: Palawan Province
+RP50: Pampanga Province
+RP51: Pangasinan Province
+RP53: Rizal Province
+RP54: Romblon Province
+RP55: (Western) Samar Province
+RP56: Maguindanao Province
+RP57: (North) Cotabato Province
+RP58: Sorsogon Province
+RP59: Southern Leyte Province
+RP60: Sulu Province
+RP61: Surigao del Norte Province
+RP62: Surigao del Sur Province
+RP63: Tarlac Province
+RP64: Zambales Province
+RP65: Zamboanga del Norte Province
+RP66: Zamboanga del Sur Province
+RP67: Northern Samar Province
+RP68: Quirino Province
+RP69: Siquijor Province
+RP70: South Cotabato Province
+RP71: Sultan Kudarat Province
+RP72: Tawi-Tawi Province
+RPA1: Angeles Chartered City
+RPA2: Bacolod Chartered City
+RPA3: Bago Chartered City
+RPA4: Baguio Chartered City
+RPA5: Bais Chartered City
+RPA6: Basilan Chartered City
+RPA7: Batangas Province
+RPA8: Butuan Chartered City
+RPA9: Cabanatuan Chartered City
+RPB1: Cadiz Chartered City
+RPB2: Cagayan de Oro Chartered City
+RPB3: Calbayog Chartered City
+RPB4: Caloocan Chartered City
+RPB5: Canlaon Chartered City
+RPB6: Cavite Chartered City
+RPB7: Cebu Chartered City
+RPB8: Cotabato Chartered City
+RPB9: Dagupan Chartered City
+RPC1: Danao Chartered City
+RPC2: Dapitan Chartered City
+RPC3: Davao Chartered City
+RPC4: Dipolog Chartered City
+RPC5: Dumaguete Chartered City
+RPC6: General Santos Chartered City
+RPC7: Gingoog Chartered City
+RPC8: Iligan Chartered City
+RPC9: Iloilo Chartered City
+RPD1: Iriga Chartered City
+RPD2: La Carlota Chartered City
+RPD3: Laoag Chartered City
+RPD4: Lapu-Lapu Chartered City
+RPD5: Legaspi Chartered City
+RPD6: Lipa Chartered City
+RPD7: Lucena Chartered City
+RPD8: Mandaue Chartered City
+RPD9: Manila Chartered City
+RPE1: Marawi Chartered City
+RPE2: Naga Chartered City
+RPE3: Olongapo Chartered City
+RPE4: Ormoc Chartered City
+RPE5: Oroquieta Chartered City
+RPE6: Ozamis Chartered City
+RPE7: Pagadian Chartered City
+RPE8: Palayan Chartered City
+RPE9: Pasay Chartered City
+RPF1: Puerto Princesa Chartered City
+RPF2: Quezon Chartered City
+RPF3: Roxas Chartered City
+RPF4: San Carlos City, Negros Occidental, Chartered City
+RPF5: San Carlos City, Pangasinan, Chartered City
+RPF6: San Jose Chartered City
+RPF7: San Pablo Chartered City
+RPF8: Silay Chartered City
+RPF9: Surigao Chartered City
+RPG1: Tacloban Chartered City
+RPG2: Tagaytay Chartered City
+RPG3: Tagbilaran Chartered City
+RPG4: Tangub Chartered City
+RPG5: Toledo Chartered City
+RPG6: Trece Martires Chartered City
+RPG7: Zamboanga Chartered City
+RPG8: Aurora Province
+RPH2: Quezon Province
+RPH3: Negros Occidental Province
+Russia
+RS01: Adygeya Republic
+RS02: Aginskiy Buryatskiy Avtonomnyy Okrug
+RS03: Altay Republic
+RS04: Altayskiy Kray
+RS05: Amurskaya Oblast'
+RS06: Arkhangel'skaya Oblast'
+RS07: Astrakhanskaya Oblast'
+RS08: Bashkortostan Republic
+RS09: Belgorodskaya Oblast'
+RS10: Bryanskaya Oblast'
+RS11: Buryatiya Republic
+RS12: Chechnya Republic
+RS13: Chelyabinskaya Oblast'
+RS14: Chitinskaya Oblast'
+RS15: Chukotskiy Avtonomnyy Okrug
+RS16: Chuvashiya Republic
+RS17: Dagestan Republic
+RS19: Ingushetiya Republic
+RS20: Irkutskaya Oblast'
+RS21: Ivanovskaya Oblast'
+RS22: Kabardino-Balkariya Republic
+RS23: Kaliningradskaya Oblast'
+RS24: Kalmykiya Republic
+RS25: Kaluzhskaya Oblast'
+RS27: Karachayevo-Cherkesiya Republic
+RS28: Kareliya Republic
+RS29: Kemerovskaya Oblast'
+RS30: Khabarovskiy Kray
+RS31: Khakasiya Republic
+RS32: Khanty-Mansiyskiy Avtonomnyy Okrug
+RS33: Kirovskaya Oblast'
+RS34: Komi Republic
+RS37: Kostromskaya Oblast'
+RS38: Krasnodarskiy Kray
+RS40: Kurganskaya Oblast'
+RS41: Kurskaya Oblast'
+RS42: Leningradskaya Oblast'
+RS43: Lipetskaya Oblast'
+RS44: Magadanskaya Oblast'
+RS45: Mariy-El Republic
+RS46: Mordoviya Republic
+RS47: Moskovskaya Oblast'
+RS48: Moskva Federal City
+RS49: Murmanskaya Oblast'
+RS50: Nenetskiy Avtonomnyy Okrug
+RS51: Nizhegorodskaya Oblast'
+RS52: Novgorodskaya Oblast'
+RS53: Novosibirskaya Oblast'
+RS54: Omskaya Oblast'
+RS55: Orenburgskaya Oblast'
+RS56: Orlovskaya Oblast'
+RS57: Penzenskaya Oblast'
+RS59: Primorskiy Kray
+RS60: Pskovskaya Oblast'
+RS61: Rostovskaya Oblast'
+RS62: Ryazanskaya Oblast'
+RS63: Sakha (Yakutiya) Republic
+RS64: Sakhalinskaya Oblast'
+RS65: Samarskaya Oblast'
+RS66: Sankt-Peterburg Federal City
+RS67: Saratovskaya Oblast'
+RS68: Severnaya Osetiya-Alaniya Respublika
+RS69: Smolenskaya Oblast'
+RS70: Stavropol'skiy Kray
+RS71: Sverdlovskaya Oblast'
+RS72: Tambovskaya Oblast'
+RS73: Tatarstan Republic
+RS75: Tomskaya Oblast'
+RS76: Tul'skaya Oblast'
+RS77: Tverskaya Oblast'
+RS78: Tyumenskaya Oblast'
+RS79: Tyva Republic
+RS80: Udmurtiya Republic
+RS81: Ul'yanovskaya Oblast'
+RS82: Ust'-Ordynskiy Buryatskiy Avtonomnyy Okrug
+RS83: Vladimirskaya Oblast'
+RS84: Volgogradskaya Oblast'
+RS85: Vologodskaya Oblast'
+RS86: Voronezhskaya Oblast'
+RS87: Yamalo-Nenetskiy Avtonomnyy Okrug
+RS88: Yaroslavskaya Oblast'
+RS89: Yevreyskaya Avtonomnaya Oblast'
+RS90: Permskiy Kray
+RS91: Krasnoyarskiy Kray
+RS92: Kamchatskiy Kray
+Rwanda
+RW11: Eastern Province
+RW12: Kigali
+RW13: Northern Province
+RW14: Western Province
+RW15: Southern Province
+Saudi Arabia
+SA02: Al Bāḩah Province
+SA05: Al Madīnah Province
+SA06: Ash Sharqīyah Province
+SA08: Al Qaşīm Province
+SA10: Ar Riyāḑ Province
+SA11: 'Asir Province
+SA13: Ḩā'il Province
+SA14: Makkah Province
+SA15: Al Ḩudūd ash Shamālīyah Province
+SA16: Najran Province
+SA17: Jīzān Province
+SA19: Tabūk Province
+SA20: Al Jawf Province
+Saint Kitts and Nevis
+SC01: Christ Church Nichola Town Parish
+SC02: Saint Anne Sandy Point Parish
+SC03: Saint George Basseterre Parish
+SC04: Saint George Gingerland Parish
+SC05: Saint James Windward Parish
+SC06: Saint John Capesterre Parish
+SC07: Saint John Figtree Parish
+SC08: Saint Mary Cayon Parish
+SC09: Saint Paul Capesterre Parish
+SC10: Saint Paul Charlestown Parish
+SC11: Saint Peter Basseterre Parish
+SC12: Saint Thomas Lowland Parish
+SC13: Saint Thomas Middle Island Parish
+SC15: Trinity Palmetto Point Parish
+Seychelles
+SE01: Anse aux Pins District
+SE02: Anse Boileau District
+SE03: Anse Etoile District
+SE05: Anse Royale District
+SE06: Baie Lazare District
+SE07: Baie Sainte Anne District
+SE08: Beau Vallon District
+SE09: Bel Air District
+SE10: Bel Ombre District
+SE11: Cascade District
+SE12: Glacis District
+SE14: Grand' Anse (Praslin) District
+SE17: Mont Buxton District
+SE18: Mont Fleuri District
+SE19: Plaisance District
+SE20: Pointe La Rue District
+SE22: Saint Louis District
+SE23: Takamaka District
+SE24: Grand Anse Mahe District
+SE25: Inner Islands District
+SE26: English River District
+SE27: Port Glaud District
+SE28: Au Cap District
+SE29: Les Mamelles District
+SE30: Roche Caiman District
+South Africa
+SF02: KwaZulu-Natal
+SF03: Free State
+SF05: Eastern Cape
+SF06: Gauteng
+SF07: Mpumalanga
+SF08: Northern Cape
+SF09: Limpopo
+SF10: North West
+SF11: Western Cape
+Senegal
+SG01: Dakar Region
+SG03: Diourbel Region
+SG05: Tambacounda Region
+SG07: Thiès Region
+SG09: Fatick Region
+SG10: Kaolack Region
+SG11: Kolda Region
+SG12: Ziguinchor Region
+SG13: Louga Region
+SG14: Saint-Louis Region
+SG15: Matam Region
+Saint Helena
+SH01: Ascension
+SH02: Saint Helena
+SH03: Tristan da Cunha
+Slovenia
+SI01: Municipality of Ajdovščina
+SI02: Municipality of Beltinci
+SI03: Municipality of Bled
+SI04: Municipality of Bohinj
+SI05: Municipality of Borovnica
+SI06: Municipality of Bovec
+SI07: Municipality of Brda
+SI08: Municipality of Brežice
+SI09: Municipality of Brezovica
+SI11: Municipality of Celje
+SI12: Municipality of Cerklje na Gorenjskem
+SI13: Municipality of Cerknica
+SI14: Municipality of Cerkno
+SI15: Municipality of Črenšovci
+SI16: Municipality of Črna na Koroškem
+SI17: Municipality of Črnomelj
+SI19: Municipality of Divača
+SI20: Municipality of Dobrepolje
+SI22: Municipality of Dol pri Ljubljani
+SI24: Municipality of Dornava
+SI25: Municipality of Dravograd
+SI26: Municipality of Duplek
+SI27: Municipality of Gorenja vas-Poljane
+SI28: Municipality of Gorišnica
+SI29: Municipality of Gornja Radgona
+SI30: Municipality of Gornji Grad
+SI31: Municipality of Gornji Petrovci
+SI32: Municipality of Grosuplje
+SI34: Municipality of Hrastnik
+SI35: Municipality of Hrpelje-Kozina
+SI36: Municipality of Idrija
+SI37: Municipality of Ig
+SI38: Municipality of Ilirska Bistrica
+SI39: Municipality of Ivančna Gorica
+SI40: Municipality of Izola-Isola
+SI42: Municipality of Juršinci
+SI44: Municipality of Kanal
+SI45: Municipality of Kidričevo
+SI46: Municipality of Kobarid
+SI47: Municipality of Kobilje
+SI49: Municipality of Komen
+SI50: City Municipality of Koper-Capodistria
+SI51: Municipality of Kozje
+SI52: Municipality of Kranj
+SI53: Municipality of Kranjska Gora
+SI54: Municipality of Krško
+SI55: Municipality of Kungota
+SI57: Municipality of Laško
+SI61: City Municipality of Ljubljana
+SI62: Municipality of Ljubno
+SI64: Municipality of Logatec
+SI66: Municipality of Loški Potok
+SI68: Municipality of Lukovica
+SI71: Municipality of Medvode
+SI72: Municipality of Mengeš
+SI73: Municipality of Metlika
+SI74: Municipality of Mežica
+SI76: Municipality of Mislinja
+SI77: Municipality of Moravče
+SI78: Municipality of Moravske Toplice
+SI79: Municipality of Mozirje
+SI80: City Municipality of Murska Sobota
+SI81: Municipality of Muta
+SI82: Municipality of Naklo
+SI83: Municipality of Nazarje
+SI84: City Municipality of Nova Gorica
+SI86: Municipality of Odranci
+SI87: Municipality of Ormož
+SI88: Municipality of Osilnica
+SI89: Municipality of Pesnica
+SI91: Municipality of Pivka
+SI92: Municipality of Podčetrtek
+SI94: Municipality of Postojna
+SI97: Municipality of Puconci
+SI98: Municipality of Rače-Fram
+SI99: Municipality of Radeče
+SIA1: Municipality of Radenci
+SIA2: Municipality of Radlje ob Dravi
+SIA3: Municipality of Radovljica
+SIA6: Municipality of Rogašovci
+SIA7: Municipality of Rogaška Slatina
+SIA8: Municipality of Rogatec
+SIB1: Municipality of Semič
+SIB2: Municipality of Šenčur
+SIB3: Municipality of Šentilj
+SIB4: Municipality of Šentjernej
+SIB6: Municipality of Sevnica
+SIB7: Municipality of Sežana
+SIB8: Municipality of Škocjan
+SIB9: Municipality of Škofja Loka
+SIC1: Municipality of Škofljica
+SIC2: City Municipality of Slovenj Gradec
+SIC4: Municipality of Slovenske Konjice
+SIC5: Municipality of Šmarje pri Jelšah
+SIC6: Municipality of Šmartno ob Paki
+SIC7: Municipality of Šoštanj
+SIC8: Municipality of Starše
+SIC9: Municipality of Štore
+SID1: Municipality of Sveti Jurij
+SID2: Municipality of Tolmin
+SID3: Municipality of Trbovlje
+SID4: Municipality of Trebnje
+SID5: Municipality of Tržič
+SID6: Municipality of Turnišče
+SID7: City Municipality of Velenje
+SID8: Municipality of Velike Lašče
+SIE1: Municipality of Vipava
+SIE2: Municipality of Vitanje
+SIE3: Municipality of Vodice
+SIE5: Municipality of Vrhnika
+SIE6: Municipality of Vuzenica
+SIE7: Municipality of Zagorje ob Savi
+SIE9: Municipality of Zavrč
+SIF1: Municipality of Železniki
+SIF2: Municipality of Žiri
+SIF3: Municipality of Zreče
+SIF4: Municipality of Benedikt
+SIF5: Municipality of Bistrica ob Sotli
+SIF6: Municipality of Bloke
+SIF7: Municipality of Braslovče
+SIF8: Municipality of Cankova
+SIF9: Municipality of Cerkvenjak
+SIG1: Municipality of Destrnik
+SIG2: Municipality of Dobje
+SIG3: Municipality of Dobrna
+SIG4: Municipality of Dobrova–Polhov Gradec
+SIG5: Municipality of Dobrovnik+Dobronak
+SIG6: Municipality of Dolenjske Toplice
+SIG7: Municipality of Domžale
+SIG8: Municipality of Grad
+SIG9: Municipality of Hajdina
+SIH1: Municipality of Hoče-Slivnica
+SIH2: Municipality of Hodoš-Hodos
+SIH3: Municipality of Horjul
+SIH4: Municipality of Jesenice
+SIH5: Municipality of Jezersko
+SIH6: Municipality of Kamnik
+SIH7: Municipality of Kočevje
+SIH8: Municipality of Komenda
+SIH9: Municipality of Kostel
+SII1: Municipality of Križevci
+SII2: Municipality of Kuzma
+SII3: Municipality of Lenart
+SII4: Municipality of Lendava-Lendva
+SII5: Municipality of Litija
+SII6: Municipality of Ljutomer
+SII7: Municipality of Loška Dolina
+SII8: Municipality of Lovrenc na Pohorju
+SII9: Municipality of Luče
+SIJ1: Municipality of Majšperk
+SIJ2: Municipality of Maribor
+SIJ3: Municipality of Markovci
+SIJ4: Municipality of Miklavž na Dravskem polju
+SIJ5: Municipality of Miren-Kostanjevica
+SIJ6: Municipality of Mirna Peč
+SIJ7: City Municipality of Novo mesto
+SIJ8: Municipality of Oplotnica
+SIJ9: Municipality of Piran-Pirano
+SIK1: Municipality of Podlehnik
+SIK2: Municipality of Podvelka
+SIK3: Municipality of Polzela
+SIK4: Municipality of Prebold
+SIK5: Municipality of Preddvor
+SIK6: Municipality of Prevalje
+SIK7: City Municipality of Ptuj
+SIK8: Municipality of Ravne na Koroškem
+SIK9: Municipality of Razkrižje
+SIL1: Municipality of Ribnica
+SIL2: Municipality of Ribnica na Pohorju
+SIL3: Municipality of Ruše
+SIL4: Municipality of Šalovci
+SIL5: Municipality of Selnica ob Dravi
+SIL6: Municipality of Šempeter-Vrtojba
+SIL7: Municipality of Šentjur pri Celju
+SIL8: Municipality of Slovenska Bistrica
+SIL9: Municipality of Šmartno pri Litiji
+SIM1: Municipality of Sodražica
+SIM2: Municipality of Solčava
+SIM3: Municipality of Sveta Ana
+SIM4: Municipality of Sveti Andraž v Slovenskih goricah
+SIM5: Municipality of Tabor
+SIM6: Municipality of Tišina
+SIM7: Municipality of Trnovska vas
+SIM8: Municipality of Trzin
+SIM9: Municipality of Velika Polana
+SIN1: Municipality of Veržej
+SIN2: Municipality of Videm
+SIN3: Municipality of Vojnik
+SIN4: Municipality of Vransko
+SIN5: Municipality of Žalec
+SIN6: Municipality of Žetale
+SIN7: Municipality of Žirovnica
+SIN8: Municipality of Žužemberk
+Sierra Leone
+SL01: Eastern Province
+SL02: Northern Province
+SL03: Southern Province
+SL04: Western Area
+San Marino
+SM01: Acquaviva Municipality
+SM02: Chiesanuova Municipality
+SM03: Domagnano Municipality
+SM04: Faetano Municipality
+SM05: Fiorentino Municipality
+SM06: Borgo Maggiore Municipality
+SM07: San Marino Municipality
+SM08: Montegiardino Municipality
+SM09: Serravalle Municipality
+Somalia
+SO01: Bakool Region
+SO02: Banaadir Region
+SO03: Bari Region
+SO04: Bay Region
+SO05: Galguduud Region
+SO06: Gedo Region
+SO07: Hiiraan Region
+SO08: Jubbada Dhexe Region
+SO09: Jubbada Hoose Region
+SO10: Mudug Region
+SO12: Sanaag Region
+SO13: Shabeellaha Dhexe Region
+SO14: Shabeellaha Hoose Region
+SO18: Nugaal Region
+SO19: Togdheer Region
+SO20: Woqooyi Galbeed Region
+SO21: Awdal Region
+SO22: Sool Region
+Spain
+SP07: Islas Baleares Comunidad Autónoma
+SP27: La Rioja Autonomous Community
+SP29: Madrid Autonomous Community
+SP31: Murcia Autonomous Community
+SP32: Navarra Autonomous Community
+SP34: Asturias Autonomous Community
+SP39: Cantabria Autonomous Community
+SP51: Andalucía Autonomous Community
+SP52: Aragón Autonomous Community
+SP53: Canarias Autonomous Community
+SP54: Castilla-La Mancha Autonomous Community
+SP55: Castilla y León Autonomous Community
+SP56: Cataluña Autonomous Community
+SP57: Extremadura Autonomous Community
+SP58: Galicia Autonomous Community
+SP59: País Vasco Autonomous Community
+SP60: Comunidad Valenciana Autonomous Community
+Saint Lucia
+ST01: Anse-la-Raye Quarter
+ST02: Dauphin Quarter
+ST03: Castries Quarter
+ST04: Choiseul Quarter
+ST05: Dennery Quarter
+ST06: Gros-Islet Quarter
+ST07: Laborie Quarter
+ST08: Micoud Quarter
+ST09: Soufrière Quarter
+ST10: Vieux-Fort Quarter
+ST11: Praslin Quarter
+Sudan
+SU29: Al Kharţūm State
+SU35: A`ālī an Nīl State
+SU36: Al Baḩr al Aḩmar State
+SU37: Al Buḩayrāt State
+SU38: Al Jazīrah State
+SU39: Al Qaḑārif State
+SU40: Al Waḩdah State
+SU41: An Nīl al Abyaḑ State
+SU42: An Nīl al Azraq State
+SU43: Ash Shamālīyah State
+SU44: Baḩr al Jabal State
+SU45: Gharb al Istiwā'īyah State
+SU46: Gharb Baḩr al Ghazāl State
+SU47: Gharb Dārfūr State
+SU48: Gharb Kurdufān State
+SU49: Janūb Dārfūr State
+SU50: Janūb Kurdufān State
+SU51: Junqalī State
+SU52: Kassalā State
+SU53: Nahr an Nīl State
+SU54: Shamāl Baḩr al Ghazāl State
+SU55: Shamāl Dārfūr State
+SU56: Shamāl Kurdufān State
+SU57: Sharq al Istiwā'īyah State
+SU58: Sinnār State
+SU59: Warab State
+Sweden
+SW02: Blekinge County
+SW03: Gävleborg County
+SW05: Gotland County
+SW06: Halland County
+SW07: Jämtland County
+SW08: Jönköping County
+SW09: Kalmar County
+SW10: Dalarna County
+SW12: Kronoberg County
+SW14: Norrbotten County
+SW15: Örebro County
+SW16: Östergötland County
+SW18: Södermanland County
+SW21: Uppsala County
+SW22: Värmland County
+SW23: Västerbotten County
+SW24: Västernorrland County
+SW25: Västmanland County
+SW26: Stockholm County
+SW27: Skåne County
+SW28: Västra Götaland County
+Syria
+SY01: Al Ḩasakah Province
+SY02: Al Lādhiqīyah Province
+SY03: Al Qunayţirah Province
+SY04: Ar Raqqah Province
+SY05: As Suwaydā' Province
+SY06: Dar`ā Province
+SY07: Deir ez-Zor Province
+SY08: Rīf Dimashq Province
+SY09: Ḩalab Province
+SY10: Ḩamāh Province
+SY11: Ḩimş Province
+SY12: Idlib Province
+SY13: Dimashq Province
+SY14: Ţarţūs Province
+Switzerland
+SZ01: Aargau
+SZ02: Appenzell Ausserrhoden
+SZ03: Basel-Landschaft
+SZ04: Basel-Stadt
+SZ05: Bern
+SZ06: Fribourg
+SZ07: Geneva
+SZ08: Glarus
+SZ09: Graubünden
+SZ10: Appenzell Innerrhoden
+SZ11: Lucerne
+SZ12: Neuchâtel
+SZ13: Nidwalden
+SZ14: Obwalden
+SZ15: St. Gallen
+SZ16: Schaffhausen
+SZ17: Schwyz
+SZ18: Solothurn
+SZ19: Thurgau
+SZ20: Ticino
+SZ21: Uri
+SZ22: Valais
+SZ23: Vaud
+SZ24: Zug
+SZ25: Zürich
+SZ26: Jura
+Trinidad and Tobago
+TD01: Arima Borough Corporation
+TD02: Caroni
+TD03: Mayaro
+TD04: Nariva
+TD05: Port of Spain City Corporation
+TD06: Saint Andrew
+TD07: Saint David
+TD08: Saint George
+TD09: Saint Patrick
+TD10: San Fernando City Corporation
+TD11: Tobago Ward
+TD12: Victoria
+Thailand
+TH01: Mae Hong Son Province
+TH02: Chiang Mai Province
+TH03: Chiang Rai Province
+TH04: Nan Province
+TH05: Lamphun Province
+TH06: Lampang Province
+TH07: Phrae Province
+TH08: Tak Province
+TH09: Sukhothai Province
+TH10: Uttaradit Province
+TH11: Kamphaeng Phet Province
+TH12: Phitsanulok Province
+TH13: Phichit Province
+TH14: Phetchabun Province
+TH15: Uthai Thani Province
+TH16: Nakhon Sawan Province
+TH17: Nong Khai Province
+TH18: Loei Province
+TH20: Sakon Nakhon Province
+TH22: Khon Kaen Province
+TH23: Kalasin Province
+TH24: Maha Sarakham Province
+TH25: Roi Et Province
+TH26: Chaiyaphum Province
+TH27: Nakhon Ratchasima Province
+TH28: Buriram Province
+TH29: Surin Province
+TH30: Sisaket Province
+TH31: Narathiwat Province
+TH32: Chai Nat Province
+TH33: Sing Buri Province
+TH34: Lop Buri Province
+TH35: Ang Thong Province
+TH36: Phra Nakhon Si Ayutthaya Province
+TH37: Sara Buri Province
+TH38: Nonthaburi Province
+TH39: Pathum Thani Province
+TH40: Krung Thep Mahanakhon Province
+TH41: Phayao Province
+TH42: Samut Prakan Province
+TH43: Nakhon Nayok Province
+TH44: Chachoengsao Province
+TH46: Chon Buri Province
+TH47: Rayong Province
+TH48: Chanthaburi Province
+TH49: Trat Province
+TH50: Kanchanaburi Province
+TH51: Suphan Buri Province
+TH52: Ratchaburi Province
+TH53: Nakhon Pathom Province
+TH54: Samut Songkhram Province
+TH55: Samut Sakhon Province
+TH56: Phetchaburi Province
+TH57: Prachuap Khiri Khan Province
+TH58: Chumphon Province
+TH59: Ranong Province
+TH60: Surat Thani Province
+TH61: Phangnga Province
+TH62: Phuket Province
+TH63: Krabi Province
+TH64: Nakhon Si Thammarat Province
+TH65: Trang Province
+TH66: Phatthalung Province
+TH67: Satun Province
+TH68: Songkhla Province
+TH69: Pattani Province
+TH70: Yala Province
+TH72: Yasothon Province
+TH73: Nakhon Phanom Province
+TH74: Prachin Buri Province
+TH75: Ubon Ratchathani Province
+TH76: Udon Thani Province
+TH77: Amnat Charoen Province
+TH78: Mukdahan Province
+TH79: Nong Bua Lamphu Province
+TH80: Sa Kaeo Province
+Tajikistan
+TI01: Kŭhistoni Badakhshon Viloyati Mukhtor
+TI02: Khatlon Province
+TI03: Sughd Province
+Tonga
+TN01: Ha`apai Island Group
+TN02: Tongatapu Island Group
+TN03: Vava`u Island Group
+Togo
+TO22: Centrale Region
+TO23: Kara Region
+TO24: Maritime Region
+TO25: Plateaux Region
+TO26: Savanes Region
+SÃ£o TomÃ© and PrÃ­ncipe
+TP01: Príncipe
+TP02: Sao Tome
+Tunisia
+TS02: Kasserine Governorate
+TS03: Kairouan Governorate
+TS06: Jendouba Governorate
+TS10: Qafsah Governorate
+TS14: El Kef Governorate
+TS15: Mahdia Governorate
+TS16: Monastir Governorate
+TS17: Béja Governorate
+TS18: Bizerte Governorate
+TS19: Nabeul Governorate
+TS22: Siliana Governorate
+TS23: Sousse Governorate
+TS27: Ben Arous Governorate
+TS28: Médenine Governorate
+TS29: Gabès Governorate
+TS31: Kebili Governorate
+TS32: Sfax Governorate
+TS33: Sidi Bou Zid Governorate
+TS34: Tataouine Governorate
+TS35: Tozeur Governorate
+TS36: Tunis Governorate
+TS37: Zaghouan Governorate
+TS38: Ariana Governorate
+TS39: Manouba Governorate
+Turkey
+TU02: Adıyaman Province
+TU03: Afyonkarahisar Province
+TU04: Ağrı Province
+TU05: Amasya Province
+TU07: Antalya Province
+TU08: Artvin Province
+TU09: Aydın Province
+TU10: Balıkesir Province
+TU11: Bilecik Province
+TU12: Bingöl Province
+TU13: Bitlis Province
+TU14: Bolu Province
+TU15: Burdur Province
+TU16: Bursa Province
+TU17: Çanakkale Province
+TU19: Çorum Province
+TU20: Denizli Province
+TU21: Diyarbakır Province
+TU22: Edirne Province
+TU23: Elazığ Province
+TU24: Erzincan Province
+TU25: Erzurum Province
+TU26: Eskişehir Province
+TU28: Giresun Province
+TU31: Hatay Province
+TU32: Mersin Province
+TU33: Isparta Province
+TU34: Istanbul Province
+TU35: İzmir Province
+TU37: Kastamonu Province
+TU38: Kayseri Province
+TU39: Kırklareli Province
+TU40: Kırşehir Province
+TU41: Kocaeli Province
+TU43: Kütahya Province
+TU44: Malatya Province
+TU45: Manisa Province
+TU46: Kahramanmaraş Province
+TU48: Muğla Province
+TU49: Muş Province
+TU50: Nevşehir Province
+TU52: Ordu Province
+TU53: Rize Province
+TU54: Sakarya Province
+TU55: Samsun Province
+TU57: Sinop Province
+TU58: Sivas Province
+TU59: Tekirdağ Province
+TU60: Tokat Province
+TU61: Trabzon Province
+TU62: Tunceli Province
+TU63: Şanlıurfa Province
+TU64: Uşak Province
+TU65: Van Province
+TU66: Yozgat Province
+TU68: Ankara Province
+TU69: Gümüşhane Province
+TU70: Hakkari Province
+TU71: Konya Province
+TU72: Mardin Province
+TU73: Niğde Province
+TU74: Siirt Province
+TU75: Aksaray Province
+TU76: Batman Province
+TU77: Bayburt Province
+TU78: Karaman Province
+TU79: Kirikkale Province
+TU80: Şırnak Province
+TU81: Adana Province
+TU82: Çankırı Province
+TU83: Gaziantep Province
+TU84: Kars Province
+TU85: Zonguldak Province
+TU86: Ardahan Province
+TU87: Bartın Province
+TU88: Iğdır Province
+TU89: Karabük Province
+TU90: Kilis Province
+TU91: Osmaniye Province
+TU92: Yalova Province
+TU93: Düzce Province
+Taiwan
+TW01: Fu-chien
+TW02: Kao-hsiung
+TW03: T'ai-pei
+TW04: T'ai-wan
+Turkmenistan
+TX01: Ahal Province
+TX02: Balkan Province
+TX03: Daşoguz Province
+TX04: Lebap Province
+TX05: Mary Province
+Tanzania
+TZ02: Pwani Region
+TZ03: Dodoma Region
+TZ04: Iringa Region
+TZ05: Kigoma Region
+TZ06: Kilimanjaro Region
+TZ07: Lindi Region
+TZ08: Mara Region
+TZ09: Mbeya Region
+TZ10: Morogoro Region
+TZ11: Mtwara Region
+TZ12: Mwanza RegionTanzania
+TZ13: Pemba North Region
+TZ14: Ruvuma Region
+TZ15: Shinyanga Region
+TZ16: Singida Region
+TZ17: Tabora Region
+TZ18: Tanga Region
+TZ19: Kagera Region
+TZ20: Pemba South Region
+TZ21: Zanzibar Central/South Region
+TZ22: Zanzibar North Region
+TZ23: Dar es Salaam Region
+TZ24: Rukwa Region
+TZ25: Zanzibar Urban/West Region
+TZ26: Arusha Region
+TZ27: Manyara Region
+Uganda
+UG26: Apac District
+UG28: Bundibugyo District
+UG29: Bushenyi District
+UG30: Gulu District
+UG31: Hoima District
+UG33: Jinja District
+UG34: Kabale District
+UG36: Kalangala District
+UG37: Kampala District
+UG38: Kamuli District
+UG39: Kapchorwa District
+UG40: Kasese District
+UG41: Kibale District
+UG42: Kiboga District
+UG43: Kisoro District
+UG45: Kotido District
+UG46: Kumi District
+UG47: Lira District
+UG50: Masindi District
+UG52: Mbarara District
+UG56: Mubende District
+UG58: Nebbi District
+UG59: Ntungamo District
+UG60: Pallisa District
+UG61: Rakai District
+UG65: Adjumani District
+UG66: Bugiri District
+UG67: Busia District
+UG69: Katakwi District
+UG70: Luwero District
+UG71: Masaka District
+UG72: Moyo District
+UG73: Nakasongola District
+UG74: Sembabule District
+UG76: Tororo District
+UG77: Arua District
+UG78: Iganga District
+UG79: Kabarole District
+UG80: Kaberamaido District
+UG81: Kamwenge District
+UG82: Kanungu District
+UG83: Kayunga District
+UG84: Kitgum District
+UG85: Kyenjojo District
+UG86: Mayuge District
+UG87: Mbale District
+UG88: Moroto District
+UG89: Mpigi District
+UG90: Mukono District
+UG91: Nakapiripirit District
+UG92: Pader District
+UG93: Rukungiri District
+UG94: Sironko District
+UG95: Soroti District
+UG96: Wakiso District
+UG97: Yumbe District
+United Kingdom
+UKA1: London Borough of Barking and Dagenham
+UKA2: London Borough of Barnet
+UKA3: Metropolitan Borough of Barnsley
+UKA4: Bath and North East Somerset UA
+UKA5: County of Bedfordshire
+UKA6: London Borough of Bexley
+UKA7: Metropolitan Borough of Birmingham
+UKA8: Blackburn with Darwen UA
+UKA9: Blackpool UA
+UKB1: Metropolitan Borough of Bolton
+UKB2: Bournemouth UA
+UKB3: Bracknell Forest UA
+UKB4: Metropolitan Borough of Bradford
+UKB5: London Borough of Brent
+UKB6: Brighton and Hove UA
+UKB7: Bristol
+UKB8: London Borough of Bromley
+UKB9: County of Buckinghamshire
+UKC1: Metropolitan Borough of Bury
+UKC2: Metropolitan Borough of Calderdale
+UKC3: County of Cambridgeshire
+UKC4: London Borough of Camden
+UKC5: County of Cheshire
+UKC6: County of Cornwall
+UKC7: Metropolitan Borough of Coventry
+UKC8: London Borough of Croydon
+UKC9: County of Cumbria
+UKD1: Darlington UA
+UKD2: Derby UA
+UKD3: County of Derbyshire
+UKD4: County of Devon
+UKD5: Metropolitan Borough of Doncaster
+UKD6: County of Dorset
+UKD7: Metropolitan Borough of Dudley
+UKD8: County of Durham
+UKD9: London Borough of Ealing
+UKE1: East Riding of Yorkshire UA
+UKE2: County of East Sussex
+UKE3: London Borough of Enfield
+UKE4: County of Essex
+UKE5: Metropolitan Borough of Gateshead
+UKE6: County of Gloucestershire
+UKE7: Royal Borough of Greenwich
+UKE8: London Borough of Hackney
+UKE9: Halton UA
+UKF1: London Borough of Hammersmith and Fulham
+UKF2: County of Hampshire
+UKF3: London Borough of Haringey
+UKF4: London Borough of Harrow
+UKF5: Hartlepool UA
+UKF6: London Borough of Havering
+UKF7: Herefordshire UA
+UKF8: County of Hertfordshire
+UKF9: London Borough of Hillingdon
+UKG1: London Borough of Hounslow
+UKG2: Isle of Wight UA
+UKG3: London Borough of Islington
+UKG4: London Borough of Kensington and Chelsea
+UKG5: County of Kent
+UKG6: Kingston upon Hull UA
+UKG7: London Borough of Kingston upon Thames
+UKG8: Metropolitan Borough of Kirklees
+UKG9: Metropolitan Borough of Knowsley
+UKH1: London Borough of Lambeth
+UKH2: County of Lancashire
+UKH3: Metropolitan Borough of Leeds
+UKH4: Leicester UA
+UKH5: County of Leicestershire
+UKH6: London Borough of Lewisham
+UKH7: County of Lincolnshire
+UKH8: Metropolitan Borough of Liverpool
+UKH9: City of London
+UKI1: Luton UA
+UKI2: Metropolitan Borough of Manchester
+UKI3: Medway UA
+UKI4: London Borough of Merton
+UKI5: Middlesbrough UA
+UKI6: Milton Keynes UA
+UKI7: Metropolitan Borough of Newcastle upon Tyne
+UKI8: London Borough of Newham
+UKI9: County of Norfolk
+UKJ1: County of Northamptonshire
+UKJ2: North East Lincolnshire UA
+UKJ3: North Lincolnshire UA
+UKJ4: North Somerset UA
+UKJ5: Metropolitan Borough of North Tyneside
+UKJ6: County of Northumberland
+UKJ7: County of North Yorkshire
+UKJ8: Nottingham UA
+UKJ9: County of Nottinghamshire
+UKK1: Metropolitan Borough of Oldham
+UKK2: County of Oxfordshire
+UKK3: Peterborough UA
+UKK4: Plymouth UA
+UKK5: Poole UA
+UKK6: Portsmouth UA
+UKK7: Reading UA
+UKK8: London Borough of Redbridge
+UKK9: Redcar and Cleveland UA
+UKL1: London Borough of Richmond upon Thames
+UKL2: Metropolitan Borough of Rochdale]]
+UKL3: Metropolitan Borough of Rotherham
+UKL4: Rutland UA
+UKL5: Metropolitan Borough of Salford
+UKL6: County of Shropshire
+UKL7: Metropolitan Borough of Sandwell
+UKL8: Metropolitan Borough of Sefton
+UKL9: Metropolitan Borough of Sheffield
+UKM1: Slough UA
+UKM2: Metropolitan Borough of Solihull
+UKM3: County of Somerset
+UKM4: Southampton UA
+UKM5: Southend-on-Sea UA
+UKM6: South Gloucestershire UA
+UKM7: Metropolitan Borough of South Tyneside
+UKM8: London Borough of Southwark
+UKM9: County of Staffordshire
+UKN1: Metropolitan Borough of St Helens
+UKN2: Metropolitan Borough of Stockport
+UKN3: Stockton-on-Tees UA
+UKN4: Stoke-on-Trent UA
+UKN5: County of Suffolk
+UKN6: Metropolitan Borough of Sunderland
+UKN7: County of Surrey
+UKN8: London Borough of Sutton
+UKN9: Swindon UA
+UKO1: Metropolitan Borough of Tameside
+UKO2: Telford and Wrekin UA
+UKO3: Thurrock UA
+UKO4: Torbay UA
+UKO5: London Borough of Tower Hamlets
+UKO6: Metropolitan Borough of Trafford
+UKO7: Metropolitan Borough of Wakefield
+UKO8: Metropolitan Borough of Walsall
+UKO9: London Borough of Waltham Forest
+UKP1: London Borough of Wandsworth
+UKP2: Warrington UA
+UKP3: County of Warwickshire
+UKP4: West Berkshire UA
+UKP5: London Borough of Westminster
+UKP6: County of West Sussex
+UKP7: Metropolitan Borough of Wigan
+UKP8: County of Wiltshire
+UKP9: Windsor and Maidenhead UA
+UKQ1: Metropolitan Borough of Wirral
+UKQ2: Wokingham UA
+UKQ3: Metropolitan Borough of Wolverhampton
+UKQ4: County of Worcestershire
+UKQ5: York UA
+UKQ6: Antrim District
+UKQ7: Ards District
+UKQ8: Armagh District
+UKQ9: Ballymena District
+UKR1: Ballymoney District
+UKR2: Banbridge District
+UKR3: Belfast District
+UKR4: Carrickfergus District
+UKR5: Castlereagh District
+UKR6: Coleraine District
+UKR7: Cookstown District
+UKR8: Craigavon District
+UKR9: Down District
+UKS1: Dungannon and South Tyrone District
+UKS2: Fermanagh District
+UKS3: Larne District
+UKS4: Limavady District
+UKS5: Lisburn District
+UKS6: Derry District
+UKS7: Magherafelt District
+UKS8: Moyle District
+UKS9: Newry and Mourne District
+UKT1: Newtownabbey District
+UKT2: North Down District
+UKT3: Omagh District
+UKT4: Strabane District
+UKT5: Aberdeen City Council Area
+UKT6: Aberdeenshire Council Area
+UKT7: Angus Council Area
+UKT8: Argyll and Bute Council Area
+UKT9: The Scottish Borders Council Area
+UKU1: Clackmannanshire Council Area
+UKU2: Dumfries and Galloway Council Area
+UKU3: Dundee City Council Area
+UKU4: East Ayrshire Council Area
+UKU5: East Dunbartonshire Council Area
+UKU6: East Lothian Council Area
+UKU7: East Renfrewshire Council Area
+UKU8: City of Edinburgh Council Area
+UKU9: Falkirk Council Area
+UKV1: Fife Council Area
+UKV2: Glasgow City Council Area
+UKV3: Highland Council Area
+UKV4: Inverclyde Council Area
+UKV5: Midlothian Council Area
+UKV6: Moray Council Area
+UKV7: North Ayrshire Council Area
+UKV8: North Lanarkshire Council Area
+UKV9: Orkney Islands Council Area
+UKW1: Perth and Kinross Council Area
+UKW2: Renfrewshire Council Area
+UKW3: Shetland Islands Council Area
+UKW4: South Ayrshire Council Area
+UKW5: South Lanarkshire Council Area
+UKW6: Stirling Council Area
+UKW7: West Dunbartonshire Council Area
+UKW8: Eilean Siar Council Area
+UKW9: West Lothian Council Area
+UKX1: Isle of Anglesey County
+UKX2: Blaenau Gwent County Borough
+UKX3: Bridgend County Borough
+UKX4: Caerphilly County Borough
+UKX5: Cardiff City and County
+UKX6: Ceredigion County
+UKX7: Carmarthenshire County
+UKX8: Conwy County Borough
+UKX9: Denbighshire County
+UKY1: Flintshire County
+UKY2: Gwynedd
+UKY3: Merthyr Tydfil County Borough
+UKY4: Monmouthshire County
+UKY5: Neath Port Talbot County Borough
+UKY6: Newport City
+UKY7: Pembrokeshire County
+UKY8: Powys County
+UKY9: Rhondda Cynon Taff County Borough
+UKZ1: Swansea City and County
+UKZ2: Torfaen County Borough
+UKZ3: Vale of Glamorgan
+UKZ4: Wrexham County Borough
+Ukraine
+UP01: Cherkasy Oblast
+UP02: Chernihiv Oblast
+UP03: Chernivtsi Oblast
+UP04: Dnipropetrovsk Oblast
+UP05: Donetsk Oblast
+UP06: Ivano-Frankivsk Oblast
+UP07: Kharkiv Oblast
+UP08: Kherson Oblast
+UP09: Khmelnytskyi Oblast
+UP10: Kirovohrad Oblast
+UP11: Autonomous Republic of Crimea
+UP12: Kiev City
+UP13: Kiev Oblast
+UP14: Luhansk Oblast
+UP15: Lviv Oblast
+UP16: Mykolaiv Oblast
+UP17: Odessa Oblast
+UP18: Poltava Oblast
+UP19: Rivne Oblast
+UP20: Sevastopol Municipality
+UP21: Sumy Oblast
+UP22: Ternopil Oblast
+UP23: Vinnytsia Oblast
+UP24: Volyn Oblast
+UP25: Zakarpattia Oblast
+UP26: Zaporizhia Oblast
+UP27: Zhytomyr Oblast
+United States
+US01: Alabama
+US02: Alaska
+US04: Arizona
+US05: Arkansas
+US06: California
+US08: Colorado
+US09: Connecticut
+US10: Delaware
+US11: District of Columbia
+US12: Florida
+US13: Georgia
+US15: Hawaii
+US16: Idaho
+US17: Illinois
+US18: Indiana
+US19: Iowa
+US20: Kansas
+US21: Kentucky
+US22: Louisiana
+US23: Maine
+US24: Maryland
+US25: Massachusetts
+US26: Michigan
+US27: Minnesota
+US28: Mississippi
+US29: Missouri
+US30: Montana
+US31: Nebraska
+US32: Nevada
+US33: New Hampshire
+US34: New Jersey
+US35: New Mexico
+US36: New York
+US37: North Carolina
+US38: North Dakota
+US39: Ohio
+US40: Oklahoma
+US41: Oregon
+US42: Pennsylvania
+US44: Rhode Island
+US45: South Carolina
+US46: South Dakota
+US47: Tennessee
+US48: Texas
+US49: Utah
+US50: Vermont
+US51: Virginia
+US53: Washington
+US54: West Virginia
+US55: Wisconsin
+US56: Wyoming
+Burkina Faso
+UV15: Bam Province
+UV19: Boulkiemdé Province
+UV20: Ganzourgou Province
+UV21: Gnagna Province
+UV28: Kouritenga Province
+UV33: Oudalan Province
+UV34: Passoré Province
+UV36: Sanguié Province
+UV40: Soum Province
+UV42: Tapoa Province
+UV44: Zoundwéogo Province
+UV45: Balé Province
+UV46: Banwa Province
+UV47: Bazèga Province
+UV48: Bougouriba Province
+UV49: Boulgou Province
+UV50: Gourma Province
+UV51: Houet Province
+UV52: Ioba Province
+UV53: Kadiogo Province
+UV54: Kénédougou Province
+UV55: Comoé Province
+UV56: Komondjari Province
+UV57: Kompienga Province
+UV58: Kossi Province
+UV59: Koulpélogo Province
+UV60: Kourwéogo Province
+UV61: Léraba Province
+UV62: Loroum Province
+UV63: Mouhoun Province
+UV64: Namentenga Province
+UV65: Nahouri Province
+UV66: Nayala Province
+UV67: Noumbiel Province
+UV68: Oubritenga Province
+UV69: Poni Province
+UV70: Sanmatenga Province
+UV71: Séno Province
+UV72: Sissili Province
+UV73: Sourou Province
+UV74: Tuy Province
+UV75: Yagha Province
+UV76: Yatenga Province
+UV77: Ziro Province
+UV78: Zondoma Province
+Uruguay
+UY01: Artigas Department
+UY02: Canelones Department
+UY03: Cerro Largo Department
+UY04: Colonia Department
+UY05: Durazno Department
+UY06: Flores Department
+UY07: Florida Department
+UY08: Lavalleja Department
+UY09: Maldonado Department
+UY10: Montevideo Department
+UY11: Paysandú Department
+UY12: Río Negro Department
+UY13: Rivera Department
+UY14: Rocha Department
+UY15: Salto Department
+UY16: San José Department
+UY17: Soriano Department
+UY18: Tacuarembó Department
+UY19: Treinta y Tres Department
+Uzbekistan
+UZ01: Andijon Province
+UZ02: Buxoro Province
+UZ03: Farg'ona Province
+UZ05: Xorazm Province
+UZ06: Namangan Province
+UZ07: Navoiy Province
+UZ08: Qashqadaryo Province
+UZ09: Qoraqalpog`iston Respublika
+UZ10: Samarqand Province
+UZ12: Surxondaryo Province
+UZ13: Toshkent City
+UZ14: Toshkent Province
+UZ15: Jizzakh Province
+UZ16: Sirdaryo Province
+Saint Vincent and the Grenadines
+VC01: Charlotte Parish
+VC02: Saint Andrew Parish
+VC03: Saint David Parish
+VC04: Saint George Parish
+VC05: Saint Patrick Parish
+VC06: Grenadines Parish
+Venezuela
+VE01: Amazonas State
+VE02: Anzoátegui State
+VE03: Apure State
+VE04: Aragua State
+VE05: Barinas State
+VE06: Bolívar State
+VE07: Carabobo State
+VE08: Cojedes State
+VE09: Delta Amacuro State
+VE11: Falcón State
+VE12: Guárico State
+VE13: Lara State
+VE14: Mérida State
+VE15: Miranda State
+VE16: Monagas State
+VE17: Nueva Esparta State
+VE18: Portuguesa State
+VE19: Sucre State
+VE20: Táchira State
+VE21: Trujillo State
+VE22: Yaracuy State
+VE23: Zulia State
+VE24: Dependencias Federales Federal Dependency
+VE25: Distrito Federal Federal District
+VE26: Estado Vargas
+Vietnam
+VM01: An Giang Province
+VM03: Bến Tre Province
+VM05: Cao Bằng Province
+VM09: Ðồng Tháp Province
+VM13: Hải Phòng Municipality
+VM20: Hồ Chí Minh Municipality
+VM21: Kiến Giang Province
+VM23: Lâm Ðồng Province
+VM24: Long An Province
+VM30: Quảng Ninh Province
+VM32: Sơn La Province
+VM33: Tây Ninh Province
+VM34: Thanh Hóa Province
+VM35: Thái Bình Province
+VM37: Tiền Giang Province
+VM39: Lạng Sơn Province
+VM43: Ðồng Nai Province
+VM44: Hà Nội Municipality
+VM45: Bà Rịa-Vũng Tàu Province
+VM46: Bình Ðịnh Province
+VM47: Bình Thuận Province
+VM49: Gia Lai Province
+VM50: Hà Giang Province
+VM51: Hà Tây Province
+VM52: Hà Tĩnh Province
+VM53: Hòa Bình Province
+VM54: Khánh Hòa Province
+VM55: Kon Tum Province
+VM58: Nghệ An Province
+VM59: Ninh Bình Province
+VM60: Ninh Thuận Province
+VM61: Phú Yên Province
+VM62: Quảng Bình Province
+VM63: Quảng Ngãi Province
+VM64: Quảng Trị Province
+VM65: Sóc Trăng Province
+VM66: Thừa Thiên-Huế Province
+VM67: Trà Vinh Province
+VM68: Tuyên Quang Province
+VM69: Vĩnh Long Province
+VM70: Yên Bái Province
+VM71: Bắc Giang Province
+VM72: Bắc Kạn Province
+VM73: Bạc Liêu Province
+VM74: Bắc Ninh Province
+VM75: Bình Dương Province
+VM76: Bình Phước Province
+VM77: Cà Ma Province
+VM78: Ðà Nẵng Municipality
+VM79: Hải Dương Province
+VM80: Hà Nam Province
+VM81: Hưng Yên Province
+VM82: Nam Ðịnh Province
+VM83: Phú Thọ Province
+VM84: Quảng Nam Province
+VM85: Thái Nguyên Province
+VM86: Vĩnh Phúc Province
+VM87: Cần Thơ Municipality
+VM88: Đắk Lắk Province
+VM89: Lai Chau Province
+VM90: Lao Cai Province
+VM91: Dak Nong Province
+VM92: Dien Bien Province
+VM93: Hau Giang Province
+Namibia
+WA21: Khomas Region
+WA28: Caprivi Region
+WA29: Erongo Region
+WA30: Hardap Region
+WA31: Karas Region
+WA32: Kunene Region
+WA33: Ohangwena Region
+WA34: Okavango Region
+WA35: Omaheke Region
+WA36: Omusati Region
+WA37: Oshana Region
+WA38: Oshikoto Region
+WA39: Otjozondjupa Region
+Samoa
+WS01: A'ana District
+WS02: Aiga-i-le-Tai District
+WS03: Atua District
+WS04: Fa'asaleleaga District
+WS05: Gaga'emauga District
+WS06: Va'a-o-Fonoti District
+WS07: Gagaifomauga District
+WS08: Palauli District
+WS09: Satupa'itea District
+WS10: Tuamasaga District
+WS11: Vaisigano District
+Swaziland
+WZ01: Hhohho District
+WZ02: Lubombo District
+WZ03: Manzini District
+WZ04: Shiselweni District
+Yemen
+YM01: Abyan Governorate
+YM02: 'Adan Governorate
+YM03: Al Mahrah Governorate
+YM04: Ḩaḑramawt Governorate
+YM05: Shabwah Governorate
+YM08: Al Ḩudaydah Governorate
+YM10: Al Mahwit Governorate
+YM11: Dhamar Governorate
+YM14: Ma'rib Governorate
+YM15: Sa'dah Governorate
+YM16: San‘a’ Governorate
+YM18: Ad Dali' Governorate
+YM19: 'Amran Governorate
+YM20: Al Bayḑā' Governorate
+YM21: Al Jawf Governorate
+YM22: Hajjah Governorate
+YM23: Ibb Governorate
+YM24: Lahij Governorate
+YM25: Ta'izz Governorate
+Zambia
+ZA01: Western Province
+ZA02: Central Province
+ZA03: Eastern Province
+ZA04: Luapula Province
+ZA05: Northern Province
+ZA06: North-Western Province
+ZA07: Southern Province
+ZA08: Copperbelt Province
+ZA09: Lusaka Province
+Zimbabwe
+ZI01: Manicaland Province
+ZI02: Midlands Province
+ZI03: Mashonaland Central Province
+ZI04: Mashonaland East Province
+ZI05: Mashonaland West Province
+ZI06: Matabeleland North Province
+ZI07: Matabeleland South Province
+ZI08: Masvingo Province
+ZI09: Bulawayo Province
+ZI10: Harare Province
