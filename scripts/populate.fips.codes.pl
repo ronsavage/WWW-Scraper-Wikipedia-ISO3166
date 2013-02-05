@@ -1,7 +1,4 @@
 #!/usr/bin/env perl
-#
-# Name:
-#	export.as.csv.pl.
 
 use feature 'say';
 use strict;
@@ -13,7 +10,7 @@ use charnames qw(:full :short);  # Unneeded in v5.16.
 
 use Getopt::Long;
 
-use WWW::Scraper::Wikipedia::ISO3166::Database::Export;
+use WWW::Scraper::Wikipedia::ISO3166::Database::Import;
 
 use Pod::Usage;
 
@@ -27,14 +24,12 @@ if ($option_parser -> getoptions
 (
 	\%option,
 	'help',
-	'country_file=s',
-	'subcountry_file=s',
 	'verbose=s',
 ) )
 {
 	pod2usage(1) if ($option{'help'});
 
-	exit WWW::Scraper::Wikipedia::ISO3166::Database::Export -> new(%option) -> as_csv;
+	exit WWW::Scraper::Wikipedia::ISO3166::Database::Import -> new(%option) -> populate_fips_codes;
 }
 else
 {
@@ -47,47 +42,35 @@ __END__
 
 =head1 NAME
 
-export.as.csv.pl - Export the SQLite database as CSV
+populate.fips.codes.pl - Parse data/List_of_FIPS_region_codes_A-C.html etc
 
 =head1 SYNOPSIS
 
-export.as.html.pl [options]
+populate.fips.codes.pl [options]
 
 	Options:
 	-help
-	-country_file $aFileName
-	-subcountry_file $aFileName
 	-verbose $integer
 
 All switches can be reduced to a single letter.
 
 Exit value: 0.
 
-Default input: share/www.scraper.wikipedia.iso3166.sqlite.
+Default input: data/List_of_FIPS_region_codes_A-C.html etc.
 
-Default output: Screen.
+This is output by scripts/get.fips.pages.pl.
+
+Default output: share/www.scraper.wikipedia.iso3166.sqlite.
 
 =head1 OPTIONS
 
 =over 4
 
-=item o -country_file $aFileName
-
-A CSV file name, to which country data will be written.
-
-Default: country.csv
-
-=item o -subcountry_file $aFileName
-
-A CSV file name, to which subcountry data will be written.
-
-Default: subcountry.csv
-
-=item o -help
+=item -help
 
 Print help and exit.
 
-=item o -verbose $integer
+=item -verbose => $integer
 
 Print more or less progress reports. Details (more-or-less):
 

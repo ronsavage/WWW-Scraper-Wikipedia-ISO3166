@@ -1,8 +1,13 @@
 package WWW::Scraper::Wikipedia::ISO3166::Database::Import;
 
 use parent 'WWW::Scraper::Wikipedia::ISO3166::Database';
+use feature 'say';
 use strict;
+use utf8;
 use warnings;
+use warnings  qw(FATAL utf8);    # Fatalize encoding glitches.
+use open      qw(:std :utf8);    # Undeclared streams in UTF-8.
+use charnames qw(:full :short);  # Unneeded in v5.16.
 
 use Encode; # For decode().
 
@@ -219,6 +224,55 @@ sub parse_country_page
 	return $names;
 
 } # End of parse_country_page.
+
+# -----------------------------------------------
+
+sub parse_fips_page
+{
+	my($self, $suffix) = @_;
+	my($in_file)       = "data/List_of_FIPS_region_codes_$suffix.html";
+	my($root)          = HTML::TreeBuilder -> new();
+	my($result)        = $root -> parse_file($in_file) || die "Can't parse file: $in_file\n";
+	my(@country)       = $root -> look_down(_tag => 'span', class => qr/mw-headline/, id => qr/[A-Z]{2,2}:/);
+	my(@ul)            = $root -> look_down(_tag => 'ul');
+	my($count)         = 0;
+
+	# Discard 1st ul.
+
+	shift @ul;
+
+	my($country);
+	my($li);
+	my(@name);
+	my($text);
+
+	for my $ul (@ul)
+	{
+		$count++;
+
+		$country               = (shift @country) -> as_text;
+		substr($country, 0, 4) = '';
+
+		push @name, $country;
+
+		for my $li ($ul -> look_down(_tag => 'li') )
+		{
+			$text = $li -> as_text;
+			$text =~ s/(.+),\s+$country/$1/;
+
+			push @name, $text;
+		}
+
+		# Ignore remaining uls.
+
+		last if ($#country < 0);
+	}
+
+	$root -> delete;
+
+	return [@name];
+
+} # End of parse_fips_page.
 
 # ----------------------------------------------
 
@@ -755,9 +809,7 @@ sub parse_subcountry_page
 		},
 		LB =>
 		{
-			column_type  => [qwThis module is a sub-class of L<WWW::Scraper::Wikipedia::ISO3166::Database> and consequently inherits its methods.
-
-/tt - -/],
+			column_type  => [qw/tt - -/],
 			table_number => 2,
 		},
 		LC =>
@@ -1336,6 +1388,17 @@ sub populate_countries
 
 } # End of populate_countries.
 
+# ----------------------------------------------
+
+sub populate_fips_codes
+{
+	my($self) = @_;
+	my($name) = $self -> process_fips_codes;
+
+	say $_ for @$name;
+
+} # End of populate_fips_codes.
+
 # -----------------------------------------------
 
 sub populate_subcountry
@@ -1495,6 +1558,24 @@ sub process_countries
 	return [@result];
 
 } # End of process_countries.
+
+# ----------------------------------------------
+
+sub process_fips_codes
+{
+	my($self)   = @_;
+	my(@suffix) = (qw/A-C D-F G-I J-L M-O P-R S-U V-Z/);
+
+	my(@result);
+
+	for my $suffix (@suffix)
+	{
+		push @result, @{$self -> parse_fips_page($suffix)};
+	}
+
+	return [@result];
+
+} # End of process_fips_codes.
 
 # ----------------------------------------------
 

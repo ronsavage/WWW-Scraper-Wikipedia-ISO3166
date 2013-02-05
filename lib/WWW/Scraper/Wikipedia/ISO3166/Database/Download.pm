@@ -23,6 +23,7 @@ our $VERSION = '1.01';
 sub get_1_page
 {
 	my($self, $url, $data_file) = @_;
+
 	my($response) = HTTP::Tiny -> new -> get($url);
 
 	if (! $$response{success})
@@ -77,16 +78,15 @@ sub get_country_pages
 sub get_fips_pages
 {
 	my($self)     = @_;
-#	my(@url)      = (qw/A-C D-F G-I J-L M-O P-R S-U V-Z/);
-	my(@url)      = (qw/A-C/);
-	my($base_url) = 'https://en.wikipedia.org/wiki/List_of_FIPS_region_codes_';
+	my(@url)      = (qw/A-C D-F G-I J-L M-O P-R S-U V-Z/);
+	my($base_url) = 'http://en.wikipedia.org/wiki/List_of_FIPS_region_codes_';
 
 	my($real_url, $result, $random);
 
 	for my $url (@url)
 	{
 		$real_url = "$base_url($url)";
-		$result   = $self -> get_1_page($url, "data/List_of_FIPS_region_codes_$url.html");
+		$result   = $self -> get_1_page($real_url, "data/List_of_FIPS_region_codes_$url.html");
 
 		for (;;)
 		{
