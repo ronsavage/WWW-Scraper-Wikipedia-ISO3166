@@ -1,9 +1,11 @@
 Revision history for Perl extension WWW::Scraper::Wikipedia::ISO3166.
 
-1.02  Unreleased
+1.02  Tue Feb  5 11:26:00 2013
 	- Make ISO3166.pm a UTF-8 file, to match its use of =encoding utf-8.
 	- Add scripts/test.nfc.pl.
 	- In the FAQ, clarify use of NFC() rather than NFD().
+	- Add scripts/get.statoids.pl and statoids/*.html in case we need their FIPS 10-4 codes one day.
+	- Add scripts/get.fips.pages.pl and data/List_of_FIPS_region_codes_*.html.
 
 1.01  Wed May 16  9:50:00 2012
 	- Neither code nor data changes made.
