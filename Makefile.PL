@@ -8,7 +8,7 @@ all_from 'lib/WWW/Scraper/Wikipedia/ISO3166.pm';
 
 install_share;
 
-requires 'charnames'                => 0;
+#requires 'charnames'                => 0;
 requires 'Config::Tiny'             => 2.14;
 requires 'DBD::SQLite'              => 1.35;
 requires 'DBI'                      => 1.620;
