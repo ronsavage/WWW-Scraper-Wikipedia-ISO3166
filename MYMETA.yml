@@ -6,9 +6,9 @@ build_requires:
   ExtUtils::MakeMaker: 6.36
   Test::More: 0.98
 configure_requires:
-  ExtUtils::MakeMaker: 0
+  ExtUtils::MakeMaker: 6.36
 dynamic_config: 0
-generated_by: 'ExtUtils::MakeMaker version 6.62, CPAN::Meta::Converter version 2.120921'
+generated_by: 'Module::Install version 1.06, CPAN::Meta::Converter version 2.120921'
 license: artistic_2
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -16,8 +16,9 @@ meta-spec:
 name: WWW-Scraper-Wikipedia-ISO3166
 no_index:
   directory:
-    - t
     - inc
+    - share
+    - t
 requires:
   Config::Tiny: 2.14
   DBD::SQLite: 1.35
@@ -43,4 +44,6 @@ requires:
   strict: 1.04
   utf8: 0
   warnings: 1.12
+resources:
+  license: http://opensource.org/licenses/artistic-license-2.0.php
 version: 1.02
