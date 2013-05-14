@@ -8,6 +8,7 @@ Revision history for Perl extension WWW::Scraper::Wikipedia::ISO3166.
 	- Add scripts/get.fips.pages.pl and data/List_of_FIPS_region_codes_*.html.
 	- Add scripts/populate.fips.pages.pl, data/wikipedia.fips.codes.txt and data/wikipedia.fips.mismatch.log.
 	- Update the POD re the new files.
+	- Update the pre-reqs.
 
 1.01  Wed May 16  9:50:00 2012
 	- Neither code nor data changes made.
