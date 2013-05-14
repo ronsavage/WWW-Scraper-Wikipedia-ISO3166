@@ -1,6 +1,5 @@
 package WWW::Scraper::Wikipedia::ISO3166;
 
-use 5.008;
 use strict;
 use warnings;
 
@@ -15,7 +14,7 @@ fieldhash my %share_dir    => 'share_dir';
 fieldhash my %sqlite_file  => 'sqlite_file';
 fieldhash my %verbose      => 'verbose';
 
-our $VERSION = '1.01';
+our $VERSION = '1.02';
 
 # -----------------------------------------------
 

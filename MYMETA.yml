@@ -5,7 +5,6 @@ author:
 build_requires:
   ExtUtils::MakeMaker: 6.59
   Test::More: 0.98
-  Test::Pod: 1.45
 configure_requires:
   ExtUtils::MakeMaker: 6.59
 dynamic_config: 0
