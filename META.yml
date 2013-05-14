@@ -39,7 +39,6 @@ requires:
   Text::Xslate: 1.5008
   Unicode::CaseFold: 0.02
   Unicode::Normalize: 1.14
-  charnames: 0
   feature: 0
   open: 1.08
   parent: 0.225
