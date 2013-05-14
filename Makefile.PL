@@ -8,13 +8,13 @@ all_from 'lib/WWW/Scraper/Wikipedia/ISO3166.pm';
 
 install_share;
 
-#requires 'charnames'                => 0;
+requires 'charnames'                => 0;
 requires 'Config::Tiny'             => 2.14;
 requires 'DBD::SQLite'              => 1.35;
 requires 'DBI'                      => 1.620;
 requires 'DBIx::Admin::CreateTable' => 2.07;
 requires 'Encode'                   => 2.44;
-#requires 'feature'                  => 0,
+requires 'feature'                  => 0,
 requires 'File::ShareDir'           => 1.03;
 requires 'File::Slurp'              => 9999.19;
 requires 'File::Spec'               => 3.33;
@@ -31,7 +31,7 @@ requires 'strict'                   => 1.04;
 requires 'Text::Xslate'             => 1.5008;
 requires 'Unicode::CaseFold'        => 0.02;
 requires 'Unicode::Normalize'       => 1.14;
-#requires 'utf8'                     => 0;
+requires 'utf8'                     => 0;
 requires 'warnings'                 => 1.12;
 
 test_requires 'Test::More'   => '0.98';

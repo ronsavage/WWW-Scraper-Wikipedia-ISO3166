@@ -23,13 +23,13 @@
    "prereqs" : {
       "build" : {
          "requires" : {
-            "ExtUtils::MakeMaker" : "6.36",
+            "ExtUtils::MakeMaker" : "6.59",
             "Test::More" : "0.98"
          }
       },
       "configure" : {
          "requires" : {
-            "ExtUtils::MakeMaker" : "6.36"
+            "ExtUtils::MakeMaker" : "6.59"
          }
       },
       "runtime" : {
@@ -52,9 +52,13 @@
             "Text::Xslate" : "1.5008",
             "Unicode::CaseFold" : "0.02",
             "Unicode::Normalize" : "1.14",
+            "charnames" : "0",
+            "feature" : "0",
             "open" : "1.08",
             "parent" : "0.225",
+            "perl" : "5.014",
             "strict" : "1.04",
+            "utf8" : "0",
             "warnings" : "1.12"
          }
       }

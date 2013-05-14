@@ -1,5 +1,6 @@
 package WWW::Scraper::Wikipedia::ISO3166;
 
+require v5.14.0;
 use strict;
 use warnings;
 

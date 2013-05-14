@@ -1,7 +1,4 @@
 #!/usr/bin/env perl
-#
-# Name:
-#	export.as.csv.pl.
 
 use feature 'say';
 use strict;
