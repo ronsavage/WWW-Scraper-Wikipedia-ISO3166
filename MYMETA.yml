@@ -3,16 +3,16 @@ abstract: 'Gently scrape Wikipedia for ISO3166-2 data'
 author:
   - 'C<WWW::Scraper::Wikipedia::ISO3166> was written by Ron Savage I<<ron@savage.net.au>> in 2012.'
 build_requires:
-  ExtUtils::MakeMaker: 6.59
-  Test::More: 0.98
+  ExtUtils::MakeMaker: '6.59'
+  Test::More: '0.98'
 configure_requires:
-  ExtUtils::MakeMaker: 0
+  ExtUtils::MakeMaker: '0'
 dynamic_config: 0
-generated_by: 'Module::Install version 1.06, CPAN::Meta::Converter version 2.133380'
+generated_by: 'Module::Install version 1.06, CPAN::Meta::Converter version 2.143240'
 license: artistic_2
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
-  version: 1.4
+  version: '1.4'
 name: WWW-Scraper-Wikipedia-ISO3166
 no_index:
   directory:
@@ -20,32 +20,32 @@ no_index:
     - share
     - t
 requires:
-  Config::Tiny: 2.14
-  DBD::SQLite: 1.35
-  DBI: 1.62
-  DBIx::Admin::CreateTable: 2.07
-  Encode: 2.44
-  File::ShareDir: 1.03
-  File::Slurp: 9999.19
-  File::Spec: 3.33
-  Getopt::Long: 2.38
-  HTML::TreeBuilder: 4.2
-  HTTP::Tiny: 0.018
-  Hash::FieldHash: 0.12
-  List::AllUtils: 0.03
-  List::Compare: 0.37
-  Pod::Usage: 1.51
-  Text::Xslate: 1.5008
-  Unicode::CaseFold: 0.02
-  Unicode::Normalize: 1.14
-  charnames: 0
-  feature: 0
-  open: 1.08
-  parent: 0.225
-  perl: 5.014
-  strict: 1.04
-  utf8: 0
-  warnings: 1.12
+  Config::Tiny: '2.14'
+  DBD::SQLite: '1.35'
+  DBI: '1.62'
+  DBIx::Admin::CreateTable: '2.07'
+  Encode: '2.44'
+  File::ShareDir: '1.03'
+  File::Slurp: '9999.19'
+  File::Spec: '3.33'
+  Getopt::Long: '2.38'
+  HTML::TreeBuilder: '4.2'
+  HTTP::Tiny: '0.018'
+  Hash::FieldHash: '0.12'
+  List::AllUtils: '0.03'
+  List::Compare: '0.37'
+  Pod::Usage: '1.51'
+  Text::Xslate: '1.5008'
+  Unicode::CaseFold: '0.02'
+  Unicode::Normalize: '1.14'
+  charnames: '0'
+  feature: '0'
+  open: '1.08'
+  parent: '0.225'
+  perl: '5.014'
+  strict: '1.04'
+  utf8: '0'
+  warnings: '1.12'
 resources:
   license: http://opensource.org/licenses/artistic-license-2.0.php
-version: 1.02
+version: '1.02'

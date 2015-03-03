@@ -1,5 +1,8 @@
 Revision history for Perl extension WWW::Scraper::Wikipedia::ISO3166.
 
+9.99  Sat Feb 21 11:23:00 2015
+	- Rename CHANGES to Changes as per CPAN::Spec::Changes
+
 1.02  Tue May 14 13:43:00 2013
 	- Make ISO3166.pm a UTF-8 file, to match its use of =encoding utf8.
 	- Add scripts/test.nfc.pl.
