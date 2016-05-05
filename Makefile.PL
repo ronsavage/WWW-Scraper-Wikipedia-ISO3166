@@ -1,8 +1,12 @@
+#!/usr/bin/env perl
+
 use inc::Module::Install;
+
+# -----------------------
 
 name 'WWW-Scraper-Wikipedia-ISO3166';
 
-license 'artistic_2';
+license 'perl';
 
 all_from 'lib/WWW/Scraper/Wikipedia/ISO3166.pm';
 

@@ -1,6 +1,6 @@
 package WWW::Scraper::Wikipedia::ISO3166;
 
-require v5.14.0;
+require v5.10.1;
 use strict;
 use warnings;
 
@@ -245,7 +245,7 @@ and data/wikipedia.fips.mismatch.log. These are discussed in L</What FIPS data i
 
 =item o scripts/test.nfc.pl
 
-See L</Why did you use L<Unicode::Normalize>'s NFC() for sorting?> for a discussion of this script.
+See L</Why did you use C<Unicode::Normalize>'s NFC() for sorting?> for a discussion of this script.
 
 =back
 
@@ -546,35 +546,35 @@ See L<http://creativecommons.org/licenses/by-sa/3.0/> for that licence.
 
 In no particular order:
 
-1: L<http://en.wikipedia.org/wiki/ISO_3166-2>.
+L<http://en.wikipedia.org/wiki/ISO_3166-2>.
 
-2: L<http://en.wikipedia.org/wiki/ISO_3166-1_alpha-3>.
+L<http://en.wikipedia.org/wiki/ISO_3166-1_alpha-3>.
 
-3: L<http://savage.net.au/Perl-modules/html/WWW/Scraper/Wikipedia/ISO3166/iso.3166-2.html>.
+L<http://savage.net.au/Perl-modules/html/WWW/Scraper/Wikipedia/ISO3166/iso.3166-2.html>.
 
-4: L<http://www.statoids.com/>.
+L<http://www.statoids.com/>.
 
-5: L<http://unicode.org/Public/cldr/latest/core.zip>.
+L<http://unicode.org/Public/cldr/latest/core.zip>.
 
 This is complex set of XML files concerning currency, postal, etc, formats and other details for various countries
 and/or languages.
 
-6: For Debian etc users: /usr/share/xml/iso-codes/iso_3166_2.xml, as installed from the iso-codes package, with:
+For Debian etc users: /usr/share/xml/iso-codes/iso_3166_2.xml, as installed from the iso-codes package, with:
 
 	sudo apt-get install iso-codes
 
-7: L<http://geonames.org>.
+L<http://geonames.org>.
 
-8: L<http://www.geonames.de/index.html>.
+L<http://www.geonames.de/index.html>.
 
-9: L<http://www.perl.com/pub/2012/04>.
+L<http://www.perl.com/pub/2012/04>.
 
 Check the Monthly Archives at Perl.com, starting in April 2012, for a series of Unicode-specific articles by
 Tom Christiansen.
 
-10: L<http://www.unicode.org/reports/tr15/>.
+L<http://www.unicode.org/reports/tr15/>.
 
-11: L<http://www.unicode.org/faq/normalization.html>.
+L<http://www.unicode.org/faq/normalization.html>.
 
 =head1 Support
 

@@ -22,7 +22,7 @@ use Unicode::CaseFold; # For fc().
 
 fieldhash my %code2 => 'code2';
 
-our $VERSION = '1.01';
+our $VERSION = '1.02';
 
 # ----------------------------------------------
 
@@ -1866,7 +1866,7 @@ Delete the I<detail> key of the arrayref of hashrefs for the subcountry.
 
 =head2 save_countries($code3, $table)
 
-Save the I<countries> table, by combining the output of L<parse_country_code_page()> with the output of
+Save the I<countries> table, by combining the output of L</parse_country_code_page()> with the output of
 L</process_countries($table)>.
 
 =head2 save_subcountries($count, $table)

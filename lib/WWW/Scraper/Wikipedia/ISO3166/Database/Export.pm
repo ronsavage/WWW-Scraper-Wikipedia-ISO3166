@@ -19,7 +19,7 @@ fieldhash my %subcountry_file => 'subcountry_file';
 fieldhash my %templater       => 'templater';
 fieldhash my %web_page_file   => 'web_page_file';
 
-our $VERSION = '1.01';
+our $VERSION = '1.02';
 
 # -----------------------------------------------
 

@@ -1,9 +1,11 @@
 Revision history for Perl extension WWW::Scraper::Wikipedia::ISO3166.
 
-9.99  Sat Feb 21 11:23:00 2015
+1.02  Thu May  5 21:02:00 2016
+	- Adopt new repo structure.
+	- Change licence from Artistic to Perl.
+	- Fix usage of nested L<...L<...>...> link. See RT#114174. Thanx to K. H. Williamson.
+	- Fix another link-based typo.
 	- Rename CHANGES to Changes as per CPAN::Spec::Changes
-
-1.02  Tue May 14 13:43:00 2013
 	- Make ISO3166.pm a UTF-8 file, to match its use of =encoding utf8.
 	- Add scripts/test.nfc.pl.
 	- In the FAQ, clarify use of NFC() rather than NFD().
