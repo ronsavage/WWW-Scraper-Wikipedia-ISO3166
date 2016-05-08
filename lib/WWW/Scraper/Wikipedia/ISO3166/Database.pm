@@ -14,13 +14,13 @@ use File::Slurp; # For read_dir().
 
 use Moo;
 
-use Types::Standard qw/Any Str/;
+use Types::Standard qw/Any HashRef Str/;
 
 has attributes =>
 (
 	default  => sub{return {AutoCommit => 1, RaiseError => 1, sqlite_unicode => 1} },
 	is       => 'rw',
-	isa      => Str,
+	isa      => HashRef,
 	required => 0,
 );
 
