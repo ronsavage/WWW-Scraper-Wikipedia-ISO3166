@@ -16,7 +16,7 @@ use Moo;
 
 use Types::Standard qw/Any Str/;
 
-has attributes
+has attributes =>
 (
 	default  => sub{return {AutoCommit => 1, RaiseError => 1, sqlite_unicode => 1} },
 	is       => 'rw',
@@ -24,7 +24,7 @@ has attributes
 	required => 0,
 );
 
-has creator
+has creator =>
 (
 	default  => sub{return ''},
 	is       => 'rw',
@@ -32,7 +32,7 @@ has creator
 	required => 0,
 );
 
-has dbh
+has dbh =>
 (
 	default  => sub{return ''},
 	is       => 'rw',
@@ -40,7 +40,7 @@ has dbh
 	required => 0,
 );
 
-dsn
+dsn =>
 (
 	default  => sub{return ''},
 	is       => 'rw',
@@ -48,7 +48,7 @@ dsn
 	required => 0,
 );
 
-engine
+engine =>
 (
 	default  => sub{return ''},
 	is       => 'rw',
@@ -56,7 +56,7 @@ engine
 	required => 0,
 );
 
-password
+password =>
 (
 	default  => sub{return ''},
 	is       => 'rw',
@@ -64,7 +64,7 @@ password
 	required => 0,
 );
 
-time_option
+time_option =>
 (
 	default  => sub{return ''},
 	is       => 'rw',
@@ -72,7 +72,7 @@ time_option
 	required => 0,
 );
 
-username
+username =>
 (
 	default  => sub{return ''},
 	is       => 'rw',
