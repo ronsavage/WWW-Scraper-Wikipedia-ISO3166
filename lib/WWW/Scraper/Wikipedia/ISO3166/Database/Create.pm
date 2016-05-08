@@ -4,8 +4,6 @@ use parent 'WWW::Scraper::Wikipedia::ISO3166::Database';
 use strict;
 use warnings;
 
-use Hash::FieldHash ':all';
-
 our $VERSION = '1.02';
 
 # -----------------------------------------------

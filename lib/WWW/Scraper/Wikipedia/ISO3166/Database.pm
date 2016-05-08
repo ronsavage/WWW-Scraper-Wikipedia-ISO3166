@@ -12,18 +12,114 @@ use DBIx::Admin::CreateTable;
 
 use File::Slurp; # For read_dir().
 
-use Hash::FieldHash ':all';
+use Moo;
 
-fieldhash my %attributes  => 'attributes';
-fieldhash my %creator     => 'creator';
-fieldhash my %dbh         => 'dbh';
-fieldhash my %dsn         => 'dsn';
-fieldhash my %engine      => 'engine';
-fieldhash my %password    => 'password';
-fieldhash my %time_option => 'time_option';
-fieldhash my %username    => 'username';
+use Types::Standard qw/Any Str/;
+
+has attributes
+(
+	default  => sub{return ''},
+	is       => 'rw',
+	isa      => Str,
+	required => 0,
+);
+
+has creator
+(
+	default  => sub{return ''},
+	is       => 'rw',
+	isa      => Str,
+	required => 0,
+);
+
+has dbh
+(
+	default  => sub{return ''},
+	is       => 'rw',
+	isa      => Any,
+	required => 0,
+);
+
+dsn
+(
+	default  => sub{return ''},
+	is       => 'rw',
+	isa      => Str,
+	required => 0,
+);
+
+engine
+(
+	default  => sub{return ''},
+	is       => 'rw',
+	isa      => Str,
+	required => 0,
+);
+
+password
+(
+	default  => sub{return ''},
+	is       => 'rw',
+	isa      => Str,
+	required => 0,
+);
+
+time_option
+(
+	default  => sub{return ''},
+	is       => 'rw',
+	isa      => Str,
+	required => 0,
+);
+
+username
+(
+	default  => sub{return ''},
+	is       => 'rw',
+	isa      => Str,
+	required => 0,
+);
 
 our $VERSION = '1.02';
+
+# -----------------------------------------------
+
+sub BUILD
+{
+	my($self)		    = @_;
+	$$arg{attributes}  ||= {AutoCommit => 1, RaiseError => 1, sqlite_unicode => 1}; # Caller can set.
+	$$arg{creator}     = '';
+	$$arg{dbh}         = '';
+	$$arg{dsn}         = '';
+	$$arg{engine}      = '';
+	$$arg{password}    = '';
+	$$arg{time_option} = '';
+	$$arg{username}    = '';
+
+	$self -> dsn('dbi:SQLite:dbname=' . $self -> sqlite_file);
+	$self -> dbh(DBI -> connect($self -> dsn, $self -> username, $self -> password, $self -> attributes) ) || die $DBI::errstr;
+	$self -> dbh -> do('PRAGMA foreign_keys = ON');
+
+	$self -> creator
+		(
+		 DBIx::Admin::CreateTable -> new
+		 (
+		  dbh     => $self -> dbh,
+		  verbose => 0,
+		 )
+		);
+
+	$self -> engine
+		(
+		 $self -> creator -> db_vendor =~ /(?:Mysql)/i ? 'engine=innodb' : ''
+		);
+
+	$self -> time_option
+		(
+		 $self -> creator -> db_vendor =~ /(?:MySQL|Postgres)/i ? '(0) without time zone' : ''
+		);
+
+} # End of BUILD.
 
 # -----------------------------------------------
 
@@ -72,60 +168,6 @@ sub get_subcountry_count
 	return ($self -> dbh -> selectrow_array('select count(*) from subcountries') )[0];
 
 } # End of get_subcountry_count.
-
-# -----------------------------------------------
-
-sub _init
-{
-	my($self, $arg)    = @_;
-	$$arg{attributes}  ||= {AutoCommit => 1, RaiseError => 1, sqlite_unicode => 1}; # Caller can set.
-	$$arg{creator}     = '';
-	$$arg{dbh}         = '';
-	$$arg{dsn}         = '';
-	$$arg{engine}      = '';
-	$$arg{password}    = '';
-	$$arg{time_option} = '';
-	$$arg{username}    = '';
-	$self              = $self -> SUPER::_init($arg);
-
-	$self -> dsn('dbi:SQLite:dbname=' . $self -> sqlite_file);
-	$self -> dbh(DBI -> connect($self -> dsn, $self -> username, $self -> password, $self -> attributes) ) || die $DBI::errstr;
-	$self -> dbh -> do('PRAGMA foreign_keys = ON');
-
-	$self -> creator
-		(
-		 DBIx::Admin::CreateTable -> new
-		 (
-		  dbh     => $self -> dbh,
-		  verbose => 0,
-		 )
-		);
-
-	$self -> engine
-		(
-		 $self -> creator -> db_vendor =~ /(?:Mysql)/i ? 'engine=innodb' : ''
-		);
-
-	$self -> time_option
-		(
-		 $self -> creator -> db_vendor =~ /(?:MySQL|Postgres)/i ? '(0) without time zone' : ''
-		);
-
-	return $self;
-
-} # End of _init.
-
-# -----------------------------------------------
-
-sub new
-{
-	my($class, %arg) = @_;
-	my($self)        = bless {}, $class;
-	$self            = $self -> _init(\%arg);
-
-	return $self;
-
-}	# End of new.
 
 # ----------------------------------------------
 

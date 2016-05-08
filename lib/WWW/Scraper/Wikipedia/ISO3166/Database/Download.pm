@@ -3,18 +3,30 @@ package WWW::Scraper::Wikipedia::ISO3166::Database::Download;
 use parent 'WWW::Scraper::Wikipedia::ISO3166::Database';
 use feature 'say';
 use strict;
-use utf8;
 use warnings;
 use warnings  qw(FATAL utf8);    # Fatalize encoding glitches.
-use open      qw(:std :utf8);    # Undeclared streams in UTF-8.
-use charnames qw(:full :short);  # Unneeded in v5.16.
-
-use Hash::FieldHash ':all';
 
 use HTTP::Tiny;
 
-fieldhash my %code2 => 'code2';
-fieldhash my %url   => 'url';
+use Moo;
+
+use Types::Standard qw/Str/;
+
+has code2 =>
+(
+	default  => sub{return 'AU'},
+	is       => 'rw',
+	isa      => Str,
+	required => 0,
+);
+
+has url =>
+(
+	default  => sub{return 'http://en.wikipedia.org/wiki/ISO_3166-2'},
+	is       => 'rw',
+	isa      => Str,
+	required => 0,
+);
 
 our $VERSION = '1.02';
 
@@ -180,31 +192,6 @@ sub get_subcountry_pages
 	return 0;
 
 } # End of get_subcountry_pages.
-
-# -----------------------------------------------
-
-sub _init
-{
-	my($self, $arg) = @_;
-	$$arg{code2}    ||= 'AU'; # Caller can set.
-	$$arg{url}      = 'http://en.wikipedia.org/wiki/ISO_3166-2';
-	$self           = $self -> SUPER::_init($arg);
-
-	return $self;
-
-} # End of _init.
-
-# -----------------------------------------------
-
-sub new
-{
-	my($class, %arg) = @_;
-	my($self)        = bless {}, $class;
-	$self            = $self -> _init(\%arg);
-
-	return $self;
-
-}	# End of new.
 
 # -----------------------------------------------
 

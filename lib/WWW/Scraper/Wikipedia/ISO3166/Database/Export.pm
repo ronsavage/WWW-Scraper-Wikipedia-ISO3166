@@ -1,25 +1,78 @@
 package WWW::Scraper::Wikipedia::ISO3166::Database::Export;
 
-use open qw/:std :utf8/;
 use parent 'WWW::Scraper::Wikipedia::ISO3166::Database';
 use strict;
 use warnings;
 
 use Config::Tiny;
 
-use Hash::FieldHash ':all';
+use Moo;
 
 use Text::Xslate 'mark_raw';
 
+use Types::Standard qw/HashRef Str/;
+
 use Unicode::Normalize; # For NFC().
 
-fieldhash my %config          => 'config';
-fieldhash my %country_file    => 'country_file';
-fieldhash my %subcountry_file => 'subcountry_file';
-fieldhash my %templater       => 'templater';
-fieldhash my %web_page_file   => 'web_page_file';
+has config =>
+(
+	default  => sub{return {} },
+	is       => 'rw',
+	isa      => HashRef,
+	required => 0,
+);
+
+has country_file =>
+(
+	default  => sub{return 'countries.csv'},
+	is       => 'rw',
+	isa      => Str,
+	required => 0,
+);
+
+has subcountry_file =>
+(
+	default  => sub{return 'subcountries.csv'},
+	is       => 'rw',
+	isa      => Str,
+	required => 0,
+);
+
+has templater =>
+(
+	default  => sub{return ''},
+	is       => 'rw',
+	isa      => Str,
+	required => 0,
+);
+
+has web_page_file =>
+(
+	default  => sub{return 'iso.3166-2.html'},
+	is       => 'rw',
+	isa      => Str,
+	required => 0,
+);
 
 our $VERSION = '1.02';
+
+# -----------------------------------------------
+
+sub BUILD
+{
+	my($self) = @_;
+
+	$self -> config(Config::Tiny -> read($self -> config_file) );
+	$self -> templater
+	(
+		Text::Xslate -> new
+		(
+		 input_layer => '',
+		 path        => ${$self -> config}{_}{template_path},
+		)
+	);
+
+} # End of BUILD.
 
 # -----------------------------------------------
 
@@ -188,44 +241,6 @@ sub build_country_data
 	return [@tr];
 
 } # End of build_country_data.
-
-# -----------------------------------------------
-
-sub _init
-{
-	my($self, $arg)        = @_;
-	$$arg{config}          = '';
-	$$arg{country_file}    ||= 'countries.csv';    # Caller can set.
-	$$arg{subcountry_file} ||= 'subcountries.csv'; # Caller can set.
-	$$arg{templater}       = '';
-	$$arg{web_page_file }  ||= 'iso.3166-2.html'; # Caller can set.
-	$self                  = $self -> SUPER::_init($arg);
-
-	$self -> config(Config::Tiny -> read($self -> config_file) );
-	$self -> templater
-	(
-		Text::Xslate -> new
-		(
-		 input_layer => '',
-		 path        => ${$self -> config}{_}{template_path},
-		)
-	);
-
-	return $self;
-
-} # End of _init.
-
-# -----------------------------------------------
-
-sub new
-{
-	my($class, %arg) = @_;
-	my($self)        = bless {}, $class;
-	$self            = $self -> _init(\%arg);
-
-	return $self;
-
-}	# End of new.
 
 # ------------------------------------------------
 

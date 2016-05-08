@@ -1,10 +1,12 @@
 Revision history for Perl extension WWW::Scraper::Wikipedia::ISO3166.
 
-1.02  Thu May  5 21:02:00 2016
+1.02  2016-05-05T21:02:00
 	- Adopt new repo structure.
+	- Replace Hash::FieldHash with Moo and Types::Standard.
 	- Change licence from Artistic to Perl.
 	- Fix usage of nested L<...L<...>...> link. See RT#114174. Thanx to K. H. Williamson.
 	- Fix another link-based typo.
+	- Move t/pod.t into xt/author/.
 	- Rename CHANGES to Changes as per CPAN::Spec::Changes
 	- Make ISO3166.pm a UTF-8 file, to match its use of =encoding utf8.
 	- Add scripts/test.nfc.pl.
@@ -15,11 +17,11 @@ Revision history for Perl extension WWW::Scraper::Wikipedia::ISO3166.
 	- Update the POD re the new files.
 	- Update the pre-reqs.
 
-1.01  Wed May 16  9:50:00 2012
+1.01  2012-05-16T09:50:00
 	- Neither code nor data changes made.
 	- Update the web page template to include the version #, and links to MetaCPAN.
 		This affects data/iso.3166-2.html.
 	- Add a new section to the docs: Wikipedia's Terms of Use.
 
-1.00  Tue May 15 15:37:00 2012
+1.00  2012-05-15T15:37:00
 	- Original version

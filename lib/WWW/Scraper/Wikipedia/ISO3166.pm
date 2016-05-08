@@ -7,35 +7,64 @@ use warnings;
 use File::ShareDir;
 use File::Spec;
 
-use Hash::FieldHash ':all';
+use Moo;
 
-fieldhash my %config_file  => 'config_file';
-fieldhash my %data_file    => 'data_file';
-fieldhash my %share_dir    => 'share_dir';
-fieldhash my %sqlite_file  => 'sqlite_file';
-fieldhash my %verbose      => 'verbose';
+use Types::Standard qw/Int Str/;
+
+has config_file =>
+(
+	default  => sub{return '.htwww.scraper.wikipedia.iso3166.conf'},
+	is       => 'rw',
+	isa      => Str,
+	required => 0,
+);
+
+has data_file =>
+(
+	default  => sub{return 'data/en.wikipedia.org.wiki.ISO_3166-2'},
+	is       => 'rw',
+	isa      => Str,
+	required => 0,
+);
+
+has share_dir =>
+(
+	default  => sub{return ''},
+	is       => 'rw',
+	isa      => Str,
+	required => 0,
+);
+
+has sqlite_file =>
+(
+	default  => sub{return 'www.scraper.wikipedia.iso3166.sqlite'},
+	is       => 'rw',
+	isa      => Str,
+	required => 0,
+);
+
+has verbose =>
+(
+	default  => sub{return 0},
+	is       => 'rw',
+	isa      => Int,
+	required => 0,
+);
 
 our $VERSION = '1.02';
 
 # -----------------------------------------------
 
-sub _init
+sub BUILD
 {
 	my($self, $arg)    = @_;
-	$$arg{config_file} ||= '.htwww.scraper.wikipedia.iso3166.conf'; # Caller can set.
-	$$arg{data_file}   = 'data/en.wikipedia.org.wiki.ISO_3166-2';
-	$$arg{sqlite_file} ||= 'www.scraper.wikipedia.iso3166.sqlite';  # Caller can set.
-	$$arg{verbose}     ||= 0; # Caller can set.
-	$self              = from_hash($self, $arg);
 	(my $package       = __PACKAGE__) =~ s/::/-/g;
 	my($dir_name)      = $ENV{AUTHOR_TESTING} ? 'share' : File::ShareDir::dist_dir($package);
 
 	$self -> config_file(File::Spec -> catfile($dir_name, $self -> config_file) );
 	$self -> sqlite_file(File::Spec -> catfile($dir_name, $self -> sqlite_file) );
 
-	return $self;
-
-} # End of _init.
+} # End of BUILD.
 
 # -----------------------------------------------
 
@@ -48,18 +77,6 @@ sub log
 	print "$level: $s. \n" if ($self -> verbose);
 
 }	# End of log.
-
-# -----------------------------------------------
-
-sub new
-{
-	my($class, %arg) = @_;
-	my($self)        = bless {}, $class;
-	$self            = $self -> _init(\%arg);
-
-	return $self;
-
-}	# End of new.
 
 # -----------------------------------------------
 
@@ -546,15 +563,15 @@ See L<http://creativecommons.org/licenses/by-sa/3.0/> for that licence.
 
 In no particular order:
 
-L<http://en.wikipedia.org/wiki/ISO_3166-2>.
+L<http://en.wikipedia.org/wiki/ISO_3166-2>
 
-L<http://en.wikipedia.org/wiki/ISO_3166-1_alpha-3>.
+L<http://en.wikipedia.org/wiki/ISO_3166-1_alpha-3>
 
-L<http://savage.net.au/Perl-modules/html/WWW/Scraper/Wikipedia/ISO3166/iso.3166-2.html>.
+L<http://savage.net.au/Perl-modules/html/WWW/Scraper/Wikipedia/ISO3166/iso.3166-2.html>
 
-L<http://www.statoids.com/>.
+L<http://www.statoids.com/>
 
-L<http://unicode.org/Public/cldr/latest/core.zip>.
+L<http://unicode.org/Public/cldr/latest/core.zip>
 
 This is complex set of XML files concerning currency, postal, etc, formats and other details for various countries
 and/or languages.
@@ -563,18 +580,22 @@ For Debian etc users: /usr/share/xml/iso-codes/iso_3166_2.xml, as installed from
 
 	sudo apt-get install iso-codes
 
-L<http://geonames.org>.
+L<http://geonames.org>
 
-L<http://www.geonames.de/index.html>.
+L<http://www.geonames.de/index.html>
 
-L<http://www.perl.com/pub/2012/04>.
+L<http://www.perl.com/pub/2012/04>
 
 Check the Monthly Archives at Perl.com, starting in April 2012, for a series of Unicode-specific articles by
 Tom Christiansen.
 
-L<http://www.unicode.org/reports/tr15/>.
+L<http://www.unicode.org/reports/tr15/>
 
-L<http://www.unicode.org/faq/normalization.html>.
+L<http://www.unicode.org/faq/normalization.html>
+
+=head1 Repository
+
+L<https://github.com/ronsavage/WWW-Scraper-Wikipedia-ISO3166.git>
 
 =head1 Support
 

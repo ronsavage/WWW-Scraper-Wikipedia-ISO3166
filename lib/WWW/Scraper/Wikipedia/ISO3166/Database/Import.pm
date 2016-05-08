@@ -3,24 +3,29 @@ package WWW::Scraper::Wikipedia::ISO3166::Database::Import;
 use parent 'WWW::Scraper::Wikipedia::ISO3166::Database';
 use feature 'say';
 use strict;
-use utf8;
 use warnings;
 use warnings  qw(FATAL utf8);    # Fatalize encoding glitches.
-use open      qw(:std :utf8);    # Undeclared streams in UTF-8.
-use charnames qw(:full :short);  # Unneeded in v5.16.
 
 use Encode; # For decode().
-
-use Hash::FieldHash ':all';
 
 use HTML::TreeBuilder;
 
 use List::AllUtils 'first';
 use List::Compare;
 
+use Moo;
+
+use Types::Standard qw/HashRef Str/;
+
 use Unicode::CaseFold; # For fc().
 
-fieldhash my %code2 => 'code2';
+has code2 =>
+(
+	default  => sub{return ''},
+	is       => 'rw',
+	isa      => Str,
+	required => 0,
+);
 
 our $VERSION = '1.02';
 
@@ -173,16 +178,6 @@ sub get_table
 	return [@result];
 
 } # End of get_table.
-
-# -----------------------------------------------
-
-sub _init
-{
-	my($self, $arg) = @_;
-
-	return $self -> SUPER::_init($arg);
-
-} # End of _init.
 
 # -----------------------------------------------
 
