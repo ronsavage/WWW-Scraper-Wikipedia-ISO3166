@@ -40,7 +40,7 @@ has dbh =>
 	required => 0,
 );
 
-dsn =>
+has dsn =>
 (
 	default  => sub{return ''},
 	is       => 'rw',
@@ -48,7 +48,7 @@ dsn =>
 	required => 0,
 );
 
-engine =>
+has engine =>
 (
 	default  => sub{return ''},
 	is       => 'rw',
@@ -56,7 +56,7 @@ engine =>
 	required => 0,
 );
 
-password =>
+has password =>
 (
 	default  => sub{return ''},
 	is       => 'rw',
@@ -64,7 +64,7 @@ password =>
 	required => 0,
 );
 
-time_option =>
+has time_option =>
 (
 	default  => sub{return ''},
 	is       => 'rw',
@@ -72,7 +72,7 @@ time_option =>
 	required => 0,
 );
 
-username =>
+has username =>
 (
 	default  => sub{return ''},
 	is       => 'rw',
