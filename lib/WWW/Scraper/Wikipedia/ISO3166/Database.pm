@@ -18,7 +18,7 @@ use Types::Standard qw/Any Str/;
 
 has attributes
 (
-	default  => sub{return ''},
+	default  => sub{return {AutoCommit => 1, RaiseError => 1, sqlite_unicode => 1} },
 	is       => 'rw',
 	isa      => Str,
 	required => 0,
@@ -86,8 +86,7 @@ our $VERSION = '1.02';
 
 sub BUILD
 {
-	my($self)		    = @_;
-	$$arg{attributes}  ||= {AutoCommit => 1, RaiseError => 1, sqlite_unicode => 1}; # Caller can set.
+	my($self) = @_;
 
 	$self -> dsn('dbi:SQLite:dbname=' . $self -> sqlite_file);
 	$self -> dbh(DBI -> connect($self -> dsn, $self -> username, $self -> password, $self -> attributes) ) || die $DBI::errstr;
