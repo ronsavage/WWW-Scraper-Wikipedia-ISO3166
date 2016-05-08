@@ -88,13 +88,6 @@ sub BUILD
 {
 	my($self)		    = @_;
 	$$arg{attributes}  ||= {AutoCommit => 1, RaiseError => 1, sqlite_unicode => 1}; # Caller can set.
-	$$arg{creator}     = '';
-	$$arg{dbh}         = '';
-	$$arg{dsn}         = '';
-	$$arg{engine}      = '';
-	$$arg{password}    = '';
-	$$arg{time_option} = '';
-	$$arg{username}    = '';
 
 	$self -> dsn('dbi:SQLite:dbname=' . $self -> sqlite_file);
 	$self -> dbh(DBI -> connect($self -> dsn, $self -> username, $self -> password, $self -> attributes) ) || die $DBI::errstr;
