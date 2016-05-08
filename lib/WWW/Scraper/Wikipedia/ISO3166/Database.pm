@@ -28,13 +28,13 @@ has creator =>
 (
 	default  => sub{return ''},
 	is       => 'rw',
-	isa      => Str,
+	isa      => Any,
 	required => 0,
 );
 
 has dbh =>
 (
-	default  => sub{return undef},
+	default  => sub{return ''},
 	is       => 'rw',
 	isa      => Any,
 	required => 0,
