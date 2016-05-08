@@ -34,7 +34,7 @@ has creator =>
 
 has dbh =>
 (
-	default  => sub{return ''},
+	default  => sub{return undef},
 	is       => 'rw',
 	isa      => Any,
 	required => 0,
