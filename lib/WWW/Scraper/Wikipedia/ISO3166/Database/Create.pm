@@ -4,7 +4,7 @@ use parent 'WWW::Scraper::Wikipedia::ISO3166::Database';
 use strict;
 use warnings;
 
-our $VERSION = '1.02';
+our $VERSION = '1.03';
 
 # -----------------------------------------------
 
