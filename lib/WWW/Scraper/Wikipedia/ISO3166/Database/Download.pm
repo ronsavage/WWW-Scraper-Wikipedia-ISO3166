@@ -170,9 +170,10 @@ sub get_subcountry_pages
 
 	my(%downloaded);
 
-	my($downloaded)           = $self -> find_subcountry_downloads;
-	@downloaded{@$downloaded} = (1) x @$downloaded;
-	my($countries)            = $self -> read_countries_table;
+	my($downloaded)				= $self -> find_subcountry_downloads;
+	@downloaded{@$downloaded}	= (1) x @$downloaded;
+	my($countries)				= $self -> read_countries_table;
+	my($count)					= 0;
 
 	my(%countries);
 
@@ -180,12 +181,16 @@ sub get_subcountry_pages
 	{
 		if (! $downloaded{$$countries{$id}{code2} })
 		{
+			$count++;
+
 			$self -> code2($$countries{$id}{code2});
 			$self -> get_subcountry_page;
 
 			sleep 5;
 		}
 	}
+
+	$self -> log(info => "Download page count: $count");
 
 	# Return 0 for success and 1 for failure.
 

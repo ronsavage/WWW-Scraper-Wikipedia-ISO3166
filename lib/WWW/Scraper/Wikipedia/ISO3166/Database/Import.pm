@@ -291,52 +291,52 @@ sub parse_subcountry_page
 	(
 		AD =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		AE =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		AF =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		AG =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 2,
 		},
 		AL =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		AM =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 1,
 		},
 		AO =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		AR =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 2,
 		},
 		AT =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 1,
 		},
 		AU =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 2,
 		},
 		AW =>
@@ -347,242 +347,242 @@ sub parse_subcountry_page
 		},
 		AZ =>
 		{
-			column_type  => [qw/tt a - -/],
+			column_type  => [qw/span a - -/],
 			table_number => 3,
 		},
 		BA =>
 		{
-			column_type  => [qw/tt a - - a/],
+			column_type  => [qw/span a - - a/],
 			table_number => 3,
 		},
 		BB =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		BD =>
 		{
-			column_type  => [qw/tt a a/],
+			column_type  => [qw/span a a/],
 			table_number => 3,
 		},
 		BE =>
 		{
-			column_type  => [qw/tt a a/],
+			column_type  => [qw/span a a/],
 			table_number => 3,
 		},
 		BF =>
 		{
-			column_type  => [qw/tt a a/],
+			column_type  => [qw/span a a/],
 			table_number => 3,
 		},
 		BG =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		BH =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		BI =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		BJ =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		BN =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 1,
 		},
 		BO =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		BQ =>
 		{
-			column_type  => [qw/tt a a/],
+			column_type  => [qw/span a a/],
 			table_number => 2,
 		},
 		BR =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 1,
 		},
 		BS =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		BT =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 1,
 		},
 		BW =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		BY =>
 		{
-			column_type  => [qw/tt a - - - -/],
+			column_type  => [qw/span a - - - -/],
 			table_number => 2,
 		},
 		BZ =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 1,
 		},
 		CA =>
 		{
-			column_type  => [qw/tt a - -/],
+			column_type  => [qw/span a - -/],
 			table_number => 2,
 		},
 		CD =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 2,
 		},
 		CF =>
 		{
-			column_type  => [qw/tt a - -/],
+			column_type  => [qw/span a - -/],
 			table_number => 2,
 		},
 		CG =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 1,
 		},
 		CH =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		CI =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		CL =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		CM =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 1,
 		},
 		CN =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 2,
 		},
 		CO =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 2,
 		},
 		CR =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 1,
 		},
 		CU =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 1,
 		},
 		CV =>
 		{
-			column_type  => [qw/tt a a/],
+			column_type  => [qw/span a a/],
 			table_number => 3,
 		},
 		CY =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 1,
 		},
 		CZ =>
 		{
-			column_type  => [qw/tt a a/],
+			column_type  => [qw/span a a/],
 			table_number => 3,
 		},
 		DE =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 1,
 		},
 		DJ =>
 		{
-			column_type  => [qw/tt a - -/],
+			column_type  => [qw/span a - -/],
 			table_number => 2,
 		},
 		DK =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		DM =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		DO =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 2,
 		},
 		DZ =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 1,
 		},
 		EC =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		EE =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 1,
 		},
 		EG =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		ER =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 2,
 		},
 		ES =>
 		{
-			column_type  => [qw/tt a a/],
+			column_type  => [qw/span a a/],
 			table_number => 3,
 		},
 		ET =>
 		{
-			column_type  => [qw/tt - a -/],
+			column_type  => [qw/span - a -/],
 			table_number => 2,
 		},
 		FI =>
 		{
-			column_type  => [qw/tt a - -/],
+			column_type  => [qw/span a - -/],
 			table_number => 2,
 		},
 		FJ =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 1,
 		},
 		FK =>
@@ -590,37 +590,37 @@ sub parse_subcountry_page
 		},
 		FM =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 1,
 		},
 		FR =>
 		{
-			column_type  => [qw/tt a a/],
+			column_type  => [qw/span a a/],
 			table_number => 4,
 		},
 		GA =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 1,
 		},
 		GB =>
 		{
-			column_type  => [qw/tt a - a/],
+			column_type  => [qw/span a - a/],
 			table_number => 4,
 		},
 		GD =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 2,
 		},
 		GE =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 2,
 		},
 		GH =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 1,
 		},
 		GI =>
@@ -628,27 +628,27 @@ sub parse_subcountry_page
 		},
 		GL =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		GM =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 1,
 		},
 		GN =>
 		{
-			column_type  => [qw/tt a a/],
+			column_type  => [qw/span a a/],
 			table_number => 3,
 		},
 		GQ =>
 		{
-			column_type  => [qw/tt a - - a/],
+			column_type  => [qw/span a - - a/],
 			table_number => 3,
 		},
 		GR =>
 		{
-			column_type  => [qw/tt a - a/],
+			column_type  => [qw/span a - a/],
 			table_number => 3,
 		},
 		GS =>
@@ -656,7 +656,7 @@ sub parse_subcountry_page
 		},
 		GT =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		GU =>
@@ -664,287 +664,287 @@ sub parse_subcountry_page
 		},
 		GW =>
 		{
-			column_type  => [qw/tt a - -/],
+			column_type  => [qw/span a - -/],
 			table_number => 3,
 		},
 		GY =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 1,
 		},
 		HN =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		HR =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 2,
 		},
 		HT =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 2,
 		},
 		HU =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 2,
 		},
 		ID =>
 		{
-			column_type  => [qw/tt a - a/],
+			column_type  => [qw/span a - a/],
 			table_number => 3,
 		},
 		IE =>
 		{
-			column_type  => [qw/tt a - a/],
+			column_type  => [qw/span a - a/],
 			table_number => 3,
 		},
 		IL =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 1,
 		},
 		IN =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 2,
 		},
 		IQ =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 1,
 		},
 		IR =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		IS =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 1,
 		},
 		IT =>
 		{
-			column_type  => [qw/tt a a/],
+			column_type  => [qw/span a a/],
 			table_number => 3,
 		},
 		JO =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		JM =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		JP =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 1,
 		},
 		KE =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 2,
 		},
 		KG =>
 		{
-			column_type  => [qw/tt a - - -/],
+			column_type  => [qw/span a - - -/],
 			table_number => 2,
 		},
 		KH =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 2,
 		},
 		KI =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 1,
 		},
 		KM =>
 		{
-			column_type  => [qw/tt - a -/],
+			column_type  => [qw/span - a -/],
 			table_number => 2,
 		},
 		KN =>
 		{
-			column_type  => [qw/tt a - a/],
+			column_type  => [qw/span a - a/],
 			table_number => 3,
 		},
 		KP =>
 		{
-			column_type  => [qw/tt a - -/],
+			column_type  => [qw/span a - -/],
 			table_number => 2,
 		},
 		KR =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 2,
 		},
 		KW =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		KZ =>
 		{
-			column_type  => [qw/tt a - - -/],
+			column_type  => [qw/span a - - -/],
 			table_number => 2,
 		},
 		LA =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 2,
 		},
 		LB =>
 		{
-			column_type  => [qw/tt - -/],
+			column_type  => [qw/span - -/],
 			table_number => 2,
 		},
 		LC =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		LI =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		LK =>
 		{
-			column_type  => [qw/tt a - a/],
+			column_type  => [qw/span a - a/],
 			table_number => 3,
 		},
 		LR =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		LS =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		LT =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 1,
 		},
 		LU =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 1,
 		},
 		LV =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 2,
 		},
 		LY =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		MA =>
 		{
-			column_type  => [qw/tt a - a/],
+			column_type  => [qw/span a - a/],
 			table_number => 3,
 		},
 		MC =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		MD =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 2,
 		},
 		ME =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		MG =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 1,
 		},
 		MH =>
 		{
-			column_type  => [qw/tt a a/],
+			column_type  => [qw/span a a/],
 			table_number => 3,
 		},
 		MK =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 2,
 		},
 		ML =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 1,
 		},
 		MM =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 2,
 		},
 		MN =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 1,
 		},
 		MR =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 1,
 		},
 		MT =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		MU =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 2,
 		},
 		MV =>
 		{
-			column_type  => [qw/tt a - -/],
+			column_type  => [qw/span a - -/],
 			table_number => 3,
 		},
 		MW =>
 		{
-			column_type  => [qw/tt a a/],
+			column_type  => [qw/span a a/],
 			table_number => 3,
 		},
 		MX =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 1,
 		},
 		MY =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 2,
 		},
 		MZ =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 1,
 		},
 		NA =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 1,
 		},
 		NC =>
@@ -952,7 +952,7 @@ sub parse_subcountry_page
 		},
 		NE =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 2,
 		},
 		NF =>
@@ -960,72 +960,72 @@ sub parse_subcountry_page
 		},
 		NG =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 2,
 		},
 		NI =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 2,
 		},
 		NL =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		NO =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 2,
 		},
 		NP =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 3,
 		},
 		NR =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		NZ =>
 		{
-			column_type  => [qw/tt a span - a/],
+			column_type  => [qw/span a span - a/],
 			table_number => 3,
 		},
 		OM =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 2,
 		},
 		PA =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 2,
 		},
 		PE =>
 		{
-			column_type  => [qw/tt a - - -/],
+			column_type  => [qw/span a - - -/],
 			table_number => 2,
 		},
 		PG =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 2,
 		},
 		PH =>
 		{
-			column_type  => [qw/tt a a/],
+			column_type  => [qw/span a a/],
 			table_number => 3,
 		},
 		PK =>
 		{
-			column_type  => [qw/tt a - -/],
+			column_type  => [qw/span a - -/],
 			table_number => 2,
 		},
 		PL =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		PM =>
@@ -1039,132 +1039,132 @@ sub parse_subcountry_page
 		},
 		PS =>
 		{
-			column_type  => [qw/tt a - -/],
+			column_type  => [qw/span a - -/],
 			table_number => 2,
 		},
 		PT =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 1,
 		},
 		PW =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		PY =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 1,
 		},
 		QA =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		RO =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 2,
 		},
 		RS =>
 		{
-			column_type  => [qw/tt a - a/],
+			column_type  => [qw/span a - a/],
 			table_number => 3,
 		},
 		RU =>
 		{
-			column_type  => [qw/tt a - -/],
+			column_type  => [qw/span a - -/],
 			table_number => 2,
 		},
 		RW =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 2,
 		},
 		SA =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		SB =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 2,
 		},
 		SC =>
 		{
-			column_type  => [qw/tt a - -/],
+			column_type  => [qw/span a - -/],
 			table_number => 2,
 		},
 		SD =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 2,
 		},
 		SE =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 2,
 		},
 		SG =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 3,
 		},
 		SH =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		SI =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		SK =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 1,
 		},
 		SL =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 1,
 		},
 		SM =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		SN =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		SO =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 1,
 		},
 		SR =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 1,
 		},
 		SS =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		ST =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 1,
 		},
 		SV =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 1,
 		},
 		SX =>
@@ -1172,17 +1172,17 @@ sub parse_subcountry_page
 		},
 		SY =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 1,
 		},
 		SZ =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 1,
 		},
 		TD =>
 		{
-			column_type  => [qw/tt - a/],
+			column_type  => [qw/span - a/],
 			table_number => 2,
 		},
 		TF =>
@@ -1190,82 +1190,82 @@ sub parse_subcountry_page
 		},
 		TG =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 1,
 		},
 		TH =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 2,
 		},
 		TJ =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 2,
 		},
 		TL =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 2,
 		},
 		TM =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 2,
 		},
 		TN =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		TO =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		TR =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		TT =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 1,
 		},
 		TV =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 2,
 		},
 		TW =>
 		{
-			column_type  => [qw/tt - - a/],
+			column_type  => [qw/span - - a/],
 			table_number => 2,
 		},
 		TZ =>
 		{
-			column_type  => [qw/tt - a/],
+			column_type  => [qw/span - a/],
 			table_number => 2,
 		},
 		UA =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 1,
 		},
 		UG =>
 		{
-			column_type  => [qw/tt a a/],
+			column_type  => [qw/span a a/],
 			table_number => 3,
 		},
 		UM =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 1,
 		},
 		US =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 2,
 		},
 		UY =>
@@ -1275,17 +1275,17 @@ sub parse_subcountry_page
 		},
 		UZ =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 2,
 		},
 		VC =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 2,
 		},
 		VE =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 2,
 		},
 		VI =>
@@ -1293,37 +1293,37 @@ sub parse_subcountry_page
 		},
 		VN =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 2,
 		},
 		VU =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 1,
 		},
 		WS =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 1,
 		},
 		YE =>
 		{
-			column_type  => [qw/tt a -/],
+			column_type  => [qw/span a -/],
 			table_number => 2,
 		},
 		ZA =>
 		{
-			column_type  => [qw/tt a - - - - -/],
+			column_type  => [qw/span a - - - - -/],
 			table_number => 2,
 		},
 		ZM =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 1,
 		},
 		ZW =>
 		{
-			column_type  => [qw/tt a/],
+			column_type  => [qw/span a/],
 			table_number => 1,
 		},
 	);
