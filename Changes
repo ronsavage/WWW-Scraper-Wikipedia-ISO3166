@@ -9,6 +9,8 @@ Revision history for Perl extension WWW::Scraper::Wikipedia::ISO3166.
 	- Move t/pod.t into xt/author/.
 	- Rename CHANGES to Changes as per CPAN::Spec::Changes
 	- Change format of dates in this file.
+	- Rename t/load.t to t/report.t, and make it run scripts/report.statistics.pl for a real test.
+	- Refromat lines in this file to be <= 100 chars wide, as per my new policy.
 
 1.02  2013-05-14T13:43:00
 	- Make ISO3166.pm a UTF-8 file, to match its use of =encoding utf8.
@@ -16,7 +18,8 @@ Revision history for Perl extension WWW::Scraper::Wikipedia::ISO3166.
 	- In the FAQ, clarify use of NFC() rather than NFD().
 	- Add scripts/get.statoids.pl in case we need their FIPS 10-4 codes one day.
 	- Add scripts/get.fips.pages.pl and data/List_of_FIPS_region_codes_*.html.
-	- Add scripts/populate.fips.pages.pl, data/wikipedia.fips.codes.txt and data/wikipedia.fips.mismatch.log.
+	- Add scripts/populate.fips.pages.pl, data/wikipedia.fips.codes.txt and
+		data/wikipedia.fips.mismatch.log.
 	- Update the POD re the new files.
 	- Update the pre-reqs.
 
