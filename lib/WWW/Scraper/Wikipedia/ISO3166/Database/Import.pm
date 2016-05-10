@@ -6,6 +6,8 @@ use strict;
 use warnings;
 use warnings  qw(FATAL utf8);    # Fatalize encoding glitches.
 
+use Data::Dumper::Concise; # For Dumper().
+
 use Encode; # For decode().
 
 use HTML::TreeBuilder;
@@ -27,7 +29,7 @@ has code2 =>
 	required => 0,
 );
 
-our $VERSION = '1.04';
+our $VERSION = '1.05';
 
 # ----------------------------------------------
 
@@ -190,10 +192,10 @@ sub parse_country_code_page
 	my($result) = $root -> parse_file($in_file) || die "Can't parse file: $in_file\n";
 	my(@node)   = $root -> look_down(_tag => 'table');
 	my($codes)  =
-	[
-		@{$self -> get_table($node[2], [qw/tt a/])},
-		@{$self -> get_table($node[3], [qw/tt a/])},
-		@{$self -> get_table($node[4], [qw/tt a/])},
+	[	# The original data is split into 3 tables for some reason.
+		@{$self -> get_table($node[1], [qw/span a/])},
+		@{$self -> get_table($node[2], [qw/span a/])},
+		@{$self -> get_table($node[3], [qw/span a/])},
 	];
 
 	$root -> delete;
@@ -212,8 +214,7 @@ sub parse_country_page
 	my($root)     = HTML::TreeBuilder -> new();
 	my($result)   = $root -> parse_file($in_file) || die "Can't parse file: $in_file\n";
 	my(@node)     = $root -> look_down(_tag => 'table');
-	my($names)    = $self -> get_table($node[1], [qw/a a a/]);
-	#my($specials) = $self -> get_table($node[2], [qw/a a a/]);
+	my($names)    = $self -> get_table($node[0], [qw/a a a/]);
 
 	$root -> delete;
 
@@ -256,7 +257,7 @@ sub parse_fips_page
 			$text = $li -> as_text;
 			$text =~ s/(.+),\s+$country/$1/;
 
-			push @name, decode('utf8', $text);
+			push @name, decode('UTF-8', $text);
 		}
 
 		# Ignore remaining uls.
@@ -1360,6 +1361,7 @@ sub parse_subcountry_page
 sub populate_countries
 {
 	my($self)  = @_;
+
 	my($codes) = $self -> parse_country_code_page;
 	my($names) = $self -> parse_country_page;
 	$names     = $self -> process_countries($names);
@@ -1372,6 +1374,20 @@ sub populate_countries
 	{
 		$codes{$$codes[$i]{name} } = $$codes[$i]{code};
 	}
+
+	open(my $fh, '>:encoding(UTF-8)', 'data/downloaded.countries.txt');
+	say $fh qq|"code","name"|;
+
+	my($xcode);
+
+	for my $name (sort keys %codes)
+	{
+		$xcode = decode('UTF-8', $name);
+
+		say $fh qq|"$xcode","$codes{$name}"|;
+	}
+
+	close $fh;
 
 	$self -> save_countries(\%codes, $names);
 
@@ -1394,8 +1410,8 @@ sub populate_fips_codes
 
 	my(@fips_name);
 
-	open(OUT, '>', 'data/wikipedia.fips.codes.txt');
-	binmode OUT;
+	open(my $fh, '>', 'data/wikipedia.fips.codes.txt');
+	binmode $fh;
 
 	for my $name (@$record)
 	{
@@ -1406,24 +1422,23 @@ sub populate_fips_codes
 			push @fips_name, $name;
 		}
 
-		say OUT $_ for $name;
+		say $fh $_ for $name;
 	}
 
-	close OUT;
+	close $fh;
 
 	my($db_name) = $self -> read_countries_table;
 	my(@db_name) = map{$$db_name{$_}{name} } keys %$db_name;
 
 	my($compare) = List::Compare -> new(\@db_name, \@fips_name);
 
-	open(OUT, '>:utf8', 'data/wikipedia.fips.mismatch.log');
-#	binmode OUT;
-	say OUT 'Countries in the db but not in the fips list:';
-	say OUT $_ for $compare -> get_unique;
-	say OUT '-' x 50;
-	say OUT 'Countries in the fips list but not in the db:';
-	say OUT decode('utf8', $_) for $compare -> get_complement;
-	close OUT;
+	open($fh, '>:utf8', 'data/wikipedia.fips.mismatch.log');
+	say $fh 'Countries in the db but not in the fips list:';
+	say $fh $_ for $compare -> get_unique;
+	say $fh '-' x 50;
+	say $fh 'Countries in the fips list but not in the db:';
+	say $fh decode('utf8', $_) for $compare -> get_complement;
+	close $fh;
 
 } # End of populate_fips_codes.
 
@@ -1643,7 +1658,7 @@ sub save_countries
 	{
 		$i++;
 
-		$sth -> execute($$element{code}, $$code3{$$element{name} } || '', fc decode('utf8', $$element{name}), defined($$element{detail}) ? 'Yes' : 'No', decode('utf8', $$element{name}) );
+		$sth -> execute($$element{code}, $$code3{$$element{name} } || '', fc decode('UTF-8', $$element{name}), defined($$element{detail}) ? 'Yes' : 'No', decode('utf8', $$element{name}) );
 	}
 
 	$sth -> finish;
@@ -1678,7 +1693,7 @@ sub save_subcountry
 	{
 		$i++;
 
-		$decode = decode('utf8', $$element{name});
+		$decode = decode('UTF-8', $$element{name});
 
 		$sth -> execute($country_id, $$element{code}, fc $decode, $decode, $i);
 	}

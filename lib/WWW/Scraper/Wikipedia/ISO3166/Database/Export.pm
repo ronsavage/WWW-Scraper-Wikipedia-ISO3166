@@ -54,7 +54,7 @@ has web_page_file =>
 	required => 0,
 );
 
-our $VERSION = '1.04';
+our $VERSION = '1.05';
 
 # -----------------------------------------------
 
@@ -104,14 +104,14 @@ sub as_csv
 
 	die "No country_file name specified\n" if (! $self -> country_file);
 
-	open(OUT, '>', $self -> country_file) || die "Can't open file: " . $self -> country_file . "\n";
+	open(my $fh, '>', $self -> country_file) || die "Can't open file: " . $self -> country_file . "\n";
 
 	for (@row)
 	{
-		print OUT '"', join('","', @$_), '"', "\n";
+		print $fh '"', join('","', @$_), '"', "\n";
 	}
 
-	close OUT;
+	close $fh;
 
 	die "Country and subcountry file names are the same\n" if ($self -> country_file eq $self -> subcountry_file);
 
@@ -139,14 +139,14 @@ sub as_csv
 
 	die "No subcountry_file name specified\n" if (! $self -> subcountry_file);
 
-	open(OUT, '>', $self -> subcountry_file) || die "Can't open file: " . $self -> subcountry_file . "\n";
+	open(my $fh, '>', $self -> subcountry_file) || die "Can't open file: " . $self -> subcountry_file . "\n";
 
 	for (@row)
 	{
-		print OUT '"', join('","', @$_), '"', "\n";
+		print $fh '"', join('","', @$_), '"', "\n";
 	}
 
-	close OUT;
+	close $fh;
 
 }	# End of as_csv.
 
@@ -159,10 +159,10 @@ sub as_html
 
 	die "No web_page_file name specified\n" if (! $self -> web_page_file);
 
-	open(OUT, '>', $self -> web_page_file) || die "Can't open file: " . $self -> web_page_file . "\n";
-	binmode(OUT, ':utf8');
+	open(my $fh, '>', $self -> web_page_file) || die "Can't open file: " . $self -> web_page_file . "\n";
+	binmode($fh, ':utf8');
 
-	print OUT $self -> templater -> render
+	print $fh $self -> templater -> render
 		(
 			'iso3166.report.tx',
 			{
@@ -172,7 +172,7 @@ sub as_html
 			}
 		);
 
-	close OUT;
+	close $fh;
 
 } # End of as_html.
 

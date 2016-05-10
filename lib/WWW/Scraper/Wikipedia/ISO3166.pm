@@ -51,7 +51,7 @@ has verbose =>
 	required => 0,
 );
 
-our $VERSION = '1.04';
+our $VERSION = '1.05';
 
 # -----------------------------------------------
 
@@ -190,7 +190,7 @@ Its components are:
 
 =over 4
 
-=item o scripts/get.country.page.pl
+=item o scripts/get.country.pages.pl
 
 1: Downloads the ISO3166-1_alpha-3 page from Wikipedia.
 
@@ -211,6 +211,8 @@ Imports country data into an SQLite database.
 inputs: data/en.wikipedia.org.wiki.ISO_3166-2.html, data/en.wikipedia.org.wiki.ISO_3166-2.3.html.
 
 Output: share/www.scraper.wikipedia.iso3166.sqlite.
+
+Output: data/downloaded.countries.txt.
 
 =item o scripts/get.subcountry.page.pl and scripts/get.subcountry.pages.pl
 
@@ -249,7 +251,7 @@ Output: data/iso.3166-2.html.
 
 On-line: L<http://savage.net.au/Perl-modules/html/WWW/Scraper/Wikipedia/ISO3166/iso.3166-2.html>.
 
-=item o scripts/get.statoids.pl
+=item o scripts/get.statoids.pages.pl
 
 Downloads some pages from L<http://statoids.com> in case one day we need to convert from FIPS to ISO 3166-2.
 

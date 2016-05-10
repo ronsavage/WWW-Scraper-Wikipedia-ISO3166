@@ -1,5 +1,11 @@
 Revision history for Perl extension WWW::Scraper::Wikipedia::ISO3166.
 
+1.05  2016-05-10T14:51:00
+	- Patch code to match new table formats of Wikipedia pages.
+	- Change 'utf8' to 'UTF-8'.
+	- Extend populate_countries() to create data/downloaded.countries.txt.
+	- Fix a couple of typos in the names of programs listed in the Description.
+
 1.04  2016-05-10T10:34:00
 	- Rename t/load.t to t/report.t, and make it run scripts/report.statistics.pl for a real test.
 	- Update pre-reqs since t/report.t uses Capture::Tiny.

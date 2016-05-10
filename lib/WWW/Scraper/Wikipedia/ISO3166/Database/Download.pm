@@ -28,7 +28,7 @@ has url =>
 	required => 0,
 );
 
-our $VERSION = '1.04';
+our $VERSION = '1.05';
 
 # -----------------------------------------------
 
@@ -53,9 +53,9 @@ sub get_1_page
 		return 1;
 	}
 
-	open(OUT, '>', $data_file) || die "Can't open file: $data_file: $!\n";
-	print OUT $$response{content};
-	close OUT;
+	open(my $fh, '>', $data_file) || die "Can't open file: $data_file: $!\n";
+	print $fh $$response{content};
+	close $fh;
 
 	$self -> log(info => "Downloaded '$url' to '$data_file'");
 
