@@ -6,8 +6,6 @@ use strict;
 use warnings;
 use warnings  qw(FATAL utf8);    # Fatalize encoding glitches.
 
-use Data::Dumper::Concise; # For Dumper().
-
 use Encode; # For decode().
 
 use HTML::TreeBuilder;

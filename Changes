@@ -5,6 +5,7 @@ Revision history for Perl extension WWW::Scraper::Wikipedia::ISO3166.
 	- Change 'utf8' to 'UTF-8'.
 	- Extend populate_countries() to create data/downloaded.countries.txt.
 	- Fix a couple of typos in the names of programs listed in the Description.
+	- Switch from File::Slurp to File::Slurper.
 
 1.04  2016-05-10T10:34:00
 	- Rename t/load.t to t/report.t, and make it run scripts/report.statistics.pl for a real test.

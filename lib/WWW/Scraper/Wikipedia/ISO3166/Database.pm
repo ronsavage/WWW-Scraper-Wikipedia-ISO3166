@@ -10,7 +10,7 @@ use DBI;
 
 use DBIx::Admin::CreateTable;
 
-use File::Slurp; # For read_dir().
+use File::Slurper 'read_dir';
 
 use Moo;
 
