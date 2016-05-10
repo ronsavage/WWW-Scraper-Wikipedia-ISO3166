@@ -500,7 +500,7 @@ Here's my setup:
 
 =item o OS
 
-Unicode is a moving target. Perhaps your OS's installed version of unicode fies needs updating.
+Unicode is a moving target. Perhaps your OS's installed version of unicode files needs updating.
 
 =item o SQLite
 
