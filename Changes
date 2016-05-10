@@ -1,5 +1,10 @@
 Revision history for Perl extension WWW::Scraper::Wikipedia::ISO3166.
 
+1.04  2016-05-10T10:34:00
+	- Rename t/load.t to t/report.t, and make it run scripts/report.statistics.pl for a real test.
+	- Update pre-reqs since t/report.t uses Capture::Tiny.
+	- Reformat lines in this file to be <= 100 chars wide, as per my new policy.
+
 1.03  2016-05-10T09:38:00
 	- Adopt new repo structure.
 	- Replace Hash::FieldHash with Moo and Types::Standard.
@@ -9,9 +14,6 @@ Revision history for Perl extension WWW::Scraper::Wikipedia::ISO3166.
 	- Move t/pod.t into xt/author/.
 	- Rename CHANGES to Changes as per CPAN::Spec::Changes
 	- Change format of dates in this file.
-	- Rename t/load.t to t/report.t, and make it run scripts/report.statistics.pl for a real test.
-	- Update pre-reqs since t/report.t uses Capture::Tiny.
-	- Reformat lines in this file to be <= 100 chars wide, as per my new policy.
 
 1.02  2013-05-14T13:43:00
 	- Make ISO3166.pm a UTF-8 file, to match its use of =encoding utf8.
