@@ -3,7 +3,7 @@ package WWW::Scraper::Wikipedia::ISO3166::Database::Import;
 use parent 'WWW::Scraper::Wikipedia::ISO3166::Database';
 use feature 'say';
 use strict;
-use utf8; # For ''.
+use utf8;
 use warnings;
 use warnings  qw(FATAL utf8);    # Fatalize encoding glitches.
 
@@ -12,8 +12,6 @@ use Data::Dumper::Concise; # For Dumper().
 use Encode; # For decode().
 
 use File::Slurper 'read_text';
-
-use HTML::TreeBuilder;
 
 use List::AllUtils 'first';
 use List::Compare;
@@ -51,151 +49,6 @@ sub get_content
 	return $self -> trim($content);
 
 } # End of get_content.
-
-# ----------------------------------------------
-
-sub get_table
-{
-	my($self, $node, $column_type, $country_code) = @_;
-	my($column_count) = $#$column_type + 1;
-	my(@td)           = $node -> look_down(_tag => 'td');
-	my($i)            = - 1;
-
-	$self -> log(debug => 'Entered get_table()');
-
-	my($a);
-	my($detail, @detail);
-	my($index);
-	my($modulus);
-	my($name);
-	my(@result);
-	my($tag_ref, $tr);
-
-	for my $td (@td)
-	{
-		$i++;
-
-		$modulus	= $i % $column_count;
-		$tag_ref	= $$column_type[$modulus];
-
-		for my $tag (@$tag_ref)
-		{
-			$self -> log(debug => "td # $i. modulus: $modulus. tag: $tag");
-
-			if ($modulus == 0)
-			{
-				$a         = $td -> look_down(_tag => $tag);
-				$tr        = {};
-				$$tr{code} = $self -> get_content($a);
-
-				$self -> log(debug => "Got tr{code}: $$tr{code}");
-			}
-			elsif ($modulus == 1)
-			{
-				if ($tag eq 'a')
-				{
-					$a         = $td -> look_down(_tag => $tag);
-					$$tr{name} = $self -> get_content($a);
-
-					$self -> log(debug => "Got tr{name}: $$tr{name}");
-				}
-				else # '-'.
-				{
-					$$tr{name} = $self -> get_content($td);
-
-					# Special code for:
-					# o ET => Ethiopia.
-					# o KM => Comoros.
-					# o LB => Lebanon is handled under ($modulus == 2).
-					# o TD => Chad.
-
-					if ($country_code)
-					{
-						my(@field);
-
-						if ($country_code eq 'KM')
-						{
-							@field     = split(/\s\(/, $$tr{name});
-							$$tr{name} = $field[0];
-						}
-						elsif ($country_code =~ /(?:ET|TD)/)
-						{
-							@field     = split(/\s!/, $$tr{name});
-							$$tr{name} = $#field == 1 ? $field[1] : $field[0];
-						}
-					}
-				}
-			}
-			elsif ($modulus == 2)
-			{
-				if ($tag eq 'a')
-				{
-					$a      = $td -> content_array_ref;
-					$detail = $a ? $self -> get_content($a) : '-';
-					@detail = split(/, /, $detail);
-					$index  = - 1;
-
-					# Special code for FR => France (IIRC). The country page says:
-					# 5 overseas regions/departments.
-					# WTF: first_index from List::AllUtils does not always work.
-					#$index = first_index{$_ eq '/'} @detail;
-
-					for my $i (0 .. $#detail)
-					{
-						if ($detail[$i] eq '/')
-						{
-							$index = $i;
-
-							last;
-						}
-					}
-
-					if ($index > 0)
-					{
-						$detail =
-							join(', ', @detail[0 .. $index - 2])
-							. ", $detail[$index - 1]/$detail[$index + 1], "
-							. join(', ', @detail[$index + 2 .. $#detail]);
-					}
-				}
-				else # '-'.
-				{
-					$detail = $self -> get_content($td);
-				}
-
-				if ($country_code && ($country_code eq 'LB') )
-				{
-					$$tr{name} = $detail;
-				}
-				else
-				{
-					$$tr{detail} = $detail if ($detail);
-				}
-			}
-			elsif ($modulus == 3)
-			{
-				if ($tag eq 'a')
-				{
-					$a           = $td -> look_down(_tag => $tag);
-					$$tr{detail} .= ', ' . $self -> get_content($a);
-				}
-			}
-		}
-
-		# Clean up scraped data.
-
-		if ($modulus == ($column_count - 1) )
-		{
-			$$tr{detail} =~ s/^,\s// if ($$tr{detail});
-			$$tr{name}   =~ s/^,\s//;
-
-			push @result, $tr;
-		}
-	}
-
-	return [@result];
-
-} # End of get_table.
 
 # -----------------------------------------------
 
@@ -376,8 +229,6 @@ sub parse_subcountry_page
 {
 	my($self)  = @_;
 	my($code2) = $self -> code2;
-
-	return if ($code2 ne 'AD');
 
 	$self -> log(debug => "Entered parse_subcountry_page() for $code2");
 
@@ -1442,21 +1293,12 @@ sub parse_subcountry_page
 		return undef;
 	}
 
-	my($in_file) = "data/en.wikipedia.org.wiki.ISO_3166-2.$code2.html";
-	my($root)    = HTML::TreeBuilder -> new();
-	my($result)  = $root -> parse_file($in_file) || die "Can't parse file: $in_file\n";
-	my(@node)    = $root -> look_down(_tag => 'table');
-	my($names)   = $self -> get_table
-		(
-			$node[$code{$code2}{table_number} - 1],
-			$code{$code2}{column_type},
-			$code2 =~ /(ET|KM|LB|TD)/ ? $1 : undef
-		);
+	return if ($code2 ne 'AD');
 
-	$root -> delete;
+	my($in_file) = "data/en.wikipedia.org.wiki.ISO_3166-2.$code2.html";
 
 	$self -> log(debug => $in_file);
-	$self -> log(debug => '1: ' . Dumper($names) );
+	$self -> log(debug => Dumper($names) );
 
 	return $names;
 
@@ -1470,10 +1312,6 @@ sub populate_countries
 	my($codes) = $self -> parse_country_code_page;
 	my($names) = $self -> parse_country_page;
 
-	return 0;
-
-	$names     = $self -> process_countries($names);
-
 	# Reformat @$codes{code => x, name => x} as %codes{$name} = $code.
 
 	my(%codes);
@@ -1482,8 +1320,6 @@ sub populate_countries
 	{
 		$codes{$$codes[$i]{name} } = $$codes[$i]{code};
 	}
-
-	$self -> log(debug => 'codes: ' . Dumper($codes) );
 
 	open(my $fh, '>:encoding(UTF-8)', 'data/downloaded.countries.txt');
 	say $fh qq|"code","name"|;
@@ -1500,9 +1336,6 @@ sub populate_countries
 	close $fh;
 
 	$self -> save_countries(\%codes, $names);
-
-	# TODO: Have to return $specials from parse_country_page().
-	#$self -> process_table($specials);
 
 	# Return 0 for success and 1 for failure.
 
@@ -1560,7 +1393,6 @@ sub populate_subcountry
 	$count            ||= 1; # If called from scripts/populate.subcountry.pl.
 	my($names)        = $self -> parse_subcountry_page;
 
-	$self -> log(debug => '2: ' . Dumper($names) );
 	if ($names)
 	{
 		$names = $self -> process_subcountry($names);
@@ -1580,7 +1412,7 @@ sub populate_subcountries
 {
 	my($self)  = @_;
 
-	# 1: Find which subcountries have been downloaded but not imported.
+	# Find which subcountries have been downloaded but not imported.
 	# %downloaded will contain 2-letter codes.
 
 	my(%downloaded);
@@ -1624,96 +1456,6 @@ sub populate_subcountries
 	return 0;
 
 } # End of populate_subcountries.
-
-# ----------------------------------------------
-
-sub process_countries
-{
-	my($self, $table) = @_;
-
-	$self -> log(debug => 'Entered process_countries()');
-
-	my(%kind);
-	my(@result);
-
-	for my $element (@$table)
-	{
-		my(@item);
-
-		for my $item (split(/,\s*/, $$element{detail} || '') )
-		{
-			if ($item =~ /^(\d+)\s+(.+)$/)
-			{
-				$kind{$2} = 1;
-
-				push @item, {$2 => $1};
-			}
-			else
-			{
-				# Skip ':' and (fancy) '-' == 0xe2.
-
-				if ( (ord(substr($item, 0, 1) ) != 0xe2) && ($item ne ':') )
-				{
-					$kind{subdivision} = 1;
-
-					push @item, {subdivision => $item};
-				}
-			}
-		}
-
-		# Concatenate multiple entries called 'subdivision'.
-		# Currently, this is for GB => United Kingdom only.
-
-		my($first);
-		my($last);
-
-		for my $i (1 .. $#item)
-		{
-			if (exists($item[$i - 1]{subdivision}) && exists($item[$i]{subdivision}) )
-			{
-				$first = $i - 1 if (! defined $first);
-				$last  = $i;
-			}
-		}
-
-		if ($first)
-		{
-			my($item);
-			my(@text);
-
-			for my $i ($first .. $last)
-			{
-				$item = $item[$i];
-
-				push @text, $$item{subdivision};
-			}
-
-			splice(@item, $first, $last, {subdivision => join(', ', @text)});
-		}
-
-		if ($#item >= 0)
-		{
-			$$element{detail} = [@item];
-		}
-		else
-		{
-			delete $$element{detail};
-		}
-
-		push @result, $element;
-	}
-
-	# This is for determining whether or not we
-	# ignore junk such as the ':' and (fancy) '-' == 0xe2 above.
-
-	if ($self -> verbose > 2)
-	{
-		$self -> log(debug => "Kind: $_") for sort keys %kind;
-	}
-
-	return [@result];
-
-} # End of process_countries.
 
 # ----------------------------------------------
 
@@ -1899,46 +1641,6 @@ Also, I<code2> is an option to L</new()>.
 Extract, recursively if necessary, the content of the HTML element, as returned from L<HTML::TreeBuilder>'s
 look_down() method.
 
-=head2 get_table($node, $column_type, $country_code)
-
-Get the country or subcountry details from the HTML table ($node), as returned from L<HTML::TreeBuilder>'s
-look_down() method.
-
-Use the arrayref $column_type of HTML attributes ('a', 'tt', '-', i.e. none) to determine exactly how to extract
-the data from the enclosing 'td'.
-
-Use $country_code to handle some special cases, specifically:
-
-=over 4
-
-=item o ET => Ethopia
-
-=item o KM => Comoros
-
-=item o LB => Lebanon
-
-=item o TD => Chad
-
-=back
-
-Returns an arrayref of hashrefs, where the (key => value) pair of each hashref are:
-
-=over 4
-
-=item o code => $string
-
-The country or subcountry code.
-
-=item o detail => $arrayref
-
-An indicator as to whether or not the country has subcountries.
-
-=item o name => $string
-
-The name of the country or subcountry.
-
-=back
-
 =head2 new()
 
 See L</Constructor and initialization>.
@@ -1955,16 +1657,12 @@ Special cases are documented in L<WWW::Scraper::Wikipedia::ISO3166/What is the d
 
 Parse the HTML page of country names.
 
-Returns the result of calling L</get_table($node, $column_type, $country_code)>.
-
 =head2 parse_subcountry_page()
 
 Parse the HTML page of a subcountry.
 
 Warning. The 2-letter code of the subcountry must be set with $self -> code2('XX') before calling this
 method.
-
-Returns the result of calling L</get_table($node, $column_type, $country_code)>.
 
 =head2 populate_countries()
 
@@ -1981,18 +1679,13 @@ method.
 
 Populate the I<subcountries> table, for all subcountries.
 
-=head2 process_countries($table)
-
-Clean up the I<detail> key of the arrayref of hashrefs for the countries.
-
 =head2 process_subcountries($table)
 
 Delete the I<detail> key of the arrayref of hashrefs for the subcountry.
 
 =head2 save_countries($code3, $table)
 
-Save the I<countries> table, by combining the output of L</parse_country_code_page()> with the output of
-L</process_countries($table)>.
+Save the I<countries> table to the database.
 
 =head2 save_subcountries($count, $table)
 

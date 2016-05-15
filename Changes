@@ -1,7 +1,9 @@
 Revision history for Perl extension WWW::Scraper::Wikipedia::ISO3166.
 
 1.05  2016-05-10T14:51:00
-	- Patch code to match new table formats of Wikipedia pages.
+	- Switch from HTML::TreeBuilder to Mojo::DOM for parsing Wikipedia pages. This involves
+		deleting a lot of code, but also writing a smaller amount of new code.
+	- Patch code to match new page formats on Wikipedia pages.
 	- Change 'utf8' to 'UTF-8'.
 	- Extend populate_countries() to create data/downloaded.countries.txt.
 	- Fix a couple of typos in the names of programs listed in the Description.
