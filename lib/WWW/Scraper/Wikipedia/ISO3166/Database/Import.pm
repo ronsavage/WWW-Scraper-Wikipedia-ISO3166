@@ -3,15 +3,22 @@ package WWW::Scraper::Wikipedia::ISO3166::Database::Import;
 use parent 'WWW::Scraper::Wikipedia::ISO3166::Database';
 use feature 'say';
 use strict;
+use utf8; # For ''.
 use warnings;
 use warnings  qw(FATAL utf8);    # Fatalize encoding glitches.
 
+use Data::Dumper::Concise; # For Dumper().
+
 use Encode; # For decode().
+
+use File::Slurper 'read_text';
 
 use HTML::TreeBuilder;
 
 use List::AllUtils 'first';
 use List::Compare;
+
+use Mojo::DOM;
 
 use Moo;
 
@@ -54,113 +61,124 @@ sub get_table
 	my(@td)           = $node -> look_down(_tag => 'td');
 	my($i)            = - 1;
 
+	$self -> log(debug => 'Entered get_table()');
+
 	my($a);
 	my($detail, @detail);
 	my($index);
 	my($modulus);
 	my($name);
 	my(@result);
-	my($tag, $tr);
+	my($tag_ref, $tr);
 
 	for my $td (@td)
 	{
 		$i++;
 
-		$modulus = $i % $column_count;
-		$tag     = $$column_type[$modulus];
+		$modulus	= $i % $column_count;
+		$tag_ref	= $$column_type[$modulus];
 
-		if ($modulus == 0)
+		for my $tag (@$tag_ref)
 		{
-			$a         = $td -> look_down(_tag => $tag);
-			$tr        = {};
-			$$tr{code} = $self -> get_content($a);
-		}
-		elsif ($modulus == 1)
-		{
-			if ($tag eq 'a')
+			$self -> log(debug => "td # $i. modulus: $modulus. tag: $tag");
+
+			if ($modulus == 0)
 			{
 				$a         = $td -> look_down(_tag => $tag);
-				$$tr{name} = $self -> get_content($a);
+				$tr        = {};
+				$$tr{code} = $self -> get_content($a);
+
+				$self -> log(debug => "Got tr{code}: $$tr{code}");
 			}
-			else # '-'.
+			elsif ($modulus == 1)
 			{
-				$$tr{name} = $self -> get_content($td);
-
-				# Special code for:
-				# o ET => Ethiopia.
-				# o KM => Comoros.
-				# o LB => Lebanon is handled under ($modulus == 2).
-				# o TD => Chad.
-
-				if ($country_code)
+				if ($tag eq 'a')
 				{
-					my(@field);
+					$a         = $td -> look_down(_tag => $tag);
+					$$tr{name} = $self -> get_content($a);
 
-					if ($country_code eq 'KM')
-					{
-						@field     = split(/\s\(/, $$tr{name});
-						$$tr{name} = $field[0];
-					}
-					elsif ($country_code =~ /(?:ET|TD)/)
-					{
-						@field     = split(/\s!/, $$tr{name});
-						$$tr{name} = $#field == 1 ? $field[1] : $field[0];
-					}
+					$self -> log(debug => "Got tr{name}: $$tr{name}");
 				}
-			}
-		}
-		elsif ($modulus == 2)
-		{
-			if ($tag eq 'a')
-			{
-				$a      = $td -> content_array_ref;
-				$detail = $a ? $self -> get_content($a) : '-';
-				@detail = split(/, /, $detail);
-				$index  = - 1;
-
-				# Special code for FR => France (IIRC). The country page says:
-				# 5 overseas regions/departments.
-				# WTF: first_index from List::AllUtils does not always work.
-				#$index = first_index{$_ eq '/'} @detail;
-
-				for my $i (0 .. $#detail)
+				else # '-'.
 				{
-					if ($detail[$i] eq '/')
-					{
-						$index = $i;
+					$$tr{name} = $self -> get_content($td);
 
-						last;
+					# Special code for:
+					# o ET => Ethiopia.
+					# o KM => Comoros.
+					# o LB => Lebanon is handled under ($modulus == 2).
+					# o TD => Chad.
+
+					if ($country_code)
+					{
+						my(@field);
+
+						if ($country_code eq 'KM')
+						{
+							@field     = split(/\s\(/, $$tr{name});
+							$$tr{name} = $field[0];
+						}
+						elsif ($country_code =~ /(?:ET|TD)/)
+						{
+							@field     = split(/\s!/, $$tr{name});
+							$$tr{name} = $#field == 1 ? $field[1] : $field[0];
+						}
 					}
 				}
-
-				if ($index > 0)
+			}
+			elsif ($modulus == 2)
+			{
+				if ($tag eq 'a')
 				{
-					$detail =
-						join(', ', @detail[0 .. $index - 2])
-						. ", $detail[$index - 1]/$detail[$index + 1], "
-						. join(', ', @detail[$index + 2 .. $#detail]);
+					$a      = $td -> content_array_ref;
+					$detail = $a ? $self -> get_content($a) : '-';
+					@detail = split(/, /, $detail);
+					$index  = - 1;
+
+					# Special code for FR => France (IIRC). The country page says:
+					# 5 overseas regions/departments.
+					# WTF: first_index from List::AllUtils does not always work.
+					#$index = first_index{$_ eq '/'} @detail;
+
+					for my $i (0 .. $#detail)
+					{
+						if ($detail[$i] eq '/')
+						{
+							$index = $i;
+
+							last;
+						}
+					}
+
+					if ($index > 0)
+					{
+						$detail =
+							join(', ', @detail[0 .. $index - 2])
+							. ", $detail[$index - 1]/$detail[$index + 1], "
+							. join(', ', @detail[$index + 2 .. $#detail]);
+					}
+				}
+				else # '-'.
+				{
+					$detail = $self -> get_content($td);
+				}
+
+				if ($country_code && ($country_code eq 'LB') )
+				{
+					$$tr{name} = $detail;
+				}
+				else
+				{
+					$$tr{detail} = $detail if ($detail);
 				}
 			}
-			else # '-'.
+			elsif ($modulus == 3)
 			{
-				$detail = $self -> get_content($td);
-			}
-
-			if ($country_code && ($country_code eq 'LB') )
-			{
-				$$tr{name} = $detail;
-			}
-			else
-			{
-				$$tr{detail} = $detail if ($detail);
-			}
-		}
-		elsif ($modulus == 3)
-		{
-			if ($tag eq 'a')
-			{
-				$a           = $td -> look_down(_tag => $tag);
-				$$tr{detail} .= ', ' . $self -> get_content($a);
+				if ($tag eq 'a')
+				{
+					$a           = $td -> look_down(_tag => $tag);
+					$$tr{detail} .= ', ' . $self -> get_content($a);
+				}
 			}
 		}
 
@@ -183,20 +201,33 @@ sub get_table
 
 sub parse_country_code_page
 {
-	my($self)    = @_;
-	my($in_file) = 'data/en.wikipedia.org.wiki.ISO_3166-2.3.html';
+	my($self)		= @_;
+	my($in_file)	= 'data/en.wikipedia.org.wiki.ISO_3166-2.3.html';
+	my($dom)		= Mojo::DOM -> new(read_text($in_file) );
+	my($codes)		= [];
+	my($count)		= -1;
 
-	my($root)   = HTML::TreeBuilder -> new();
-	my($result) = $root -> parse_file($in_file) || die "Can't parse file: $in_file\n";
-	my(@node)   = $root -> look_down(_tag => 'table');
-	my($codes)  =
-	[	# The original data is split into 3 tables for some reason.
-		@{$self -> get_table($node[1], [qw/span a/])},
-		@{$self -> get_table($node[2], [qw/span a/])},
-		@{$self -> get_table($node[3], [qw/span a/])},
-	];
+	my($content, $code);
 
-	$root -> delete;
+	for my $node ($dom -> at('table') -> descendant_nodes -> each)
+	{
+		$count++;
+
+		if ($node -> matches('span'))
+		{
+			$content = $node -> content;
+
+			$code = {code => $content, name => ''};
+		}
+		elsif ($node -> matches('a') )
+		{
+			$content = $node -> content;
+
+			$$code{name} = $content;
+
+			push @$codes, $code;
+		}
+	}
 
 	return $codes;
 
@@ -209,12 +240,82 @@ sub parse_country_page
 	my($self)    = @_;
 	my($in_file) = 'data/en.wikipedia.org.wiki.ISO_3166-2.html';
 
-	my($root)     = HTML::TreeBuilder -> new();
-	my($result)   = $root -> parse_file($in_file) || die "Can't parse file: $in_file\n";
-	my(@node)     = $root -> look_down(_tag => 'table');
-	my($names)    = $self -> get_table($node[0], [qw/a a a/]);
+	$self -> log(debug => 'Entered parse_country_page()');
 
-	$root -> delete;
+	my($dom)	= Mojo::DOM -> new(read_text($in_file) );
+	my($names)	= [];
+	my($count)	= -1;
+
+	my($content, $code);
+	my($size);
+	my(@temp_1, @temp_2, $temp_3);
+
+	for my $node ($dom -> at('table') -> descendant_nodes -> each)
+	{
+		next if (! $node -> matches('td') );
+
+		$count++;
+
+		if ($count == 0)
+		{
+			$content	= $node -> children -> first -> content;
+			$code		= {code => $content, name => '', subcountries => []};
+		}
+		elsif ($count == 1)
+		{
+			$content		= $node -> children -> first -> content;
+			$$code{name}	= $content;
+		}
+		else
+		{
+			$content	= $node -> content;
+			$size		= $node -> children -> size;
+
+			if ($size == 0)
+			{
+				$$code{subcountries}[0] = '-'; # Not '—'.
+			}
+			else
+			{
+				@temp_1 = @temp_2 = ();
+
+				for my $item ($node -> children -> each)
+				{
+					$content = $item -> content;
+
+					push @temp_1, $content if ($content);
+				}
+
+				for my $i (0 .. $#temp_1)
+				{
+					push @temp_2, split(/<br>\n/, $temp_1[$i]);
+				}
+
+				@temp_1 = ();
+
+				for my $i (0 .. $#temp_2)
+				{
+					$temp_3	= Mojo::DOM -> new($temp_2[$i]);
+					$size	= $temp_3 -> children -> size;
+
+					if ($size == 0)
+					{
+						push @temp_1, $temp_3 -> content;
+					}
+					else
+					{
+						push @temp_1, $_ -> content for $temp_3 -> children -> each;
+					}
+				}
+
+				$$code{subcountries} = [@temp_1];
+			}
+
+			push @$names, $code;
+
+			$count = - 1;
+		}
+	}
 
 	return $names;
 
@@ -276,6 +377,10 @@ sub parse_subcountry_page
 	my($self)  = @_;
 	my($code2) = $self -> code2;
 
+	return if ($code2 ne 'AD');
+
+	$self -> log(debug => "Entered parse_subcountry_page() for $code2");
+
 	# column_type is the HTML type of the column's data.
 	# Each field is assumed to be inside a <td>...</td> pair.
 	# o a => <a ...>Real data</a>
@@ -291,8 +396,8 @@ sub parse_subcountry_page
 	(
 		AD =>
 		{
-			column_type  => [qw/span a/],
-			table_number => 2,
+			column_type  => [ ['span'], ['a', 'a'] ],
+			table_number => 1,
 		},
 		AE =>
 		{
@@ -337,7 +442,7 @@ sub parse_subcountry_page
 		AU =>
 		{
 			column_type  => [qw/span a -/],
-			table_number => 2,
+			table_number => 1,
 		},
 		AW =>
 		{
@@ -1350,6 +1455,9 @@ sub parse_subcountry_page
 
 	$root -> delete;
 
+	$self -> log(debug => $in_file);
+	$self -> log(debug => '1: ' . Dumper($names) );
+
 	return $names;
 
 } # End of parse_subcountry_page.
@@ -1359,9 +1467,11 @@ sub parse_subcountry_page
 sub populate_countries
 {
 	my($self)  = @_;
-
 	my($codes) = $self -> parse_country_code_page;
 	my($names) = $self -> parse_country_page;
+
+	return 0;
+
 	$names     = $self -> process_countries($names);
 
 	# Reformat @$codes{code => x, name => x} as %codes{$name} = $code.
@@ -1372,6 +1482,8 @@ sub populate_countries
 	{
 		$codes{$$codes[$i]{name} } = $$codes[$i]{code};
 	}
+
+	$self -> log(debug => 'codes: ' . Dumper($codes) );
 
 	open(my $fh, '>:encoding(UTF-8)', 'data/downloaded.countries.txt');
 	say $fh qq|"code","name"|;
@@ -1448,6 +1560,7 @@ sub populate_subcountry
 	$count            ||= 1; # If called from scripts/populate.subcountry.pl.
 	my($names)        = $self -> parse_subcountry_page;
 
+	$self -> log(debug => '2: ' . Dumper($names) );
 	if ($names)
 	{
 		$names = $self -> process_subcountry($names);
@@ -1492,7 +1605,7 @@ sub populate_subcountries
 
 	my($code2);
 
-	for $country_id (keys %$countries)
+	for $country_id (sort keys %$countries)
 	{
 		$count++;
 
@@ -1517,6 +1630,8 @@ sub populate_subcountries
 sub process_countries
 {
 	my($self, $table) = @_;
+
+	$self -> log(debug => 'Entered process_countries()');
 
 	my(%kind);
 	my(@result);
@@ -1645,6 +1760,8 @@ sub process_subcountry
 sub save_countries
 {
 	my($self, $code3, $table) = @_;
+
+	$self -> log(debug => 'Entered save_countries()');
 
 	$self -> dbh -> do('delete from countries');
 
