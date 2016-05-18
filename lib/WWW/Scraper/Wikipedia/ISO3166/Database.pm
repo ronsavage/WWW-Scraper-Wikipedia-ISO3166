@@ -187,6 +187,43 @@ sub read_subcountries_table
 
 # -----------------------------------------------
 
+sub report_Australian_statistics
+{
+	my($self)		= @_;
+	my($countries)	= $self -> read_countries_table;
+
+	my($index);
+
+	for my $i (keys %$countries)
+	{
+		if ($$countries{$i}{name} eq 'Australia')
+		{
+			$index = $i;
+
+			last;
+		}
+	}
+
+	my($subcountries) = $self -> read_subcountries_table;
+
+	my(@states);
+
+	for my $i (keys %$subcountries)
+	{
+		if ($$subcountries{$i}{country_id} == $index)
+		{
+			push @states, $$subcountries{$i};
+		}
+	}
+
+	@states = sort{$$a{sequence} <=> $$b{sequence} } @states;
+
+	$self -> log(info => "$$_{sequence}: $$_{name}") for @states;
+
+} # End of report_statistics.
+
+# -----------------------------------------------
+
 sub report_statistics
 {
 	my($self)  = @_;
@@ -200,8 +237,8 @@ sub report_statistics
 
 sub who_has_subcountries
 {
-	my($self) = @_;
-	my($countries) = $self -> read_countries_table;
+	my($self)		= @_;
+	my($countries)	= $self -> read_countries_table;
 
 	my(@has);
 

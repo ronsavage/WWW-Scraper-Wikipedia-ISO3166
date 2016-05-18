@@ -80,18 +80,6 @@ sub log
 
 # -----------------------------------------------
 
-sub run
-{
-	my($self) = @_;
-
-	# Return 0 for success and 1 for failure.
-
-	return 0;
-
-} # End of run.
-
-# -----------------------------------------------
-
 1;
 
 =pod
@@ -429,6 +417,17 @@ on that subcountry's Wikipedia page.
 
 See the source code of L<WWW::Scraper::Wikipedia::ISO3166::Database::Create> for details of the SQL
 used to create the tables.
+
+=head2 A Warning about Creating the Database
+
+See also L</What is $ENV{AUTHOR_TESTING} used for?> below.
+
+If you run scripts/drop.tables.pl and scripts/create.tables.pl before running
+scripts/populate.countries.pl and scripts/populate.subcountries, then the primary keys in the
+tables will start from 1. This is good because it preempts a source of confusion.
+
+Without that step, L<SQLite|sqlite.org> will simply increment the primary keys starting from 1
+more than was previously used.
 
 =head2 What do I do if I find a mistake in the data?
 

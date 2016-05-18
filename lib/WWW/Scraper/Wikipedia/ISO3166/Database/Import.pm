@@ -34,22 +34,6 @@ has code2 =>
 
 our $VERSION = '1.05';
 
-# ----------------------------------------------
-
-sub get_content
-{
-	my($self, $element) = @_;
-	my($content) =
-		ref $element && ref $element eq 'HTML::Element'
-		? join(', ', grep{/./} map{$self -> get_content($_)} $element -> content_array_ref)
-		: ref $element eq 'ARRAY'
-			? join(', ', grep{/./} map{$self -> get_content($_)} @$element)
-			: $element;
-
-	return $self -> trim($content);
-
-} # End of get_content.
-
 # -----------------------------------------------
 
 sub parse_country_code_page
@@ -223,1087 +207,6 @@ sub parse_fips_page
 
 } # End of parse_fips_page.
 
-# ----------------------------------------------
-
-sub parse_subcountry_page
-{
-	my($self)  = @_;
-	my($code2) = $self -> code2;
-
-	$self -> log(debug => "Entered parse_subcountry_page() for $code2");
-
-	# column_type is the HTML type of the column's data.
-	# Each field is assumed to be inside a <td>...</td> pair.
-	# o a => <a ...>Real data</a>
-	# o tt => <tt>Real data</tt>
-	# o - => Real data
-	# Due to the way the code steps thru the <td>s, the number of elements
-	# in the column_type arrayref must exactly match the number of <td>s.
-	#
-	# table_number (1 .. N) indicates which table on the page is processed.
-	# It does /not/ refer to the total number of tables on the page.
-
-	my(%code) =
-	(
-		AD =>
-		{
-			column_type  => [ ['span'], ['a', 'a'] ],
-			table_number => 1,
-		},
-		AE =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 2,
-		},
-		AF =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 2,
-		},
-		AG =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 2,
-		},
-		AL =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 2,
-		},
-		AM =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 1,
-		},
-		AO =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 2,
-		},
-		AR =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 2,
-		},
-		AT =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 1,
-		},
-		AU =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 1,
-		},
-		AW =>
-		{
-		},
-		AX =>
-		{
-		},
-		AZ =>
-		{
-			column_type  => [qw/span a - -/],
-			table_number => 3,
-		},
-		BA =>
-		{
-			column_type  => [qw/span a - - a/],
-			table_number => 3,
-		},
-		BB =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 2,
-		},
-		BD =>
-		{
-			column_type  => [qw/span a a/],
-			table_number => 3,
-		},
-		BE =>
-		{
-			column_type  => [qw/span a a/],
-			table_number => 3,
-		},
-		BF =>
-		{
-			column_type  => [qw/span a a/],
-			table_number => 3,
-		},
-		BG =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 2,
-		},
-		BH =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 2,
-		},
-		BI =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 2,
-		},
-		BJ =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 2,
-		},
-		BN =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 1,
-		},
-		BO =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 2,
-		},
-		BQ =>
-		{
-			column_type  => [qw/span a a/],
-			table_number => 2,
-		},
-		BR =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 1,
-		},
-		BS =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 2,
-		},
-		BT =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 1,
-		},
-		BW =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 2,
-		},
-		BY =>
-		{
-			column_type  => [qw/span a - - - -/],
-			table_number => 2,
-		},
-		BZ =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 1,
-		},
-		CA =>
-		{
-			column_type  => [qw/span a - -/],
-			table_number => 2,
-		},
-		CD =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 2,
-		},
-		CF =>
-		{
-			column_type  => [qw/span a - -/],
-			table_number => 2,
-		},
-		CG =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 1,
-		},
-		CH =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 2,
-		},
-		CI =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 2,
-		},
-		CL =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 2,
-		},
-		CM =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 1,
-		},
-		CN =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 2,
-		},
-		CO =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 2,
-		},
-		CR =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 1,
-		},
-		CU =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 1,
-		},
-		CV =>
-		{
-			column_type  => [qw/span a a/],
-			table_number => 3,
-		},
-		CY =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 1,
-		},
-		CZ =>
-		{
-			column_type  => [qw/span a a/],
-			table_number => 3,
-		},
-		DE =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 1,
-		},
-		DJ =>
-		{
-			column_type  => [qw/span a - -/],
-			table_number => 2,
-		},
-		DK =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 2,
-		},
-		DM =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 2,
-		},
-		DO =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 2,
-		},
-		DZ =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 1,
-		},
-		EC =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 2,
-		},
-		EE =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 1,
-		},
-		EG =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 2,
-		},
-		ER =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 2,
-		},
-		ES =>
-		{
-			column_type  => [qw/span a a/],
-			table_number => 3,
-		},
-		ET =>
-		{
-			column_type  => [qw/span - a -/],
-			table_number => 2,
-		},
-		FI =>
-		{
-			column_type  => [qw/span a - -/],
-			table_number => 2,
-		},
-		FJ =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 1,
-		},
-		FK =>
-		{
-		},
-		FM =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 1,
-		},
-		FR =>
-		{
-			column_type  => [qw/span a a/],
-			table_number => 4,
-		},
-		GA =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 1,
-		},
-		GB =>
-		{
-			column_type  => [qw/span a - a/],
-			table_number => 4,
-		},
-		GD =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 2,
-		},
-		GE =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 2,
-		},
-		GH =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 1,
-		},
-		GI =>
-		{
-		},
-		GL =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 2,
-		},
-		GM =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 1,
-		},
-		GN =>
-		{
-			column_type  => [qw/span a a/],
-			table_number => 3,
-		},
-		GQ =>
-		{
-			column_type  => [qw/span a - - a/],
-			table_number => 3,
-		},
-		GR =>
-		{
-			column_type  => [qw/span a - a/],
-			table_number => 3,
-		},
-		GS =>
-		{
-		},
-		GT =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 2,
-		},
-		GU =>
-		{
-		},
-		GW =>
-		{
-			column_type  => [qw/span a - -/],
-			table_number => 3,
-		},
-		GY =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 1,
-		},
-		HN =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 2,
-		},
-		HR =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 2,
-		},
-		HT =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 2,
-		},
-		HU =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 2,
-		},
-		ID =>
-		{
-			column_type  => [qw/span a - a/],
-			table_number => 3,
-		},
-		IE =>
-		{
-			column_type  => [qw/span a - a/],
-			table_number => 3,
-		},
-		IL =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 1,
-		},
-		IN =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 2,
-		},
-		IQ =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 1,
-		},
-		IR =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 2,
-		},
-		IS =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 1,
-		},
-		IT =>
-		{
-			column_type  => [qw/span a a/],
-			table_number => 3,
-		},
-		JO =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 2,
-		},
-		JM =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 2,
-		},
-		JP =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 1,
-		},
-		KE =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 2,
-		},
-		KG =>
-		{
-			column_type  => [qw/span a - - -/],
-			table_number => 2,
-		},
-		KH =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 2,
-		},
-		KI =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 1,
-		},
-		KM =>
-		{
-			column_type  => [qw/span - a -/],
-			table_number => 2,
-		},
-		KN =>
-		{
-			column_type  => [qw/span a - a/],
-			table_number => 3,
-		},
-		KP =>
-		{
-			column_type  => [qw/span a - -/],
-			table_number => 2,
-		},
-		KR =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 2,
-		},
-		KW =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 2,
-		},
-		KZ =>
-		{
-			column_type  => [qw/span a - - -/],
-			table_number => 2,
-		},
-		LA =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 2,
-		},
-		LB =>
-		{
-			column_type  => [qw/span - -/],
-			table_number => 2,
-		},
-		LC =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 2,
-		},
-		LI =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 2,
-		},
-		LK =>
-		{
-			column_type  => [qw/span a - a/],
-			table_number => 3,
-		},
-		LR =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 2,
-		},
-		LS =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 2,
-		},
-		LT =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 1,
-		},
-		LU =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 1,
-		},
-		LV =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 2,
-		},
-		LY =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 2,
-		},
-		MA =>
-		{
-			column_type  => [qw/span a - a/],
-			table_number => 3,
-		},
-		MC =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 2,
-		},
-		MD =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 2,
-		},
-		ME =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 2,
-		},
-		MG =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 1,
-		},
-		MH =>
-		{
-			column_type  => [qw/span a a/],
-			table_number => 3,
-		},
-		MK =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 2,
-		},
-		ML =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 1,
-		},
-		MM =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 2,
-		},
-		MN =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 1,
-		},
-		MR =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 1,
-		},
-		MT =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 2,
-		},
-		MU =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 2,
-		},
-		MV =>
-		{
-			column_type  => [qw/span a - -/],
-			table_number => 3,
-		},
-		MW =>
-		{
-			column_type  => [qw/span a a/],
-			table_number => 3,
-		},
-		MX =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 1,
-		},
-		MY =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 2,
-		},
-		MZ =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 1,
-		},
-		NA =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 1,
-		},
-		NC =>
-		{
-		},
-		NE =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 2,
-		},
-		NF =>
-		{
-		},
-		NG =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 2,
-		},
-		NI =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 2,
-		},
-		NL =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 2,
-		},
-		NO =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 2,
-		},
-		NP =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 3,
-		},
-		NR =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 2,
-		},
-		NZ =>
-		{
-			column_type  => [qw/span a span - a/],
-			table_number => 3,
-		},
-		OM =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 2,
-		},
-		PA =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 2,
-		},
-		PE =>
-		{
-			column_type  => [qw/span a - - -/],
-			table_number => 2,
-		},
-		PG =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 2,
-		},
-		PH =>
-		{
-			column_type  => [qw/span a a/],
-			table_number => 3,
-		},
-		PK =>
-		{
-			column_type  => [qw/span a - -/],
-			table_number => 2,
-		},
-		PL =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 2,
-		},
-		PM =>
-		{
-		},
-		PN =>
-		{
-		},
-		PR =>
-		{
-		},
-		PS =>
-		{
-			column_type  => [qw/span a - -/],
-			table_number => 2,
-		},
-		PT =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 1,
-		},
-		PW =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 2,
-		},
-		PY =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 1,
-		},
-		QA =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 2,
-		},
-		RO =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 2,
-		},
-		RS =>
-		{
-			column_type  => [qw/span a - a/],
-			table_number => 3,
-		},
-		RU =>
-		{
-			column_type  => [qw/span a - -/],
-			table_number => 2,
-		},
-		RW =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 2,
-		},
-		SA =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 2,
-		},
-		SB =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 2,
-		},
-		SC =>
-		{
-			column_type  => [qw/span a - -/],
-			table_number => 2,
-		},
-		SD =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 2,
-		},
-		SE =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 2,
-		},
-		SG =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 3,
-		},
-		SH =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 2,
-		},
-		SI =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 2,
-		},
-		SK =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 1,
-		},
-		SL =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 1,
-		},
-		SM =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 2,
-		},
-		SN =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 2,
-		},
-		SO =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 1,
-		},
-		SR =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 1,
-		},
-		SS =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 2,
-		},
-		ST =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 1,
-		},
-		SV =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 1,
-		},
-		SX =>
-		{
-		},
-		SY =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 1,
-		},
-		SZ =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 1,
-		},
-		TD =>
-		{
-			column_type  => [qw/span - a/],
-			table_number => 2,
-		},
-		TF =>
-		{
-		},
-		TG =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 1,
-		},
-		TH =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 2,
-		},
-		TJ =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 2,
-		},
-		TL =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 2,
-		},
-		TM =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 2,
-		},
-		TN =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 2,
-		},
-		TO =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 2,
-		},
-		TR =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 2,
-		},
-		TT =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 1,
-		},
-		TV =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 2,
-		},
-		TW =>
-		{
-			column_type  => [qw/span - - a/],
-			table_number => 2,
-		},
-		TZ =>
-		{
-			column_type  => [qw/span - a/],
-			table_number => 2,
-		},
-		UA =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 1,
-		},
-		UG =>
-		{
-			column_type  => [qw/span a a/],
-			table_number => 3,
-		},
-		UM =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 1,
-		},
-		US =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 2,
-		},
-		UY =>
-		{
-			column_type  => [qw/code a/],
-			table_number => 1,
-		},
-		UZ =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 2,
-		},
-		VC =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 2,
-		},
-		VE =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 2,
-		},
-		VI =>
-		{
-		},
-		VN =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 2,
-		},
-		VU =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 1,
-		},
-		WS =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 1,
-		},
-		YE =>
-		{
-			column_type  => [qw/span a -/],
-			table_number => 2,
-		},
-		ZA =>
-		{
-			column_type  => [qw/span a - - - - -/],
-			table_number => 2,
-		},
-		ZM =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 1,
-		},
-		ZW =>
-		{
-			column_type  => [qw/span a/],
-			table_number => 1,
-		},
-	);
-
-	die "Unknown country code: $code2\n" if (! $code{$code2});
-
-	if (! exists $code{$code2}{table_number})
-	{
-		$self -> log(warning => "Country with code $code2 has no subcountries");
-
-		return undef;
-	}
-
-	return if ($code2 ne 'AD');
-
-	my($in_file) = "data/en.wikipedia.org.wiki.ISO_3166-2.$code2.html";
-
-	$self -> log(debug => $in_file);
-	$self -> log(debug => Dumper($names) );
-
-	return $names;
-
-} # End of parse_subcountry_page.
-
 # -----------------------------------------------
 
 sub populate_countries
@@ -1389,16 +292,88 @@ sub populate_fips_codes
 
 sub populate_subcountry
 {
-	my($self, $count) = @_;
-	$count            ||= 1; # If called from scripts/populate.subcountry.pl.
-	my($names)        = $self -> parse_subcountry_page;
+	my($self)		= @_;
+	my($code2)		= $self -> code2;
+	my($in_file)	= "data/en.wikipedia.org.wiki.ISO_3166-2.$code2.html";
 
-	if ($names)
+	$self -> log(debug => $in_file);
+
+	my($dom)	= Mojo::DOM -> new(read_text($in_file) );
+	my($names)	= [];
+	my($count)	= -1;
+
+	my($content, $code);
+	my(@kids);
+	my($last);
+	my($name_count);
+	my($size);
+	my($td_count, @temp);
+
+	for my $node ($dom -> at('table[class="wikitable sortable"]') -> descendant_nodes -> each)
 	{
-		$names = $self -> process_subcountry($names);
+		# Select the heading's tr.
 
-		$self -> save_subcountry($count, $names);
+		if ($node -> matches('tr') )
+		{
+			$td_count = $node -> children -> size;
+
+			last;
+		}
 	}
+
+	for my $node ($dom -> at('table[class="wikitable sortable"]') -> descendant_nodes -> each)
+	{
+		next if (! $node -> matches('td') );
+
+		$count++;
+
+		if ( ($count % $td_count) == 0)
+		{
+			$content	= encode('UTF-8', $node -> at('span') -> content);
+			$code		= {code => $content, name => ''};
+		}
+		elsif ( ($count % $td_count)  == 1)
+		{
+			@temp = ();
+
+			if ($node -> children -> size == 0)
+			{
+				$$code{name} = encode('UTF-8', $node -> content);
+			}
+			else
+			{
+				for my $kid ($node -> children -> each)
+				{
+					$size = $kid -> children;
+
+					next if ( ($size > 0) && ($kid -> find('img') -> size > 0) );
+
+					push @temp, encode('UTF-8', $kid -> content);
+				}
+
+				$$code{name} = join('', @temp);
+			}
+
+			push @$names, $code;
+		}
+		elsif ( ($count % $td_count)  == 2)
+		{
+			# Special case for Mauritania.
+
+			say STDERR "Special case: $code2";
+
+			$name_count	= $#$names;
+			$last		= $$names[$name_count]{name};
+
+			if ($last eq '')
+			{
+				$$names[$name_count]{name} = encode('UTF-8', $node -> at('a') -> content);
+			}
+		}
+	}
+
+	$self -> save_subcountry($count, $names);
+	$self -> log(debug => Dumper($names) );
 
 	# Return 0 for success and 1 for failure.
 
@@ -1411,6 +386,8 @@ sub populate_subcountry
 sub populate_subcountries
 {
 	my($self)  = @_;
+
+	$self -> log(debug => 'Entered populate_subcountries()');
 
 	# Find which subcountries have been downloaded but not imported.
 	# %downloaded will contain 2-letter codes.
@@ -1433,14 +410,10 @@ sub populate_subcountries
 
 	# 2: Import if not already imported.
 
-	my($count) = 0;
-
 	my($code2);
 
 	for $country_id (sort keys %$countries)
 	{
-		$count++;
-
 		$code2 = $$countries{$country_id}{code2};
 
 		next if ($imported{$code2});
@@ -1448,7 +421,7 @@ sub populate_subcountries
 		next if ($$countries{$country_id}{has_subcountries} eq 'No');
 
 		$self -> code2($code2);
-		$self -> populate_subcountry($count);
+		$self -> populate_subcountry;
 	}
 
 	# Return 0 for success and 1 for failure.
@@ -1477,28 +450,6 @@ sub process_fips_codes
 
 # ----------------------------------------------
 
-sub process_subcountry
-{
-	my($self, $table) = @_;
-
-	# Zap unwanted data in the hashref. Subcountries don't have 'detail',
-	# but the code for countries and subcountries created this key.
-
-	my(@result);
-
-	for my $element (@$table)
-	{
-		delete $$element{detail};
-
-		push @result, $element;
-	}
-
-	return [@result];
-
-} # End of process_subcountry.
-
-# ----------------------------------------------
-
 sub save_countries
 {
 	my($self, $code3, $table) = @_;
@@ -1515,7 +466,7 @@ sub save_countries
 	{
 		$i++;
 
-		$sth -> execute($$element{code}, $$code3{$$element{name} } || '', fc decode('UTF-8', $$element{name}), defined($$element{detail}) ? 'Yes' : 'No', decode('utf8', $$element{name}) );
+		$sth -> execute($$element{code}, $$code3{$$element{name} } || '', fc decode('UTF-8', $$element{name}), ($$element{subcountries}[0] eq '-') ? 'No' : 'Yes', decode('utf8', $$element{name}) );
 	}
 
 	$sth -> finish;
@@ -1531,6 +482,8 @@ sub save_subcountry
 	my($self, $count, $table) = @_;
 	my($code2)     = $self -> code2;
 	my($countries) = $self -> read_countries_table;
+
+	$self -> log(debug => "Entered save_subcountry: $code2");
 
 	# Find which country has the code we're processing.
 
@@ -1635,11 +588,6 @@ This module is a sub-class of L<WWW::Scraper::Wikipedia::ISO3166::Database> and 
 Get or set the 2-letter country code of the country or subcountry being processed.
 
 Also, I<code2> is an option to L</new()>.
-
-=head2 get_content($element)
-
-Extract, recursively if necessary, the content of the HTML element, as returned from L<HTML::TreeBuilder>'s
-look_down() method.
 
 =head2 new()
 
