@@ -57,9 +57,9 @@ our $VERSION = '1.05';
 
 sub BUILD
 {
-	my($self, $arg)    = @_;
-	(my $package       = __PACKAGE__) =~ s/::/-/g;
-	my($dir_name)      = $ENV{AUTHOR_TESTING} ? 'share' : File::ShareDir::dist_dir($package);
+	my($self)		= @_;
+	(my $package	= __PACKAGE__) =~ s/::/-/g;
+	my($dir_name)	= $ENV{AUTHOR_TESTING} ? 'share' : File::ShareDir::dist_dir($package);
 
 	$self -> config_file(File::Spec -> catfile($dir_name, $self -> config_file) );
 	$self -> sqlite_file(File::Spec -> catfile($dir_name, $self -> sqlite_file) );
@@ -95,6 +95,8 @@ WWW::Scraper::Wikipedia::ISO3166 - Gently scrape Wikipedia for ISO3166-2 data
 Wikipedia I<has been scraped>. You do not need to run the scripts which download pages from there.
 
 Just use the SQLite database shipped with this module, as discussed next.
+
+See scripts/export.*.pl and scripts/get.*.pl for sample code.
 
 =head2 Methods which return hashrefs
 

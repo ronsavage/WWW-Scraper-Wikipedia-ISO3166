@@ -220,7 +220,7 @@ sub report_Australian_statistics
 
 	$self -> log(info => "$$_{sequence}: $$_{name}") for @states;
 
-} # End of report_statistics.
+} # End of report_Australian_statistics.
 
 # -----------------------------------------------
 
@@ -362,6 +362,10 @@ Returns a hashref of hashrefs for this SQL: 'select * from subcountries'.
 The key of the hashref is the primary key (integer) of the I<subcountries> table.
 
 This is discussed further in L<WWW::Scraper::Wikipedia::ISO3166/Methods which return hashrefs>.
+
+=head2 report_Australian_statistics
+
+Logs some info for Australia. Does not call L</report_statistics()>.
 
 =head2 report_statistics()
 

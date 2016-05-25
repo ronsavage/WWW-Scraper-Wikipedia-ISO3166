@@ -17,6 +17,7 @@ use List::AllUtils 'first';
 use List::Compare;
 
 use Mojo::DOM;
+use Mojo::DOM::CSS;
 
 use Moo;
 
@@ -36,6 +37,35 @@ our $VERSION = '1.05';
 
 # -----------------------------------------------
 
+sub any_subcountries
+{
+	my($self, $countries, $code2)	= @_;
+	my($result)						= 0;
+
+	my($code);
+
+	for my $country_id (sort keys %$countries)
+	{
+		$code = $$countries{$country_id}{code2};
+
+		next if ($code ne $code2);
+
+		if ($$countries{$country_id}{has_subcountries} eq 'Yes')
+		{
+			$result = 1;
+
+			last;
+		}
+	}
+
+	# Return 0 for no and 1 for yes.
+
+	return $result;
+
+} # End of any_subcountries.
+
+# -----------------------------------------------
+
 sub parse_country_code_page
 {
 	my($self)		= @_;
@@ -50,17 +80,15 @@ sub parse_country_code_page
 	{
 		$count++;
 
-		if ($node -> matches('span'))
+		if ($node -> matches('span') )
 		{
-			$content = $node -> content;
+			$content = encode('UTF-8', $node -> content);
 
 			$code = {code => $content, name => ''};
 		}
 		elsif ($node -> matches('a') )
 		{
-			$content = $node -> content;
-
-			$$code{name} = $content;
+			$$code{name} = encode('UTF-8', $node -> content);
 
 			push @$codes, $code;
 		}
@@ -84,6 +112,7 @@ sub parse_country_page
 	my($count)	= -1;
 
 	my($content, $code);
+	my(@kids);
 	my($size);
 	my(@temp_1, @temp_2, $temp_3);
 
@@ -95,17 +124,30 @@ sub parse_country_page
 
 		if ($count == 0)
 		{
-			$content	= $node -> children -> first -> content;
+			$content	= encode('UTF-8', $node -> children -> first -> content);
 			$code		= {code => $content, name => '', subcountries => []};
 		}
 		elsif ($count == 1)
 		{
-			$content		= $node -> children -> first -> content;
-			$$code{name}	= $content;
+			$content = $node -> children -> first -> content;
+
+			# Special cases:
+			# o Åland Islands.
+			# o Côte d'Ivoire.
+			# o Réunion.
+
+			if ($content =~ /\s!$/)
+			{
+				@kids		= $node -> children -> each;
+				@kids		= map{$_ -> content} @kids; # The next lines is a WTF.
+				$content	= join('', map{$_ -> content} Mojo::DOM -> new($kids[1]) -> children -> each);
+			}
+
+			$$code{name} = encode('UTF-8', $content);
 		}
 		else
 		{
-			$content	= $node -> content;
+			$content	= encode('UTF-8', $node -> content);
 			$size		= $node -> children -> size;
 
 			if ($size == 0)
@@ -141,7 +183,7 @@ sub parse_country_page
 					}
 					else
 					{
-						push @temp_1, $_ -> content for $temp_3 -> children -> each;
+						push @temp_1, encode('UTF-8', $_ -> content) for $temp_3 -> children -> each;
 					}
 				}
 
@@ -193,7 +235,7 @@ sub parse_fips_page
 			$text = $li -> as_text;
 			$text =~ s/(.+),\s+$country/$1/;
 
-			push @name, decode('UTF-8', $text);
+			push @name, encode('UTF-8', $text);
 		}
 
 		# Ignore remaining uls.
@@ -231,7 +273,7 @@ sub populate_countries
 
 	for my $name (sort keys %codes)
 	{
-		$xcode = decode('UTF-8', $name);
+		$xcode = encode('UTF-8', $name);
 
 		say $fh qq|"$xcode","$codes{$name}"|;
 	}
@@ -294,7 +336,13 @@ sub populate_subcountry
 {
 	my($self)		= @_;
 	my($code2)		= $self -> code2;
-	my($in_file)	= "data/en.wikipedia.org.wiki.ISO_3166-2.$code2.html";
+	my($countries)	= $self -> read_countries_table;
+
+	# Return 0 for success and 1 for failure.
+
+	return 0 if (! $self -> any_subcountries($countries, $code2) );
+
+	my($in_file) = "data/en.wikipedia.org.wiki.ISO_3166-2.$code2.html";
 
 	$self -> log(debug => $in_file);
 
@@ -344,9 +392,13 @@ sub populate_subcountry
 			{
 				for my $kid ($node -> children -> each)
 				{
+					#next if (Mojo::DOM::CSS -> new($node) -> select('span[style="display:none;"]') );
+
 					$size = $kid -> children;
 
 					next if ( ($size > 0) && ($kid -> find('img') -> size > 0) );
+
+					$content = $kid -> content;
 
 					push @temp, encode('UTF-8', $kid -> content);
 				}
@@ -356,18 +408,18 @@ sub populate_subcountry
 
 			push @$names, $code;
 		}
-		elsif ( ($count % $td_count)  == 2)
+		elsif ( ($count % $td_count) == 2)
 		{
 			# Special case for Mauritania.
 
-			say STDERR "Special case: $code2";
+			next if ($code2 ne 'MR');
 
 			$name_count	= $#$names;
 			$last		= $$names[$name_count]{name};
 
 			if ($last eq '')
 			{
-				$$names[$name_count]{name} = encode('UTF-8', $node -> at('a') -> content);
+				$$names[$name_count]{name} = encode('UTF-8', $node -> content);
 			}
 		}
 	}

@@ -6,11 +6,16 @@ use warnings;
 
 use Config::Tiny;
 
+use Data::Dumper::Concise; # For Dumper().
+
+use File::ShareDir;
+use File::Spec;
+
 use Moo;
 
 use Text::Xslate 'mark_raw';
 
-use Types::Standard qw/HashRef Str/;
+use Types::Standard qw/Any HashRef Str/;
 
 use Unicode::Normalize; # For NFC().
 
@@ -18,7 +23,15 @@ has config =>
 (
 	default  => sub{return {} },
 	is       => 'rw',
-	isa      => HashRef,
+	isa      => Any,
+	required => 0,
+);
+
+has config_file =>
+(
+	default  => sub{return '.htwww.scraper.wikipedia.iso3166.conf'},
+	is       => 'rw',
+	isa      => Str,
 	required => 0,
 );
 
@@ -42,7 +55,7 @@ has templater =>
 (
 	default  => sub{return ''},
 	is       => 'rw',
-	isa      => Str,
+	isa      => Any,
 	required => 0,
 );
 
@@ -62,13 +75,20 @@ sub BUILD
 {
 	my($self) = @_;
 
-	$self -> config(Config::Tiny -> read($self -> config_file) );
+	$self -> config(Config::Tiny -> read($self -> config_file ) );
+
+	if (Config::Tiny -> errstr)
+	{
+		die Config::Tiny -> errstr;
+	}
+
+	$self -> config(${$self -> config}{_});
 	$self -> templater
 	(
 		Text::Xslate -> new
 		(
 		 input_layer => '',
-		 path        => ${$self -> config}{_}{template_path},
+		 path        => ${$self -> config}{template_path},
 		)
 	);
 
@@ -139,7 +159,7 @@ sub as_csv
 
 	die "No subcountry_file name specified\n" if (! $self -> subcountry_file);
 
-	open(my $fh, '>', $self -> subcountry_file) || die "Can't open file: " . $self -> subcountry_file . "\n";
+	open($fh, '>', $self -> subcountry_file) || die "Can't open file: " . $self -> subcountry_file . "\n";
 
 	for (@row)
 	{
@@ -167,7 +187,7 @@ sub as_html
 			'iso3166.report.tx',
 			{
 				country_data => $self -> build_country_data,
-				default_css  => "$$config{_}{css_url}/default.css",
+				default_css  => "$$config{css_url}/default.css",
 				version      => $VERSION,
 			}
 		);
