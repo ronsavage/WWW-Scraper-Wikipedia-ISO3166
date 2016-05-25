@@ -7,9 +7,11 @@ use warnings;
 use File::ShareDir;
 use File::Spec;
 
+use Log::Handler;
+
 use Moo;
 
-use Types::Standard qw/Int Str/;
+use Types::Standard qw/Any Int Str/;
 
 has config_file =>
 (
@@ -22,6 +24,30 @@ has config_file =>
 has data_file =>
 (
 	default  => sub{return 'data/en.wikipedia.org.wiki.ISO_3166-2'},
+	is       => 'rw',
+	isa      => Str,
+	required => 0,
+);
+
+has logger =>
+(
+	default  => sub{return undef},
+	is       => 'rw',
+	isa      => Any,
+	required => 0,
+);
+
+has maxlevel =>
+(
+	default  => sub{return 'notice'},
+	is       => 'rw',
+	isa      => Str,
+	required => 0,
+);
+
+has minlevel =>
+(
+	default  => sub{return 'error'},
 	is       => 'rw',
 	isa      => Str,
 	required => 0,
@@ -43,14 +69,6 @@ has sqlite_file =>
 	required => 0,
 );
 
-has verbose =>
-(
-	default  => sub{return 0},
-	is       => 'rw',
-	isa      => Int,
-	required => 0,
-);
-
 our $VERSION = '1.05';
 
 # -----------------------------------------------
@@ -60,6 +78,21 @@ sub BUILD
 	my($self)		= @_;
 	(my $package	= __PACKAGE__) =~ s/::/-/g;
 	my($dir_name)	= $ENV{AUTHOR_TESTING} ? 'share' : File::ShareDir::dist_dir($package);
+
+	if (! defined $self -> logger)
+	{
+		$self -> logger(Log::Handler -> new);
+		$self -> logger -> add
+		(
+			screen =>
+			{
+				maxlevel       => $self -> maxlevel,
+				message_layout => '%m',
+				minlevel       => $self -> minlevel,
+				utf8           => 1,
+			}
+		);
+	}
 
 	$self -> config_file(File::Spec -> catfile($dir_name, $self -> config_file) );
 	$self -> sqlite_file(File::Spec -> catfile($dir_name, $self -> sqlite_file) );
@@ -71,10 +104,10 @@ sub BUILD
 sub log
 {
 	my($self, $level, $s) = @_;
-	$level ||= 'debug';
-	$s     ||= '';
+	$level = 'notice' if (! defined $level);
+	$s     = ''       if (! defined $s);
 
-	print "$level: $s. \n" if ($self -> verbose);
+	$self -> logger -> $level($s) if ($self -> logger);
 
 }	# End of log.
 
@@ -394,15 +427,15 @@ A single SQLite file holds 2 tables, I<countries> and I<subcountries>:
 	fc_name             fc_name
 	has_subcountries    name
 	name                sequence
+	number				-
 	timestamp           timestamp
 
-I<code3> has a couple of special cases. 2 countries have no value for code3:
-Libyan Arab Jamahiriya and Sint Maarten.
-3-letter codes which almost match: LBY => Libya and MAF => Saint Martin (French part).
+The schema of the C<countries> table is basically taken straight from
+L<the Wikipedia ISO_3166-1 page|https://en.wikipedia.org/wiki/ISO_3166-1>.
 
 I<subcountries.country_id> points to I<countries.id>.
 
-I<fc_name> is output from calling fc(decode('utf8', $name) ).
+I<fc_name> is output from calling fc($name). It's in UTF-8.
 
 For decode(), see L<Encode/THE PERL ENCODING API>.
 
@@ -412,7 +445,9 @@ $name is from a Wikipedia page.
 
 I<has_subcountries> is 'Yes' or 'No'.
 
-I<name> is output from calling decode('utf8', $name).
+I<name> is in UTF-8.
+
+I<number> is the 3-digit number from the ISO_3166-1 page.
 
 I<sequence> is a number (1 .. N) indicating the order in which subcountry names appear in the list
 on that subcountry's Wikipedia page.

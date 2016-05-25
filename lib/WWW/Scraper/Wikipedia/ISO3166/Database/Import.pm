@@ -69,26 +69,67 @@ sub any_subcountries
 sub parse_country_code_page
 {
 	my($self)		= @_;
-	my($in_file)	= 'data/en.wikipedia.org.wiki.ISO_3166-2.3.html';
+	my($in_file)	= 'data/en.wikipedia.org.wiki.ISO_3166-1.html';
 	my($dom)		= Mojo::DOM -> new(read_text($in_file) );
-	my($codes)		= [];
-	my($count)		= -1;
+
+	my($td_count);
+
+	for my $node ($dom -> at('table[class="wikitable sortable"]') -> descendant_nodes -> each)
+	{
+		# Select the heading's tr.
+
+		if ($node -> matches('tr') )
+		{
+			$td_count = $node -> children -> size;
+
+			last;
+		}
+	}
+
+	my($codes)	= [];
+	my($count)	= -1;
 
 	my($content, $code);
+	my($nodule);
 
-	for my $node ($dom -> at('table') -> descendant_nodes -> each)
+	for my $node ($dom -> at('table[class="wikitable sortable"]') -> descendant_nodes -> each)
 	{
+		next if (! $node -> matches('td') );
+
 		$count++;
 
-		if ($node -> matches('span') )
+		if ( ($count % $td_count) == 0)
 		{
-			$content = encode('UTF-8', $node -> content);
+			for $nodule ($node -> descendant_nodes -> each)
+			{
+				if ($nodule -> matches('a') )
+				{
+					$content = $nodule -> content;
+				}
+				elsif (Mojo::DOM::CSS -> new($nodule) -> select('span a') )
+				{
+					$content = $nodule -> content;
+				}
+			}
 
-			$code = {code => $content, name => ''};
+			$code = {code2 => '', code3 => '', name => $content, number => 0};
 		}
-		elsif ($node -> matches('a') )
+		elsif ( ($count % $td_count) == 1)
 		{
-			$$code{name} = encode('UTF-8', $node -> content);
+			for $nodule ($node -> descendant_nodes -> each)
+			{
+				# This actually overwrites the 1st node's content with the 2nd's.
+
+				$$code{code2} = $nodule -> content;
+			}
+		}
+		elsif ( ($count % $td_count) == 2)
+		{
+			$$code{code3} = $node -> children -> first -> content;
+		}
+		elsif ( ($count % $td_count) == 3)
+		{
+			$$code{number} = $node -> children -> first -> content;
 
 			push @$codes, $code;
 		}
@@ -136,7 +177,7 @@ sub parse_country_page
 
 		if ( ($count % $td_count) == 0)
 		{
-			$content	= encode('UTF-8', $node -> children -> first -> content);
+			$content	= $node -> children -> first -> content;
 			$code		= {code => $content, name => '', subcountries => []};
 		}
 		elsif ( ($count % $td_count) == 1)
@@ -155,13 +196,11 @@ sub parse_country_page
 				$content	= join('', map{$_ -> content} Mojo::DOM -> new($kids[1]) -> children -> each);
 			}
 
-			$$code{name} = encode('UTF-8', $content);
-
-			$self -> log(debug => "Code: $$code{code}. Name: $$code{name}");
+			$$code{name} = $content;
 		}
 		elsif ( ($count % $td_count) == 2)
 		{
-			$content	= encode('UTF-8', $node -> content);
+			$content	= $node -> content;
 			$size		= $node -> children -> size;
 
 			if ($size == 0)
@@ -197,13 +236,11 @@ sub parse_country_page
 					}
 					else
 					{
-						push @temp_1, encode('UTF-8', $_ -> content) for $temp_3 -> children -> each;
+						push @temp_1, $_ -> content for $temp_3 -> children -> each;
 					}
 				}
 
 				$$code{subcountries} = [@temp_1];
-
-				$self -> log(debug => "Subcountry count: @{[scalar @temp_1]}");
 			}
 
 			push @$names, $code;
@@ -268,33 +305,24 @@ sub parse_fips_page
 sub populate_countries
 {
 	my($self)  = @_;
-	my($codes) = $self -> parse_country_code_page;
+	my($codes) = [sort{$$a{name} cmp $$b{name} } @{$self -> parse_country_code_page}];
 	my($names) = $self -> parse_country_page;
 
-	# Reformat @$codes{code => x, name => x} as %codes{$name} = $code.
+	open(my $fh, '>:encoding(UTF-8)', 'data/downloaded.countries.txt');
+	say $fh qq|"code2","code3", "number", "name"|;
 
-	my(%codes);
+	my($code);
 
 	for my $i (0 .. $#$codes)
 	{
-		$codes{$$codes[$i]{name} } = $$codes[$i]{code};
-	}
+		$code = $$codes[$i];
 
-	open(my $fh, '>:raw', 'data/downloaded.countries.txt');
-	say $fh qq|"code","name"|;
-
-	my($xcode);
-
-	for my $name (sort keys %codes)
-	{
-		$xcode = encode('UTF-8', $name);
-
-		say $fh qq|"$xcode","$codes{$name}"|;
+		say $fh qq|"$$code{code2}","$$code{code3}","$$code{number}","$$code{name}"|;
 	}
 
 	close $fh;
 
-	$self -> save_countries(\%codes, $names);
+	$self -> save_countries($codes);
 
 	# Return 0 for success and 1 for failure.
 
@@ -518,21 +546,21 @@ sub process_fips_codes
 
 sub save_countries
 {
-	my($self, $code3, $table) = @_;
+	my($self, $table) = @_;
 
 	$self -> log(debug => 'Entered save_countries()');
 
 	$self -> dbh -> do('delete from countries');
 
 	my($i)   = 0;
-	my($sql) = 'insert into countries (code2, code3, fc_name, has_subcountries, name) values (?, ?, ?, ?, ?)';
+	my($sql) = 'insert into countries (code2, code3, fc_name, has_subcountries, name, number) values (?, ?, ?, ?, ?, ?)';
 	my($sth) = $self -> dbh -> prepare($sql) || die "Unable to prepare SQL: $sql\n";
 
 	for my $element (@$table)
 	{
 		$i++;
 
-		$sth -> execute($$element{code}, $$code3{$$element{name} } || '', fc decode('UTF-8', $$element{name}), ($$element{subcountries}[0] eq '-') ? 'No' : 'Yes', decode('utf8', $$element{name}) );
+		$sth -> execute($$element{code2}, $$element{code3}, fc $$element{name}, ($$element{subcountries}[0] eq '-') ? 'No' : 'Yes', $$element{name}, $$element{number});
 	}
 
 	$sth -> finish;

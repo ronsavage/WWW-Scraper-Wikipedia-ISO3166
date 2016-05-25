@@ -24,7 +24,7 @@ if ($option_parser -> getoptions
 (
 	\%option,
 	'help',
-	'verbose=s',
+	'maxlevel=s',
 	'web_page_file=s',
 ) )
 {
@@ -51,7 +51,7 @@ export.as.html.pl [options]
 
 	Options:
 	-help
-	-verbose $integer
+	-maxlevel $string
 	-web_page_file $aFileName
 
 All switches can be reduced to a single letter.
@@ -70,16 +70,11 @@ Default output: Screen.
 
 Print help and exit.
 
-=item o -verbose $integer
+=item -maxlevel => $string
 
-Print more or less progress reports. Details (more-or-less):
+Typical values: 'debug'.
 
-	0: Print nothing.
-	1: Warnings, or anything I'm working on.
-	2: The country table and specials table.
-	3: The kinds of subcountries encountered. See comments in code re 'verbose > 2'.
-
-Default: 0.
+Default: 'notice'.
 
 =item o -web_page_file $aFileName
 

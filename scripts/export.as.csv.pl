@@ -25,8 +25,8 @@ if ($option_parser -> getoptions
 	\%option,
 	'help',
 	'country_file=s',
+	'maxlevel=s',
 	'subcountry_file=s',
-	'verbose=s',
 ) )
 {
 	pod2usage(1) if ($option{'help'});
@@ -53,8 +53,8 @@ export.as.html.pl [options]
 	Options:
 	-help
 	-country_file $aFileName
+	-maxlevel $integer
 	-subcountry_file $aFileName
-	-verbose $integer
 
 All switches can be reduced to a single letter.
 
@@ -74,26 +74,21 @@ A CSV file name, to which country data will be written.
 
 Default: country.csv
 
+=item o -help
+
+Print help and exit.
+
+=item -maxlevel => $string
+
+Typical values: 'debug'.
+
+Default: 'notice'.
+
 =item o -subcountry_file $aFileName
 
 A CSV file name, to which subcountry data will be written.
 
 Default: subcountry.csv
-
-=item o -help
-
-Print help and exit.
-
-=item o -verbose $integer
-
-Print more or less progress reports. Details (more-or-less):
-
-	0: Print nothing.
-	1: Warnings, or anything I'm working on.
-	2: The country table and specials table.
-	3: The kinds of subcountries encountered. See comments in code re 'verbose > 2'.
-
-Default: 0.
 
 =back
 

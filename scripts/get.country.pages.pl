@@ -24,7 +24,7 @@ if ($option_parser -> getoptions
 (
 	\%option,
 	'help',
-	'verbose=s',
+	'maxlevel=s',
 ) )
 {
 	pod2usage(1) if ($option{'help'});
@@ -50,7 +50,7 @@ get.country.pages.pl [options]
 
 	Options:
 	-help
-	-verbose $integer
+	-maxlevel $string
 
 All switches can be reduced to a single letter.
 
@@ -72,16 +72,11 @@ Output: data/en.wikipedia.org.wiki.ISO_3166-2.html.
 
 Print help and exit.
 
-=item -verbose => $integer
+=item -maxlevel => $string
 
-Print more or less progress reports. Details (more-or-less):
+Typical values: 'debug'.
 
-	0: Print nothing.
-	1: Warnings, or anything I'm working on.
-	2: The country table and specials table.
-	3: The kinds of subcountries encountered. See comments in code re 'verbose > 2'.
-
-Default: 0.
+Default: 'notice'.
 
 =back
 

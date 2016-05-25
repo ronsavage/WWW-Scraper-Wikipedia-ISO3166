@@ -4,6 +4,7 @@ Revision history for Perl extension WWW::Scraper::Wikipedia::ISO3166.
 	- Switch from HTML::TreeBuilder to Mojo::DOM for parsing Wikipedia pages. This involves
 		deleting a lot of code, but also writing a smaller amount of new code.
 	- Change 'utf8' to 'UTF-8'.
+	- Switch from obsolete ISO_3166-2.3.html to ISO_3166-1.html.
 	- Extend populate_countries() to create data/downloaded.countries.txt.
 	- Fix a couple of typos in the names of programs listed in the Description.
 	- Switch from File::Slurp to File::Slurper.

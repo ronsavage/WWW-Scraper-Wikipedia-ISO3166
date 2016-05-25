@@ -47,6 +47,7 @@ code3 char(3) not null,
 fc_name varchar(255) not null,
 has_subcountries varchar(3) not null,
 name varchar(255) not null,
+number char(3) not null,
 timestamp timestamp $time_option not null default current_timestamp
 ) $engine
 SQL
