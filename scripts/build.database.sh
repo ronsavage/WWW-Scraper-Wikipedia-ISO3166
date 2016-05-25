@@ -9,8 +9,12 @@ echo Run populate.countries.pl >> populate.countries.log
 
 time perl -Ilib scripts/populate.countries.pl -v 1 >> populate.countries.log
 
-echo Run populate.subcountries.pl >> populate.countries.log
+#echo Run populate.subcountries.pl >> populate.countries.log
 
-time perl -Ilib scripts/populate.subcountries.pl -v 1 >> populate.countries.log
+#time perl -Ilib scripts/populate.subcountries.pl -v 1 >> populate.countries.log
 
-echo Finished >> populate.countries.log
+perl -Ilib scripts/export.as.html.pl
+
+cp iso.3166-2.html $DR/
+
+echo Finished, and copied iso.3166-2.html to doc root >> populate.countries.log

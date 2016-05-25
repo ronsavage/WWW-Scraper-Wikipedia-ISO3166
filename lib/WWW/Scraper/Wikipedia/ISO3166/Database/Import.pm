@@ -114,7 +114,19 @@ sub parse_country_page
 	my($content, $code);
 	my(@kids);
 	my($size);
-	my(@temp_1, @temp_2, $temp_3);
+	my($td_count, @temp_1, @temp_2, $temp_3);
+
+	for my $node ($dom -> at('table[class="wikitable sortable"]') -> descendant_nodes -> each)
+	{
+		# Select the heading's tr.
+
+		if ($node -> matches('tr') )
+		{
+			$td_count = $node -> children -> size;
+
+			last;
+		}
+	}
 
 	for my $node ($dom -> at('table') -> descendant_nodes -> each)
 	{
@@ -122,12 +134,12 @@ sub parse_country_page
 
 		$count++;
 
-		if ($count == 0)
+		if ( ($count % $td_count) == 0)
 		{
 			$content	= encode('UTF-8', $node -> children -> first -> content);
 			$code		= {code => $content, name => '', subcountries => []};
 		}
-		elsif ($count == 1)
+		elsif ( ($count % $td_count) == 1)
 		{
 			$content = $node -> children -> first -> content;
 
@@ -144,8 +156,10 @@ sub parse_country_page
 			}
 
 			$$code{name} = encode('UTF-8', $content);
+
+			$self -> log(debug => "Code: $$code{code}. Name: $$code{name}");
 		}
-		else
+		elsif ( ($count % $td_count) == 2)
 		{
 			$content	= encode('UTF-8', $node -> content);
 			$size		= $node -> children -> size;
@@ -188,11 +202,11 @@ sub parse_country_page
 				}
 
 				$$code{subcountries} = [@temp_1];
+
+				$self -> log(debug => "Subcountry count: @{[scalar @temp_1]}");
 			}
 
 			push @$names, $code;
-
-			$count = - 1;
 		}
 	}
 
@@ -266,7 +280,7 @@ sub populate_countries
 		$codes{$$codes[$i]{name} } = $$codes[$i]{code};
 	}
 
-	open(my $fh, '>:encoding(UTF-8)', 'data/downloaded.countries.txt');
+	open(my $fh, '>:raw', 'data/downloaded.countries.txt');
 	say $fh qq|"code","name"|;
 
 	my($xcode);
@@ -340,7 +354,7 @@ sub populate_subcountry
 
 	# Return 0 for success and 1 for failure.
 
-	return 0 if (! $self -> any_subcountries($countries, $code2) );
+	return 0 if ($self -> any_subcountries($countries, $code2) == 0);
 
 	my($in_file) = "data/en.wikipedia.org.wiki.ISO_3166-2.$code2.html";
 
