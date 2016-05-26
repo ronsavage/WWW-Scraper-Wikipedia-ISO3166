@@ -11,8 +11,9 @@
 <h3 class="global_toc_text">ISO3166 Countries and Subcountries from Wikipedia</h3>
 
 <p>
-This data displayed here is shipped in the above module in share/www.scraper.wikipedia.iso3166.sqlite,
-and installed in a shared directory when you install the module. See the FAQ entry
+The data displayed here is shipped in the module WWW::Scraper::Wikipedia::ISO3166.
+It is shipped in share/www.scraper.wikipedia.iso3166.sqlite and installed in a shared directory
+when you install the module. See the FAQ entry
 <a href="https://metacpan.org/module/WWW::Scraper::Wikipedia::ISO3166#Where-is-the-database-">Where is the database?</a>
 for details.
 </p>
@@ -27,13 +28,14 @@ This includes a discussion of countries not having a Code3 (3-letter country cod
 The Wikipedia sources for this are:
 
 <ul>
-<li><a href='http://en.wikipedia.org/wiki/ISO_3166-2'>Countries</a>
-<li><a href='http://en.wikipedia.org/wiki/ISO_3166-1_alpha-3'>3-letter country codes</a>
+<li><a href='http://en.wikipedia.org/wiki/ISO_3166-1'>ISO 3166-1</a>
+<li><a href='http://en.wikipedia.org/wiki/ISO_3166-2'>ISO 3166-2</a>
 </ul>
 </p>
 
 <p>
-Also, the subcountry pages are linked off each country's 2-letter code entry in the first of those 2 links.
+Also, the subcountry pages are linked off each country's 2-letter code entry on both of those 2
+pages.
 </p>
 
 <p>
@@ -42,8 +44,8 @@ The Å of Åland should have a ring on top of it, just as this line and Wikipedia 
 </p>
 
 <p>
-Wikipedia sorts countries by their Code2, whereas I have chosen to sort by NFC($name), where the NFC() method
-comes from <a href="https://metacpan.org/release/Unicode-Normalize">Unicode::Normalize</a>.
+Wikipedia sorts countries by a display:none key, whereas I have chosen to sort by NFC($name), where the
+NFC() method comes from <a href="https://metacpan.org/release/Unicode-Normalize">Unicode::Normalize</a>.
 Usage of NFC() is discussed in the module's FAQ entry
 <a href="https://metacpan.org/module/WWW::Scraper::Wikipedia::ISO3166#Why-did-you-use-Unicode::Normalizes-NFC-for-sorting-">Why did you use Unicode::Normalize's NFC() for sorting?</a>.
 </p>
