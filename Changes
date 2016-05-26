@@ -1,11 +1,12 @@
 Revision history for Perl extension WWW::Scraper::Wikipedia::ISO3166.
 
-1.05  2016-05-10T14:51:00
+2.00  2016-05-10T14:51:00
 	- Switch from HTML::TreeBuilder to Mojo::DOM for parsing Wikipedia pages. This involves
 		deleting a lot of code, but also writing a smaller amount of new code.
 	- Change 'utf8' to 'UTF-8'.
 	- Switch from obsolete ISO_3166-2.3.html to ISO_3166-1.html.
-	- Extend populate_countries() to create data/downloaded.countries.txt.
+	- Add a column called 'number' to the countries table, derived from ISO_3166-1.html.
+	- Add method Import.cross_check_country_downloads().
 	- Fix a couple of typos in the names of programs listed in the Description.
 	- Switch from File::Slurp to File::Slurper.
 	- Add an FAQ about the way SQLite allocates primary keys, and hence how you can force them to

@@ -11,7 +11,7 @@ use Data::Dumper::Concise; # For Dumper().
 
 use Encode; # For decode().
 
-use File::Slurper 'read_text';
+use File::Slurper qw/read_dir read_text/;
 
 use List::AllUtils 'first';
 use List::Compare;
@@ -64,9 +64,43 @@ sub any_subcountries
 
 } # End of any_subcountries.
 
+# ----------------------------------------------
+
+sub cross_check_country_downloads
+{
+	my($self, $table) = @_;
+
+	$self -> log(debug => 'Entered cross_check_country_downloads()');
+
+	my($code2);
+	my($country_file);
+	my(%seen);
+
+	for my $element (@$table)
+	{
+		$code2			= $$element{code2};
+		$country_file	= "data/en.wikipedia.org.wiki.ISO_3166-2:$code2.html";
+		$seen{$code2}	= 1;
+
+		if (! -e "data/en.wikipedia.org.wiki.ISO_3166-2.$code2.html")
+		{
+			$self -> log(debug => "File $country_file not yet downloaded");
+		}
+	}
+
+	for my $file_name (read_dir('data') )
+	{
+		if ( ($file_name =~ /^en.wikipedia.org.wiki.ISO_3166-2\.(..)\.html$/) && ! $seen{$1})
+		{
+			$self -> log(warning => "Unknown country code '$1' in file name in data/");
+		}
+	}
+
+} # End of cross_check_country_downloads.
+
 # -----------------------------------------------
 
-sub parse_country_code_page
+sub parse_country_page_1
 {
 	my($self)		= @_;
 	my($in_file)	= 'data/en.wikipedia.org.wiki.ISO_3166-1.html';
@@ -131,10 +165,6 @@ sub parse_country_code_page
 		elsif ( ($count % $td_count) == 3)
 		{
 			$$code{number} = $node -> children -> first -> content;
-		}
-		elsif ( ($count % $td_count) == 4)
-		{
-			$$code{subcountry_url} = $node -> children -> first -> content;
 
 			push @$codes, $code;
 		}
@@ -142,16 +172,16 @@ sub parse_country_code_page
 
 	return $codes;
 
-} # End of parse_country_code_page.
+} # End of parse_country_page_1.
 
 # -----------------------------------------------
 
-sub parse_country_page
+sub parse_country_page_2
 {
 	my($self)    = @_;
 	my($in_file) = 'data/en.wikipedia.org.wiki.ISO_3166-2.html';
 
-	$self -> log(debug => 'Entered parse_country_page()');
+	$self -> log(debug => 'Entered parse_country_page_2()');
 
 	my($dom)	= Mojo::DOM -> new(read_text($in_file) );
 	my($names)	= [];
@@ -254,7 +284,7 @@ sub parse_country_page
 
 	return $names;
 
-} # End of parse_country_page.
+} # End of parse_country_page_2.
 
 # -----------------------------------------------
 
@@ -310,11 +340,12 @@ sub parse_fips_page
 sub populate_countries
 {
 	my($self)  = @_;
-	my($codes) = [sort{$$a{name} cmp $$b{name} } @{$self -> parse_country_code_page}];
+	my($codes) = [sort{$$a{name} cmp $$b{name} } @{$self -> parse_country_page_1}];
 
 	$self -> save_countries($codes);
+	$self -> cross_check_country_downloads($codes);
 
-	my($names) = $self -> parse_country_page;
+	my($names) = $self -> parse_country_page_2;
 
 	# Return 0 for success and 1 for failure.
 
@@ -677,7 +708,16 @@ Specifies the code2 of the country whose subcountry page is to be downloaded.
 
 =head1 Methods
 
-This module is a sub-class of L<WWW::Scraper::Wikipedia::ISO3166::Database> and consequently inherits its methods.
+This module is a sub-class of L<WWW::Scraper::Wikipedia::ISO3166::Database> and consequently
+inherits its methods.
+
+=head2 cross_check_country_downloads()
+
+Report what country code files have not been downloaded, after parsing ISO_3166-1.html. This report
+is at the 'debug' level.
+
+Also, report if any files are found in the data/ dir whose code does not appear in ISO_3166-1.html.
+This report is at the 'warning' level'.
 
 =head2 code2($code)
 
@@ -689,24 +729,25 @@ Also, I<code2> is an option to L</new()>.
 
 See L</Constructor and initialization>.
 
-=head2 parse_country_code_page()
+=head2 parse_country_page_1()
 
-Parse the HTML page of 3-letter country codes, which has 3 tables side-by-side.
+Parse the HTML page of country names from data/en.wikipedia.org.wiki.ISO-3166-1.html.
+
+=head2 parse_country_page_2()
+
+Parse the HTML page of 3-letter country codes, which has 3 tables side-by-side from
+ from data/en.wikipedia.org.wiki.ISO-3166-2.html.
 
 Return an arrayref of 3-letter codes.
 
 Special cases are documented in L<WWW::Scraper::Wikipedia::ISO3166/What is the database schema?>.
 
-=head2 parse_country_page()
-
-Parse the HTML page of country names.
-
 =head2 parse_subcountry_page()
 
 Parse the HTML page of a subcountry.
 
-Warning. The 2-letter code of the subcountry must be set with $self -> code2('XX') before calling this
-method.
+Warning. The 2-letter code of the subcountry must be set with $self -> code2('XX') before calling
+this method.
 
 =head2 populate_countries()
 
@@ -716,8 +757,8 @@ Populate the I<countries> table.
 
 Populate the I<subcountries> table, for 1 subcountry.
 
-Warning. The 2-letter code of the subcountry must be set with $self -> code2('XX') before calling this
-method.
+Warning. The 2-letter code of the subcountry must be set with $self -> code2('XX') before calling
+this method.
 
 =head2 populate_subcountries()
 
@@ -733,7 +774,8 @@ Save the I<countries> table to the database.
 
 =head2 save_subcountries($count, $table)
 
-Save the I<subcountries> table, for the given subcountry, using the output of L</process_subcountries($table)>.
+Save the I<subcountries> table, for the given subcountry, using the output of
+L</process_subcountries($table)>.
 
 $count is just used in the log for progress messages.
 
@@ -757,7 +799,8 @@ L<https://rt.cpan.org/Public/Dist/Display.html?Name=WWW::Scraper::Wikipedia::ISO
 
 =head1 Author
 
-C<WWW::Scraper::Wikipedia::ISO3166> was written by Ron Savage I<E<lt>ron@savage.net.auE<gt>> in 2012.
+C<WWW::Scraper::Wikipedia::ISO3166> was written by Ron Savage I<E<lt>ron@savage.net.auE<gt>> in
+2012.
 
 Home page: L<http://savage.net.au/index.html>.
 
