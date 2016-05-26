@@ -105,6 +105,7 @@ sub parse_country_code_page
 				if ($nodule -> matches('a') )
 				{
 					$content = $nodule -> content;
+					$content = 'Taiwan, Province of China' if ($content eq '[a]');
 				}
 				elsif (Mojo::DOM::CSS -> new($nodule) -> select('span a') )
 				{
@@ -130,6 +131,10 @@ sub parse_country_code_page
 		elsif ( ($count % $td_count) == 3)
 		{
 			$$code{number} = $node -> children -> first -> content;
+		}
+		elsif ( ($count % $td_count) == 4)
+		{
+			$$code{subcountry_url} = $node -> children -> first -> content;
 
 			push @$codes, $code;
 		}
@@ -306,23 +311,10 @@ sub populate_countries
 {
 	my($self)  = @_;
 	my($codes) = [sort{$$a{name} cmp $$b{name} } @{$self -> parse_country_code_page}];
-	my($names) = $self -> parse_country_page;
-
-	open(my $fh, '>:encoding(UTF-8)', 'data/downloaded.countries.txt');
-	say $fh qq|"code2","code3", "number", "name"|;
-
-	my($code);
-
-	for my $i (0 .. $#$codes)
-	{
-		$code = $$codes[$i];
-
-		say $fh qq|"$$code{code2}","$$code{code3}","$$code{number}","$$code{name}"|;
-	}
-
-	close $fh;
 
 	$self -> save_countries($codes);
+
+	my($names) = $self -> parse_country_page;
 
 	# Return 0 for success and 1 for failure.
 
@@ -548,19 +540,29 @@ sub save_countries
 {
 	my($self, $table) = @_;
 
-	$self -> log(debug => 'Entered save_countries()');
+	$self -> log(debug => 'Entered save_countries()' . Dumper($table) );
 
 	$self -> dbh -> do('delete from countries');
 
 	my($i)   = 0;
-	my($sql) = 'insert into countries (code2, code3, fc_name, has_subcountries, name, number) values (?, ?, ?, ?, ?, ?)';
+	my($sql) = 'insert into countries '
+				. '(code2, code3, fc_name, has_subcountries, name, number) '
+				. 'values (?, ?, ?, ?, ?, ?)';
 	my($sth) = $self -> dbh -> prepare($sql) || die "Unable to prepare SQL: $sql\n";
 
 	for my $element (@$table)
 	{
 		$i++;
 
-		$sth -> execute($$element{code2}, $$element{code3}, fc $$element{name}, ($$element{subcountries}[0] eq '-') ? 'No' : 'Yes', $$element{name}, $$element{number});
+		$sth -> execute
+		(
+			$$element{code2},
+			$$element{code3},
+			fc $$element{name},
+			'No', # The default. Updated later.
+			$$element{name},
+			$$element{number},
+		);
 	}
 
 	$sth -> finish;
