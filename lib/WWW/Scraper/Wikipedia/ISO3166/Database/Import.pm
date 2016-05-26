@@ -138,12 +138,23 @@ sub parse_country_page_1
 			{
 				if ($nodule -> matches('a') )
 				{
-					$content = $nodule -> content;
-					$content = 'Taiwan, Province of China' if ($content eq '[a]');
+					# Handle specials:
+					# o Taiwan.
+
+					if ($nodule -> content !~ /\[a\]/)
+					{
+						$content = $nodule -> content;
+					}
 				}
-				elsif (Mojo::DOM::CSS -> new($nodule) -> select('span a') )
+				elsif (Mojo::DOM::CSS -> new($nodule) -> select('span + a') )
 				{
-					$content = $nodule -> content;
+					# Handle specials:
+					# o Taiwan.
+
+					if ($nodule -> content !~ /\[a\]/)
+					{
+						$content = $nodule -> content;
+					}
 				}
 			}
 
