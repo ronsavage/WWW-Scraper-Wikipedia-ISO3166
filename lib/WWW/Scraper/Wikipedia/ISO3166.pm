@@ -69,7 +69,7 @@ has sqlite_file =>
 	required => 0,
 );
 
-our $VERSION = '1.05';
+our $VERSION = '2.00';
 
 # -----------------------------------------------
 
