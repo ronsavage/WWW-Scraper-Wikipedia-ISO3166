@@ -38,6 +38,7 @@ requires 'open'                     => 1.08;
 requires 'parent'                   => 0.225;
 requires 'PerlIO::utf8_strict'		=> 0.006; # Optionally used by File::Slurper.
 requires 'Pod::Usage'               => 1.51;
+requires 'Sort::Naturally'			=> 1.03;
 requires 'strict'                   => 1.04;
 requires 'Text::Xslate'             => 1.5008;
 requires 'Types::Standard'			=> 1.000005;

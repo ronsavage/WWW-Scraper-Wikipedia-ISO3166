@@ -11,9 +11,9 @@ time perl -Ilib scripts/populate.countries.pl -maxlevel debug
 
 #time perl -Ilib scripts/populate.subcountries.pl -maxlevel debug
 
-perl -Ilib scripts/export.as.html.pl
+perl -Ilib scripts/export.as.html.pl -w data/iso.3166-2.html
 
-cp iso.3166-2.html $DR/
+cp data/iso.3166-2.html $DR/
 
-echo Copied iso.3166-2.html to doc root
+echo Copied data/iso.3166-2.html to doc root
 echo Finished
