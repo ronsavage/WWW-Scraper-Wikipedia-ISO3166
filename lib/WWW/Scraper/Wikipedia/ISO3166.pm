@@ -490,12 +490,12 @@ A single SQLite file holds 2 tables, I<countries> and I<subcountries>:
 	fc_name             fc_name         sequence
 	has_subcountries    name            timestamp
 	name                sequence
-	number				timestamp
+	number              timestamp
 	timestamp
 
 The schema of the C<countries> table is basically taken straight from the big table on
-L<the Wikipedia ISO_3166-1 page|https://en.wikipedia.org/wiki/ISO_3166-1>. Likewise the
-subcountry_types table.
+L<ISO_3166-1|https://en.wikipedia.org/wiki/ISO_3166-1>. Likewise for the subcountry_types table,
+it's taken from L<ISO_3166-2|https://en.wikipedia.org/wiki/ISO_3166-2>.
 
 I<subcountries.country_id> points to I<countries.id>.
 

@@ -270,7 +270,7 @@ sub build_country_data
 
 	my(@tr);
 
-	push @tr, [{td => '#'}, {td => 'Db key'}, {td => 'Code2'}, {td => 'Code3'}, {td => 'Name'}, {td => 'Subcountries'}];
+	push @tr, [{td => '#'}, {td => 'Db key'}, {td => 'Code2'}, {td => 'Code3'}, {td => 'Number'}, {td => 'Name'}, {td => 'Subcountries'}];
 
 	my($count) = 1;
 
@@ -282,6 +282,7 @@ sub build_country_data
 			{td => $id},
 			{td => mark_raw($$countries{$id}{code2})},
 			{td => mark_raw($$countries{$id}{code3})},
+			{td => mark_raw($$countries{$id}{number})},
 			{td => mark_raw($$countries{$id}{name})},
 			{td => $$countries{$id}{has_subcountries} },
 		];

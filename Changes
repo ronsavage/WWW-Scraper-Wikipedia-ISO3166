@@ -13,6 +13,7 @@ Revision history for Perl extension WWW::Scraper::Wikipedia::ISO3166.
 	- Add an FAQ about the way SQLite allocates primary keys, and hence how you can force them to
 		start from 1.
 	- Stop supporting any FIPS-related stuff.
+	- Add scripts/pod2html.sh.
 
 1.04  2016-05-10T10:34:00
 	- Rename t/load.t to t/report.t, and make it run scripts/report.statistics.pl for a real test.
