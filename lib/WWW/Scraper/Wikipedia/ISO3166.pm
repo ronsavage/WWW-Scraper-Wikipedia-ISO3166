@@ -396,15 +396,15 @@ Also, I<verbose> is an option to L</new()>.
 
 =head2 Design faults in ISO3166
 
-Where ISO3166 uses Country Name, I would have used Long Name and Short Name.
+Where ISO3166 uses Country Name, I would have used C<Long Name> and C<Short Name>.
 
 Then we'd have:
 
-	Long Name:  Bolivia, Plurinational State of
+	Long Name:  Bolivia (Plurinational State of)
 	Short Name: Bolivia
 
-This distro uses the value directly from Wikipedia, which is what I have called 'Long Name', for
-all country and subcountry names.
+This distro uses the values directly from Wikipedia, which is what I have called C<Long Name> above,
+for all country and subcountry names.
 
 =head2 Where is the database?
 
@@ -419,19 +419,20 @@ On my machine that's:
 
 A single SQLite file holds 2 tables, I<countries> and I<subcountries>:
 
-	countries           subcountries
-	---------           ------------
-	id                  id
-	code2               country_id
-	code3               code
-	fc_name             fc_name
-	has_subcountries    name
+	countries           subcountries    subcountry_types
+	---------           ------------    ----------------
+	id                  id              id
+	code2               country_id      country_id
+	code3               code            name
+	fc_name             fc_name         sequence
+	has_subcountries    name            timestamp
 	name                sequence
-	number				-
-	timestamp           timestamp
+	number				timestamp
+	timestamp
 
-The schema of the C<countries> table is basically taken straight from
-L<the Wikipedia ISO_3166-1 page|https://en.wikipedia.org/wiki/ISO_3166-1>.
+The schema of the C<countries> table is basically taken straight from the big table on
+L<the Wikipedia ISO_3166-1 page|https://en.wikipedia.org/wiki/ISO_3166-1>. Likewise the
+subcountry_types table.
 
 I<subcountries.country_id> points to I<countries.id>.
 

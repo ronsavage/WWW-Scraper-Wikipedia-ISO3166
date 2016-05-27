@@ -138,8 +138,8 @@ sub parse_country_page_1
 			{
 				if ($nodule -> matches('a') )
 				{
-					# Handle specials:
-					# o Taiwan.
+					# Special cases:
+					# o TW - Taiwan.
 
 					if ($nodule -> content !~ /\[a\]/)
 					{
@@ -148,8 +148,8 @@ sub parse_country_page_1
 				}
 				elsif (Mojo::DOM::CSS -> new($nodule) -> select('span + a') )
 				{
-					# Handle specials:
-					# o Taiwan.
+					# Special cases:
+					# o TW - Taiwan.
 
 					if ($nodule -> content !~ /\[a\]/)
 					{
@@ -224,16 +224,16 @@ sub parse_country_page_2
 		if ( ($count % $td_count) == 0)
 		{
 			$content	= $node -> children -> first -> content;
-			$code		= {code => $content, name => '', subcountries => []};
+			$code		= {code2 => $content, name => '', subcountries => []};
 		}
 		elsif ( ($count % $td_count) == 1)
 		{
 			$content = $node -> children -> first -> content;
 
 			# Special cases:
-			# o Åland Islands.
-			# o Côte d'Ivoire.
-			# o Réunion.
+			# o AX - Åland Islands.
+			# o CI - Côte d'Ivoire.
+			# o RE - Réunion.
 
 			if ($content =~ /\s!$/)
 			{
@@ -249,11 +249,7 @@ sub parse_country_page_2
 			$content	= $node -> content;
 			$size		= $node -> children -> size;
 
-			if ($size == 0)
-			{
-				$$code{subcountries}[0] = '-'; # Not '—'.
-			}
-			else
+			if ($size > 0)
 			{
 				@temp_1 = @temp_2 = ();
 
@@ -350,13 +346,15 @@ sub parse_fips_page
 
 sub populate_countries
 {
-	my($self)  = @_;
-	my($codes) = [sort{$$a{name} cmp $$b{name} } @{$self -> parse_country_page_1}];
+	my($self)		= @_;
+	my($codes)		= $self -> parse_country_page_1;
+	my($code2index)	= $self -> save_countries($codes);
 
-	$self -> save_countries($codes);
 	$self -> cross_check_country_downloads($codes);
 
 	my($names) = $self -> parse_country_page_2;
+
+	$self -> save_subcountry_types($code2index, $names);
 
 	# Return 0 for success and 1 for failure.
 
@@ -486,7 +484,8 @@ sub populate_subcountry
 		}
 		elsif ( ($count % $td_count) == 2)
 		{
-			# Special case for Mauritania.
+			# Special cases:
+			# o MR - Mauritania.
 
 			next if ($code2 ne 'MR');
 
@@ -584,6 +583,7 @@ sub save_countries
 
 	$self -> log(debug => 'Entered save_countries()' . Dumper($table) );
 
+	$self -> dbh -> begin_work;
 	$self -> dbh -> do('delete from countries');
 
 	my($i)   = 0;
@@ -592,7 +592,54 @@ sub save_countries
 				. 'values (?, ?, ?, ?, ?, ?)';
 	my($sth) = $self -> dbh -> prepare($sql) || die "Unable to prepare SQL: $sql\n";
 
-	for my $element (@$table)
+	my(%code2index);
+
+	for my $element (sort{$$a{name} cmp $$b{name} } @$table)
+	{
+		$i++;
+
+		$code2index{$$element{code2} } = $i;
+
+		$sth -> execute
+		(
+			$$element{code2},
+			$$element{code3},
+			fc $$element{name},
+			'No', # The default for 'has_subcountries'. Updated later.
+			$$element{name},
+			$$element{number},
+		);
+	}
+
+	$sth -> finish;
+	$self -> dbh -> commit;
+
+	$self -> log(info => "Saved $i countries to the database");
+
+	return \%code2index;
+
+} # End of save_countries.
+
+# ----------------------------------------------
+
+sub save_subcountries
+{
+	my($self, $table) = @_;
+
+	$self -> log(debug => 'Entered save_subcountries()' . Dumper($table) );
+
+=pod
+
+	$self -> dbh -> begin_work;
+	$self -> dbh -> do('delete from subcountries');
+
+	my($i)   = 0;
+	my($sql) = 'insert into subcountries '
+				. '(code2, code3, fc_name, has_subcountries, name, number) '
+				. 'values (?, ?, ?, ?, ?, ?)';
+	my($sth) = $self -> dbh -> prepare($sql) || die "Unable to prepare SQL: $sql\n";
+
+	for my $element (sort{$$a{name} cmp $$b{name} } @$table)
 	{
 		$i++;
 
@@ -601,17 +648,70 @@ sub save_countries
 			$$element{code2},
 			$$element{code3},
 			fc $$element{name},
-			'No', # The default. Updated later.
+			'No', # The default for 'has_subcountries'. Updated later.
 			$$element{name},
 			$$element{number},
 		);
 	}
 
 	$sth -> finish;
+	$self -> dbh -> commit;
 
-	$self -> log(info => "Saved $i countries to the database");
+	$self -> log(info => "Saved $i subcountries to the database");
 
-} # End of save_countries.
+=cut
+
+} # End of save_subcountries.
+
+# ----------------------------------------------
+
+sub save_subcountry_types
+{
+	my($self, $code2index, $table) = @_;
+
+	$self -> log(debug => 'Entered save_subcountry_types()' . Dumper($table) );
+
+	$self -> dbh -> begin_work;
+	$self -> dbh -> do('delete from subcountry_types');
+
+	my($i)					= 0;
+	my($sql)				= 'insert into subcountry_types '
+								. '(country_id, name, sequence) '
+								. 'values (?, ?, ?)';
+	my($sth)				= $self -> dbh -> prepare($sql) || die "Unable to prepare SQL: $sql\n";
+	my($last_country_id)	= 0;
+
+	my($country_id);
+	my($sequence);
+
+	for my $element (@$table)
+	{
+		$i++;
+
+		$country_id = $$code2index{$$element{code2} };
+
+		if ($country_id != $last_country_id)
+		{
+			$last_country_id	= $country_id;
+			$sequence			= 0;
+		}
+
+		$sequence++;
+
+		$sth -> execute
+		(
+			$country_id,
+			$$element{name},
+			$sequence
+		);
+	}
+
+	$sth -> finish;
+	$self -> dbh -> commit;
+
+	$self -> log(info => "Saved $i subcountry types to the database");
+
+} # End of save_subcountry_types.
 
 # ----------------------------------------------
 
@@ -744,14 +844,80 @@ See L</Constructor and initialization>.
 
 Parse the HTML page of country names from data/en.wikipedia.org.wiki.ISO-3166-1.html.
 
+Returns an arrayref where each element is a hashref with these keys:
+
+=over 4
+
+=item o code2 => $string
+
+=item o code3 => $string
+
+=item o name => $string
+
+=item o number => $string
+
+=back
+
 =head2 parse_country_page_2()
 
 Parse the HTML page of 3-letter country codes, which has 3 tables side-by-side from
  from data/en.wikipedia.org.wiki.ISO-3166-2.html.
 
-Return an arrayref of 3-letter codes.
+Return an arrayref where each element is a hashref with these keys:
 
-Special cases are documented in L<WWW::Scraper::Wikipedia::ISO3166/What is the database schema?>.
+=over 4
+
+=item o code2 => $string
+
+=item o name => $string
+
+This is the name of the country, but it is not used.
+
+=item o subcountries => $array_ref
+
+This arrayref holds the N text fields from the 3rd column of the big table on that wiki page. E.g.:
+For Uzbekistan the 3 elements of the arrayref are:
+
+=over 4
+
+=item o '1 city'
+
+=item o '12 regions'
+
+=item o '1 republic'
+
+=back
+
+And for United Kingdom, the elements will be:
+
+=over 4
+
+=item o '3 countries'
+
+=item o '1 province
+
+=item o '78 unitary authorities'
+
+=item o '27 two-tier counties'
+
+=item o '32 london boroughs'
+
+=item o '1 city corporation'
+
+=item o '36 metropolitan districts'
+
+=item o '11 districts'
+
+=item o '32 council areas'
+
+All of which nicely encapsulates the complexity of human existence.
+
+The details of these are on the page L<ISO_3166-2:UZ|https://en.wikipedia.org/wiki/ISO_3166-2:UZ>.
+
+These strings are entries in the subcountry_types table. Fir details of the schema,
+see L<WWW::Scraper::Wikipedia::ISO3166/What is the database schema?>.
+
+Obviously, the arrayref is empty if the country has no subcoyntries.
 
 =head2 parse_subcountry_page()
 
