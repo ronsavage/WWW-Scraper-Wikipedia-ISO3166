@@ -305,6 +305,60 @@ The code prefixes this name with the directory returned by L<File::ShareDir/dist
 
 Default: .htwww.scraper.wikipedia.iso3166.conf.
 
+=item o logger => $aLoggerObject
+
+Specify a logger compatible with L<Log::Handler>, for the lexer and parser to use.
+
+Default: A logger of type L<Log::Handler> which writes to the screen.
+
+To disable logging, just set 'logger' to the empty string (not undef).
+
+=item o maxlevel => $logOption1
+
+This option affects L<Log::Handler>.
+
+Possible values for C<maxlevel> and C<minlevel> are:
+
+=over 4
+
+=item o debug
+
+Generates the maximum amount of output.
+
+=item o info
+
+=item o notice
+
+By default, C<notice> is the highest level used.
+
+=item o warning, warn
+
+=item o error, err
+
+By default, C<error> is the lowest level used.
+
+=item o critical, crit
+
+=item o alert
+
+=item o emergency, emerg
+
+=back
+
+See the L<Log::Handler::Levels> docs.
+
+Default: 'notice'.
+
+=item o minlevel => $logOption2
+
+This option affects L<Log::Handler>.
+
+See the L<Log::Handler::Levels> docs.
+
+Default: 'error'.
+
+No lower levels are used.
+
 =item o sqlite_file => $file_name
 
 The name of the SQLite database of country and subcountry data.
@@ -312,12 +366,6 @@ The name of the SQLite database of country and subcountry data.
 The code prefixes this name with the directory returned by L<File::ShareDir/dist_dir()>.
 
 Default: www.scraper.wikipedia.iso3166.sqlite.
-
-=item o verbose => $integer
-
-Print more or less information.
-
-Default: 0 (print nothing).
 
 =back
 
@@ -355,13 +403,45 @@ Get or set the name of the config file.
 
 The code prefixes this name with the directory returned by L<File::ShareDir/dist_dir()>.
 
-Also, I<config_file> is an option to L</new()>.
+C<config_file> is an option to L</new()>.
 
-=head2 log($level => $s)
+=head2 log($level, $s)
 
-Print $s at log level $level, if ($self -> verbose);
+If a logger is defined, this logs the message $s at level $level.
 
-Since $self -> verbose defaults to 0, nothing is printed by default.
+=head2 logger([$logger_object])
+
+Here, the [] indicate an optional parameter.
+
+Get or set the logger object.
+
+To disable logging, just set 'logger' to the empty string (not undef), in the call to L</new()>.
+
+This logger is passed to other modules.
+
+C<logger> is a parameter to L</new()>. See L</Constructor and Initialization> for details.
+
+=head2 maxlevel([$string])
+
+Here, the [] indicate an optional parameter.
+
+Get or set the value used by the logger object.
+
+This option is only used if an object of type L<Log::Handler> is ceated.
+See L<Log::Handler::Levels>.
+
+C<maxlevel> is a parameter to L</new()>. See L</Constructor and Initialization> for details.
+
+=head2 minlevel([$string])
+
+Here, the [] indicate an optional parameter.
+
+Get or set the value used by the logger object.
+
+This option is only used if an object of type L<Log::Handler> is created.
+See L<Log::Handler::Levels>.
+
+C<minlevel> is a parameter to L</new()>. See L</Constructor and Initialization> for details.
 
 =head2 new()
 
@@ -373,13 +453,7 @@ Get or set the name of the database file.
 
 The code prefixes this name with the directory returned by L<File::ShareDir/dist_dir()>.
 
-Also, I<sqlite_file> is an option to L</new()>.
-
-=head2 verbose($integer)
-
-Get or set the verbosity level.
-
-Also, I<verbose> is an option to L</new()>.
+C<sqlite_file> is an option to L</new()>.
 
 =head1 FAQ
 

@@ -84,7 +84,7 @@ sub cross_check_country_downloads
 
 		if (! -e "data/en.wikipedia.org.wiki.ISO_3166-2.$code2.html")
 		{
-			$self -> log(debug => "File $country_file not yet downloaded");
+			$self -> log(info => "File $country_file not yet downloaded");
 		}
 	}
 
@@ -194,9 +194,10 @@ sub parse_country_page_2
 
 	$self -> log(debug => 'Entered parse_country_page_2()');
 
-	my($dom)	= Mojo::DOM -> new(read_text($in_file) );
-	my($names)	= [];
-	my($count)	= -1;
+	my($dom)					= Mojo::DOM -> new(read_text($in_file) );
+	my($has_subcountries_count)	= 0;
+	my($names)					= [];
+	my($count)					= -1;
 
 	my($content, $code);
 	my(@kids);
@@ -283,11 +284,15 @@ sub parse_country_page_2
 				}
 
 				$$code{subcountries} = [@temp_1];
+
+				$has_subcountries_count++;
 			}
 
 			push @$names, $code;
 		}
 	}
+
+	$self -> log(info => "1 of 2: $has_subcountries_count countries have subcountries");
 
 	return $names;
 
@@ -297,13 +302,13 @@ sub parse_country_page_2
 
 sub populate_countries
 {
-	my($self)		= @_;
-	my($codes)		= $self -> parse_country_page_1;
-	my($code2index)	= $self -> save_countries($codes);
+	my($self)	= @_;
+	my($codes)	= $self -> parse_country_page_1;
 
 	$self -> cross_check_country_downloads($codes);
 
-	my($names) = $self -> parse_country_page_2;
+	my($code2index)	= $self -> save_countries($codes);
+	my($names)		= $self -> parse_country_page_2;
 
 	$self -> save_subcountry_types($code2index, $names);
 
@@ -327,7 +332,7 @@ sub populate_subcountry
 
 	my($in_file) = "data/en.wikipedia.org.wiki.ISO_3166-2.$code2.html";
 
-	$self -> log(debug => $in_file);
+	$self -> log(info => $in_file);
 
 	my($dom)	= Mojo::DOM -> new(read_text($in_file) );
 	my($names)	= [];
@@ -409,7 +414,6 @@ sub populate_subcountry
 	}
 
 	$self -> save_subcountry($count, $names);
-	$self -> log(debug => Dumper($names) );
 
 	# Return 0 for success and 1 for failure.
 
@@ -472,7 +476,8 @@ sub save_countries
 {
 	my($self, $table) = @_;
 
-	$self -> log(debug => 'Entered save_countries()' . Dumper($table) );
+	$self -> log(debug => 'Entered save_countries()');
+	$self -> log(debug => Dumper($table) );
 
 	$self -> dbh -> begin_work;
 	$self -> dbh -> do('delete from countries');
@@ -517,7 +522,8 @@ sub save_subcountries
 {
 	my($self, $table) = @_;
 
-	$self -> log(debug => 'Entered save_subcountries()' . Dumper($table) );
+	$self -> log(debug => 'Entered save_subcountries()');
+	$self -> log(debug => Dumper($table) );
 
 =pod
 
@@ -560,23 +566,29 @@ sub save_subcountry_types
 {
 	my($self, $code2index, $table) = @_;
 
-	$self -> log(debug => 'Entered save_subcountry_types()' . Dumper($table) );
+	$self -> log(debug => 'Entered save_subcountry_types()');
+	$self -> log(debug => Dumper($table) );
 
 	$self -> dbh -> begin_work;
 	$self -> dbh -> do('delete from subcountry_types');
 
-	my($i)		= 0;
-	my($sql)	= 'insert into subcountry_types '
-					. '(country_id, name, sequence) '
-					. 'values (?, ?, ?)';
-	my($sth)	= $self -> dbh -> prepare($sql) || die "Unable to prepare SQL: $sql\n";
+	my($has_subcountries_count)	= 0;
+	my($i)						= 0;
+	my($sql_1)					= 'insert into subcountry_types '
+									. '(country_id, name, sequence) '
+									. 'values (?, ?, ?)';
+	my($sth_1)					= $self -> dbh -> prepare($sql_1) || die "Unable to prepare SQL: $sql_1\n";
+	my($sql_2)					= 'update countries set has_subcountries = ? where id = ?';
+	my($sth_2)					= $self -> dbh -> prepare($sql_2) || die "Unable to prepare SQL: $sql_2\n";
 
 	my($country_id);
-	my($subcountry, $sequence);
+	my($subcountry, $sequence, %seen);
 
 	for my $element (@$table)
 	{
-		next if ($#{$$element{subcountries} } < 0);
+		next if (scalar @{$$element{subcountries} } == 0);
+
+		$has_subcountries_count++;
 
 		$sequence = 0;
 
@@ -587,19 +599,32 @@ sub save_subcountry_types
 
 			$country_id = $$code2index{$$element{code2} };
 
-			$sth -> execute
+			$sth_1 -> execute
 			(
 				$country_id,
 				$subcountry,
 				$sequence
 			);
 		}
+
+		# We can use $country_id because it has the same value every time thru the loop above.
+
+		$sth_2 -> execute('Yes', $country_id);
+
+		if ($seen{$country_id})
+		{
+			$self -> log(warning => "Seeing country_id $country_id for the 2nd time");
+		}
+
+		$seen{$country_id} = 1;
 	}
 
-	$sth -> finish;
+	$sth_1 -> finish;
+	$sth_2 -> finish;
 	$self -> dbh -> commit;
 
 	$self -> log(info => "Saved $i subcountry types to the database");
+	$self -> log(info => "2 of 2: $has_subcountries_count countries have subcountries");
 
 } # End of save_subcountry_types.
 
