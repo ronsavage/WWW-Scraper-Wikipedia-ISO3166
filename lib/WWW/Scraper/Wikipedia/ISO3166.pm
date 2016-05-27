@@ -274,17 +274,6 @@ Output: data/iso.3166-2.html.
 
 On-line: L<http://savage.net.au/Perl-modules/html/WWW/Scraper/Wikipedia/ISO3166/iso.3166-2.html>.
 
-=item o scripts/get.statoids.pages.pl
-
-Downloads some pages from L<http://statoids.com> in case one day we need to convert from FIPS to ISO 3166-2.
-
-See data/List_of_FIPS_region_codes_*.html.
-
-=item o scripts/populate.fips.codes.pl
-
-This reads the files output by scripts/get.statoids.pl and produces 2 reports, data/wikipedia.fips.codes.txt
-and data/wikipedia.fips.mismatch.log. These are discussed in L</What FIPS data is included?>
-
 =item o scripts/test.nfc.pl
 
 See L</Why did you use C<Unicode::Normalize>'s NFC() for sorting?> for a discussion of this script.
@@ -579,16 +568,6 @@ database tables. After installation, the database is elsewhere, and read-only, s
 writing to that copy anyway.
 
 At run-time, L<File::ShareDir> is used to find the installed version of *.sqlite.
-
-=head2 What FIPS data is included?
-
-Firstly, scripts/get.fips.pages.pl downloads some Wikipedia data, into data/List_of_FIPS_region_codes_*.html.
-
-Secondly, the latter files are parsed by scripts/populate.fips.codes.pl and the 2 reports are in
-data/wikipedia.fips.codes.txt, and data/wikipedia.fips.mismatch.log.
-
-This data is I<not> written into the SQLite database yet, but it's available in case it's included
-one day.
 
 =head1 Wikipedia's Terms of Use
 

@@ -295,55 +295,6 @@ sub parse_country_page_2
 
 # -----------------------------------------------
 
-sub parse_fips_page
-{
-	my($self, $suffix) = @_;
-	my($in_file)       = "data/List_of_FIPS_region_codes_$suffix.html";
-	my($root)          = HTML::TreeBuilder -> new();
-	my($result)        = $root -> parse_file($in_file) || die "Can't parse file: $in_file\n";
-	my(@country)       = $root -> look_down(_tag => 'span', class => qr/mw-headline/, id => qr/[A-Z]{2,2}:/);
-	my(@ul)            = $root -> look_down(_tag => 'ul');
-	my($count)         = 0;
-
-	# Discard 1st ul.
-
-	shift @ul;
-
-	my($country);
-	my($li);
-	my(@name);
-	my($text);
-
-	for my $ul (@ul)
-	{
-		$count++;
-
-		$country               = (shift @country) -> as_text;
-		substr($country, 0, 4) = '';
-
-		push @name, $country;
-
-		for my $li ($ul -> look_down(_tag => 'li') )
-		{
-			$text = $li -> as_text;
-			$text =~ s/(.+),\s+$country/$1/;
-
-			push @name, encode('UTF-8', $text);
-		}
-
-		# Ignore remaining uls.
-
-		last if ($#country < 0);
-	}
-
-	$root -> delete;
-
-	return [@name];
-
-} # End of parse_fips_page.
-
-# -----------------------------------------------
-
 sub populate_countries
 {
 	my($self)		= @_;
@@ -361,48 +312,6 @@ sub populate_countries
 	return 0;
 
 } # End of populate_countries.
-
-# ----------------------------------------------
-
-sub populate_fips_codes
-{
-	my($self)   = @_;
-	my($record) = $self -> process_fips_codes;
-	my($count)  = 0;
-
-	my(@fips_name);
-
-	open(my $fh, '>', 'data/wikipedia.fips.codes.txt');
-	binmode $fh;
-
-	for my $name (@$record)
-	{
-		if ($name !~ /^[A-Z]{2,2}/)
-		{
-			$count++;
-
-			push @fips_name, $name;
-		}
-
-		say $fh $_ for $name;
-	}
-
-	close $fh;
-
-	my($db_name) = $self -> read_countries_table;
-	my(@db_name) = map{$$db_name{$_}{name} } keys %$db_name;
-
-	my($compare) = List::Compare -> new(\@db_name, \@fips_name);
-
-	open($fh, '>:utf8', 'data/wikipedia.fips.mismatch.log');
-	say $fh 'Countries in the db but not in the fips list:';
-	say $fh $_ for $compare -> get_unique;
-	say $fh '-' x 50;
-	say $fh 'Countries in the fips list but not in the db:';
-	say $fh decode('utf8', $_) for $compare -> get_complement;
-	close $fh;
-
-} # End of populate_fips_codes.
 
 # -----------------------------------------------
 
@@ -556,24 +465,6 @@ sub populate_subcountries
 	return 0;
 
 } # End of populate_subcountries.
-
-# ----------------------------------------------
-
-sub process_fips_codes
-{
-	my($self)   = @_;
-	my(@suffix) = (qw/A-C D-F G-I J-L M-O P-R S-U V-Z/);
-
-	my(@result);
-
-	for my $suffix (@suffix)
-	{
-		push @result, @{$self -> parse_fips_page($suffix)};
-	}
-
-	return [@result];
-
-} # End of process_fips_codes.
 
 # ----------------------------------------------
 
