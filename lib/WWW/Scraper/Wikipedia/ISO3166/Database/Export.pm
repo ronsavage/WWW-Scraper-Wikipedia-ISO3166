@@ -105,7 +105,7 @@ sub as_csv
 
 	push @row,
 	[
-		qw/id code2 code3 fc_name has_subcountries name timestamp/
+		qw/id code2 code3 fc_name has_subcountries name number timestamp/
 	];
 
 	for my $id (sort{NFC($$countries{$a}{name}) cmp NFC($$countries{$b}{name})} keys %$countries)
@@ -118,6 +118,7 @@ sub as_csv
 			$$countries{$id}{fc_name},
 			$$countries{$id}{has_subcountries},
 			$$countries{$id}{name},
+			$$countries{$id}{number},
 			$$countries{$id}{timestamp},
 		];
 	}

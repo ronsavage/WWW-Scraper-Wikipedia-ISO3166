@@ -145,6 +145,7 @@ sub get_statistics
 		has_subcounties             => $#{$self -> who_has_subcountries} + 1,
 		subcountries_in_db          => $self -> get_subcountry_count,
 		subcountry_files_downloaded => scalar @{$self -> find_subcountry_downloads},
+		subcountry_types_in_db		=> $self -> get_subcountry_type_count,
 	);
 
 	return {%count};
@@ -160,6 +161,16 @@ sub get_subcountry_count
 	return ($self -> dbh -> selectrow_array('select count(*) from subcountries') )[0];
 
 } # End of get_subcountry_count.
+
+# ----------------------------------------------
+
+sub get_subcountry_type_count
+{
+	my($self) = @_;
+
+	return ($self -> dbh -> selectrow_array('select count(*) from subcountry_types') )[0];
+
+} # End of get_subcountry_type_count.
 
 # ----------------------------------------------
 
@@ -184,6 +195,18 @@ sub read_subcountries_table
 	$sth -> fetchall_hashref('id');
 
 } # End of read_subcountries_table.
+
+# ----------------------------------------------
+
+sub read_subcountry_types_table
+{
+	my($self) = @_;
+	my($sth)  = $self -> dbh -> prepare('select * from subcountry_types');
+
+	$sth -> execute;
+	$sth -> fetchall_hashref('id');
+
+} # End of read_subcountry_types_table.
 
 # -----------------------------------------------
 
@@ -220,6 +243,10 @@ sub report_Australian_statistics
 
 	$self -> log(info => "$$_{sequence}: $$_{name}") for @states;
 
+	# Return 0 for success and 1 for failure.
+
+	return 0;
+
 } # End of report_Australian_statistics.
 
 # -----------------------------------------------
@@ -230,6 +257,10 @@ sub report_statistics
 	my($count) = $self -> get_statistics;
 
 	$self -> log(info => $_) for map{"$_ => $$count{$_}"} sort keys %$count;
+
+	# Return 0 for success and 1 for failure.
+
+	return 0;
 
 } # End of report_statistics.
 
@@ -335,6 +366,7 @@ Returns a hashref of database statistics:
 	has_subcounties             => 199,
 	subcountries_in_db          => 4593,
 	subcountry_files_downloaded => 249,
+	subcountry_types_in_db      => 352,
 	}
 
 Called by L</report_statistics()>.
@@ -342,6 +374,10 @@ Called by L</report_statistics()>.
 =head2 get_subcountry_count()
 
 Returns the result of: 'select count(*) from subcountries'.
+
+=head2 get_subcountry_type_count()
+
+Returns the result of: 'select count(*) from subcountry_types'.
 
 =head2 new()
 

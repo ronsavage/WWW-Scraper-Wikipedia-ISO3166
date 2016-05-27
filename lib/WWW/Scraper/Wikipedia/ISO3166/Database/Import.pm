@@ -674,36 +674,35 @@ sub save_subcountry_types
 	$self -> dbh -> begin_work;
 	$self -> dbh -> do('delete from subcountry_types');
 
-	my($i)					= 0;
-	my($sql)				= 'insert into subcountry_types '
-								. '(country_id, name, sequence) '
-								. 'values (?, ?, ?)';
-	my($sth)				= $self -> dbh -> prepare($sql) || die "Unable to prepare SQL: $sql\n";
-	my($last_country_id)	= 0;
+	my($i)		= 0;
+	my($sql)	= 'insert into subcountry_types '
+					. '(country_id, name, sequence) '
+					. 'values (?, ?, ?)';
+	my($sth)	= $self -> dbh -> prepare($sql) || die "Unable to prepare SQL: $sql\n";
 
 	my($country_id);
-	my($sequence);
+	my($subcountry, $sequence);
 
 	for my $element (@$table)
 	{
-		$i++;
+		next if ($#{$$element{subcountries} } < 0);
 
-		$country_id = $$code2index{$$element{code2} };
+		$sequence = 0;
 
-		if ($country_id != $last_country_id)
+		for $subcountry (@{$$element{subcountries} })
 		{
-			$last_country_id	= $country_id;
-			$sequence			= 0;
+			$i++;
+			$sequence++;
+
+			$country_id = $$code2index{$$element{code2} };
+
+			$sth -> execute
+			(
+				$country_id,
+				$subcountry,
+				$sequence
+			);
 		}
-
-		$sequence++;
-
-		$sth -> execute
-		(
-			$country_id,
-			$$element{name},
-			$sequence
-		);
 	}
 
 	$sth -> finish;
