@@ -20,7 +20,7 @@ for details.
 
 <p>
 The database structure is documented in the FAQ entry
-<a href="https://metacpan.org/module/WWW::Scraper::Wikipedia::ISO3166#What-is-the-database-schema">What is the database schema?</a>.
+<a href="https://metacpan.org/module/WWW::Scraper::Wikipedia::ISO3166#What-is-the-database-schema">What is the database schema?</a>
 </p>
 
 <p>
@@ -46,7 +46,7 @@ The Å of Åland should have a ring on top of it, just as this line and Wikipedia 
 Wikipedia sorts countries by a display:none key, whereas I have chosen to sort by NFC($name), where the
 NFC() method comes from <a href="https://metacpan.org/release/Unicode-Normalize">Unicode::Normalize</a>.
 Usage of NFC() is discussed in the module's FAQ entry
-<a href="https://metacpan.org/module/WWW::Scraper::Wikipedia::ISO3166#Why-did-you-use-Unicode::Normalizes-NFC-for-sorting-">Why did you use Unicode::Normalize's NFC() for sorting?</a>.
+<a href="https://metacpan.org/module/WWW::Scraper::Wikipedia::ISO3166#Why-did-you-use-Unicode::Normalizes-NFC-for-sorting-">Why did you use Unicode::Normalize's NFC() for sorting?</a>
 </p>
 
 <p>

@@ -9,15 +9,12 @@ use warnings  qw(FATAL utf8);    # Fatalize encoding glitches.
 
 use Data::Dumper::Concise; # For Dumper().
 
-use Encode; # For decode().
-
 use File::Slurper qw/read_dir read_text/;
 
 use List::AllUtils 'first';
 use List::Compare;
 
 use Mojo::DOM;
-use Mojo::DOM::CSS;
 
 use Moo;
 
@@ -146,7 +143,7 @@ sub parse_country_page_1
 						$content = $nodule -> content;
 					}
 				}
-				elsif (Mojo::DOM::CSS -> new($nodule) -> select('span + a') )
+				elsif ($nodule -> at('span a') )
 				{
 					# Special cases:
 					# o TW - Taiwan.
@@ -339,11 +336,10 @@ sub populate_subcountry
 	my($count)	= -1;
 
 	my($content, $code);
-	my(@kids);
+	my($kid, @kids);
 	my($last);
 	my($name_count);
-	my($size);
-	my($td_count, @temp);
+	my($td_count);
 
 	for my $node ($dom -> at('table[class="wikitable sortable"]') -> descendant_nodes -> each)
 	{
@@ -365,34 +361,49 @@ sub populate_subcountry
 
 		if ( ($count % $td_count) == 0)
 		{
-			$content	= encode('UTF-8', $node -> at('span') -> content);
+			$content	= $node -> at('span') -> content;
 			$code		= {code => $content, name => ''};
 		}
 		elsif ( ($count % $td_count)  == 1)
 		{
-			@temp = ();
+			# Special cases:
+			# o TD - Chad.
+			# o CY - Cyprus.
+			# o DO - Dominican Republic.
+			# o MR - Mauritania.
 
-			if ($node -> children -> size == 0)
+			@kids = $node -> children;
+
+			if ($#kids < 0)
 			{
-				$$code{name} = encode('UTF-8', $node -> content);
+				$content = $node -> content;
 			}
 			else
 			{
-				for my $kid ($node -> children -> each)
+				# Special cases:
+				# o AD - Andorra.
+				# o GT - Guatemala.
+				# o PY - Paraguay.
+
+				$kid = $node -> at('a img');
+
+				if ($kid)
 				{
-					#next if (Mojo::DOM::CSS -> new($node) -> select('span[style="display:none;"]') );
+					for $kid ($node -> children -> each)
+					{
+						next if ($kid -> children -> size > 0);
 
-					$size = $kid -> children;
-
-					next if ( ($size > 0) && ($kid -> find('img') -> size > 0) );
-
-					$content = $kid -> content;
-
-					push @temp, encode('UTF-8', $kid -> content);
+						$content = $kid -> content;
+					}
 				}
-
-				$$code{name} = join('', @temp);
+				else
+				{
+					$kid		= $node -> at('a') || $node -> at('span a');
+					$content	= $kid ? $kid -> content : "2: N/A $code2";
+				}
 			}
+
+			$$code{name} = $content;
 
 			push @$names, $code;
 		}
@@ -408,8 +419,20 @@ sub populate_subcountry
 
 			if ($last eq '')
 			{
-				$$names[$name_count]{name} = encode('UTF-8', $node -> content);
+				$$names[$name_count]{name} = $node -> content;
+
+				push @$names, $code;
 			}
+		}
+		elsif ( ($count % $td_count) == 3)
+		{
+			# Special cases:
+			# o CY - Cyprus.
+
+			$kid			= $node -> at('a');
+			$$code{name}	= $kid -> content if ($kid);
+
+			push @$names, $code;
 		}
 	}
 
@@ -450,6 +473,8 @@ sub populate_subcountries
 
 	# 2: Import if not already imported.
 
+	$self -> dbh -> begin_work;
+
 	my($code2);
 
 	for $country_id (sort keys %$countries)
@@ -463,6 +488,8 @@ sub populate_subcountries
 		$self -> code2($code2);
 		$self -> populate_subcountry;
 	}
+
+	$self -> dbh -> commit;
 
 	# Return 0 for success and 1 for failure.
 
@@ -515,50 +542,6 @@ sub save_countries
 	return \%code2index;
 
 } # End of save_countries.
-
-# ----------------------------------------------
-
-sub save_subcountries
-{
-	my($self, $table) = @_;
-
-	$self -> log(debug => 'Entered save_subcountries()');
-	$self -> log(debug => Dumper($table) );
-
-=pod
-
-	$self -> dbh -> begin_work;
-	$self -> dbh -> do('delete from subcountries');
-
-	my($i)   = 0;
-	my($sql) = 'insert into subcountries '
-				. '(code2, code3, fc_name, has_subcountries, name, number) '
-				. 'values (?, ?, ?, ?, ?, ?)';
-	my($sth) = $self -> dbh -> prepare($sql) || die "Unable to prepare SQL: $sql\n";
-
-	for my $element (sort{$$a{name} cmp $$b{name} } @$table)
-	{
-		$i++;
-
-		$sth -> execute
-		(
-			$$element{code2},
-			$$element{code3},
-			fc $$element{name},
-			'No', # The default for 'has_subcountries'. Updated later.
-			$$element{name},
-			$$element{number},
-		);
-	}
-
-	$sth -> finish;
-	$self -> dbh -> commit;
-
-	$self -> log(info => "Saved $i subcountries to the database");
-
-=cut
-
-} # End of save_subcountries.
 
 # ----------------------------------------------
 
@@ -650,15 +633,11 @@ sub save_subcountry
 	my($sql) = 'insert into subcountries (country_id, code, fc_name, name, sequence) values (?, ?, ?, ?, ?)';
 	my($sth) = $self -> dbh -> prepare($sql) || die "Unable to prepare SQL: $sql\n";
 
-	my($decode);
-
 	for my $element (@$table)
 	{
 		$i++;
 
-		$decode = decode('UTF-8', $$element{name});
-
-		$sth -> execute($country_id, $$element{code}, fc $decode, $decode, $i);
+		$sth -> execute($country_id, $$element{code}, fc $$element{name}, $$element{name}, $i);
 	}
 
 	$sth -> finish;
@@ -845,7 +824,7 @@ this method.
 
 Populate the I<countries> table.
 
-=head2 populate_subcountry($count)
+=head2 populate_subcountry()
 
 Populate the I<subcountries> table, for 1 subcountry.
 
@@ -860,9 +839,9 @@ Populate the I<subcountries> table, for all subcountries.
 
 Delete the I<detail> key of the arrayref of hashrefs for the subcountry.
 
-=head2 save_countries($code3, $table)
+=head2 save_countries($table)
 
-Save the I<countries> table to the database.
+Save the $table to the I<countries> table in the database.
 
 =head2 save_subcountries($count, $table)
 

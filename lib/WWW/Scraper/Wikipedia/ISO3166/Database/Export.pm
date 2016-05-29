@@ -298,6 +298,7 @@ sub build_country_data
 				{td => ''},
 				{td => ''},
 				{td => ''},
+				{td => ''},
 				{td => mark_raw($$sub_id[1])},
 				{td => mark_raw($$sub_id[2])},
 				{td => ''},
@@ -305,7 +306,9 @@ sub build_country_data
 		}
 	}
 
-	push @tr, [{td => '#'}, {td => 'Key'}, {td => 'Code2'}, {td => 'Code3'}, {td => 'Name'}, {td => 'Subcountries'}];
+	# Duplicate the heading at the bottom.
+
+	push @tr, $tr[0];
 
 	return [@tr];
 
