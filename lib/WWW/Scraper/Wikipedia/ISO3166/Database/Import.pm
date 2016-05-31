@@ -355,10 +355,13 @@ sub populate_subcountry
 
 		if ( ($count % $td_count) == 0)
 		{
-			# Special case:
+			# Special cases:
+			# o CG - Congo.
 			# o KH - Cambodia.
+			# o MN - Mongolia.
+			# o PY - Paraguay.
 
-			if ($code2 eq 'KH')
+			if ($code2 =~ /(?:CG|KH|MN|PY)/)
 			{
 				$kids = $node -> children;
 
@@ -385,12 +388,14 @@ sub populate_subcountry
 		elsif ( ($count % $td_count)  == 1)
 		{
 			# Special cases:
+			# o CG - Congo.
 			# o KH - Cambodia.
 			# o TD - Chad.
 			# o CY - Cyprus.
 			# o DO - Dominican Republic.
 			# o MR - Mauritania.
 			# o MT - Malta.
+			# o PY - Paraguay.
 
 			next if ($code2 =~ /(?:KH|MT)/);
 
@@ -399,8 +404,13 @@ sub populate_subcountry
 			if ($kids -> size == 0)
 			{
 				$content = $node -> content;
-
-				$self -> log(debug => "code2: $code2. content: $content") if ($code2 eq 'TD');
+			}
+			elsif ($code2 =~ /(?:CG|PY)/)
+			{
+				for $kid ($node -> descendant_nodes -> each)
+				{
+					$content = $kid -> content if ($kid -> matches('a') );
+				}
 			}
 			elsif ($code2 eq 'TD')
 			{
@@ -459,21 +469,16 @@ sub populate_subcountry
 		elsif (! $finished && ($count % $td_count) == 2)
 		{
 			# Special cases:
-			# o TD - Chad.
 			# o KH - Cambodia.
 			# o MR - Mauritania.
 			# o NZ - New Zealand.
+			# o TD - Chad.
 			# Some rows in the subcountry table have blanks in column 2,
 			# so we have to get the value from column 3.
 
 			if ($code2 eq 'MT')
 			{
 				$content	= $node -> content;
-				$finished	= 1;
-			}
-			elsif ($code2 eq 'TD')
-			{
-				$content	= $node -> at('a') -> content;
 				$finished	= 1;
 			}
 			elsif ($code2 eq 'KH')
@@ -485,6 +490,10 @@ sub populate_subcountry
 			{
 				$content	= $node -> at('a') -> content;
 				$finished	= 1;
+			}
+			elsif ($code2 eq 'TD')
+			{
+				$content = $node -> at('a') -> content;
 			}
 
 			$$code{name} = $content if ($finished);
