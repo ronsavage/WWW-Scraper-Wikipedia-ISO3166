@@ -321,15 +321,9 @@ sub populate_subcountry
 {
 	my($self)		= @_;
 	my($code2)		= $self -> code2;
-	my($countries)	= $self -> read_countries_table;
+	my($in_file)	= "data/en.wikipedia.org.wiki.ISO_3166-2.$code2.html";
 
-	# Return 0 for success and 1 for failure.
-
-	return 0 if ($self -> any_subcountries($countries, $code2) == 0);
-
-	my($in_file) = "data/en.wikipedia.org.wiki.ISO_3166-2.$code2.html";
-
-	$self -> log(info => $in_file);
+	$self -> log(info => "Start: $in_file");
 
 	my($dom)	= Mojo::DOM -> new(read_text($in_file) );
 	my($names)	= [];
@@ -353,6 +347,8 @@ sub populate_subcountry
 		}
 	}
 
+	my($finished);
+
 	for my $node ($dom -> at('table[class="wikitable sortable"]') -> descendant_nodes -> each)
 	{
 		next if (! $node -> matches('td') );
@@ -363,6 +359,7 @@ sub populate_subcountry
 		{
 			$content	= $node -> at('span') -> content;
 			$code		= {code => $content, name => ''};
+			$finished	= 0;
 		}
 		elsif ( ($count % $td_count)  == 1)
 		{
@@ -377,6 +374,11 @@ sub populate_subcountry
 			if ($#kids < 0)
 			{
 				$content = $node -> content;
+
+				$self -> log(debug => "code2: $code2. content: $content") if ($code2 eq 'TD');
+			}
+			elsif ($code2 eq 'TD')
+			{
 			}
 			else
 			{
@@ -398,39 +400,54 @@ sub populate_subcountry
 				}
 				else
 				{
-					$kid		= $node -> at('a') || $node -> at('span a');
-					$content	= $kid ? $kid -> content : "2: N/A $code2";
+					$kid = $node -> at('a') || $node -> at('span a');
+
+					if ($kid)
+					{
+						$content = $kid -> content;
+					}
+					else
+					{
+						$content = $node -> content;
+					}
 				}
 			}
 
-			$$code{name} = $content;
+			$self -> log(debug => "code2: $code2. content: $content") if ($code2 eq 'TD');
 
-			push @$names, $code;
+			$$code{name}	= $content;
+			$finished		= ( ($code2 =~ /(?:MR|NZ)/) && ($$code{name} eq '') ) ? 0 : 1;
 		}
-		elsif ( ($count % $td_count) == 2)
+		elsif (! $finished && ($count % $td_count) == 2)
 		{
-			# Special cases:
+			# Special case:
 			# o MR - Mauritania.
+			# o NZ - New Zealand.
+			# Some rows in the subcountry table have blanks in column 2,
+			# so we have to get the value from column 3.
 
-			next if ($code2 ne 'MR');
-
-			$name_count	= $#$names;
-			$last		= $$names[$name_count]{name};
-
-			if ($last eq '')
+			if ( ($code2 =~ /(?:MR|NZ)/) && ($$code{name} eq '') )
 			{
-				$$names[$name_count]{name} = $node -> content;
-
-				push @$names, $code;
+				$$code{name}	= $node -> at('a') -> content;
+				$finished		= 1;
 			}
 		}
-		elsif ( ($count % $td_count) == 3)
+		elsif (! $finished && ($count % $td_count) == 3)
 		{
 			# Special cases:
 			# o CY - Cyprus.
 
-			$kid			= $node -> at('a');
-			$$code{name}	= $kid -> content if ($kid);
+			if ($code2 =~ /(?:CY)/)
+			{
+				$kid			= $node -> at('a');
+				$$code{name}	= $kid -> content if ($kid);
+				$finished		= 1;
+			}
+		}
+
+		if ($finished)
+		{
+			$finished = 0;
 
 			push @$names, $code;
 		}
