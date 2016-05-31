@@ -32,42 +32,11 @@ has code2 =>
 
 our $VERSION = '2.00';
 
-# -----------------------------------------------
-
-sub any_subcountries
-{
-	my($self, $countries, $code2)	= @_;
-	my($result)						= 0;
-
-	my($code);
-
-	for my $country_id (sort keys %$countries)
-	{
-		$code = $$countries{$country_id}{code2};
-
-		next if ($code ne $code2);
-
-		if ($$countries{$country_id}{has_subcountries} eq 'Yes')
-		{
-			$result = 1;
-
-			last;
-		}
-	}
-
-	# Return 0 for no and 1 for yes.
-
-	return $result;
-
-} # End of any_subcountries.
-
 # ----------------------------------------------
 
 sub cross_check_country_downloads
 {
 	my($self, $table) = @_;
-
-	$self -> log(debug => 'Entered cross_check_country_downloads()');
 
 	my($code2);
 	my($country_file);
@@ -97,7 +66,7 @@ sub cross_check_country_downloads
 
 # -----------------------------------------------
 
-sub parse_country_page_1
+sub _parse_country_page_1
 {
 	my($self)		= @_;
 	my($in_file)	= 'data/en.wikipedia.org.wiki.ISO_3166-1.html';
@@ -180,17 +149,14 @@ sub parse_country_page_1
 
 	return $codes;
 
-} # End of parse_country_page_1.
+} # End of _parse_country_page_1.
 
 # -----------------------------------------------
 
-sub parse_country_page_2
+sub _parse_country_page_2
 {
-	my($self)    = @_;
-	my($in_file) = 'data/en.wikipedia.org.wiki.ISO_3166-2.html';
-
-	$self -> log(debug => 'Entered parse_country_page_2()');
-
+	my($self)					= @_;
+	my($in_file)				= 'data/en.wikipedia.org.wiki.ISO_3166-2.html';
 	my($dom)					= Mojo::DOM -> new(read_text($in_file) );
 	my($has_subcountries_count)	= 0;
 	my($names)					= [];
@@ -293,21 +259,21 @@ sub parse_country_page_2
 
 	return $names;
 
-} # End of parse_country_page_2.
+} # End of _parse_country_page_2.
 
 # -----------------------------------------------
 
 sub populate_countries
 {
 	my($self)	= @_;
-	my($codes)	= $self -> parse_country_page_1;
+	my($codes)	= $self -> _parse_country_page_1;
 
 	$self -> cross_check_country_downloads($codes);
 
-	my($code2index)	= $self -> save_countries($codes);
-	my($names)		= $self -> parse_country_page_2;
+	my($code2index)	= $self -> _save_countries($codes);
+	my($names)		= $self -> _parse_country_page_2;
 
-	$self -> save_subcountry_types($code2index, $names);
+	$self -> _save_subcountry_types($code2index, $names);
 
 	# Return 0 for success and 1 for failure.
 
@@ -519,7 +485,7 @@ sub populate_subcountry
 		}
 	}
 
-	$self -> save_subcountry($count, $names);
+	$self -> _save_subcountry($count, $names);
 
 	# Return 0 for success and 1 for failure.
 
@@ -532,8 +498,6 @@ sub populate_subcountry
 sub populate_subcountries
 {
 	my($self)  = @_;
-
-	$self -> log(debug => 'Entered populate_subcountries()');
 
 	# Find which subcountries have been downloaded but not imported.
 	# %downloaded will contain 2-letter codes.
@@ -582,12 +546,9 @@ sub populate_subcountries
 
 # ----------------------------------------------
 
-sub save_countries
+sub _save_countries
 {
 	my($self, $table) = @_;
-
-	$self -> log(debug => 'Entered save_countries()');
-	$self -> log(debug => Dumper($table) );
 
 	$self -> dbh -> begin_work;
 	$self -> dbh -> do('delete from countries');
@@ -624,16 +585,13 @@ sub save_countries
 
 	return \%code2index;
 
-} # End of save_countries.
+} # End of _save_countries.
 
 # ----------------------------------------------
 
-sub save_subcountry_types
+sub _save_subcountry_types
 {
 	my($self, $code2index, $table) = @_;
-
-	$self -> log(debug => 'Entered save_subcountry_types()');
-	$self -> log(debug => Dumper($table) );
 
 	$self -> dbh -> begin_work;
 	$self -> dbh -> do('delete from subcountry_types');
@@ -692,17 +650,15 @@ sub save_subcountry_types
 	$self -> log(info => "Saved $i subcountry types to the database");
 	$self -> log(info => "2 of 2: $has_subcountries_count countries have subcountries");
 
-} # End of save_subcountry_types.
+} # End of _save_subcountry_types.
 
 # ----------------------------------------------
 
-sub save_subcountry
+sub _save_subcountry
 {
 	my($self, $count, $table) = @_;
 	my($code2)     = $self -> code2;
 	my($countries) = $self -> read_countries_table;
-
-	$self -> log(debug => "Entered save_subcountry: $code2");
 
 	# Find which country has the code we're processing.
 
@@ -727,20 +683,7 @@ sub save_subcountry
 
 	$self -> log(info => "$count: $code2 => '$$countries{$country_id}{name}' contains $i subcountries");
 
-} # End of save_subcountry.
-
-# ----------------------------------------------
-
-sub trim
-{
-	my($self, $s) = @_;
-	$s ||= '';
-	$s =~ s/^\s+//;
-	$s =~ s/\s+$//;
-
-	return $s;
-
-} # End of trim.
+} # End of _save_subcountry.
 
 # -----------------------------------------------
 
@@ -932,10 +875,6 @@ Save the I<subcountries> table, for the given subcountry, using the output of
 L</process_subcountries($table)>.
 
 $count is just used in the log for progress messages.
-
-=head2 trim($s)
-
-Remove leading and trailing spaces from $s, and return it.
 
 =head1 FAQ
 
