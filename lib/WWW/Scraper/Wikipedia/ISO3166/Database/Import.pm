@@ -329,10 +329,6 @@ sub populate_subcountry
 	my($names)	= [];
 	my($count)	= -1;
 
-	my($content, $code);
-	my($kid, @kids);
-	my($last);
-	my($name_count);
 	my($td_count);
 
 	for my $node ($dom -> at('table[class="wikitable sortable"]') -> descendant_nodes -> each)
@@ -347,7 +343,9 @@ sub populate_subcountry
 		}
 	}
 
+	my($content, $code);
 	my($finished);
+	my($kid, $kids, @kids);
 
 	for my $node ($dom -> at('table[class="wikitable sortable"]') -> descendant_nodes -> each)
 	{
@@ -357,21 +355,48 @@ sub populate_subcountry
 
 		if ( ($count % $td_count) == 0)
 		{
-			$content	= $node -> at('span') -> content;
+			# Special case:
+			# o KH - Cambodia.
+
+			if ($code2 eq 'KH')
+			{
+				$kids = $node -> children;
+
+				if ($kids -> size == 1)
+				{
+					$content = $kids -> first -> content;
+				}
+				else
+				{
+					@kids		= $kids -> each;
+					$kids		= $kids[1] -> children;
+					$content	= $kids -> first -> content;
+				}
+			}
+			else
+			{
+				$content = $node -> at('span') -> content;
+			}
+
 			$code		= {code => $content, name => ''};
 			$finished	= 0;
+
 		}
 		elsif ( ($count % $td_count)  == 1)
 		{
 			# Special cases:
+			# o KH - Cambodia.
 			# o TD - Chad.
 			# o CY - Cyprus.
 			# o DO - Dominican Republic.
 			# o MR - Mauritania.
+			# o MT - Malta.
 
-			@kids = $node -> children;
+			next if ($code2 =~ /(?:KH|MT)/);
 
-			if ($#kids < 0)
+			$kids = $node -> children;
+
+			if ($kids -> size == 0)
 			{
 				$content = $node -> content;
 
@@ -379,6 +404,19 @@ sub populate_subcountry
 			}
 			elsif ($code2 eq 'TD')
 			{
+				if ($kids -> size == 0)
+				{
+					$content = $node -> content;
+				}
+				elsif ($kids -> size == 1)
+				{
+					next;
+				}
+				else
+				{
+					@kids		= $node -> children -> each;
+					$content	= $kids[1] -> content;
+				}
 			}
 			else
 			{
@@ -420,17 +458,36 @@ sub populate_subcountry
 		}
 		elsif (! $finished && ($count % $td_count) == 2)
 		{
-			# Special case:
+			# Special cases:
+			# o TD - Chad.
+			# o KH - Cambodia.
 			# o MR - Mauritania.
 			# o NZ - New Zealand.
 			# Some rows in the subcountry table have blanks in column 2,
 			# so we have to get the value from column 3.
 
-			if ( ($code2 =~ /(?:MR|NZ)/) && ($$code{name} eq '') )
+			if ($code2 eq 'MT')
 			{
-				$$code{name}	= $node -> at('a') -> content;
-				$finished		= 1;
+				$content	= $node -> content;
+				$finished	= 1;
 			}
+			elsif ($code2 eq 'TD')
+			{
+				$content	= $node -> at('a') -> content;
+				$finished	= 1;
+			}
+			elsif ($code2 eq 'KH')
+			{
+				$content	= $node -> content;
+				$finished	= 1;
+			}
+			elsif ( ($code2 =~ /(?:MR|NZ)/) && ($$code{name} eq '') )
+			{
+				$content	= $node -> at('a') -> content;
+				$finished	= 1;
+			}
+
+			$$code{name} = $content if ($finished);
 		}
 		elsif (! $finished && ($count % $td_count) == 3)
 		{
