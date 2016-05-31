@@ -7,8 +7,6 @@ use utf8;
 use warnings;
 use warnings  qw(FATAL utf8);    # Fatalize encoding glitches.
 
-use Data::Dumper::Concise; # For Dumper().
-
 use File::Slurper qw/read_dir read_text/;
 
 use List::AllUtils 'first';

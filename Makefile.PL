@@ -23,7 +23,6 @@ requires 'Config::Tiny'					=> 2.14;
 requires 'DBD::SQLite'					=> 1.50;
 requires 'DBI'							=> 1.620;
 requires 'DBIx::Admin::CreateTable'		=> 2.07;
-requires 'Encode'						=> 2.44;
 requires 'feature'						=> 0,
 requires 'File::ShareDir'				=> 1.03;
 requires 'File::Slurper'				=> 0.008;
@@ -32,7 +31,9 @@ requires 'Getopt::Long'					=> 2.38;
 requires 'HTTP::Tiny'					=> 0.056;
 requires 'List::AllUtils'				=> 0.03;
 requires 'List::Compare'				=> 0.37;
+requires 'Log::Handler'					=> 0.84;
 requires 'Mojolicious'					=> 6.62;
+requires 'Mojo::DOM'					=> 0; # This is just for my Makefile.PL cross-checker.
 requires 'Moo'							=> 2.001001;
 requires 'open'							=> 1.08;
 requires 'parent'						=> 0.225;
@@ -47,8 +48,8 @@ requires 'Unicode::Normalize'			=> 1.14;
 requires 'utf8'							=> 0;
 requires 'warnings'						=> 1.12;
 
-test_requires 'Test::Bundle::Extended'	=> '0.000030';
-#test_requires 'Test::More'				=> '1.302022';	# Used by xt/t/pod.t.
-#test_requires 'Test::Pod'				=> '1.51';		# Used by xt/t/pod.t.
+test_requires 'Test2::Bundle::Extended'	=> '0.000030';
+test_requires 'Test::More'				=> '1.302022';	# Used by xt/t/pod.t.
+test_requires 'Test::Pod'				=> '1.51';		# Used by xt/t/pod.t.
 
 WriteAll;

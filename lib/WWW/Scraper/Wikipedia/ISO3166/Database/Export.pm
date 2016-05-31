@@ -6,8 +6,6 @@ use warnings;
 
 use Config::Tiny;
 
-use Data::Dumper::Concise; # For Dumper().
-
 use File::ShareDir;
 use File::Spec;
 
