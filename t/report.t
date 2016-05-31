@@ -1,11 +1,8 @@
 #!/usr/bin/env perl
 
-use strict;
-use warnings;
-
 use Capture::Tiny 'capture';
 
-use Test::More;
+use Test2::Bundle::Extended; # Turns on strict and warnings.
 
 use WWW::Scraper::Wikipedia::ISO3166::Database;
 
@@ -26,7 +23,7 @@ subcountry_files_downloaded => 249
 subcountry_types_in_db => 352
 EOS
 
-is_deeply(\@got, \@expected, 'report_statistics() returned the expected data');
+is(\@got, \@expected, 'report_statistics() returned the expected data');
 
 @params = ();
 
@@ -46,6 +43,6 @@ push @params, '-max', 'info';
 8: Northern Territory
 EOS
 
-is_deeply(\@got, \@expected, 'report_Australian_statistics() returned the expected data');
+is(\@got, \@expected, 'report_Australian_statistics() returned the expected data');
 
 done_testing;
