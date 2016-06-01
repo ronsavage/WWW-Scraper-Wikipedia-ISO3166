@@ -122,7 +122,8 @@ sub _parse_country_page_1
 				}
 			}
 
-			$code = {code2 => '', code3 => '', name => $content, number => 0};
+			$content	=~ s/&#39;/'/g;
+			$code		= {code2 => '', code3 => '', name => $content, number => 0};
 		}
 		elsif ( ($count % $td_count) == 1)
 		{
@@ -204,7 +205,8 @@ sub _parse_country_page_2
 				$content	= join('', map{$_ -> content} Mojo::DOM -> new($kids[1]) -> children -> each);
 			}
 
-			$$code{name} = $content;
+			$content		=~ s/&#39;/'/g;
+			$$code{name}	= $content;
 		}
 		elsif ( ($count % $td_count) == 2)
 		{
@@ -253,8 +255,6 @@ sub _parse_country_page_2
 		}
 	}
 
-	$self -> log(info => "1 of 2: $has_subcountries_count countries have subcountries");
-
 	return $names;
 
 } # End of _parse_country_page_2.
@@ -286,12 +286,9 @@ sub populate_subcountry
 	my($self)		= @_;
 	my($code2)		= $self -> code2;
 	my($in_file)	= "data/en.wikipedia.org.wiki.ISO_3166-2.$code2.html";
-
-	$self -> log(info => "Start: $in_file");
-
-	my($dom)	= Mojo::DOM -> new(read_text($in_file) );
-	my($names)	= [];
-	my($count)	= -1;
+	my($dom)		= Mojo::DOM -> new(read_text($in_file) );
+	my($names)		= [];
+	my($count)		= -1;
 
 	my($td_count);
 
@@ -376,13 +373,16 @@ sub populate_subcountry
 					$content = $kid -> content if ($kid -> matches('a') );
 				}
 			}
-			elsif ($code2 eq 'TD')
+			elsif ($code2 eq 'CY')
 			{
-				if ($kids -> size == 0)
+				for $kid ($node -> descendant_nodes -> each)
 				{
-					$content = $node -> content;
+					$content = $kid -> content if ($kid -> matches('span') );
 				}
-				elsif ($kids -> size == 1)
+			}
+			elsif ($code2 =~ /(?:ET|TD)/)
+			{
+				if ($kids -> size == 1)
 				{
 					next;
 				}
@@ -425,8 +425,7 @@ sub populate_subcountry
 				}
 			}
 
-			$self -> log(debug => "code2: $code2. content: $content") if ($code2 eq 'TD');
-
+			$content		=~ s/&#39;/'/g;
 			$$code{name}	= $content;
 			$finished		= ( ($code2 =~ /(?:MR|NZ)/) && ($$code{name} eq '') ) ? 0 : 1;
 		}
@@ -460,19 +459,8 @@ sub populate_subcountry
 				$content = $node -> at('a') -> content;
 			}
 
-			$$code{name} = $content if ($finished);
-		}
-		elsif (! $finished && ($count % $td_count) == 3)
-		{
-			# Special cases:
-			# o CY - Cyprus.
-
-			if ($code2 =~ /(?:CY)/)
-			{
-				$kid			= $node -> at('a');
-				$$code{name}	= $kid -> content if ($kid);
-				$finished		= 1;
-			}
+			$content		=~ s/&#39;/'/g;
+			$$code{name}	= $content if ($finished);
 		}
 
 		if ($finished)
@@ -579,8 +567,6 @@ sub _save_countries
 	$sth -> finish;
 	$self -> dbh -> commit;
 
-	$self -> log(info => "Saved $i countries to the database");
-
 	return \%code2index;
 
 } # End of _save_countries.
@@ -645,9 +631,6 @@ sub _save_subcountry_types
 	$sth_2 -> finish;
 	$self -> dbh -> commit;
 
-	$self -> log(info => "Saved $i subcountry types to the database");
-	$self -> log(info => "2 of 2: $has_subcountries_count countries have subcountries");
-
 } # End of _save_subcountry_types.
 
 # ----------------------------------------------
@@ -678,8 +661,6 @@ sub _save_subcountry
 	}
 
 	$sth -> finish;
-
-	$self -> log(info => "$count: $code2 => '$$countries{$country_id}{name}' contains $i subcountries");
 
 } # End of _save_subcountry.
 

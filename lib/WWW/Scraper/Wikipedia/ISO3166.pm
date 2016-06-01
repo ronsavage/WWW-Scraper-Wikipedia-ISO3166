@@ -469,6 +469,10 @@ Then we'd have:
 This distro uses the values directly from Wikipedia, which is what I have called C<Long Name> above,
 for all country and subcountry names.
 
+=head2 Are any names modified by the code?
+
+Yes. &#39; is converted into a single quote.
+
 =head2 Where is the database?
 
 It is shipped in share/www.scraper.wikipedia.iso3166.sqlite.

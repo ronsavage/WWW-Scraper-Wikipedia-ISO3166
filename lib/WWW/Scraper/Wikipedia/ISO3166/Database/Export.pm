@@ -141,7 +141,7 @@ sub as_csv
 		];
 	}
 
-	open(my $fh, '>', $self -> country_file) || die "Can't open file: " . $self -> country_file . "\n";
+	open(my $fh, '>:encoding(UTF-8)', $self -> country_file) || die "Can't open file: " . $self -> country_file . "\n";
 
 	for (@row)
 	{
@@ -172,7 +172,7 @@ sub as_csv
 		];
 	}
 
-	open($fh, '>', $self -> subcountry_type_file) || die "Can't open file: " . $self -> subcountry_type_file . "\n";
+	open($fh, '>:encoding(UTF-8)', $self -> subcountry_type_file) || die "Can't open file: " . $self -> subcountry_type_file . "\n";
 
 	for (@row)
 	{
@@ -205,7 +205,7 @@ sub as_csv
 		];
 	}
 
-	open($fh, '>', $self -> subcountry_file) || die "Can't open file: " . $self -> subcountry_file . "\n";
+	open($fh, '>:encoding(UTF-8)', $self -> subcountry_file) || die "Can't open file: " . $self -> subcountry_file . "\n";
 
 	for (@row)
 	{
@@ -232,7 +232,7 @@ sub as_html
 		(
 			'iso3166.report.tx',
 			{
-				country_data => $self -> build_country_data,
+				country_data => $self -> _build_country_data,
 				default_css  => "$$config{css_url}/default.css",
 				version      => $VERSION,
 			}
@@ -244,7 +244,7 @@ sub as_html
 
 # ------------------------------------------------
 
-sub build_country_data
+sub _build_country_data
 {
 	my($self)         = @_;
 	my($countries)    = $self -> read_countries_table;
@@ -310,7 +310,7 @@ sub build_country_data
 
 	return [@tr];
 
-} # End of build_country_data.
+} # End of _ build_country_data.
 
 # ------------------------------------------------
 
@@ -346,6 +346,8 @@ The output of these scripts is shipped as:
 This file is on-line at: L<http://savage.net.au/Perl-modules/html/WWW/Scraper/Wikipedia/ISO3166/iso.3166-2.html>.
 
 =item o data/subcountries.csv
+
+=item o data/subcountry_types.csv
 
 =back
 
@@ -416,15 +418,11 @@ Export the SQLite database to 2 CSV files.
 
 Export the SQLite database to 1 HTML file.
 
-=head2 build_country_data()
-
-Builds part of a HTML table, and returns an arrayref of arrayrefs of hashrefs suitable for L<Text::Xslate>.
-
 =head2 country_file($file_name)
 
 Get or set the name of the CSV file to which country data is exported.
 
-Also, I<country_file> is an option to L</new()>.
+C<country_file> is an option to L</new()>.
 
 =head2 new()
 
@@ -434,19 +432,19 @@ See L</Constructor and initialization>.
 
 Get or set the name of the CSV file to which subcountry data is exported.
 
-Also, I<subcountry_file> is an option to L</new()>.
+C<subcountry_file> is an option to L</new()>.
 
 =head2 subcountry_type_file($file_name)
 
 Get or set the name of the CSV file to which subcountry type data is exported.
 
-Also, I<subcountry_type_file> is an option to L</new()>.
+C<subcountry_type_file> is an option to L</new()>.
 
 =head2 web_page_file($file_name)
 
 Get or set the name of the HTML file to which country and subcountry data is exported.
 
-Also, I<web_page_file> is an option to L</new()>.
+C<web_page_file> is an option to L</new()>.
 
 =head1 FAQ
 

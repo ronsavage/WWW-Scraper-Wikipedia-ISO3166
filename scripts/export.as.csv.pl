@@ -27,6 +27,7 @@ if ($option_parser -> getoptions
 	'country_file=s',
 	'maxlevel=s',
 	'subcountry_file=s',
+	'subcountry_type_file=s',
 ) )
 {
 	pod2usage(1) if ($option{'help'});
@@ -55,6 +56,7 @@ export.as.html.pl [options]
 	-country_file $aFileName
 	-maxlevel $integer
 	-subcountry_file $aFileName
+	-subcountry_type_file $aFileName
 
 All switches can be reduced to a single letter.
 
@@ -72,7 +74,7 @@ Default output: Screen.
 
 A CSV file name, to which country data will be written.
 
-Default: country.csv
+Default: countries.csv
 
 =item o -help
 
@@ -88,7 +90,13 @@ Default: 'notice'.
 
 A CSV file name, to which subcountry data will be written.
 
-Default: subcountry.csv
+Default: subcountries.csv
+
+=item o -subcountry_type_file $aFileName
+
+A CSV file name, to which subcountry type data will be written.
+
+Default: subcountry_types.csv
 
 =back
 
