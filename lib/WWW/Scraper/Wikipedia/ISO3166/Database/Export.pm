@@ -392,7 +392,7 @@ Default: 'subcountries.csv'.
 
 Specify the name of the CSV file to which subcountry types data is exported.
 
-Default: 'subcountry_types.csv'.
+Default: 'subcountry.types.csv'.
 
 =item o web_page_file => $a_html_file_name
 

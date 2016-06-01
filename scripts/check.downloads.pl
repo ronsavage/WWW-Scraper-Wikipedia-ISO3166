@@ -7,7 +7,7 @@ use open      qw(:std :utf8);    # Undeclared streams in UTF-8.
 
 use Getopt::Long;
 
-use WWW::Scraper::Wikipedia::ISO3166::Database;
+use WWW::Scraper::Wikipedia::ISO3166::Database::Download;
 
 use Pod::Usage;
 
@@ -26,7 +26,7 @@ if ($option_parser -> getoptions
 {
 	pod2usage(1) if ($option{'help'});
 
-	exit WWW::Scraper::Wikipedia::ISO3166::Database -> new(%option) -> report_statistics;
+	exit WWW::Scraper::Wikipedia::ISO3166::Database::Download -> new(%option, 'max' => 'info') -> get_country_pages;
 }
 else
 {
@@ -39,11 +39,11 @@ __END__
 
 =head1 NAME
 
-report.statistics.pl - Report some stats about the SQLite database
+check.downloads.pl - Report missing and unexpected files in data/
 
-=head1 SYNOPSIS
+=head1 Synopsis
 
-report.statistics.pl [options]
+check.downloads.pl [options]
 
 	Options:
 	-help
@@ -53,9 +53,11 @@ All switches can be reduced to a single letter.
 
 Exit value: 0.
 
-Default input: share/www.scraper.wikipedia.iso3166.sqlite.
+=head1 Description
 
-Default output: Screen.
+Report, and log level 'info', any unusual things about files in data/.
+
+If nothing untoward is found, nothing is printed.
 
 =head1 OPTIONS
 

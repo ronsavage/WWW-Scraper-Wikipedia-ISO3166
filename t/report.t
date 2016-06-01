@@ -1,5 +1,8 @@
 #!/usr/bin/env perl
 
+use warnings  qw(FATAL utf8);    # Fatalize encoding glitches.
+use open      qw(:std :utf8);    # Undeclared streams in UTF-8.
+
 use Capture::Tiny 'capture';
 
 use Test2::Bundle::Extended; # Turns on strict and warnings.
@@ -18,7 +21,7 @@ my(@got)						= map{s/\s+$//; $_} split(/\n/, $stdout);
 my(@expected)					= split(/\n/, <<EOS);
 countries_in_db => 249
 has_subcounties => 200
-subcountries_in_db => 3507
+subcountries_in_db => 3501
 subcountry_files_downloaded => 249
 subcountry_types_in_db => 352
 EOS

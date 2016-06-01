@@ -32,7 +32,7 @@ our $VERSION = '2.00';
 
 # ----------------------------------------------
 
-sub cross_check_country_downloads
+sub check_downloads
 {
 	my($self, $table) = @_;
 
@@ -60,7 +60,7 @@ sub cross_check_country_downloads
 		}
 	}
 
-} # End of cross_check_country_downloads.
+} # End of check_downloads.
 
 # -----------------------------------------------
 
@@ -266,7 +266,7 @@ sub populate_countries
 	my($self)	= @_;
 	my($codes)	= $self -> _parse_country_page_1;
 
-	$self -> cross_check_country_downloads($codes);
+	$self -> check_downloads($codes);
 
 	my($code2index)	= $self -> _save_countries($codes);
 	my($names)		= $self -> _parse_country_page_2;

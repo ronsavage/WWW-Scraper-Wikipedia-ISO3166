@@ -45,7 +45,6 @@ requires 'Text::Xslate'					=> 1.5008;
 requires 'Types::Standard'				=> 1.000005;
 requires 'Unicode::CaseFold'			=> 0.02;
 requires 'Unicode::Normalize'			=> 1.14;
-requires 'utf8'							=> 0;
 requires 'warnings'						=> 1.12;
 
 test_requires 'Test2::Bundle::Extended'	=> '0.000030';
