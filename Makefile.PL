@@ -37,6 +37,7 @@ requires 'Mojo::DOM'					=> 0; # This is just for my Makefile.PL cross-checker.
 requires 'Moo'							=> 2.001001;
 requires 'open'							=> 1.08;
 requires 'parent'						=> 0.225;
+requires 'perl'							=> 5.10.1;
 requires 'PerlIO::utf8_strict'			=> 0.006; # Optionally used by File::Slurper.
 requires 'Pod::Usage'					=> 1.51;
 requires 'Sort::Naturally'				=> 1.03;

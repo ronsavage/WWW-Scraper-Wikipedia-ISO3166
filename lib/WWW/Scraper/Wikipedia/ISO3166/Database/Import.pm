@@ -3,7 +3,6 @@ package WWW::Scraper::Wikipedia::ISO3166::Database::Import;
 use parent 'WWW::Scraper::Wikipedia::ISO3166::Database';
 use feature 'say';
 use strict;
-use utf8;
 use warnings;
 use warnings  qw(FATAL utf8);    # Fatalize encoding glitches.
 
