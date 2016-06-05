@@ -552,6 +552,8 @@ A single SQLite file holds 2 tables, I<countries> and I<subcountries>:
 	number              timestamp
 	timestamp
 
+An SVG image of the schema is shipped in data/www.scraper.wikipedia.iso3166.svg.
+
 The schema of the C<countries> table is basically taken straight from the big table on
 L<ISO_3166-1|https://en.wikipedia.org/wiki/ISO_3166-1>. Likewise for the subcountry_info table,
 it's taken from L<ISO_3166-2|https://en.wikipedia.org/wiki/ISO_3166-2>.
