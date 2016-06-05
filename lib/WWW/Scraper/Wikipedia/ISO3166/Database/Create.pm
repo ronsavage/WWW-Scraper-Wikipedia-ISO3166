@@ -20,7 +20,7 @@ sub create_all_tables
 	for $table_name (qw/
 countries
 subcountries
-subcountry_types
+subcountry_info
 /)
 	{
 		$method = "create_${table_name}_table";
@@ -83,10 +83,10 @@ SQL
 
 # --------------------------------------------------
 
-sub create_subcountry_types_table
+sub create_subcountry_info_table
 {
 	my($self)        = @_;
-	my($table_name)  = 'subcountry_types';
+	my($table_name)  = 'subcountry_info';
 	my($primary_key) = $self -> creator -> generate_primary_key_sql($table_name);
 	my($engine)      = $self -> engine;
 	my($time_option) = $self -> time_option;
@@ -102,7 +102,7 @@ timestamp timestamp $time_option not null default current_timestamp
 SQL
 	$self -> report($table_name, 'created', $result);
 
-}	# End of create_subcountry_types_table.
+}	# End of create_subcountry_info_table.
 
 # -----------------------------------------------
 
@@ -113,7 +113,7 @@ sub drop_all_tables
 	my($table_name);
 
 	for $table_name (qw/
-subcountry_types
+subcountry_info
 subcountries
 countries
 /)

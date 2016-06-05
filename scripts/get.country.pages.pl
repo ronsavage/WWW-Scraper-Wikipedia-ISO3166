@@ -39,7 +39,7 @@ __END__
 
 =head1 NAME
 
-get.country.pages.pl - Get http://en.wikipedia.org/wiki/ISO_3166-2.html & the 3-letter code page
+get.country.pages.pl - Get http://en.wikipedia.org/wiki/ISO_3166-[12].html
 
 =head1 SYNOPSIS
 
@@ -51,13 +51,13 @@ get.country.pages.pl [options]
 
 All switches can be reduced to a single letter.
 
-Exit value: 0.
+Exit value: 0 for success.
 
-1: Input: http://en.wikipedia.org.wiki.ISO_3166-1_alpha-3
+1: Input: http://en.wikipedia.org.wiki.ISO_3166-1
 
-Output: data/en.wikipedia.org.wiki.ISO_3166-2.3.html.
+Output: data/en.wikipedia.org.wiki.ISO_3166-1.html.
 
-2: Input: http://en.wikipedia.org.wiki.ISO_3166-2.html.
+2: Input: http://en.wikipedia.org.wiki.ISO_3166-2.
 
 Output: data/en.wikipedia.org.wiki.ISO_3166-2.html.
 

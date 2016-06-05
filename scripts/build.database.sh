@@ -24,6 +24,6 @@ echo Run export.as.csv.pl
 perl -Ilib scripts/export.as.csv.pl \
 	-country_file			data/countries.csv \
 	-subcountry_file		data/subcountries.csv \
-	-subcountry_type_file	data/subcountry.types.csv
+	-subcountry_info_file	data/subcountry_info.csv
 
 echo Finished

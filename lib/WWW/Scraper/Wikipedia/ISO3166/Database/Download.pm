@@ -22,7 +22,7 @@ has code2 =>
 
 has url =>
 (
-	default  => sub{return 'http://en.wikipedia.org/wiki/ISO_3166-2'},
+	default  => sub{return 'http://en.wikipedia.org/wiki/ISO_3166-1'},
 	is       => 'rw',
 	isa      => Str,
 	required => 0,
@@ -57,7 +57,7 @@ sub get_1_page
 	print $fh $$response{content};
 	close $fh;
 
-	$self -> log(info => "Downloaded '$url' to '$data_file'");
+	$self -> log(debug => "Downloaded '$url' to '$data_file'");
 
 	# Return 0 for success and 1 for failure.
 
@@ -73,15 +73,24 @@ sub get_country_pages
 
 	# Firstly, get the page of 3 letter country codes.
 
-	my($url)    = $self -> url;
-	$url        =~ s/2$/1_alpha-3/;
-	my($result) = $self -> get_1_page($url, $self -> data_file . '.3.html');
+	my($url)	= $self -> url;
+	my($result)	= $self -> get_1_page($url, $self -> data_file . '.html');
+
+	$self -> log(info => "Result: $result. URL: $url. (0 is success)");
 
 	# Secondly, get the page of country names.
 
+	$url			=~ s/-1/-2/;
+	my($data_file)	= $self -> data_file;
+	$data_file		=~ s/-1/-2/;
+
+	$result += $self -> get_1_page($url, $data_file . '.html');
+
+	$self -> log(info => "Result: $result. URL: $url. (0 is success)");
+
 	# Return 0 for success and 1 for failure.
 
-	return $result || $self -> get_1_page($self -> url, $self -> data_file . '.html');
+	return $result;
 
 } # End of get_country_pages.
 
@@ -89,13 +98,20 @@ sub get_country_pages
 
 sub get_subcountry_page
 {
-	my($self)  = @_;
-	my($code2) = $self -> code2;
-	my($url)   = $self -> url . ":$code2";
+	my($self)		= @_;
+	my($code2)		= $self -> code2;
+	my($url)		= $self -> url . ":$code2";
+	$url			=~ s/-1/-2/;
+	my($data_file)	= $self -> data_file;
+	$data_file		=~ s/-1/-2/;
+
+	my($result) = $self -> get_1_page($url, $self -> data_file . ".$code2.html");
+
+	$self -> log(info => "Result: $result. URL: $url. (0 is success)");
 
 	# Return 0 for success and 1 for failure.
 
-	return $self -> get_1_page($url, $self -> data_file . ".$code2.html");
+	return 0;
 
 } # End of get_subcountry_page.
 

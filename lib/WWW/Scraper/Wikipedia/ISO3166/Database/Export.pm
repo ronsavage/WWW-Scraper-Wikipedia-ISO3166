@@ -51,9 +51,9 @@ has subcountry_file =>
 	required => 0,
 );
 
-has subcountry_type_file =>
+has subcountry_info_file =>
 (
-	default  => sub{return 'subcountry.types.csv'},
+	default  => sub{return 'subcountry_info.csv'},
 	is       => 'rw',
 	isa      => Str,
 	required => 0,
@@ -109,11 +109,11 @@ sub as_csv
 	my($self) = @_;
 
 	die "No country_file name specified\n"							if (! $self -> country_file);
-	die "No subcountry_type_file name specified\n"					if (! $self -> subcountry_type_file);
+	die "No subcountry_info_file name specified\n"					if (! $self -> subcountry_info_file);
 	die "No subcountry_file name specified\n"						if (! $self -> subcountry_file);
-	die "Country and subcountry type file names are the same\n"		if ($self -> country_file eq $self -> subcountry_type_file);
+	die "Country and subcountry type file names are the same\n"		if ($self -> country_file eq $self -> subcountry_info_file);
 	die "Country and subcountry file names are the same\n"			if ($self -> country_file eq $self -> subcountry_file);
-	die "Subcountry and subcountry type file names are the same\n"	if ($self -> subcountry_file eq $self -> subcountry_type_file);
+	die "Subcountry and subcountry type file names are the same\n"	if ($self -> subcountry_file eq $self -> subcountry_info_file);
 
 	# 1: Countries.
 
@@ -152,7 +152,7 @@ sub as_csv
 
 	# 2: Subcountry types.
 
-	my($subcountry_types)	= $self -> read_subcountry_types_table;
+	my($subcountry_info)	= $self -> read_subcountry_info_table;
 	@row              		= ();
 
 	push @row,
@@ -160,19 +160,19 @@ sub as_csv
 		qw/id country_id name sequence timestamp/
 	];
 
-	for my $id (nsort(keys %$subcountry_types) )
+	for my $id (nsort(keys %$subcountry_info) )
 	{
 		push @row,
 		[
 			$id,
-			$$subcountry_types{$id}{country_id},
-			$$subcountry_types{$id}{name},
-			$$subcountry_types{$id}{sequence},
-			$$subcountry_types{$id}{timestamp},
+			$$subcountry_info{$id}{country_id},
+			$$subcountry_info{$id}{name},
+			$$subcountry_info{$id}{sequence},
+			$$subcountry_info{$id}{timestamp},
 		];
 	}
 
-	open($fh, '>:encoding(UTF-8)', $self -> subcountry_type_file) || die "Can't open file: " . $self -> subcountry_type_file . "\n";
+	open($fh, '>:encoding(UTF-8)', $self -> subcountry_info_file) || die "Can't open file: " . $self -> subcountry_info_file . "\n";
 
 	for (@row)
 	{
@@ -347,7 +347,10 @@ This file is on-line at: L<http://savage.net.au/Perl-modules/html/WWW/Scraper/Wi
 
 =item o data/subcountries.csv
 
-=item o data/subcountry_types.csv
+=item o data/subcountry_info.csv
+
+This data comes from the 3rd column of the country table at
+L<https://en.wikipedia.org/wiki/ISO_3166-2>.
 
 =back
 
@@ -388,7 +391,7 @@ Specify the name of the CSV file to which subcountry data is exported.
 
 Default: 'subcountries.csv'.
 
-=item o subcountry_type_file => $a_csv_file_name
+=item o subcountry_info_file => $a_csv_file_name
 
 Specify the name of the CSV file to which subcountry types data is exported.
 
@@ -434,11 +437,11 @@ Get or set the name of the CSV file to which subcountry data is exported.
 
 C<subcountry_file> is an option to L</new()>.
 
-=head2 subcountry_type_file($file_name)
+=head2 subcountry_info_file($file_name)
 
 Get or set the name of the CSV file to which subcountry type data is exported.
 
-C<subcountry_type_file> is an option to L</new()>.
+C<subcountry_info_file> is an option to L</new()>.
 
 =head2 web_page_file($file_name)
 

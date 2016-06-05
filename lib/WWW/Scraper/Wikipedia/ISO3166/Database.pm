@@ -145,7 +145,7 @@ sub get_statistics
 		has_subcounties             => $#{$self -> who_has_subcountries} + 1,
 		subcountries_in_db          => $self -> get_subcountry_count,
 		subcountry_files_downloaded => scalar @{$self -> find_subcountry_downloads},
-		subcountry_types_in_db		=> $self -> get_subcountry_type_count,
+		subcountry_info_in_db		=> $self -> get_subcountry_info_count,
 	);
 
 	return {%count};
@@ -164,13 +164,13 @@ sub get_subcountry_count
 
 # ----------------------------------------------
 
-sub get_subcountry_type_count
+sub get_subcountry_info_count
 {
 	my($self) = @_;
 
-	return ($self -> dbh -> selectrow_array('select count(*) from subcountry_types') )[0];
+	return ($self -> dbh -> selectrow_array('select count(*) from subcountry_info') )[0];
 
-} # End of get_subcountry_type_count.
+} # End of get_subcountry_info_count.
 
 # ----------------------------------------------
 
@@ -198,15 +198,15 @@ sub read_subcountries_table
 
 # ----------------------------------------------
 
-sub read_subcountry_types_table
+sub read_subcountry_info_table
 {
 	my($self) = @_;
-	my($sth)  = $self -> dbh -> prepare('select * from subcountry_types');
+	my($sth)  = $self -> dbh -> prepare('select * from subcountry_info');
 
 	$sth -> execute;
 	$sth -> fetchall_hashref('id');
 
-} # End of read_subcountry_types_table.
+} # End of read_subcountry_info_table.
 
 # -----------------------------------------------
 
@@ -366,7 +366,7 @@ Returns a hashref of database statistics:
 	has_subcounties             => 199,
 	subcountries_in_db          => 4593,
 	subcountry_files_downloaded => 249,
-	subcountry_types_in_db      => 352,
+	subcountry_info_in_db       => 352,
 	}
 
 Called by L</report_statistics()>.
@@ -375,9 +375,9 @@ Called by L</report_statistics()>.
 
 Returns the result of: 'select count(*) from subcountries'.
 
-=head2 get_subcountry_type_count()
+=head2 get_subcountry_info_count()
 
-Returns the result of: 'select count(*) from subcountry_types'.
+Returns the result of: 'select count(*) from subcountry_info'.
 
 =head2 new()
 

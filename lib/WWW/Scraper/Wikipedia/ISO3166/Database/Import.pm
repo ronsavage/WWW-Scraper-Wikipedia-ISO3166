@@ -271,7 +271,7 @@ sub populate_countries
 	my($code2index)	= $self -> _save_countries($codes);
 	my($names)		= $self -> _parse_country_page_2;
 
-	$self -> _save_subcountry_types($code2index, $names);
+	$self -> _save_subcountry_info($code2index, $names);
 
 	# Return 0 for success and 1 for failure.
 
@@ -573,16 +573,16 @@ sub _save_countries
 
 # ----------------------------------------------
 
-sub _save_subcountry_types
+sub _save_subcountry_info
 {
 	my($self, $code2index, $table) = @_;
 
 	$self -> dbh -> begin_work;
-	$self -> dbh -> do('delete from subcountry_types');
+	$self -> dbh -> do('delete from subcountry_info');
 
 	my($has_subcountries_count)	= 0;
 	my($i)						= 0;
-	my($sql_1)					= 'insert into subcountry_types '
+	my($sql_1)					= 'insert into subcountry_info '
 									. '(country_id, name, sequence) '
 									. 'values (?, ?, ?)';
 	my($sth_1)					= $self -> dbh -> prepare($sql_1) || die "Unable to prepare SQL: $sql_1\n";
@@ -631,7 +631,7 @@ sub _save_subcountry_types
 	$sth_2 -> finish;
 	$self -> dbh -> commit;
 
-} # End of _save_subcountry_types.
+} # End of _save_subcountry_info.
 
 # ----------------------------------------------
 
@@ -813,7 +813,7 @@ All of which nicely encapsulates the complexity of human existence.
 
 The details of these are on the page L<ISO_3166-2:UZ|https://en.wikipedia.org/wiki/ISO_3166-2:UZ>.
 
-These strings are entries in the subcountry_types table. Fir details of the schema,
+These strings are entries in the subcountry_info table. For details of the schema,
 see L<WWW::Scraper::Wikipedia::ISO3166/What is the database schema?>.
 
 Obviously, the arrayref is empty if the country has no subcoyntries.

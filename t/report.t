@@ -23,7 +23,7 @@ countries_in_db => 249
 has_subcounties => 200
 subcountries_in_db => 3501
 subcountry_files_downloaded => 249
-subcountry_types_in_db => 352
+subcountry_info_in_db => 352
 EOS
 
 is(\@got, \@expected, 'report_statistics() returned the expected data');

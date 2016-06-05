@@ -23,7 +23,7 @@ has config_file =>
 
 has data_file =>
 (
-	default  => sub{return 'data/en.wikipedia.org.wiki.ISO_3166-2'},
+	default  => sub{return 'data/en.wikipedia.org.wiki.ISO_3166-1'},
 	is       => 'rw',
 	isa      => Str,
 	required => 0,
@@ -127,7 +127,7 @@ WWW::Scraper::Wikipedia::ISO3166 - Gently scrape Wikipedia for ISO3166-2 data
 
 Wikipedia I<has been scraped>. You do not need to run the scripts which download pages from there.
 
-Just use the SQLite database shipped with this module, as discussed next.
+Just use the SQLite database shipped with this module, share/www.scraper.wikipedia.iso3166.sqlite.
 
 See scripts/export.*.pl and scripts/get.*.pl for sample code.
 
@@ -138,9 +138,10 @@ See scripts/export.*.pl and scripts/get.*.pl for sample code.
 	my($database)     = WWW::Scraper::Wikipedia::ISO3166::Database -> new;
 	my($countries)    = $database -> read_countries_table;
 	my($subcountries) = $database -> read_subcountries_table;
+	my($types)        = $database -> read_subcountry_info_table;
 	...
 
-Each key in %$countries and %$subcountries points to a hashref of all columns for the given key.
+Each key in returned C<hashrefs> points to a hashref of all columns for the given key.
 
 So, $$countries{13} points to this hashref:
 
@@ -191,10 +192,12 @@ This file is on-line at: L<http://savage.net.au/Perl-modules/html/WWW/Scraper/Wi
 	shell>perl scripts/report.statistics.pl
 
 	Output statistics:
-	countries_in_db => 249.
-	has_subcounties => 199.
-	subcountries_in_db => 4593.
-	subcountry_files_downloaded => 249.
+	countries_in_db => 249
+	has_subcounties => 200
+	subcountries_in_db => 3501
+	subcountry_info_in_db => 352
+
+See also scripts/report.*.pl and t/report.t.
 
 =head1 Description
 
@@ -209,33 +212,29 @@ Likewise, the data has been imported.
 
 This means you would normally only ever use the database in read-only mode.
 
-Its components are:
+Note: Many of these programs respond to the -h command line switch, but not create.tables.pl nor
+drop.tables.pl.
+
+Programs:
 
 =over 4
 
 =item o scripts/get.country.pages.pl
 
-1: Downloads the ISO3166-1_alpha-3 page from Wikipedia.
+1: Downloads the ISO3166-1 and ISO3166-2 pages from Wikipedia.
 
-Input: L<http://en.wikipedia.org/wiki/ISO_3166-1_alpha-3>.
+Input: L<https://en.wikipedia.org/wiki/ISO_3166-1> and
+<https://en.wikipedia.org/wiki/ISO_3166-2>.
 
-Output: data/en.wikipedia.org.wiki.ISO_3166-2.3.html.
-
-2: Downloads the ISO3166-2 page from Wikipedia.
-
-Input: L<http://en.wikipedia.org/wiki/ISO_3166-2>.
-
-Output: data/en.wikipedia.org.wiki.ISO_3166-2.html.
+Output: data/en.wikipedia.org.wiki.ISO_3166-1.html and data/en.wikipedia.org.wiki.ISO_3166-2.html.
 
 =item o scripts/populate.countries.pl
 
 Imports country data into an SQLite database.
 
-inputs: data/en.wikipedia.org.wiki.ISO_3166-2.html, data/en.wikipedia.org.wiki.ISO_3166-2.3.html.
+Input: data/en.wikipedia.org.wiki.ISO_3166-1.html, data/en.wikipedia.org.wiki.ISO_3166-2.html.
 
 Output: share/www.scraper.wikipedia.iso3166.sqlite.
-
-Output: data/downloaded.countries.txt.
 
 =item o scripts/get.subcountry.page.pl and scripts/get.subcountry.pages.pl
 
@@ -256,7 +255,7 @@ Output: share/www.scraper.wikipedia.iso3166.sqlite.
 Note: When the distro is installed, this SQLite file is installed too.
 See L</Where is the database?> for details.
 
-=item o scripts/export.as.csv.pl -c c.csv -s s.csv
+=item o scripts/export.as.csv.pl -country_file c.csv -subcountry_file s.csv subcountry_info_file i.csv
 
 Exports the country and subcountry data as CSV.
 
@@ -486,8 +485,8 @@ On my machine that's:
 
 A single SQLite file holds 2 tables, I<countries> and I<subcountries>:
 
-	countries           subcountries    subcountry_types
-	---------           ------------    ----------------
+	countries           subcountries    subcountry_info
+	---------           ------------    ---------------
 	id                  id              id
 	code2               country_id      country_id
 	code3               code            name
@@ -498,7 +497,7 @@ A single SQLite file holds 2 tables, I<countries> and I<subcountries>:
 	timestamp
 
 The schema of the C<countries> table is basically taken straight from the big table on
-L<ISO_3166-1|https://en.wikipedia.org/wiki/ISO_3166-1>. Likewise for the subcountry_types table,
+L<ISO_3166-1|https://en.wikipedia.org/wiki/ISO_3166-1>. Likewise for the subcountry_info table,
 it's taken from L<ISO_3166-2|https://en.wikipedia.org/wiki/ISO_3166-2>.
 
 I<subcountries.country_id> points to I<countries.id>.
@@ -655,13 +654,17 @@ Also, since I'm distributing copies of Wikipedia-sourced material, reformatted b
 I hereby give notice that their material is released under CC-BY-SA.
 See L<http://creativecommons.org/licenses/by-sa/3.0/> for that licence.
 
+=head1 See Also
+
+L<Locale::Codes> by Sullivan Beck.
+
 =head1 References
 
 In no particular order:
 
-L<http://en.wikipedia.org/wiki/ISO_3166-2>
+L<http://en.wikipedia.org/wiki/ISO_3166-1>
 
-L<http://en.wikipedia.org/wiki/ISO_3166-1_alpha-3>
+L<http://en.wikipedia.org/wiki/ISO_3166-2>
 
 L<http://savage.net.au/Perl-modules/html/WWW/Scraper/Wikipedia/ISO3166/iso.3166-2.html>
 
