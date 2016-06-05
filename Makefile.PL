@@ -18,7 +18,6 @@ resources
 repository => 'https://github.com/ronsavage/WWW-Scraper-Wikipedia-ISO3166.git';
 
 requires 'Capture::Tiny'				=> 0.36;
-requires 'charnames'					=> 0;
 requires 'Config::Tiny'					=> 2.14;
 requires 'DBD::SQLite'					=> 1.50;
 requires 'DBI'							=> 1.620;
