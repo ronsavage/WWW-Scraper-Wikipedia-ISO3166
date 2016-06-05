@@ -1,9 +1,10 @@
 Revision history for Perl extension WWW::Scraper::Wikipedia::ISO3166.
 
 2.00  2016-05-10T14:51:00
-	- Switch from HTML::TreeBuilder to Mojo::DOM for parsing Wikipedia pages. This involves
-		deleting a lot of code, but also writing a smaller amount of new code.
+	- Switch from HTML::TreeBuilder to Mojo::DOM for parsing Wikipedia pages, now that the latter
+		have made significant changes to their page formats.
 	- Change 'utf8' to 'UTF-8'.
+	- Add the subcounty_info table to the database, and a corresponding method for reading it.
 	- Add subcountry_info table and data/subcountry.info.csv.
 	- Switch from obsolete ISO_3166-2.3.html to ISO_3166-1.html.
 	- Add a column called 'number' to the countries table, derived from ISO_3166-1.html.
@@ -13,7 +14,10 @@ Revision history for Perl extension WWW::Scraper::Wikipedia::ISO3166.
 	- Add an FAQ about the way SQLite allocates primary keys, and hence how you can force them to
 		start from 1.
 	- Stop supporting any FIPS-related stuff.
-	- Add various scripts.
+	- Add scripts/build.database.sh.
+	- Add scripts/find.db.pl (but only run it after installation!).
+	- Add scripts/report.Australian.statistics.pl.
+	- Fix check.downloads.pl to call the right method.
 
 1.04  2016-05-10T10:34:00
 	- Rename t/load.t to t/report.t, and make it run scripts/report.statistics.pl for a real test.

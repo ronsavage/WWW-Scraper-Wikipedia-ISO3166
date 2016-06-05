@@ -14,5 +14,5 @@ my($data) = $db -> dbh -> selectall_arrayref("select * from countries where code
 
 for my $record (@$data)
 {
-	say join("\n", map{"$_ => $$record{$_}"} sort keys %$record);
+	print join("\n", map{"$_ => $$record{$_}"} sort keys %$record), "\n";
 }

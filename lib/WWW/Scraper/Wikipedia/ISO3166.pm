@@ -215,11 +215,66 @@ This means you would normally only ever use the database in read-only mode.
 Note: Many of these programs respond to the -h command line switch, but not create.tables.pl nor
 drop.tables.pl.
 
-Programs:
+Scripts, all shipped in scripts/:
 
 =over 4
 
-=item o scripts/get.country.pages.pl
+=item o build.database.sh
+
+Mainly for use by me. It runs:
+
+=over 4
+
+=item o perl -Ilib scripts/drop.tables.pl
+
+=item o perl -Ilib scripts/create.tables.pl
+
+=item o perl -Ilib scripts/populate.countries.pl -maxlevel debug
+
+=item o perl -Ilib scripts/populate.subcountries.pl -maxlevel debug
+
+=item o perl -Ilib scripts/export.as.html.pl -w data/iso.3166-2.html
+
+=item o cp data/iso.3166-2.html $DR/
+
+$DR is my web site's RAMdisk-based doc root.
+
+=item perl -Ilib scripts/export.as.csv.pl \
+
+=back
+
+=item o check.downloads.pl
+
+Ensure each subcountry file has been downloaded, and report any which haven't been. Also report
+and unexpected subcountry files found in data/.
+
+=item o perl -Ilib scripts/create.tables.pl
+
+=item o perl -Ilib scripts/drop.tables.pl
+
+=item o export.as.csv.pl -country_file c.csv -subcountry_file s.csv subcountry_info_file i.csv
+
+Exports the country, subcountry and subcountry info data as CSV.
+
+Input: share/www.scraper.wikipedia.iso3166.sqlite.
+
+Output: data/countries.csv and data/subcountries.csv.
+
+=item o export.as.html -w c.html
+
+Exports the country and subcountry data as HTML.
+
+Input: share/www.scraper.wikipedia.iso3166.sqlite.
+
+Output: data/iso.3166-2.html.
+
+On-line: L<http://savage.net.au/Perl-modules/html/WWW/Scraper/Wikipedia/ISO3166/iso.3166-2.html>.
+
+=item o find.db.pl
+
+After installation, this will print the path to www.scraper.wikipedia.iso3166.sqlite.
+
+=item o get.country.pages.pl
 
 1: Downloads the ISO3166-1 and ISO3166-2 pages from Wikipedia.
 
@@ -228,15 +283,7 @@ Input: L<https://en.wikipedia.org/wiki/ISO_3166-1> and
 
 Output: data/en.wikipedia.org.wiki.ISO_3166-1.html and data/en.wikipedia.org.wiki.ISO_3166-2.html.
 
-=item o scripts/populate.countries.pl
-
-Imports country data into an SQLite database.
-
-Input: data/en.wikipedia.org.wiki.ISO_3166-1.html, data/en.wikipedia.org.wiki.ISO_3166-2.html.
-
-Output: share/www.scraper.wikipedia.iso3166.sqlite.
-
-=item o scripts/get.subcountry.page.pl and scripts/get.subcountry.pages.pl
+=item o get.subcountry.page.pl and scripts/get.subcountry.pages.pl
 
 Downloads each countries' corresponding subcountries page.
 
@@ -244,7 +291,20 @@ Source: http://en.wikipedia.org/wiki/ISO_3166:$code2.html.
 
 Output: data/en.wikipedia.org.wiki.ISO_3166-2.$code2.html.
 
-=item o scripts/populate.subcountry.pl and scripts/populate.subcountries.pl
+=item o pod2html.sh
+
+For use by the author. It converts each *.pm file into the corresponding *.html file, and outputs
+them to my web server's doc root.
+
+=item o populate.countries.pl
+
+Imports country data into an SQLite database.
+
+Input: data/en.wikipedia.org.wiki.ISO_3166-1.html, data/en.wikipedia.org.wiki.ISO_3166-2.html.
+
+Output: share/www.scraper.wikipedia.iso3166.sqlite.
+
+=item o populate.subcountry.pl and scripts/populate.subcountries.pl
 
 Imports subcountry data into the database.
 
@@ -255,25 +315,19 @@ Output: share/www.scraper.wikipedia.iso3166.sqlite.
 Note: When the distro is installed, this SQLite file is installed too.
 See L</Where is the database?> for details.
 
-=item o scripts/export.as.csv.pl -country_file c.csv -subcountry_file s.csv subcountry_info_file i.csv
+=item o report.Australian.statistics.pl
 
-Exports the country and subcountry data as CSV.
+A simple test program. See also the next script.
 
-Input: share/www.scraper.wikipedia.iso3166.sqlite.
+Run it with the '-max info' command line options.
 
-Output: data/countries.csv and data/subcountries.csv.
+=item o report.statistics.pl
 
-=item o scripts/export.as.html -w c.html
+A simple test program. See also the previous script.
 
-Exports the country and subcountry data as HTML.
+Run it with the '-max info' command line options.
 
-Input: share/www.scraper.wikipedia.iso3166.sqlite.
-
-Output: data/iso.3166-2.html.
-
-On-line: L<http://savage.net.au/Perl-modules/html/WWW/Scraper/Wikipedia/ISO3166/iso.3166-2.html>.
-
-=item o scripts/test.nfc.pl
+=item o test.nfc.pl
 
 See L</Why did you use C<Unicode::Normalize>'s NFC() for sorting?> for a discussion of this script.
 
@@ -477,9 +531,11 @@ Yes. &#39; is converted into a single quote.
 It is shipped in share/www.scraper.wikipedia.iso3166.sqlite.
 
 It is installed into the distro's shared dir, as returned by L<File::ShareDir/dist_dir()>.
-On my machine that's:
+Run scripts/find.db.pl to see what dir it is on your machine.
 
-/home/ron/perl5/perlbrew/perls/perl-5.14.2/lib/site_perl/5.14.2/auto/share/dist/WWW-Scraper-Wikipedia-ISO3166/www.scraper.wikipedia.iso3166.sqlite.
+On my machine it's:
+
+/home/ron/perl5/perlbrew/perls/perl-5.20.2/lib/site_perl/5.20.2/auto/share/dist/WWW-Scraper-Wikipedia-ISO3166/www.scraper.wikipedia.iso3166.sqlite
 
 =head2 What is the database schema?
 
