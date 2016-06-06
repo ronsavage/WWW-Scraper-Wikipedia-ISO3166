@@ -282,195 +282,204 @@ sub populate_countries
 
 sub populate_subcountry
 {
-	my($self)		= @_;
-	my($code2)		= $self -> code2;
-	my($in_file)	= "data/en.wikipedia.org.wiki.ISO_3166-2.$code2.html";
-	my($dom)		= Mojo::DOM -> new(read_text($in_file) );
-	my($names)		= [];
-	my($count)		= -1;
+	my($self)			= @_;
+	my($code2)			= $self -> code2;
+	my($in_file)		= "data/en.wikipedia.org.wiki.ISO_3166-2.$code2.html";
+	my($dom)			= Mojo::DOM -> new(read_text($in_file) );
+	my($names)			= [];
+	my($table_count)	= 0;
 
-	my($td_count);
+	my($record_count);
 
-	for my $node ($dom -> at('table[class="wikitable sortable"]') -> descendant_nodes -> each)
+	for my $wikitable ($dom -> find('table[class="wikitable sortable"]') -> each)
 	{
-		# Select the heading's tr.
+		$table_count++;
 
-		if ($node -> matches('tr') )
+		my($td_count);
+
+		for my $node ($wikitable -> descendant_nodes -> each)
 		{
-			$td_count = $node -> children -> size;
+			# Select the heading's 1st tr.
 
-			last;
+			if ($node -> matches('tr') )
+			{
+				$td_count = $node -> children -> size;
+
+				last;
+			}
 		}
-	}
 
-	my($content, $code);
-	my($finished);
-	my($kid, $kids, @kids);
+		$record_count = -1;
 
-	for my $node ($dom -> at('table[class="wikitable sortable"]') -> descendant_nodes -> each)
-	{
-		next if (! $node -> matches('td') );
+		my($content, $code);
+		my($finished);
+		my($kid, $kids, @kids);
 
-		$count++;
-
-		if ( ($count % $td_count) == 0)
+		for my $node ($wikitable -> descendant_nodes -> each)
 		{
-			# Special cases:
-			# o CG - Congo.
-			# o KH - Cambodia.
-			# o MN - Mongolia.
-			# o PY - Paraguay.
+			next if (! $node -> matches('td') );
 
-			if ($code2 =~ /(?:CG|KH|MN|PY)/)
-			{
-				$kids = $node -> children;
+			$record_count++;
 
-				if ($kids -> size == 1)
-				{
-					$content = $kids -> first -> content;
-				}
-				else
-				{
-					@kids		= $kids -> each;
-					$kids		= $kids[1] -> children;
-					$content	= $kids -> first -> content;
-				}
-			}
-			else
-			{
-				$content = $node -> at('span') -> content;
-			}
-
-			$code		= {code => $content, name => ''};
-			$finished	= 0;
-
-		}
-		elsif ( ($count % $td_count)  == 1)
-		{
-			# Special cases:
-			# o CG - Congo.
-			# o KH - Cambodia.
-			# o TD - Chad.
-			# o CY - Cyprus.
-			# o DO - Dominican Republic.
-			# o MR - Mauritania.
-			# o MT - Malta.
-			# o PY - Paraguay.
-
-			next if ($code2 =~ /(?:KH|MT)/);
-
-			$kids = $node -> children;
-
-			if ($kids -> size == 0)
-			{
-				$content = $node -> content;
-			}
-			elsif ($code2 =~ /(?:CG|PY)/)
-			{
-				for $kid ($node -> descendant_nodes -> each)
-				{
-					$content = $kid -> content if ($kid -> matches('a') );
-				}
-			}
-			elsif ($code2 eq 'CY')
-			{
-				for $kid ($node -> descendant_nodes -> each)
-				{
-					$content = $kid -> content if ($kid -> matches('span') );
-				}
-			}
-			elsif ($code2 =~ /(?:ET|TD)/)
-			{
-				if ($kids -> size == 1)
-				{
-					next;
-				}
-				else
-				{
-					@kids		= $node -> children -> each;
-					$content	= $kids[1] -> content;
-				}
-			}
-			else
+			if ( ($record_count % $td_count) == 0)
 			{
 				# Special cases:
-				# o AD - Andorra.
-				# o GT - Guatemala.
+				# o CG - Congo.
+				# o KH - Cambodia.
+				# o MN - Mongolia.
 				# o PY - Paraguay.
 
-				$kid = $node -> at('a img');
-
-				if ($kid)
+				if ($code2 =~ /(?:CG|KH|MN|PY)/)
 				{
-					for $kid ($node -> children -> each)
-					{
-						next if ($kid -> children -> size > 0);
+					$kids = $node -> children;
 
-						$content = $kid -> content;
-					}
-				}
-				else
-				{
-					$kid = $node -> at('a') || $node -> at('span a');
-
-					if ($kid)
+					if ($kids -> size == 1)
 					{
-						$content = $kid -> content;
+						$content = $kids -> first -> content;
 					}
 					else
 					{
-						$content = $node -> content;
+						@kids		= $kids -> each;
+						$kids		= $kids[1] -> children;
+						$content	= $kids -> first -> content;
 					}
 				}
+				else
+				{
+					$content = $node -> at('span') -> content;
+				}
+
+				$code		= {code => $content, name => ''};
+				$finished	= 0;
 			}
-
-			$content		=~ s/&#39;/'/g;
-			$$code{name}	= $content;
-			$finished		= ( ($code2 =~ /(?:MR|NZ)/) && ($$code{name} eq '') ) ? 0 : 1;
-		}
-		elsif (! $finished && ($count % $td_count) == 2)
-		{
-			# Special cases:
-			# o KH - Cambodia.
-			# o MR - Mauritania.
-			# o NZ - New Zealand.
-			# o TD - Chad.
-			# Some rows in the subcountry table have blanks in column 2,
-			# so we have to get the value from column 3.
-
-			if ($code2 eq 'MT')
+			elsif ( ($record_count % $td_count)  == 1)
 			{
-				$content	= $node -> content;
-				$finished	= 1;
+				# Special cases:
+				# o CG - Congo.
+				# o KH - Cambodia.
+				# o TD - Chad.
+				# o CY - Cyprus.
+				# o DO - Dominican Republic.
+				# o MR - Mauritania.
+				# o MT - Malta.
+				# o PY - Paraguay.
+
+				next if ($code2 =~ /(?:KH|MT)/);
+
+				$kids = $node -> children;
+
+				if ($kids -> size == 0)
+				{
+					$content = $node -> content;
+				}
+				elsif ($code2 =~ /(?:CG|PY)/)
+				{
+					for $kid ($node -> descendant_nodes -> each)
+					{
+						$content = $kid -> content if ($kid -> matches('a') );
+					}
+				}
+				elsif ($code2 eq 'CY')
+				{
+					for $kid ($node -> descendant_nodes -> each)
+					{
+						$content = $kid -> content if ($kid -> matches('span') );
+					}
+				}
+				elsif ($code2 =~ /(?:ET|TD)/)
+				{
+					if ($kids -> size == 1)
+					{
+						next;
+					}
+					else
+					{
+						@kids		= $node -> children -> each;
+						$content	= $kids[1] -> content;
+					}
+				}
+				else
+				{
+					# Special cases:
+					# o AD - Andorra.
+					# o GT - Guatemala.
+					# o PY - Paraguay.
+
+					$kid = $node -> at('a img');
+
+					if ($kid)
+					{
+						for $kid ($node -> children -> each)
+						{
+							next if ($kid -> children -> size > 0);
+
+							$content = $kid -> content;
+						}
+					}
+					else
+					{
+						$kid = $node -> at('a') || $node -> at('span a');
+
+						if ($kid)
+						{
+							$content = $kid -> content;
+						}
+						else
+						{
+							$content = $node -> content;
+						}
+					}
+				}
+
+				$content		=~ s/&#39;/'/g;
+				$$code{name}	= $content;
+				$finished		= ( ($code2 =~ /(?:MR|NZ)/) && ($$code{name} eq '') ) ? 0 : 1;
 			}
-			elsif ($code2 eq 'KH')
+			elsif (! $finished && ($record_count % $td_count) == 2)
 			{
-				$content	= $node -> content;
-				$finished	= 1;
-			}
-			elsif ( ($code2 =~ /(?:MR|NZ)/) && ($$code{name} eq '') )
-			{
-				$content	= $node -> at('a') -> content;
-				$finished	= 1;
-			}
-			elsif ($code2 eq 'TD')
-			{
-				$content = $node -> at('a') -> content;
+				# Special cases:
+				# o KH - Cambodia.
+				# o MR - Mauritania.
+				# o NZ - New Zealand.
+				# o TD - Chad.
+				# Some rows in the subcountry table have blanks in column 2,
+				# so we have to get the value from column 3.
+
+				if ($code2 eq 'MT')
+				{
+					$content	= $node -> content;
+					$finished	= 1;
+				}
+				elsif ($code2 eq 'KH')
+				{
+					$content	= $node -> content;
+					$finished	= 1;
+				}
+				elsif ( ($code2 =~ /(?:MR|NZ)/) && ($$code{name} eq '') )
+				{
+					$content	= $node -> at('a') -> content;
+					$finished	= 1;
+				}
+				elsif ($code2 eq 'TD')
+				{
+					$content = $node -> at('a') -> content;
+				}
+
+				$content		=~ s/&#39;/'/g;
+				$$code{name}	= $content if ($finished);
 			}
 
-			$content		=~ s/&#39;/'/g;
-			$$code{name}	= $content if ($finished);
-		}
+			if ($finished)
+			{
+				$finished = 0;
 
-		if ($finished)
-		{
-			$finished = 0;
-
-			push @$names, $code;
+				push @$names, $code;
+			}
 		}
 	}
 
-	$self -> _save_subcountry($count, $names);
+	$self -> _save_subcountry($record_count, $names);
+	$self -> log(debug => "Saved subcountry details. code2: $code2. record_count: $record_count");
 
 	# Return 0 for success and 1 for failure.
 
