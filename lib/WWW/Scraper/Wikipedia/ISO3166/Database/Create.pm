@@ -19,6 +19,7 @@ sub create_all_tables
 
 	for $table_name (qw/
 countries
+subcountry_categories
 subcountries
 subcountry_info
 /)
@@ -70,6 +71,7 @@ create table $table_name
 (
 id $primary_key,
 country_id integer not null references countries(id),
+subcountry_category_id integer not null references subcountry_categories(id),
 code varchar(255) not null,
 fc_name varchar(255) not null,
 name varchar(255) not null,
@@ -80,6 +82,27 @@ SQL
 	$self -> report($table_name, 'created', $result);
 
 }	# End of create_subcountries_table.
+
+# --------------------------------------------------
+
+sub create_subcountry_categories_table
+{
+	my($self)        = @_;
+	my($table_name)  = 'subcountry_categories';
+	my($primary_key) = $self -> creator -> generate_primary_key_sql($table_name);
+	my($engine)      = $self -> engine;
+	my($time_option) = $self -> time_option;
+	my($result)      = $self -> creator -> create_table(<<SQL);
+create table $table_name
+(
+id $primary_key,
+name varchar(255) not null,
+timestamp timestamp $time_option not null default current_timestamp
+) $engine
+SQL
+	$self -> report($table_name, 'created', $result);
+
+}	# End of create_subcountry_categories_table.
 
 # --------------------------------------------------
 
@@ -115,6 +138,7 @@ sub drop_all_tables
 	for $table_name (qw/
 subcountry_info
 subcountries
+subcountry_categories
 countries
 /)
 	{

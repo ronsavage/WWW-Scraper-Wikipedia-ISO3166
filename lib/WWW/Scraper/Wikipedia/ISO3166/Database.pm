@@ -198,6 +198,18 @@ sub read_subcountries_table
 
 # ----------------------------------------------
 
+sub read_subcountry_categories_table
+{
+	my($self) = @_;
+	my($sth)  = $self -> dbh -> prepare('select * from subcountry_categories');
+
+	$sth -> execute;
+	$sth -> fetchall_hashref('id');
+
+} # End of read_subcountry_categories_table.
+
+# ----------------------------------------------
+
 sub read_subcountry_info_table
 {
 	my($self) = @_;

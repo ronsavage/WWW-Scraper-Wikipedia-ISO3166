@@ -10,7 +10,7 @@ use Data::Dumper::Concise; # For Dumper().
 
 use File::Slurper qw/read_dir read_text/;
 
-use List::AllUtils 'first';
+use List::AllUtils qw/first max/;
 use List::Compare;
 
 use Mojo::DOM;
@@ -269,10 +269,9 @@ sub populate_countries
 
 	$self -> check_downloads($codes);
 
-	my($code2index)	= $self -> _save_countries($codes);
-	my($names)		= $self -> _parse_country_page_2;
-
-	$self -> _save_subcountry_info($code2index, $names);
+	my($code2index)			= $self -> _save_countries($codes);
+	my($names)				= $self -> _parse_country_page_2;
+	my($subcountry_count)	= $self -> _save_subcountry_info($code2index, $names);
 
 	# Return 0 for success and 1 for failure.
 
@@ -303,11 +302,29 @@ sub populate_subcountry
 		TD => 1,
 	);
 
+	# Some countries have a table which shows edits in the standard, and the first 2 column
+	# headings are 'Before' and 'After', indicating how codes were changed. We skip these tables.
+	# Special cases (with the before/after problem):
+	# o DO - Dominican Republic.
+	# o GR - Greece.
+	# o KP - Democratic People's Republic of Korea.
+	# o MK - Macedonia.
+	# o MY - Malaysia.
+	# o UG - Uganda.
+
+	my($before_after);
+	my($td_count);
+
 	for my $wikitable ($dom -> find('table[class="wikitable sortable"]') -> each)
 	{
 		$table_count++;
 
-		my($td_count);
+		$self -> log(debug => "code2: code2. table_count: $table_count");
+
+		$before_after			= 0;
+		my($category_column)	= -1;
+
+		my($column_count);
 
 		for my $node ($wikitable -> descendant_nodes -> each)
 		{
@@ -315,13 +332,28 @@ sub populate_subcountry
 
 			if ($node -> matches('tr') )
 			{
-				$td_count = $node -> children -> size;
+				$column_count	= -1;
+				$td_count		= $node -> children -> size;
+			}
 
-				last;
+			if ($node -> matches('th') )
+			{
+				$column_count++;
+
+				my($name)		= $node -> content;
+				$before_after	= 1 if ($name eq 'Before');
+
+				if ($name eq 'Subdivision category')
+				{
+					$category_column = $column_count;
+				}
 			}
 		}
 
-		$record_count = -1;
+		next if ($before_after == 1);
+
+		$column_count	= -1;
+		$record_count	= -1;
 
 		my($content, $code);
 		my($finished);
@@ -329,8 +361,14 @@ sub populate_subcountry
 
 		for my $node ($wikitable -> descendant_nodes -> each)
 		{
+			if ($node -> matches('tr') )
+			{
+				$column_count = -1;
+			}
+
 			next if (! $node -> matches('td') );
 
+			$column_count++;
 			$record_count++;
 
 			$content = '';
@@ -339,14 +377,16 @@ sub populate_subcountry
 			{
 				# Special cases:
 				# o CG - Congo.
+				# o GB - United Kingdom.
+				# o FR - France.
 				# o KH - Cambodia.
 				# o MN - Mongolia.
 				# o PY - Paraguay.
 
+				$kids = $node -> children;
+
 				if ($code2 =~ /(?:CG|KH|MN|PY)/)
 				{
-					$kids = $node -> children;
-
 					if ($kids -> size == 1)
 					{
 						$content = $kids -> first -> content;
@@ -358,12 +398,27 @@ sub populate_subcountry
 						$content	= $kids -> first -> content;
 					}
 				}
-				else
+				elsif ( ($code2 eq 'GB') && ($kids -> size == 2) )
+				{
+					@kids		= $kids -> each;
+					$content	= $kids[1] -> content; # City of London & Barnsley.
+				}
+				elsif ( ($code2 eq 'FR') && ($kids -> size == 2) )
+				{
+					@kids		= $kids -> each;
+					@kids		= $kids[1] -> children -> each;
+					$content	= $kids[1] -> content; # Corse-du-Sud & Haute-Corse.
+				}
+				elsif ($node -> at('span') )
 				{
 					$content = $node -> at('span') -> content;
 				}
+				else
+				{
+					$content = $node -> content;
+				}
 
-				$code		= {code => $content, name => ''};
+				$code		= {category => '', code => $content, name => ''};
 				$finished	= 0;
 			}
 			elsif ( ($record_count % $td_count)  == 1)
@@ -453,16 +508,29 @@ sub populate_subcountry
 						{
 							$content = $kid -> content;
 						}
+						elsif ($kids -> size == 2)
+						{
+							# Special case:
+							# o LT - Lithuania.
+
+							for $kid ($node -> descendant_nodes -> each)
+							{
+								$content = $kid -> content if ($kid -> matches('a') );
+							}
+
+							$finished = 1;
+						}
 						else
 						{
-							$content = $node -> content;
+							$content	= $node -> content;
+							$finished	= 1;
 						}
 					}
 				}
 
 				$content		=~ s/&#39;/'/g;
 				$$code{name}	= $content;
-				$finished		= $finished || ( ( ($code2 =~ /(?:MR|NZ)/) && ($$code{name} eq '') ) ? 0 : 1);
+				$finished		= $$code{name} ne '';
 
 				push @$names, $code if ($finished);
 			}
@@ -494,7 +562,7 @@ sub populate_subcountry
 					$content = $node -> at('a') -> content;
 				}
 
-				if ($special_case{$code2} == 1)
+				if ($special_case{$code2} && ($special_case{$code2} == 1) )
 				{
 					$content		=~ s/&#39;/'/g;
 					$$code{name}	= $content;
@@ -502,11 +570,20 @@ sub populate_subcountry
 					push @$names, $code;
 				}
 			}
+
+			if ($column_count == $category_column)
+			{
+				my($tos)				= $#$names;
+				$$names[$tos]{category}	= $node -> content;
+			}
 		}
 	}
 
-	$self -> _save_subcountry($record_count, $names);
-	$self -> log(debug => "Saved subcountry details. code2: $code2. record_count: $record_count");
+	# We can't use $record_count to deterime the # of subcountries, because it's a per-table counter.
+
+	my($subcountry_count) = $self -> _save_subcountry($record_count, $names);
+
+	$self -> log(debug => "Saved subcountry details. code2: $code2. subcountry_count: $subcountry_count");
 
 	# Return 0 for success and 1 for failure.
 
@@ -672,9 +749,9 @@ sub _save_subcountry_info
 
 sub _save_subcountry
 {
-	my($self, $count, $table) = @_;
-	my($code2)     = $self -> code2;
-	my($countries) = $self -> read_countries_table;
+	my($self, $count, $table)	= @_;
+	my($code2)					= $self -> code2;
+	my($countries)				= $self -> read_countries_table;
 
 	# Find which country has the code we're processing.
 
@@ -682,20 +759,53 @@ sub _save_subcountry
 
 	die "Unknown country code: $code2\n" if (! $country_id);
 
+	my($categories)			= $self -> read_subcountry_categories_table;
+	my($max_category_id)	= max (keys %$categories);
+
 	$self -> dbh -> do("delete from subcountries where country_id = $country_id");
 
 	my($i)   = 0;
-	my($sql) = 'insert into subcountries (country_id, code, fc_name, name, sequence) values (?, ?, ?, ?, ?)';
+	my($sql) = 'insert into subcountries (country_id, subcountry_category_id, code, fc_name, name, sequence) values (?, ?, ?, ?, ?, ?)';
 	my($sth) = $self -> dbh -> prepare($sql) || die "Unable to prepare SQL: $sql\n";
+
+	my($category_id);
 
 	for my $element (@$table)
 	{
 		$i++;
 
-		$sth -> execute($country_id, $$element{code}, fc $$element{name}, $$element{name}, $i);
+		$category_id = 0;
+
+		for my $id (keys %$categories)
+		{
+			if ($$element{category} eq $$categories{$id}{name})
+			{
+				$category_id = $id;
+
+				last;
+			}
+		}
+
+		if ($category_id == 0)
+		{
+			$max_category_id++;
+
+			# Note: The 1st assignment is for the benefit of the 'if' in the previous loop,
+			# at a later point in time.
+
+			$$categories{$max_category_id}{name}	= $$element{category};
+			my($sql_2)								= 'insert into subcountry_categories (id, name) values (?, ?)';
+			my($sth_2)								= $self -> dbh -> prepare($sql_2) || die "Unable to prepare SQL: $sql_2\n";
+
+			$sth_2 -> execute($max_category_id, $$element{category});
+		}
+
+		$sth -> execute($country_id, $max_category_id, $$element{code}, fc $$element{name}, $$element{name}, $i);
 	}
 
 	$sth -> finish;
+
+	return $i;
 
 } # End of _save_subcountry.
 
