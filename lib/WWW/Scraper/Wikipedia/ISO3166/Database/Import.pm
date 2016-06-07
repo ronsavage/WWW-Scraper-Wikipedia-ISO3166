@@ -65,6 +65,16 @@ sub check_downloads
 
 # -----------------------------------------------
 
+sub log_content
+{
+	my($self, $message, $node) = @_;
+
+	$self -> log(debug => $message . ': ' . $node -> content);
+
+} # End of log_content.
+
+# -----------------------------------------------
+
 sub _parse_country_page_1
 {
 	my($self)		= @_;
@@ -319,7 +329,7 @@ sub populate_subcountry
 	{
 		$table_count++;
 
-		$self -> log(debug => "code2: code2. table_count: $table_count");
+		$self -> log(debug => "code2: $code2. table_count: $table_count");
 
 		$before_after			= 0;
 		my($category_column)	= -1;
@@ -400,14 +410,20 @@ sub populate_subcountry
 				}
 				elsif ( ($code2 eq 'GB') && ($kids -> size == 2) )
 				{
+					# Expect:
+					# <span id="London"></span><span style="font-family: monospace, monospace;">GB-LND</span>.
+
 					@kids		= $kids -> each;
 					$content	= $kids[1] -> content; # City of London & Barnsley.
 				}
 				elsif ( ($code2 eq 'FR') && ($kids -> size == 2) )
 				{
+					# Expect:
+					# <span style="display:none;" class="sortkey">FR-20A !</span><span class="sorttext"><span style="font-family: monospace, monospace;">FR-2A</span></span>.
+
 					@kids		= $kids -> each;
 					@kids		= $kids[1] -> children -> each;
-					$content	= $kids[1] -> content; # Corse-du-Sud & Haute-Corse.
+					$content	= $kids[0] -> content; # Corse-du-Sud & Haute-Corse.
 				}
 				elsif ($node -> at('span') )
 				{
