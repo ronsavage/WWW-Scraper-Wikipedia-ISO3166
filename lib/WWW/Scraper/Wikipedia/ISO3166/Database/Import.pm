@@ -6,6 +6,8 @@ use strict;
 use warnings;
 use warnings  qw(FATAL utf8);    # Fatalize encoding glitches.
 
+use Data::Dumper::Concise; # For Dumper().
+
 use File::Slurper qw/read_dir read_text/;
 
 use List::AllUtils 'first';
@@ -287,9 +289,19 @@ sub populate_subcountry
 	my($in_file)		= "data/en.wikipedia.org.wiki.ISO_3166-2.$code2.html";
 	my($dom)			= Mojo::DOM -> new(read_text($in_file) );
 	my($names)			= [];
+	my($record_count)	= 0; # Set because logged outside the loop.
 	my($table_count)	= 0;
 
-	my($record_count);
+	$self -> log(debug => "Code2: $code2 => $in_file");
+
+	my(%special_case) =
+	(
+		KH => 1,
+		MR => 1,
+		MT => 1,
+		NZ => 1,
+		TD => 1,
+	);
 
 	for my $wikitable ($dom -> find('table[class="wikitable sortable"]') -> each)
 	{
@@ -320,6 +332,8 @@ sub populate_subcountry
 			next if (! $node -> matches('td') );
 
 			$record_count++;
+
+			$content = '';
 
 			if ( ($record_count % $td_count) == 0)
 			{
@@ -420,7 +434,22 @@ sub populate_subcountry
 					{
 						$kid = $node -> at('a') || $node -> at('span a');
 
-						if ($kid)
+						if ($node -> at('a span') )
+						{
+							# Special case:
+							# o AZ - Azerbaijan (2 of 2: <a><span>...</span><span>...</span></a>).
+
+							for $kid ($node -> descendant_nodes -> each)
+							{
+								# In the case of <a><span>...</span><span>...</span></a>,
+								# we want the 2nd span's content, so we overwrite the 1st's.
+
+								$content = $kid -> content if ($kid -> matches('span') );
+							}
+
+							$finished = 1;
+						}
+						elsif ($kid)
 						{
 							$content = $kid -> content;
 						}
@@ -433,47 +462,45 @@ sub populate_subcountry
 
 				$content		=~ s/&#39;/'/g;
 				$$code{name}	= $content;
-				$finished		= ( ($code2 =~ /(?:MR|NZ)/) && ($$code{name} eq '') ) ? 0 : 1;
+				$finished		= $finished || ( ( ($code2 =~ /(?:MR|NZ)/) && ($$code{name} eq '') ) ? 0 : 1);
+
+				push @$names, $code if ($finished);
 			}
 			elsif (! $finished && ($record_count % $td_count) == 2)
 			{
 				# Special cases:
 				# o KH - Cambodia.
 				# o MR - Mauritania.
+				# o MT - Malta.
 				# o NZ - New Zealand.
 				# o TD - Chad.
 				# Some rows in the subcountry table have blanks in column 2,
 				# so we have to get the value from column 3.
 
-				if ($code2 eq 'MT')
+				if ($code2 eq 'KH')
 				{
-					$content	= $node -> content;
-					$finished	= 1;
-				}
-				elsif ($code2 eq 'KH')
-				{
-					$content	= $node -> content;
-					$finished	= 1;
+					$content = $node -> content;
 				}
 				elsif ( ($code2 =~ /(?:MR|NZ)/) && ($$code{name} eq '') )
 				{
-					$content	= $node -> at('a') -> content;
-					$finished	= 1;
+					$content = $node -> at('a') -> content;
+				}
+				elsif ($code2 eq 'MT')
+				{
+					$content = $node -> content;
 				}
 				elsif ($code2 eq 'TD')
 				{
 					$content = $node -> at('a') -> content;
 				}
 
-				$content		=~ s/&#39;/'/g;
-				$$code{name}	= $content if ($finished);
-			}
+				if ($special_case{$code2} == 1)
+				{
+					$content		=~ s/&#39;/'/g;
+					$$code{name}	= $content;
 
-			if ($finished)
-			{
-				$finished = 0;
-
-				push @$names, $code;
+					push @$names, $code;
+				}
 			}
 		}
 	}

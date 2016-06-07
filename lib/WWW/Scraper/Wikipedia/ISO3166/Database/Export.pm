@@ -285,7 +285,7 @@ sub _build_country_data
 			{td => $$countries{$id}{has_subcountries} },
 		];
 
-		next if (! $subcountries{$id});
+		next if (! defined $subcountries{$id});
 
 		# Sort by sequence.
 
