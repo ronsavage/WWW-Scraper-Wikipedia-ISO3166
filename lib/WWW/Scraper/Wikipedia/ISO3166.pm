@@ -539,20 +539,21 @@ On my machine it's:
 
 =head2 What is the database schema?
 
-A single SQLite file holds 2 tables, I<countries> and I<subcountries>:
+A single SQLite file holds 4 tables:
 
-	countries           subcountries    subcountry_info
-	---------           ------------    ---------------
-	id                  id              id
-	code2               country_id      country_id
-	code3               code            name
-	fc_name             fc_name         sequence
-	has_subcountries    name            timestamp
-	name                sequence
-	number              timestamp
-	timestamp
+	countries           subcountries              subcountry_categories    subcountry_info
+	---------           ------------              ---------------------    ---------------
+	id                  id                        id                       id
+	code2               country_id                name                     country_id
+	code3               subcountry_category_id    timestamp                name
+	fc_name             fc_name                                            sequence
+	has_subcountries    code                                               timestamp
+	name                name
+	number              sequence
+	timestamp           timestamp
 
-An SVG image of the schema is shipped in data/www.scraper.wikipedia.iso3166.svg.
+An SVG image of the schema is shipped as data/www.scraper.wikipedia.iso3166.schema.svg,
+and is L<on-line|http://savage.net.au/assets/images/modules/WWW/Scraper/Wikipedia/ISO3166/www.scraper.wikipedia.iso3166.schema.svg>.
 
 The schema of the C<countries> table is basically taken straight from the big table on
 L<ISO_3166-1|https://en.wikipedia.org/wiki/ISO_3166-1>. Likewise for the subcountry_info table,
@@ -574,11 +575,14 @@ I<name> is in UTF-8.
 
 I<number> is the 3-digit number from the ISO_3166-1 page.
 
-I<sequence> is a number (1 .. N) indicating the order in which subcountry names appear in the list
-on that subcountry's Wikipedia page.
+I<sequence> is a number (1 .. N) indicating the order in which records for the same country_id
+should be accessed.
 
 See the source code of L<WWW::Scraper::Wikipedia::ISO3166::Database::Create> for details of the SQL
 used to create the tables.
+
+Lastly, in L<WWW::Scraper::Wikipedia::ISO3166::Database>, there are 4 methods for reading the 4
+tables, as well as various more general methods.
 
 =head2 A Warning about Creating the Database
 

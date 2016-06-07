@@ -403,6 +403,25 @@ The key of the hashref is the primary key (integer) of the I<countries> table.
 
 This is discussed further in L<WWW::Scraper::Wikipedia::ISO3166/Methods which return hashrefs>.
 
+=head2 read_subcountry_categories_table
+
+Returns a hashref of hashrefs for this SQL: 'select * from subcountry_categories'.
+
+The key of the hashref is the primary key (integer) of the I<subcountry_categories> table.
+
+This is discussed further in L<WWW::Scraper::Wikipedia::ISO3166/Methods which return hashrefs>.
+
+=head2 read_subcountry_info_table
+
+Returns a hashref of hashrefs for this SQL: 'select * from subcountry_info'.
+
+The key of the hashref is the primary key (integer) of the I<subcountry_info> table.
+
+This info is a text summary of each country's subcountries, and is taken literally from the 3rd
+column - 'Subdivisions assigned codes' - of L<ISO3166-2|https://en.wikipedia.org/wiki/ISO_3166-2>.
+
+This is discussed further in L<WWW::Scraper::Wikipedia::ISO3166/Methods which return hashrefs>.
+
 =head2 read_subcountries_table()
 
 Returns a hashref of hashrefs for this SQL: 'select * from subcountries'.
