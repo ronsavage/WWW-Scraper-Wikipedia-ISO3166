@@ -22,8 +22,9 @@ echo Copied data/iso.3166-2.html to doc root
 echo Run export.as.csv.pl
 
 perl -Ilib scripts/export.as.csv.pl \
-	-country_file			data/countries.csv \
-	-subcountry_file		data/subcountries.csv \
-	-subcountry_info_file	data/subcountry_info.csv
+	-countries_file				data/countries.csv \
+	-subcountry_categories_file	data/subcountry_categories.csv \
+	-subcountries_file			data/subcountries.csv \
+	-subcountry_info_file		data/subcountry_info.csv
 
 echo Finished

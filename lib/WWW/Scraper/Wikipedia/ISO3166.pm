@@ -327,10 +327,6 @@ A simple test program. See also the previous script.
 
 Run it with the '-max info' command line options.
 
-=item o test.nfc.pl
-
-See L</Why did you use C<Unicode::Normalize>'s NFC() for sorting?> for a discussion of this script.
-
 =back
 
 =head1 Constructor and initialization
@@ -678,21 +674,7 @@ AFAICT, sqlite3 does not have command line options, or options while running, to
 
 =back
 
-=head2 Why did you use L<Unicode::Normalize>'s NFC() for sorting?
-
-This question implies why not use NFD() instead.
-
-Run scripts/test.nfc.pl, and the output is:
-
-	code2 => AX
-	code3 => ALA
-	fc_name => åland islands
-	has_subcountries => No
-	id => 15
-	name => Åland Islands
-	timestamp => 2012-05-13 23:37:20
-
-And this (Åland Islands) is what Wikipedia displays. So, NFC() it is.
+=head2 Why did you use L<Unicode::Normalize>'s fc() for sorting?
 
 See L<http://www.perl.com/pub/2012/04>, and specifically prescription # 1.
 

@@ -20,6 +20,7 @@ Revision history for Perl extension WWW::Scraper::Wikipedia::ISO3166.
 	- Add scripts/find.db.pl (but only run it after installation!).
 	- Add scripts/report.Australian.statistics.pl.
 	- Fix check.downloads.pl to call the right method.
+	- Remove scripts/test.nfc.pl.
 
 1.04  2016-05-10T10:34:00
 	- Rename t/load.t to t/report.t, and make it run scripts/report.statistics.pl for a real test.

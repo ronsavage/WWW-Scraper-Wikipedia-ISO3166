@@ -19,7 +19,8 @@ use Moo;
 
 use Types::Standard qw/HashRef Str/;
 
-use Unicode::CaseFold; # For fc().
+use Unicode::CaseFold;	# For fc().
+use Unicode::Normalize;	# For NFC().
 
 has code2 =>
 (
@@ -297,7 +298,6 @@ sub populate_subcountry
 	my($code2)			= $self -> code2;
 	my($in_file)		= "data/en.wikipedia.org.wiki.ISO_3166-2.$code2.html";
 	my($dom)			= Mojo::DOM -> new(read_text($in_file) );
-	my($names)			= [];
 	my($record_count)	= 0; # Set because logged outside the loop.
 	my($table_count)	= 0;
 
@@ -323,16 +323,23 @@ sub populate_subcountry
 	# o UG - Uganda.
 
 	my($before_after);
+	my(%names);
 	my($td_count);
 
 	for my $wikitable ($dom -> find('table[class="wikitable sortable"]') -> each)
 	{
 		$table_count++;
 
-		# Special case:
+		# Special cases:
 		# o GE - Georgia.
+		# o MD - Moldova.
 
-		last if ( ($code2 eq 'GE') && ($table_count == 2) );
+		last if ( ($code2 =~ /(?:GE|MD)/) && ($table_count == 2) );
+
+		# Special case:
+		# o CZ - Czech Republic.
+
+		last if ( ($code2 =~ /(?:CZ)/) && ($table_count == 3) );
 
 		$self -> log(debug => "code2: $code2. table_count: $table_count");
 
@@ -549,11 +556,10 @@ sub populate_subcountry
 					}
 				}
 
-				$content		=~ s/&#39;/'/g;
-				$$code{name}	= $content;
-				$finished		= $$code{name} ne '';
-
-				push @$names, $code if ($finished);
+				$content				=~ s/&#39;/'/g;
+				$$code{name}			= $content;
+				$finished				= $$code{name} ne '';
+				$names{$$code{code} }	= $code if ($finished);
 			}
 			elsif (! $finished && ($record_count % $td_count) == 2)
 			{
@@ -585,10 +591,9 @@ sub populate_subcountry
 
 				if ($special_case{$code2} && ($special_case{$code2} == 1) )
 				{
-					$content		=~ s/&#39;/'/g;
-					$$code{name}	= $content;
-
-					push @$names, $code;
+					$content				=~ s/&#39;/'/g;
+					$$code{name}			= $content;
+					$names{$$code{code} }	= $code;
 				}
 			}
 
@@ -613,15 +618,14 @@ sub populate_subcountry
 					}
 				}
 
-				my($tos)				= $#$names;
-				$$names[$tos]{category}	= ucfirst $content;
+				$names{$$code{code} }{category} = ucfirst $content;
 			}
 		}
 	}
 
-	# We can't use $record_count to deterime the # of subcountries, because it's a per-table counter.
+	# We can't use $record_count to determee the # of subcountries, because it's a per-table counter.
 
-	my($subcountry_count) = $self -> _save_subcountry($record_count, $names);
+	my($subcountry_count) = $self -> _save_subcountry($record_count, \%names);
 
 	$self -> log(debug => "Saved subcountry details. code2: $code2. subcountry_count: $subcountry_count");
 
@@ -809,12 +813,14 @@ sub _save_subcountry
 	my($sth) = $self -> dbh -> prepare($sql) || die "Unable to prepare SQL: $sql\n";
 
 	my($category_id);
+	my($element);
 
-	for my $element (@$table)
+	for my $key (sort{$$table{$a}{code} cmp $$table{$b}{code} } keys %$table)
 	{
 		$i++;
 
-		$category_id = 0;
+		$category_id	= 0;
+		$element		= $$table{$key};
 
 		for my $id (keys %$categories)
 		{
