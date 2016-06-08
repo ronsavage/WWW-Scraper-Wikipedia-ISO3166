@@ -329,6 +329,11 @@ sub populate_subcountry
 	{
 		$table_count++;
 
+		# Special case:
+		# o GE - Georgia.
+
+		last if ( ($code2 eq 'GE') && ($table_count == 2) );
+
 		$self -> log(debug => "code2: $code2. table_count: $table_count");
 
 		$before_after			= 0;
@@ -589,8 +594,27 @@ sub populate_subcountry
 
 			if ($column_count == $category_column)
 			{
+				# Special cases:
+				# o CN - China.
+
+				@kids = $node -> children;
+
+				if ($kids -> size < 0)
+				{
+					$content = $node -> content;
+				}
+				else
+				{
+					for $kid ($node -> descendant_nodes -> each)
+					{
+						# Yes, this overwrites if there is more than 1 descendant.
+
+						$content = $kid -> content;
+					}
+				}
+
 				my($tos)				= $#$names;
-				$$names[$tos]{category}	= $node -> content;
+				$$names[$tos]{category}	= ucfirst $content;
 			}
 		}
 	}
@@ -806,17 +830,18 @@ sub _save_subcountry
 		{
 			$max_category_id++;
 
-			# Note: The 1st assignment is for the benefit of the 'if' in the previous loop,
+			# Note: The 2nd assignment is for the benefit of the 'if' in the previous loop,
 			# at a later point in time.
 
-			$$categories{$max_category_id}{name}	= $$element{category};
-			my($sql_2)								= 'insert into subcountry_categories (id, name) values (?, ?)';
-			my($sth_2)								= $self -> dbh -> prepare($sql_2) || die "Unable to prepare SQL: $sql_2\n";
+			$category_id						= $max_category_id;
+			$$categories{$category_id}{name}	= $$element{category};
+			my($sql_2)							= 'insert into subcountry_categories (id, name) values (?, ?)';
+			my($sth_2)							= $self -> dbh -> prepare($sql_2) || die "Unable to prepare SQL: $sql_2\n";
 
-			$sth_2 -> execute($max_category_id, $$element{category});
+			$sth_2 -> execute($category_id, $$element{category});
 		}
 
-		$sth -> execute($country_id, $max_category_id, $$element{code}, fc $$element{name}, $$element{name}, $i);
+		$sth -> execute($country_id, $category_id, $$element{code}, fc $$element{name}, $$element{name}, $i);
 	}
 
 	$sth -> finish;

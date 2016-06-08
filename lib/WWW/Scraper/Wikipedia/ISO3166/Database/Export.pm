@@ -35,7 +35,7 @@ has config_file =>
 	required => 0,
 );
 
-has country_file =>
+has countries_file =>
 (
 	default  => sub{return 'countries.csv'},
 	is       => 'rw',
@@ -43,9 +43,17 @@ has country_file =>
 	required => 0,
 );
 
-has subcountry_file =>
+has subcountries_file =>
 (
 	default  => sub{return 'subcountries.csv'},
+	is       => 'rw',
+	isa      => Str,
+	required => 0,
+);
+
+has subcountry_categories_file =>
+(
+	default  => sub{return 'subcountry_categories.csv'},
 	is       => 'rw',
 	isa      => Str,
 	required => 0,
@@ -108,12 +116,19 @@ sub as_csv
 {
 	my($self) = @_;
 
-	die "No country_file name specified\n"							if (! $self -> country_file);
+	die "No countries_file name specified\n"						if (! $self -> countries_file);
+	die "No subcountry_categories_file name specified\n"			if (! $self -> subcountry_categories_file);
 	die "No subcountry_info_file name specified\n"					if (! $self -> subcountry_info_file);
-	die "No subcountry_file name specified\n"						if (! $self -> subcountry_file);
-	die "Country and subcountry type file names are the same\n"		if ($self -> country_file eq $self -> subcountry_info_file);
-	die "Country and subcountry file names are the same\n"			if ($self -> country_file eq $self -> subcountry_file);
-	die "Subcountry and subcountry type file names are the same\n"	if ($self -> subcountry_file eq $self -> subcountry_info_file);
+	die "No subcountries_file name specified\n"						if (! $self -> subcountries_file);
+
+	my(%seen);
+
+	for (qw/countries_file subcountry_categories_file subcountry_info_file subcountries_file/)
+	{
+		die "Same file name used for $_ and $seen{$_}\n" if ($seen{$_});
+
+		$seen{$_} = $self -> $_;
+	}
 
 	# 1: Countries.
 
@@ -141,7 +156,7 @@ sub as_csv
 		];
 	}
 
-	open(my $fh, '>:encoding(UTF-8)', $self -> country_file) || die "Can't open file: " . $self -> country_file . "\n";
+	open(my $fh, '>:encoding(UTF-8)', $self -> countries_file) || die "Can't open file: " . $self -> countries_file . "\n";
 
 	for (@row)
 	{
@@ -150,7 +165,7 @@ sub as_csv
 
 	close $fh;
 
-	# 2: Subcountry types.
+	# 2: Subcountry info.
 
 	my($subcountry_info)	= $self -> read_subcountry_info_table;
 	@row              		= ();
@@ -205,7 +220,34 @@ sub as_csv
 		];
 	}
 
-	open($fh, '>:encoding(UTF-8)', $self -> subcountry_file) || die "Can't open file: " . $self -> subcountry_file . "\n";
+	open($fh, '>:encoding(UTF-8)', $self -> subcountries_file) || die "Can't open file: " . $self -> subcountries_file . "\n";
+
+	for (@row)
+	{
+		print $fh '"', join('","', @$_), '"', "\n";
+	}
+
+	# 4: Subcountry types.
+
+	my($categories)	= $self -> read_subcountry_categories_table;
+	@row			= ();
+
+	push @row,
+	[
+		qw/id name timestamp/
+	];
+
+	for my $id (sort{$$categories{$a}{name} cmp $$categories{$b}{name} } keys %$categories)
+	{
+		push @row,
+		[
+			$id,
+			$$categories{$id}{name},
+			$$categories{$id}{timestamp},
+		];
+	}
+
+	open($fh, '>:encoding(UTF-8)', $self -> subcountry_categories_file) || die "Can't open file: " . $self -> subcountry_categories_file . "\n";
 
 	for (@row)
 	{
@@ -246,23 +288,26 @@ sub as_html
 
 sub _build_country_data
 {
-	my($self)         = @_;
-	my($countries)    = $self -> read_countries_table;
-	my($subcountries) = $self -> read_subcountries_table;
+	my($self)			= @_;
+	my($countries)		= $self -> read_countries_table;
+	my($subcountries)	= $self -> read_subcountries_table;
+	my($categories)		= $self -> read_subcountry_categories_table;
 
-	my($country_id);
+	my($country_id, $category_id);
 	my(%subcountries);
 
 	for my $sub_id (keys %$subcountries)
 	{
-		$country_id                = $$subcountries{$sub_id}{country_id};
-		$subcountries{$country_id} = [] if (! $subcountries{$country_id});
+		$country_id					= $$subcountries{$sub_id}{country_id};
+		$category_id				= $$subcountries{$sub_id}{subcountry_category_id};
+		$subcountries{$country_id}	= [] if (! $subcountries{$country_id});
 
 		push @{$subcountries{$country_id} },
 		[
 			$$subcountries{$sub_id}{sequence}, # Sort key, below.
 			$$subcountries{$sub_id}{code},
 			$$subcountries{$sub_id}{name},
+			$$categories{$category_id}{name},
 		];
 	}
 
@@ -299,7 +344,7 @@ sub _build_country_data
 				{td => ''},
 				{td => mark_raw($$sub_id[1])},
 				{td => mark_raw($$sub_id[2])},
-				{td => ''},
+				{td => mark_raw($$sub_id[3]) || ''},
 			];
 		}
 	}
@@ -379,13 +424,13 @@ Available options (these are also methods):
 
 =over 4
 
-=item o country_file => $a_csv_file_name
+=item o countries_file => $a_csv_file_name
 
 Specify the name of the CSV file to which country data is exported.
 
 Default: 'countries.csv'.
 
-=item o subcountry_file => $a_csv_file_name
+=item o subcountries_file => $a_csv_file_name
 
 Specify the name of the CSV file to which subcountry data is exported.
 
@@ -421,21 +466,21 @@ Export the SQLite database to 2 CSV files.
 
 Export the SQLite database to 1 HTML file.
 
-=head2 country_file($file_name)
+=head2 countries_file($file_name)
 
 Get or set the name of the CSV file to which country data is exported.
 
-C<country_file> is an option to L</new()>.
+C<countries_file> is an option to L</new()>.
 
 =head2 new()
 
 See L</Constructor and initialization>.
 
-=head2 subcountry_file($file_name)
+=head2 subcountries_file($file_name)
 
 Get or set the name of the CSV file to which subcountry data is exported.
 
-C<subcountry_file> is an option to L</new()>.
+C<subcountries_file> is an option to L</new()>.
 
 =head2 subcountry_info_file($file_name)
 

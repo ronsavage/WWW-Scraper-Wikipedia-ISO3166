@@ -21,9 +21,10 @@ if ($option_parser -> getoptions
 (
 	\%option,
 	'help',
-	'country_file=s',
+	'countries_file=s',
 	'maxlevel=s',
-	'subcountry_file=s',
+	'subcountries_file=s',
+	'subcountry_categories_file=s',
 	'subcountry_info_file=s',
 ) )
 {
@@ -50,10 +51,11 @@ export.as.html.pl [options]
 
 	Options:
 	-help
-	-country_file $aFileName
-	-maxlevel $integer
-	-subcountry_file $aFileName
-	-subcountry_info_file $aFileName
+	-countries_file $aCSVFileName
+	-maxlevel $string
+	-subcountries_file $aCSVFileName
+	-subcountry_categories_file $aCSVFileName
+	-subcountry_info_file $aCSVFileName
 
 All switches can be reduced to a single letter.
 
@@ -67,7 +69,7 @@ Default output: Screen.
 
 =over 4
 
-=item o -country_file $aFileName
+=item o -countries_file $aCSVFileName
 
 A CSV file name, to which country data will be written.
 
@@ -83,13 +85,19 @@ Typical values: 'debug'.
 
 Default: 'notice'.
 
-=item o -subcountry_file $aFileName
+=item o -subcountries_file $aCSVFileName
 
 A CSV file name, to which subcountry data will be written.
 
 Default: subcountries.csv
 
-=item o -subcountry_info_file $aFileName
+=item o -subcountry_categories_file $aCSVFileName
+
+A CSV file name, to which subcountry categry data will be written.
+
+Default: subcountry_categories.csv
+
+=item o -subcountry_info_file $aCSVFileName
 
 A CSV file name, to which subcountry info data will be written.
 
