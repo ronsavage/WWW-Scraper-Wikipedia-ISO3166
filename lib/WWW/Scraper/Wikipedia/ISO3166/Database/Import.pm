@@ -324,6 +324,7 @@ sub populate_subcountry
 
 	my($before_after);
 	my(%names);
+	my(%seen);
 	my($td_count);
 
 	for my $wikitable ($dom -> find('table[class="wikitable sortable"]') -> each)
@@ -342,6 +343,9 @@ sub populate_subcountry
 		last if ( ($code2 =~ /(?:CZ)/) && ($table_count == 3) );
 
 		$self -> log(debug => "code2: $code2. table_count: $table_count");
+
+		# The $before_after flag detects tables lists Before and After lists of codes
+		# changed at some time during revisions of the defining document. We discard these.
 
 		$before_after			= 0;
 		my($category_column)	= -1;
@@ -534,7 +538,27 @@ sub populate_subcountry
 						}
 						elsif ($kid)
 						{
-							$content = $kid -> content;
+							# Special case:
+							# FR - France.
+
+							if ($code2 eq 'FR')
+							{
+								if ($seen{$$code{code} })
+								{
+									# This stops overwriting the 1st value with the 2nd.
+
+									$content = $seen{$$code{code} };
+								}
+								else
+								{
+									$content				= $kid -> content;
+									$seen{$$code{code} }	= $content;
+								}
+							}
+							else
+							{
+								$content = $kid -> content;
+							}
 						}
 						elsif ($kids -> size == 2)
 						{
@@ -601,10 +625,11 @@ sub populate_subcountry
 			{
 				# Special cases:
 				# o CN - China.
+				# o FR - France.
 
 				@kids = $node -> children;
 
-				if ($kids -> size < 0)
+				if ($#kids < 0)
 				{
 					$content = $node -> content;
 				}
@@ -615,6 +640,11 @@ sub populate_subcountry
 						# Yes, this overwrites if there is more than 1 descendant.
 
 						$content = $kid -> content;
+					}
+
+					if ($$code{code} =~ /FR-(?:NC|TF)/)
+					{
+						$content = 'Overseas territorial collectivity';
 					}
 				}
 
