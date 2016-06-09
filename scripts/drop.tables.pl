@@ -7,4 +7,4 @@ use WWW::Scraper::Wikipedia::ISO3166::Database::Create;
 
 # ----------------------------
 
-WWW::Scraper::Wikipedia::ISO3166::Database::Create -> new(verbose => 2) -> drop_all_tables;
+WWW::Scraper::Wikipedia::ISO3166::Database::Create -> new -> drop_all_tables;

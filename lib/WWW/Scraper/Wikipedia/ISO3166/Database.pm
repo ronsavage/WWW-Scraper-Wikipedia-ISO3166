@@ -138,17 +138,17 @@ sub get_country_count
 
 sub get_statistics
 {
-	my($self)  = @_;
-	my(%count) =
-	(
+	my($self) = @_;
+
+	return
+	{
 		countries_in_db             => $self -> get_country_count,
 		has_subcounties             => $#{$self -> who_has_subcountries} + 1,
 		subcountries_in_db          => $self -> get_subcountry_count,
+		subcountry_categories_in_db => $self -> get_subcountry_category_count,
 		subcountry_files_downloaded => scalar @{$self -> find_subcountry_downloads},
 		subcountry_info_in_db		=> $self -> get_subcountry_info_count,
-	);
-
-	return {%count};
+	};
 
 } # End of get_statistics.
 
@@ -161,6 +161,16 @@ sub get_subcountry_count
 	return ($self -> dbh -> selectrow_array('select count(*) from subcountries') )[0];
 
 } # End of get_subcountry_count.
+
+# ----------------------------------------------
+
+sub get_subcountry_category_count
+{
+	my($self) = @_;
+
+	return ($self -> dbh -> selectrow_array('select count(*) from subcountry_categories') )[0];
+
+} # End of get_subcountry_category_count.
 
 # ----------------------------------------------
 
@@ -375,8 +385,9 @@ Returns a hashref of database statistics:
 
 	{
 	countries_in_db             => 249,
-	has_subcounties             => 199,
-	subcountries_in_db          => 4593,
+	has_subcounties             => 200,
+	subcountries_in_db          => 5297,
+	subcountry_cagegories_in_db => 77,
 	subcountry_files_downloaded => 249,
 	subcountry_info_in_db       => 352,
 	}
@@ -386,6 +397,10 @@ Called by L</report_statistics()>.
 =head2 get_subcountry_count()
 
 Returns the result of: 'select count(*) from subcountries'.
+
+=head2 get_subcountry_category_count()
+
+Returns the result of: 'select count(*) from subcountry_categories'.
 
 =head2 get_subcountry_info_count()
 
@@ -400,6 +415,14 @@ See L</Constructor and initialization>.
 Returns a hashref of hashrefs for this SQL: 'select * from countries'.
 
 The key of the hashref is the primary key (integer) of the I<countries> table.
+
+This is discussed further in L<WWW::Scraper::Wikipedia::ISO3166/Methods which return hashrefs>.
+
+=head2 read_subcountries_table
+
+Returns a hashref of hashrefs for this SQL: 'select * from subcountries'.
+
+The key of the hashref is the primary key (integer) of the I<subcountries> table.
 
 This is discussed further in L<WWW::Scraper::Wikipedia::ISO3166/Methods which return hashrefs>.
 
@@ -422,14 +445,6 @@ column - 'Subdivisions assigned codes' - of L<ISO3166-2|https://en.wikipedia.org
 
 This is discussed further in L<WWW::Scraper::Wikipedia::ISO3166/Methods which return hashrefs>.
 
-=head2 read_subcountries_table()
-
-Returns a hashref of hashrefs for this SQL: 'select * from subcountries'.
-
-The key of the hashref is the primary key (integer) of the I<subcountries> table.
-
-This is discussed further in L<WWW::Scraper::Wikipedia::ISO3166/Methods which return hashrefs>.
-
 =head2 report_Australian_statistics
 
 Logs some info for Australia. Does not call L</report_statistics()>.
@@ -438,20 +453,7 @@ Logs some info for Australia. Does not call L</report_statistics()>.
 
 Logs various database statistics at the I<info> level.
 
-Calls L</get_statistics()>.
-
-This is the output from scripts/report.statistics.pl -v 1:
-
-	info: countries_in_db => 249.
-	info: has_subcounties => 199.
-	info: subcountries_in_db => 4593.
-	info: subcountry_files_downloaded => 249.
-
-=head2 verbose($integer)
-
-Get or set the verbosity level.
-
-Also, I<verbose> is an option to L</new()>.
+Calls L</get_statistics()>. See that module for what this module reports.
 
 =head2 who_has_subcountries()
 

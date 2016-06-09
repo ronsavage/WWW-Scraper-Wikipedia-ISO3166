@@ -138,6 +138,7 @@ See scripts/export.*.pl and scripts/get.*.pl for sample code.
 	my($database)     = WWW::Scraper::Wikipedia::ISO3166::Database -> new;
 	my($countries)    = $database -> read_countries_table;
 	my($subcountries) = $database -> read_subcountries_table;
+	my($categories)   = $database -> read_subcountry_categories_table;
 	my($types)        = $database -> read_subcountry_info_table;
 	...
 
@@ -711,8 +712,6 @@ In no particular order:
 L<http://en.wikipedia.org/wiki/ISO_3166-1>
 
 L<http://en.wikipedia.org/wiki/ISO_3166-2>
-
-L<http://savage.net.au/Perl-modules/html/WWW/Scraper/Wikipedia/ISO3166/iso.3166-1.html>
 
 L<http://savage.net.au/Perl-modules/html/WWW/Scraper/Wikipedia/ISO3166/iso.3166-2.html>
 

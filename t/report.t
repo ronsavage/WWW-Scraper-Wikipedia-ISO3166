@@ -22,6 +22,7 @@ my(@expected)					= split(/\n/, <<EOS);
 countries_in_db => 249
 has_subcounties => 200
 subcountries_in_db => 5297
+subcountry_categories_in_db => 77
 subcountry_files_downloaded => 249
 subcountry_info_in_db => 352
 EOS

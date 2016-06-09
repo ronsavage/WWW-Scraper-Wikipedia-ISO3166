@@ -65,13 +65,13 @@ sub check_downloads
 
 # -----------------------------------------------
 
-sub log_content
+sub _log_content
 {
 	my($self, $message, $node) = @_;
 
 	$self -> log(debug => $message . ': ' . $node -> content);
 
-} # End of log_content.
+} # End of _log_content.
 
 # -----------------------------------------------
 
@@ -967,7 +967,7 @@ Specifies the code2 of the country whose subcountry page is to be downloaded.
 This module is a sub-class of L<WWW::Scraper::Wikipedia::ISO3166::Database> and consequently
 inherits its methods.
 
-=head2 cross_check_country_downloads()
+=head2 check_downloads()
 
 Report what country code files have not been downloaded, after parsing ISO_3166-1.html. This report
 is at the 'debug' level.
@@ -985,92 +985,6 @@ Also, I<code2> is an option to L</new()>.
 
 See L</Constructor and initialization>.
 
-=head2 parse_country_page_1()
-
-Parse the HTML page of country names from data/en.wikipedia.org.wiki.ISO-3166-1.html.
-
-Returns an arrayref where each element is a hashref with these keys:
-
-=over 4
-
-=item o code2 => $string
-
-=item o code3 => $string
-
-=item o name => $string
-
-=item o number => $string
-
-=back
-
-=head2 parse_country_page_2()
-
-Parse the HTML page of 3-letter country codes, which has 3 tables side-by-side from
- from data/en.wikipedia.org.wiki.ISO-3166-2.html.
-
-Return an arrayref where each element is a hashref with these keys:
-
-=over 4
-
-=item o code2 => $string
-
-=item o name => $string
-
-This is the name of the country, but it is not used.
-
-=item o subcountries => $array_ref
-
-This arrayref holds the N text fields from the 3rd column of the big table on that wiki page. E.g.:
-For Uzbekistan the 3 elements of the arrayref are:
-
-=over 4
-
-=item o '1 city'
-
-=item o '12 regions'
-
-=item o '1 republic'
-
-=back
-
-And for United Kingdom, the elements will be:
-
-=over 4
-
-=item o '3 countries'
-
-=item o '1 province
-
-=item o '78 unitary authorities'
-
-=item o '27 two-tier counties'
-
-=item o '32 london boroughs'
-
-=item o '1 city corporation'
-
-=item o '36 metropolitan districts'
-
-=item o '11 districts'
-
-=item o '32 council areas'
-
-All of which nicely encapsulates the complexity of human existence.
-
-The details of these are on the page L<ISO_3166-2:UZ|https://en.wikipedia.org/wiki/ISO_3166-2:UZ>.
-
-These strings are entries in the subcountry_info table. For details of the schema,
-see L<WWW::Scraper::Wikipedia::ISO3166/What is the database schema?>.
-
-Obviously, the arrayref is empty if the country has no subcoyntries.
-
-=head2 parse_subcountry_page()
-
-Parse the HTML page of a subcountry.
-
-Warning. The 2-letter code of the subcountry must be set with $self -> code2('XX') before calling
-this method.
-
 =head2 populate_countries()
 
 Populate the I<countries> table.
@@ -1085,21 +999,6 @@ this method.
 =head2 populate_subcountries()
 
 Populate the I<subcountries> table, for all subcountries.
-
-=head2 process_subcountries($table)
-
-Delete the I<detail> key of the arrayref of hashrefs for the subcountry.
-
-=head2 save_countries($table)
-
-Save the $table to the I<countries> table in the database.
-
-=head2 save_subcountries($count, $table)
-
-Save the I<subcountries> table, for the given subcountry, using the output of
-L</process_subcountries($table)>.
-
-$count is just used in the log for progress messages.
 
 =head1 FAQ
 
