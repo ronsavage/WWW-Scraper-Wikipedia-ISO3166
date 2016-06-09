@@ -20,7 +20,6 @@ use Moo;
 use Types::Standard qw/HashRef Str/;
 
 use Unicode::CaseFold;	# For fc().
-use Unicode::Normalize;	# For NFC().
 
 has code2 =>
 (

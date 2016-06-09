@@ -171,9 +171,9 @@ See L<WWW::Scraper::Wikipedia::ISO3166/Synopsis>.
 
 Downloads these pages:
 
-Input: L<http://en.wikipedia.org/wiki/ISO_3166-1_alpha-3>.
+Input: L<http://en.wikipedia.org/wiki/ISO_3166-1>.
 
-Output: data/en.wikipedia.org.wiki.ISO_3166-2.3.html.
+Output: data/en.wikipedia.org.wiki.ISO_3166-1.html.
 
 Input: L<http://en.wikipedia.org/wiki/ISO_3166-2>.
 
@@ -222,7 +222,8 @@ help on unpacking and installing.
 
 =head1 Methods
 
-This module is a sub-class of L<WWW::Scraper::Wikipedia::ISO3166::Database> and consequently inherits its methods.
+This module is a sub-class of L<WWW::Scraper::Wikipedia::ISO3166::Database> and consequently
+inherits its methods.
 
 =head2 code2($code)
 
@@ -240,7 +241,7 @@ Download $url and save it in $data_file. $data_file normally takes the form 'dat
 
 Download the 2 country pages:
 
-L<http://en.wikipedia.org/wiki/ISO_3166-1_alpha-3>.
+L<http://en.wikipedia.org/wiki/ISO_3166-1>.
 
 L<http://en.wikipedia.org/wiki/ISO_3166-2>.
 

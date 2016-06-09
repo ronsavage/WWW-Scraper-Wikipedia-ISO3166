@@ -152,49 +152,51 @@ So, $$countries{13} points to this hashref:
 		fc_name           => 'australia',
 		hash_subcountries => 'Yes',
 		name              => 'Australia',
+		number            => '036',
 		timestamp         => '2012-05-08 04:04:43',
 	}
 
-One element of %$subcountries is $$subcountries{4276}:
+One element of %$subcountries is $$subcountries{941}:
 
 	{
-		id         => 4276,
-		country_id => 13,
-		code       => 'AU-VIC',
-		fc_name    => 'victoria',
-		name       => 'Victoria',
-		sequence   => 5,
-		timestamp  => '2012-05-08 04:05:27',
+		id                     => 941,
+		country_id             => 13,
+		code                   => 'AU-VIC',
+		fc_name                => 'victoria',
+		name                   => 'Victoria',
+		sequence               => 7,
+		subcountry_category_id => 8,
+		timestamp              => '2012-05-08 04:05:27',
 	}
 
 =head3 Warnings
 
-# 1: These hashrefs use the table's primary key as the hashref's key. In the case of the I<countries>
+These hashrefs use the table's primary key as the hashref's key. In the case of the I<countries>
 table, the primary key is the country's id, and is used as subcountries.country_id. But, in the case of
 the I<subcountries> table, the id does not have any meaning apart from being a db primary key.
 See L</What is the database schema?> for details.
 
-# 2: Do not assume subcountry names are unique within a country.
-
-L<See 'Taichung' etc in Taiwan for example|http://en.wikipedia.org/wiki/ISO_3166-2:TW>.
-
 =head2 Scripts which output to a file
 
-All scripts respond to the -h option.
+Note: Many of these programs respond to the -h command line switch, but not create.tables.pl nor
+drop.tables.pl.
 
 Some examples:
 
-	shell>perl scripts/export.as.csv.pl -c countries.csv -s subcountries.csv
-	shell>perl scripts/export.as.html.pl -w iso.3166-2.html
+	shell> perl scripts/export.as.csv.pl -c countries.csv -s subcountries.csv
+	shell> perl scripts/export.as.html.pl -w iso.3166-2.html
+	shell> perl -Ilib scripts/populate.countries.pl -maxlevel debug
+	shell> perl -Ilib scripts/populate.subcountries.pl -maxlevel debug
 
-This file is on-line at: L<http://savage.net.au/Perl-modules/html/WWW/Scraper/Wikipedia/ISO3166/iso.3166-2.html>.
+The HTML file is on-line at: L<http://savage.net.au/Perl-modules/html/WWW/Scraper/Wikipedia/ISO3166/iso.3166-2.html>.
 
 	shell>perl scripts/report.statistics.pl
 
 	Output statistics:
 	countries_in_db => 249
 	has_subcounties => 200
-	subcountries_in_db => 3501
+	subcountries_in_db => 5297
+	subcountry_files_downloaded => 249
 	subcountry_info_in_db => 352
 
 See also scripts/report.*.pl and t/report.t.
@@ -709,6 +711,8 @@ In no particular order:
 L<http://en.wikipedia.org/wiki/ISO_3166-1>
 
 L<http://en.wikipedia.org/wiki/ISO_3166-2>
+
+L<http://savage.net.au/Perl-modules/html/WWW/Scraper/Wikipedia/ISO3166/iso.3166-1.html>
 
 L<http://savage.net.au/Perl-modules/html/WWW/Scraper/Wikipedia/ISO3166/iso.3166-2.html>
 

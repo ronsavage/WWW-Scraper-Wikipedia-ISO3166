@@ -18,9 +18,18 @@ when you install the module. See the FAQ entry
 for details.
 </p>
 
+<p>The data displayed is a combination of the data in 3 of the 4 tables in *.sqlite:
+<i>countries</i>, <i>subcountries</i> and <i>subcountry_categories</i>.
+</p>
+
+<p>The <i>subcountries_info</i> table data comes from the 3rd column of
+<a href = 'https://en.wikipedia.org/wiki/ISO_3166-2'>ISO3166-1</a>, and is not listed here.
+</p>
+
 <p>
 The database structure is documented in the FAQ entry
-<a href="https://metacpan.org/module/WWW::Scraper::Wikipedia::ISO3166#What-is-the-database-schema">What is the database schema?</a>
+<a href="https://metacpan.org/module/WWW::Scraper::Wikipedia::ISO3166#What-is-the-database-schema">What is the database schema?</a>,
+and is also <a href = 'http://savage.net.au/assets/images/modules/WWW/Scraper/Wikipedia/ISO3166/www.scraper.wikipedia.iso3166.schema.svg'>on-line</a>.
 </p>
 
 <p>
@@ -43,14 +52,20 @@ The Å of Åland should have a ring on top of it, just as this line and Wikipedi
 </p>
 
 <p>
-Wikipedia sorts countries by a display:none key, whereas I have chosen to sort by NFC($name), where the
-NFC() method comes from <a href="https://metacpan.org/release/Unicode-Normalize">Unicode::Normalize</a>.
+Wikipedia sorts countries by a display:none key, whereas I have chosen to sort by NFC($name), where
+the NFC() method comes from <a href="https://metacpan.org/release/Unicode-Normalize">Unicode::Normalize</a>.
 Usage of NFC() is discussed in the module's FAQ entry
 <a href="https://metacpan.org/module/WWW::Scraper::Wikipedia::ISO3166#Why-did-you-use-Unicode::Normalizes-NFC-for-sorting-">Why did you use Unicode::Normalize's NFC() for sorting?</a>
 </p>
 
 <p>
-Lastly: # is just a sequential number, while 'Db key' is the primary key in the <i>countries</i> table.
+A note about column headings: # is just a sequential number, while 'Db key' is the primary key in
+the <i>countries</i> table. For countries, the 'Number' column comes from
+<a href = 'https://en.wikipedia.org/wiki/ISO_3166-1'>ISO3166-1</a>, while for subcountries, it is
+their code. 'Subcountries' is Yes or No as appropriate, for countries, while for subcounties it
+is their classificiation as one type of category, if that information is available. In some cases,
+e.g. France (for some subcountries), the category name is in a HTML heading rather than in a table,
+and hence is not listed.
 </p>
 
 <h3 class="global_toc_text">Countries and Subcountries</h3>

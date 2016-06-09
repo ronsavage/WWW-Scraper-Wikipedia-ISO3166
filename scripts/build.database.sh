@@ -16,6 +16,7 @@ echo Run export.as.html.pl
 perl -Ilib scripts/export.as.html.pl -w data/iso.3166-2.html
 
 cp data/iso.3166-2.html $DR/
+cp data/iso.3166-2.html ~/savage.net.au/Perl-modules/html/WWW/Scraper/Wikipedia/ISO3166/
 
 echo Copied data/iso.3166-2.html to doc root
 

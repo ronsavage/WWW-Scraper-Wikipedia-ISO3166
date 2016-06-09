@@ -221,11 +221,24 @@ Available options: None.
 
 =head1 Methods
 
-This module is a sub-class of L<WWW::Scraper::Wikipedia::ISO3166::Database> and consequently inherits its methods.
+This module is a sub-class of L<WWW::Scraper::Wikipedia::ISO3166::Database> and consequently
+inherits its methods.
 
 =head2 create_all_tables()
 
-Create the I<countries> and I<subcountries> tables.
+Create these tables:
+
+=over 4
+
+=item o countries
+
+=item o subcountries
+
+=item o subcountry_categories
+
+=item o subcountry_info
+
+=back
 
 =head2 create_countries_table()
 
@@ -235,9 +248,29 @@ Create the I<countries> table.
 
 Create the I<subcountries> table.
 
+=head2 create_subcountry_categories_table()
+
+Create the I<subcountry_categories> table.
+
+=head2 create_subcountry_info_table()
+
+Create the I<subcountry_info> table.
+
 =head2 drop_all_tables()
 
-Drop the I<countries> and I<subcountries> tables.
+Create these tables:
+
+=over 4
+
+=item o countries
+
+=item o subcountries
+
+=item o subcountry_categories
+
+=item o subcountry_info
+
+=back
 
 =head2 drop_table($table_name)
 

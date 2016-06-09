@@ -392,6 +392,8 @@ This file is on-line at: L<http://savage.net.au/Perl-modules/html/WWW/Scraper/Wi
 
 =item o data/subcountries.csv
 
+=item o data/subcountry_categories.csv
+
 =item o data/subcountry_info.csv
 
 This data comes from the 3rd column of the country table at
@@ -436,11 +438,17 @@ Specify the name of the CSV file to which subcountry data is exported.
 
 Default: 'subcountries.csv'.
 
+=item o subcountry_categories_file => $a_csv_file_name
+
+Specify the name of the CSV file to which subcountry category data is exported.
+
+Default: 'subcountry_categories.csv'.
+
 =item o subcountry_info_file => $a_csv_file_name
 
-Specify the name of the CSV file to which subcountry types data is exported.
+Specify the name of the CSV file to which subcountry info data is exported.
 
-Default: 'subcountry.types.csv'.
+Default: 'subcountry_info.csv'.
 
 =item o web_page_file => $a_html_file_name
 
@@ -456,7 +464,8 @@ Default: 'iso.3166-2.html'.
 
 =head1 Methods
 
-This module is a sub-class of L<WWW::Scraper::Wikipedia::ISO3166::Database> and consequently inherits its methods.
+This module is a sub-class of L<WWW::Scraper::Wikipedia::ISO3166::Database> and consequently
+inherits its methods.
 
 =head2 as_csv()
 
@@ -482,9 +491,15 @@ Get or set the name of the CSV file to which subcountry data is exported.
 
 C<subcountries_file> is an option to L</new()>.
 
+=head2 subcountry_categories_file($file_name)
+
+Get or set the name of the CSV file to which subcountry category data is exported.
+
+C<subcountry_info_file> is an option to L</new()>.
+
 =head2 subcountry_info_file($file_name)
 
-Get or set the name of the CSV file to which subcountry type data is exported.
+Get or set the name of the CSV file to which subcountry info data is exported.
 
 C<subcountry_info_file> is an option to L</new()>.
 

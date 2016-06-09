@@ -21,7 +21,7 @@ my(@got)						= map{s/\s+$//; $_} split(/\n/, $stdout);
 my(@expected)					= split(/\n/, <<EOS);
 countries_in_db => 249
 has_subcounties => 200
-subcountries_in_db => 3501
+subcountries_in_db => 5297
 subcountry_files_downloaded => 249
 subcountry_info_in_db => 352
 EOS
@@ -36,14 +36,14 @@ push @params, '-max', 'info';
 ($stdout, $stderr, $result)	= capture{system($^X, @params)};
 (@got)						= map{s/\s+$//; $_} split(/\n/, $stdout);
 (@expected)					= split(/\n/, <<EOS);
-1: New South Wales
-2: Queensland
-3: South Australia
-4: Tasmania
-5: Victoria
-6: Western Australia
-7: Australian Capital Territory
-8: Northern Territory
+1: Australian Capital Territory
+2: New South Wales
+3: Northern Territory
+4: Queensland
+5: South Australia
+6: Tasmania
+7: Victoria
+8: Western Australia
 EOS
 
 is(\@got, \@expected, 'report_Australian_statistics() returned the expected data');
