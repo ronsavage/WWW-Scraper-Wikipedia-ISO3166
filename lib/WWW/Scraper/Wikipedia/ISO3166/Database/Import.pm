@@ -401,6 +401,8 @@ sub populate_subcountry
 
 			if ( ($record_count % $td_count) == 0)
 			{
+				# Get the subcountry's code.
+				#
 				# Special cases:
 				# o CG - Congo.
 				# o GB - United Kingdom.
@@ -450,11 +452,24 @@ sub populate_subcountry
 					$content = $node -> content;
 				}
 
-				$code		= {category => '', code => $content, name => ''};
-				$finished	= 0;
+				# Special case:
+				# o FR - France.
+
+				if ($names{$content})
+				{
+					$code = $names{$content};
+				}
+				else
+				{
+					$code = {category => '', code => $content, name => ''};
+				}
+
+				$finished = 0;
 			}
 			elsif ( ($record_count % $td_count)  == 1)
 			{
+				# Get the subcountry's name.
+				#
 				# Special cases:
 				# o CG - Congo.
 				# o KH - Cambodia.
@@ -587,6 +602,8 @@ sub populate_subcountry
 			}
 			elsif (! $finished && ($record_count % $td_count) == 2)
 			{
+				# Get the subcountry's name.
+				#
 				# Special cases:
 				# o KH - Cambodia.
 				# o MR - Mauritania.
@@ -623,6 +640,8 @@ sub populate_subcountry
 
 			if ($column_count == $category_column)
 			{
+				# Get the subcountry's category.
+				#
 				# Special cases:
 				# o CN - China.
 				# o FR - France.
@@ -632,6 +651,8 @@ sub populate_subcountry
 				if ($#kids < 0)
 				{
 					$content = $node -> content;
+
+					$self -> log(debug => "1 $$code{code}: $content") if ($$code{code} =~ /^FR-/);
 				}
 				else
 				{
@@ -642,9 +663,13 @@ sub populate_subcountry
 						$content = $kid -> content;
 					}
 
+					$self -> log(debug => "2 $$code{code}: $content") if ($$code{code} =~ /^FR-/);
+
 					if ($$code{code} =~ /FR-(?:NC|TF)/)
 					{
 						$content = 'Overseas territorial collectivity';
+
+						$self -> log(debug => "3 $$code{code}: $content") if ($$code{code} =~ /^FR-/);
 					}
 				}
 
